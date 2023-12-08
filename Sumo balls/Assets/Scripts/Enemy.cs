@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class Enemy : MonoBehaviour
 {
@@ -11,10 +12,13 @@ public class Enemy : MonoBehaviour
     [SerializeField] Rigidbody _rb;
     [SerializeField] float _speed;
     private GameObject _player;
+    private IObjectPool<Enemy> _pool;
     // Start is called before the first frame update
     void Start()
     {
-        _player = GameObject.Find("Player");
+        _player = GameObject.Find("Player body");
+        Debug.Log("fsafsa");
+        // _pool.Release(this);
     }
 
     // Update is called once per frame
@@ -31,6 +35,7 @@ public class Enemy : MonoBehaviour
     public void Push(Vector3 force)
     {
         Debug.Log(force);
-        _rb.AddForce(force,ForceMode.Impulse);
+        _rb.AddForce(force, ForceMode.Impulse);
     }
+    public void SetPool(IObjectPool<Enemy> pool) => _pool = pool;
 }
