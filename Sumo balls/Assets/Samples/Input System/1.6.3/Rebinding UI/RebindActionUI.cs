@@ -288,9 +288,6 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
 
 
             // If it's a part binding, show the name of the part in the UI.
-            //var partName = default(string);
-            //if (action.bindings[bindingIndex].isPartOfComposite)
-            //    partName = $"Binding '{action.bindings[bindingIndex].name}'. ";
 
             // Bring up rebind overlay, if we have one.
             m_RebindOverlay?.SetActive(true);
@@ -299,13 +296,7 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
 
                 if (string.IsNullOrEmpty(m_RebindText.text))
                 {
-                    //var text = !string.IsNullOrEmpty(m_RebindOperation.expectedControlType)
-                    //    ? $"{partName}Waiting for {m_RebindOperation.expectedControlType} input..."
-                    //    : $"{partName}Waiting for input...";
-                    //m_RebindText.text = text;
-                    var text = //!string.IsNullOrEmpty(m_RebindOperation.expectedControlType)
-                         $"Assign input for {m_ActionLabel.text}";
-                    // : $"{partName}Waiting for input...";
+                    var text =  $"Assign input for {m_ActionLabel.text}";
                     m_RebindText.text = text;
                 }
             }
@@ -375,27 +366,7 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
                         }
                         m_RebindText.text = "";
                     });
-
-            // If it's a part binding, show the name of the part in the UI.
-            //var partName = default(string);
-            //if (action.bindings[bindingIndex].isPartOfComposite)
-            //    partName = $"Binding '{action.bindings[bindingIndex].name}'. ";
-
-            //// Bring up rebind overlay, if we have one.
             m_RebindOverlay?.SetActive(true);
-            //if (m_RebindText != null)
-            //{
-
-            //        //var text = !string.IsNullOrEmpty(m_RebindOperation.expectedControlType)
-            //        //    ? $"{partName}Waiting for {m_RebindOperation.expectedControlType} input..."
-            //        //    : $"{partName}Waiting for input...";
-            //        //m_RebindText.text = text;
-            //        var text = !string.IsNullOrEmpty(m_RebindOperation.expectedControlType)
-            //            ? $"Assign input for {m_ActionLabel.text}"
-            //            : $"{partName}Waiting for input...";
-            //        m_RebindText.text = text;
-            //    m_RebindOverlay?.SetActive(true);
-            //}
 
             // If we have no rebind overlay and no callback but we have a binding text label,
             // temporarily set the binding text label to "<Waiting>".
@@ -413,7 +384,6 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
             duplicateIndex = -1;
             duplicate = null ;
             InputBinding newBinding = action.bindings[bindingIndex];
-            Debug.Log(string.Format("{0} , {1} , {2} , {3} , {4} , {5} , {6}", action, newBinding.action, bindingIndex,newBinding.effectivePath,allCompositeParts,action.bindings.Count,newBinding.isPartOfComposite));
             foreach (InputBinding binding in action.actionMap.bindings)
             {
                 if (binding.action == newBinding.action)
@@ -422,7 +392,6 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
                     {
                         if (binding.effectivePath == newBinding.effectivePath)
                         {
-                            Debug.Log("Duplicate binding found in composite: " + newBinding.effectivePath);
                             var mask = new InputBinding
                             {
                                 path = binding.effectivePath,
@@ -439,8 +408,6 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
 
                 if(binding.effectivePath == newBinding.effectivePath)
                 {
-                    Debug.Log(string.Format("{0} is duplicate with {1}", newBinding.action, binding.action));
-                    Debug.Log(string.Format("{0} is duplicate with {1}", newBinding.effectivePath, binding.effectivePath));
                     var mask = new InputBinding
                     {
                         path = binding.effectivePath,
@@ -460,7 +427,6 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
                 {
                     if (action.bindings[i].effectivePath == newBinding.overridePath)
                     {
-                        Debug.Log(string.Format("{0} is duplicate with {1}", newBinding.name, action.bindings[i].name));
                         var mask = new InputBinding
                         {
                             path = action.bindings[i].effectivePath,
