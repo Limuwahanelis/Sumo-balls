@@ -13,8 +13,11 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
     [CustomEditor(typeof(RebindActionUI))]
     public class RebindActionUIEditor : UnityEditor.Editor
     {
+        RebindActionUI m_RebindActionUI;
         protected void OnEnable()
         {
+            m_RebindActionUI = (RebindActionUI)target;
+
             m_ActionProperty = serializedObject.FindProperty("m_Action");
             m_BindingIdProperty = serializedObject.FindProperty("m_BindingId");
             m_ActionLabelProperty = serializedObject.FindProperty("m_ActionLabel");
@@ -24,7 +27,10 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
             m_UpdateBindingUIEventProperty = serializedObject.FindProperty("m_UpdateBindingUIEvent");
             m_RebindStartEventProperty = serializedObject.FindProperty("m_RebindStartEvent");
             m_RebindStopEventProperty = serializedObject.FindProperty("m_RebindStopEvent");
+            m_RebindDuplicateEventProperty = serializedObject.FindProperty("m_RebindDuplicateEvent");
             m_DisplayStringOptionsProperty = serializedObject.FindProperty("m_DisplayStringOptions");
+            m_ActionOverrideProperty = serializedObject.FindProperty("m_OverrideActionLabel");
+            m_ActionOverrideStringProperty = serializedObject.FindProperty("m_ActionLabelString");
 
             RefreshBindingOptions();
         }
@@ -64,6 +70,15 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
                 EditorGUILayout.PropertyField(m_RebindTextProperty);
             }
 
+            // Customize UI section
+            EditorGUILayout.Space();
+            EditorGUILayout.LabelField(m_CustomizeUILabel, Styles.boldLabel);
+            using (new EditorGUI.IndentLevelScope())
+            {
+                EditorGUILayout.PropertyField(m_ActionOverrideProperty);
+                if(m_ActionOverrideProperty.boolValue) EditorGUILayout.PropertyField(m_ActionOverrideStringProperty);
+            }
+
             // Events section.
             EditorGUILayout.Space();
             EditorGUILayout.LabelField(m_EventsLabel, Styles.boldLabel);
@@ -72,6 +87,7 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
                 EditorGUILayout.PropertyField(m_RebindStartEventProperty);
                 EditorGUILayout.PropertyField(m_RebindStopEventProperty);
                 EditorGUILayout.PropertyField(m_UpdateBindingUIEventProperty);
+                EditorGUILayout.PropertyField(m_RebindDuplicateEventProperty);
             }
 
             if (EditorGUI.EndChangeCheck())
@@ -157,11 +173,15 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
         private SerializedProperty m_RebindTextProperty;
         private SerializedProperty m_RebindStartEventProperty;
         private SerializedProperty m_RebindStopEventProperty;
+        private SerializedProperty m_RebindDuplicateEventProperty;
         private SerializedProperty m_UpdateBindingUIEventProperty;
         private SerializedProperty m_DisplayStringOptionsProperty;
+        private SerializedProperty m_ActionOverrideProperty;
+        private SerializedProperty m_ActionOverrideStringProperty;
 
         private GUIContent m_BindingLabel = new GUIContent("Binding");
         private GUIContent m_DisplayOptionsLabel = new GUIContent("Display Options");
+        private GUIContent m_CustomizeUILabel = new GUIContent("Customize UI");
         private GUIContent m_UILabel = new GUIContent("UI");
         private GUIContent m_EventsLabel = new GUIContent("Events");
         private GUIContent[] m_BindingOptions;
