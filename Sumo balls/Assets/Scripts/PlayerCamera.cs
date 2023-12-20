@@ -8,6 +8,7 @@ public class PlayerCamera : MonoBehaviour
 {
 
     [SerializeField] float mouseRotationSpeed = 0.2f;
+    [SerializeField] FloatReference _mouseSensitivity;
     [SerializeField] float keyboardRotationSpeed = 2f;
 
     [SerializeField] GameObject focalPoint;
@@ -38,7 +39,7 @@ public class PlayerCamera : MonoBehaviour
 
     public void RotateMouse(float value)
     {
-        yaw += mouseRotationSpeed * value;
+        yaw += mouseRotationSpeed * value* _mouseSensitivity.value;
         Rotate();
     }
 

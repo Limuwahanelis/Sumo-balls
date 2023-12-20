@@ -496,6 +496,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc11d99b1a6682f4cbc4aba1fcd9ac5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _navigtionActions:
+  - {fileID: -8784545083839296357, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  - {fileID: 1289698389817603740, guid: 108bb979191d4a548af7f7a2a04fc63d, type: 3}
   m_Action: {fileID: 0}
   m_BindingId: 
   m_DisplayStringOptions: 0
@@ -503,6 +506,8 @@ MonoBehaviour:
   m_BindingText: {fileID: 3342156877893005134}
   m_RebindOverlay: {fileID: 0}
   m_RebindText: {fileID: 0}
+  m_OverrideActionLabel: 0
+  m_ActionLabelString: 
   m_UpdateBindingUIEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -510,6 +515,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_RebindStopEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_RebindDuplicateEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &6680292650847612333

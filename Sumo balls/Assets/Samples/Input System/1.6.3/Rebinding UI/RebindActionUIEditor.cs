@@ -1,6 +1,7 @@
 #if UNITY_EDITOR
 using System.Linq;
 using UnityEditor;
+using UnityEngine.UIElements;
 
 ////TODO: support multi-object editing
 
@@ -31,6 +32,7 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
             m_DisplayStringOptionsProperty = serializedObject.FindProperty("m_DisplayStringOptions");
             m_ActionOverrideProperty = serializedObject.FindProperty("m_OverrideActionLabel");
             m_ActionOverrideStringProperty = serializedObject.FindProperty("m_ActionLabelString");
+            m_NavigationActions = serializedObject.FindProperty("_navigtionActions");
 
             RefreshBindingOptions();
         }
@@ -38,7 +40,7 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
         public override void OnInspectorGUI()
         {
             EditorGUI.BeginChangeCheck();
-
+            EditorGUILayout.PropertyField(m_NavigationActions);
             // Binding section.
             EditorGUILayout.LabelField(m_BindingLabel, Styles.boldLabel);
             using (new EditorGUI.IndentLevelScope())
@@ -178,6 +180,7 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
         private SerializedProperty m_DisplayStringOptionsProperty;
         private SerializedProperty m_ActionOverrideProperty;
         private SerializedProperty m_ActionOverrideStringProperty;
+        private SerializedProperty m_NavigationActions;
 
         private GUIContent m_BindingLabel = new GUIContent("Binding");
         private GUIContent m_DisplayOptionsLabel = new GUIContent("Display Options");

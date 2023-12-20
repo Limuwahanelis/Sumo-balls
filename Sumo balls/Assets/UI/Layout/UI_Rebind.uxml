@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Styles/ewe.uss?fileID=7433441132597879392&amp;guid=6b05aed2b84681b408c2c8042e0c8621&amp;type=3#ewe" />
+    <ui:VisualElement name="Container" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.44); transform-origin: center; border-right-width: 0; border-left-width: 0; margin-left: 0; flex-direction: row; flex-wrap: nowrap; height: 54px; width: 428px; align-items: stretch; margin-right: 0; padding-right: 0; flex-shrink: 0; align-self: center; justify-content: flex-start; margin-top: 0;">
+        <ui:Label tabindex="-1" text="dasdasdasdsadsadasdsadasdds" display-tooltip-when-elided="true" name="input-label" style="align-self: center; flex-wrap: wrap; flex-grow: 0; flex-shrink: 0; white-space: normal; text-overflow: clip; -unity-text-align: upper-center; font-size: 14px; height: auto; width: auto; max-width: 143px;" />
+        <ui:Button text="dasdasdadasdasd" display-tooltip-when-elided="true" name="button_input" class="button" style="flex-direction: row-reverse; flex-wrap: wrap; align-self: center; width: 180px;" />
+        <ui:Button text="Reset" display-tooltip-when-elided="true" name="button_reset" style="align-self: center;" />
+    </ui:VisualElement>
+</ui:UXML>

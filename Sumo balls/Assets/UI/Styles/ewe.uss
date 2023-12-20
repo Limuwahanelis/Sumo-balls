@@ -1,0 +1,8 @@
+.button {
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+    background-color: rgba(229, 175, 10, 0.99);
+}
+
+.button:hover {
+    background-color: rgb(151, 255, 0);
+}

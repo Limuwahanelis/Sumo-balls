@@ -286,7 +286,11 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
             if (!ResolveActionAndBinding(out var action, out var bindingIndex))
                 return;
 
-
+            // turn off naviagtion in menu while rebinding
+            foreach(InputActionReference inputAction in _navigtionActions)
+            {
+                inputAction.action.Disable();
+            }
             // If it's a part binding, show the name of the part in the UI.
 
             // Bring up rebind overlay, if we have one.
@@ -322,6 +326,11 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
             {
                 m_RebindOperation?.Dispose();
                 m_RebindOperation = null;
+                // enable naviagtion
+                foreach (InputActionReference inputAction in _navigtionActions)
+                {
+                    inputAction.action.Enable();
+                }
             }
 
             // Configure the rebind.
@@ -496,7 +505,8 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
                     component.UpdateBindingDisplay();
             }
         }
-
+        [SerializeField]
+        private List<InputActionReference> _navigtionActions;
 
         [Tooltip("Reference to action that is to be rebound from the UI.")]
         [SerializeField]
