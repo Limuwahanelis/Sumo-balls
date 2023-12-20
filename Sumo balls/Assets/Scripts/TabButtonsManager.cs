@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class TabButtonsManager : MonoBehaviour
 {
+    public TabButtonUI CurrentTab => _currentlySelectedButton;
     [SerializeField] GameObject _panelWithButtons;
     [SerializeField] InputActionReference _changeTabsAction;
     private TabButtonUI _currentlySelectedButton;
@@ -36,7 +37,6 @@ public class TabButtonsManager : MonoBehaviour
     }
     public void SetActive( bool value)
     {
-        Debug.Log("settt " + value);
         if(value)
         {
             _changeTabsAction.action.performed += ChangeTab;
@@ -53,7 +53,6 @@ public class TabButtonsManager : MonoBehaviour
     }
     private void ChangeTab(InputAction.CallbackContext context)
     {
-        Debug.Log("Change tab");
         _tabIndex += ((int)context.ReadValue<float>());
         _currentlySelectedButton.Deselect();
         if (_tabIndex >= _buttons.Count) _tabIndex = 0;

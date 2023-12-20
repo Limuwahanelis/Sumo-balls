@@ -338,6 +338,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseRotationSpeed: 0.2
+  _mouseSensitivity:
+    useConstant: 0
+    constantValue: 0
+    variable: {fileID: 11400000, guid: 6dcba654180ebcb4fa16613f4e79e943, type: 2}
   keyboardRotationSpeed: 0.5
   focalPoint: {fileID: 223275787}
 --- !u!1 &410087039

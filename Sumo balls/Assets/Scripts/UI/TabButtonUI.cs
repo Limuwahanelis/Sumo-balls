@@ -12,6 +12,7 @@ public class TabButtonUI : Selectable//,ISubmitHandler
     bool _isBeingPressed = false;
     bool _isPointerInside = false;
     bool _isSelected = false;
+    SelectionState _stateToBeOnEnable;
     protected override void Start()
     {
         base.Start();
@@ -19,9 +20,13 @@ public class TabButtonUI : Selectable//,ISubmitHandler
     // Update is called once per frame
     void Update()
     {
-
+        
     }
-
+    protected override void OnEnable()
+    {
+        Debug.Log(base.currentSelectionState);
+        DoStateTransition(_stateToBeOnEnable,true);
+    }
     public override void OnPointerEnter(PointerEventData eventData)
     {
         if(_isSelected) return;
@@ -70,12 +75,14 @@ public class TabButtonUI : Selectable//,ISubmitHandler
         DoStateTransition(SelectionState.Selected, false);
         _isSelected = true;
         //base.OnSelect(eventData);
+        _stateToBeOnEnable = SelectionState.Selected;
         OnButtonClicked?.Invoke(this);
     }
 
     public override void OnDeselect(BaseEventData eventData)
     {
         _isSelected = false;
+        _stateToBeOnEnable = SelectionState.Normal;
         base.OnDeselect(eventData);
     }
     public override void Select()
