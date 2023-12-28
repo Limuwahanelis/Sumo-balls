@@ -27,25 +27,24 @@ public class Player : MonoBehaviour
     {
         _playerRB.AddForce(_pivot.transform.forward*_force*direction);
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.GetComponent<PowerUp>()) 
-        {
-            _hasPowerUp = true;
-            _powerUpIndicator.SetActive(true);
-            StartCoroutine(PowerUpCountdownCor());
-            Debug.Log("picked");
-        }
-    }
-    private void OnCollisionEnter(Collision collision)
+    public void Collision(Collision collision)
     {
         Enemy enemy = collision.gameObject.GetComponent<Enemy>();
         if (enemy && _hasPowerUp)
         {
             Debug.Log("dsad");
-            Vector3 pushVector = (enemy.transform.position - transform.position)* _powerUpStrength;
+            Vector3 pushVector = (enemy.transform.position - transform.position) * _powerUpStrength;
             enemy.Push(pushVector);
+        }
+    }
+    public void Trigger(Collider other)
+    {
+        if (other.GetComponent<PowerUp>())
+        {
+            _hasPowerUp = true;
+            _powerUpIndicator.SetActive(true);
+            StartCoroutine(PowerUpCountdownCor());
+            Debug.Log("picked");
         }
     }
 

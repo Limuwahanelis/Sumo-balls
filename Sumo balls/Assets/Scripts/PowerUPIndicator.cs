@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerUp : MonoBehaviour
+public class PowerUPIndicator : MonoBehaviour
 {
+    [SerializeField] Transform _player;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,11 +14,6 @@ public class PowerUp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-       Destroy(gameObject);
+        transform.localPosition = new Vector3(_player.position.x, 0, _player.position.z);
     }
 }

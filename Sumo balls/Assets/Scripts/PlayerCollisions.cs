@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class PowerUp : MonoBehaviour
+public class PlayerCollisions : MonoBehaviour
 {
+    public UnityEvent<Collision> OnCollision;
+    public UnityEvent<Collider> OnTrigger;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,9 +18,12 @@ public class PowerUp : MonoBehaviour
     {
         
     }
-
+    private void OnCollisionEnter(Collision collision)
+    {
+        OnCollision?.Invoke(collision); ;
+    }
     private void OnTriggerEnter(Collider other)
     {
-       Destroy(gameObject);
+        OnTrigger?.Invoke(other);
     }
 }

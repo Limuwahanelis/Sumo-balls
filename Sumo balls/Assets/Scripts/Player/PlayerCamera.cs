@@ -6,9 +6,7 @@ using UnityEngine.UIElements;
 
 public class PlayerCamera : MonoBehaviour
 {
-
     [SerializeField] float mouseRotationSpeed = 0.2f;
-    [SerializeField] FloatReference _mouseSensitivity;
     [SerializeField] float keyboardRotationSpeed = 2f;
 
     [SerializeField] GameObject focalPoint;
@@ -17,6 +15,7 @@ public class PlayerCamera : MonoBehaviour
     float screenY = Screen.height;
 
     float yaw = 0.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,7 +38,7 @@ public class PlayerCamera : MonoBehaviour
 
     public void RotateMouse(float value)
     {
-        yaw += mouseRotationSpeed * value* _mouseSensitivity.value;
+        yaw += mouseRotationSpeed * value;
         Rotate();
     }
 

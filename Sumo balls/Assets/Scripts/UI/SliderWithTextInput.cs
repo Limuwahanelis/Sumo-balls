@@ -11,7 +11,6 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class SliderWithTextInput : MonoBehaviour
 {
-    [SerializeField] FloatReference _valueReference;
     [SerializeField] TMP_InputField _inputTextField;
     [SerializeField] Slider _slider;
     [SerializeField] float _minValue;
@@ -19,7 +18,7 @@ public class SliderWithTextInput : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        UpdateText(_slider.value);
+        //UpdateText(_slider.value);
     }
     public void UpdateSlider(string text)
     {
@@ -27,7 +26,6 @@ public class SliderWithTextInput : MonoBehaviour
         if (string.IsNullOrEmpty(text)) value = _minValue;
         else value = float.Parse(text);
         _slider.SetValueWithoutNotify(value);
-        _valueReference.value = value;
     }
     public void UpdateText(float value)
     {
@@ -60,7 +58,6 @@ public class SliderWithTextInput : MonoBehaviour
             value = Mathf.Clamp(value, _minValue, _maxValue) * 1.0f;
             _inputTextField.text = toOutput;
             _slider.SetValueWithoutNotify(value);
-            _valueReference.value = value;
         }
 
 

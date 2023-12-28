@@ -59,7 +59,7 @@ public partial class @w: IInputActionCollection2, IDisposable
                     ""type"": ""Value"",
                     ""id"": ""d469ffbd-66f0-4420-94d5-e42c6c96b6fe"",
                     ""expectedControlType"": ""Delta"",
-                    ""processors"": """",
+                    ""processors"": ""ScaleVector2"",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 }
@@ -71,7 +71,7 @@ public partial class @w: IInputActionCollection2, IDisposable
                     ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Mouse;Keyboard"",
+                    ""groups"": ""Mouse"",
                     ""action"": ""MousePos"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -176,11 +176,11 @@ public partial class @w: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""1D Axis"",
+                    ""name"": ""Keyboard"",
                     ""id"": ""4275f29d-853c-430e-8c22-e9ef7bd10ed9"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""Scale"",
                     ""groups"": """",
                     ""action"": ""RotateX"",
                     ""isComposite"": true,
@@ -209,11 +209,11 @@ public partial class @w: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""1D Axis Gamepad"",
+                    ""name"": ""Gamepad"",
                     ""id"": ""02852aca-3c1f-4fb5-9fd8-c15dc246ef5c"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""Scale(factor=3)"",
                     ""groups"": """",
                     ""action"": ""RotateX"",
                     ""isComposite"": true,
