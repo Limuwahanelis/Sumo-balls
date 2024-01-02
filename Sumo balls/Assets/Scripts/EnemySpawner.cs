@@ -1,25 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Pool;
-using UnityEngine.Search;
+using Random = UnityEngine.Random;
 
 public class EnemySpawner : MonoBehaviour
 {
     
-
     [SerializeField] float _spawnRange;
     [SerializeField] float _arenaYpos;
     [SerializeField] float _playerSafeSpace = 2f;
     [SerializeField] EnemyPool _enemyPool;
     [SerializeField] Transform _playerPos;
-    public void SpawnEnemy()
+    public Enemy SpawnEnemy()
     {
         Enemy enemy = _enemyPool.GetEnemy();
-        enemy.transform.position = SelectEnemySpawnPos();
+        enemy.transform.position = SelectSpawnPos();
+        enemy.SetPlayer(_playerPos.gameObject);
+        return enemy;
     }
-    private Vector3 SelectEnemySpawnPos()
+    private Vector3 SelectSpawnPos()
     {
         float leftXrange = _playerPos.position.x - _playerSafeSpace;
         float upZrange = _playerPos.position.z + _playerSafeSpace;

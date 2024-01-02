@@ -12,7 +12,7 @@ public class EnemyPool : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _enemyPool = new ObjectPool<Enemy>(CreateEnemy);
+        _enemyPool = new ObjectPool<Enemy>(CreateEnemy,OnTakeEnemyFromPool,OnReturnEnemyToPool);
     }
 
     public Enemy GetEnemy()
@@ -28,10 +28,10 @@ public class EnemyPool : MonoBehaviour
     }
     public void OnTakeEnemyFromPool(Enemy enemy)
     {
-        //enemy.gameObject.SetActive(true);
+        enemy.gameObject.SetActive(true);
     }
-    public void OnReturnBulletToPool(Enemy enemy)
+    public void OnReturnEnemyToPool(Enemy enemy)
     {
-        //bullet.gameObject.SetActive(false);
+        enemy.gameObject.SetActive(false);
     }
 }

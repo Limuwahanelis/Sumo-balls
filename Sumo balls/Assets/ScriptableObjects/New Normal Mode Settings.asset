@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: New Normal Mode Settings
   m_EditorClassIdentifier: 
   _gameMode: 0
-  GameMode: 0
+  _simultaneouslNumberOfEnemies: 1
+  _numberOfEnemiesToDefeat: 1
+  _powerUpSpawnrateInSeconds: 10
