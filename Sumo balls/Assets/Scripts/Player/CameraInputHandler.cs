@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 
 public class CameraInputHandler : MonoBehaviour
 {
-    [SerializeField] InputActionReference _moveMouseAction;
     [SerializeField] PlayerCamera _camera;
     bool _isRotating = false;
     float _rotValue = 0;

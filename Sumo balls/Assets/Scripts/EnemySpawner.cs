@@ -17,7 +17,9 @@ public class EnemySpawner : MonoBehaviour
     {
         Enemy enemy = _enemyPool.GetEnemy();
         enemy.transform.position = SelectSpawnPos();
+        enemy.GetComponent<Rigidbody>().velocity = Vector3.zero;
         enemy.SetPlayer(_playerPos.gameObject);
+        enemy.gameObject.SetActive(true);
         return enemy;
     }
     private Vector3 SelectSpawnPos()

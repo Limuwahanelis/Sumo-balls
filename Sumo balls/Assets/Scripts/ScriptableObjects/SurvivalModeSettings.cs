@@ -5,10 +5,15 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Game mode/Survival")]
 public class SurvivalModeSettings : GameModeSettings
 {
-    public float timeToSurvive;
-    public int startingNumberOfEnemies;
-    public int finalNumberOfEnemies;
-    public float secondsToIncreaseEnemyCount; 
+    public float TimeToSurvive => _timeToSurvive;
+    public float StartingNumberOfEnemies => _startingNumberOfEnemies;
+    public float SecondsToSpawnEnemies => _secondsToSpawnEnemies;
+    public float NumbeOfEnemiesToSpawn => _numberOfEnemiesToSpawn;
+
+    [SerializeField] float _timeToSurvive;
+    [SerializeField] int _startingNumberOfEnemies;
+    [SerializeField] float _secondsToSpawnEnemies;
+    [SerializeField] float _numberOfEnemiesToSpawn;
 
     private void Awake()
     {

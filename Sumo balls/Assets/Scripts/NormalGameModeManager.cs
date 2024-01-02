@@ -23,6 +23,7 @@ public class NormalGameModeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (_spawnedEnemies >= _normalModeSettings.NumberOfEnemiesToDefeat) return;
         _currentTime +=Time.deltaTime;
         if (_currentTime >= _normalModeSettings.PowerUpSpawnRateInSeconds * _powerUpSpawns)
         {

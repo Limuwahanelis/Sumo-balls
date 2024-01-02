@@ -28,7 +28,7 @@ public class EnemyPool : MonoBehaviour
     }
     public void OnTakeEnemyFromPool(Enemy enemy)
     {
-        enemy.gameObject.SetActive(true);
+        //enemy.gameObject.SetActive(true);
     }
     public void OnReturnEnemyToPool(Enemy enemy)
     {
