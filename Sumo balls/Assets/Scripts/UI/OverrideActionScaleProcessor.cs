@@ -5,7 +5,6 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Processors;
-using static UnityEngine.InputManagerEntry;
 
 public class OverrideActionScaleProcessor : MonoBehaviour
 {

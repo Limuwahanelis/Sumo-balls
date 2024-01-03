@@ -6,9 +6,9 @@ using System.Linq;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
-using UnityEditor.UI;
 using Unity.Mathematics;
 #if UNITY_EDITOR
+using UnityEditor.UI;
 using UnityEditor;
 #endif
 public class SliderActionModifyEvent : Slider
