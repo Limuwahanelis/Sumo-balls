@@ -8,8 +8,8 @@ using UnityEngine.SceneManagement;
 public class LoadScene : MonoBehaviour
 {
     [SerializeField]bool _loadOnStart;
-    [SerializeField] UnityEvent OnBeforeSceneLoad;
     [SceneName,SerializeField] string _sceneToLoad;
+    [SerializeField] UnityEvent OnBeforeSceneLoad;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,5 +30,10 @@ public class LoadScene : MonoBehaviour
     {
         OnBeforeSceneLoad?.Invoke();
         SceneManager.LoadScene(_sceneToLoad);
+    }
+    public void Load(string sceneName)
+    {
+        OnBeforeSceneLoad?.Invoke();
+        SceneManager.LoadScene(sceneName);
     }
 }

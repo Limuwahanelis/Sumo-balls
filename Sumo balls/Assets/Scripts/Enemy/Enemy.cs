@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GlobalSettings.IsGamePaused) return;
         _rb.AddForce((_player.transform.position - transform.position).normalized * _force*Time.deltaTime);
         if (_rb.position.y < -0.5f)
         {

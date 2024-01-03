@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SurvivalGameModeManager : MonoBehaviour
 {
-    [SerializeField] SurvivalModeSettings _survivalModeSettings;
     [SerializeField] EnemySpawner _enemySpawner;
     [SerializeField] PowerUpSpawner _powerUpSpawner;
+    private SurvivalModeSettings _survivalModeSettings;
     private float _currentTime;
     private int _powerUpSpawns = 1;
     private int _spawnedWaves = 1;
@@ -15,6 +15,7 @@ public class SurvivalGameModeManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _survivalModeSettings = GlobalSettings.SelectedGameModeSettings as SurvivalModeSettings;
         for (int i = 0; i < _survivalModeSettings.StartingNumberOfEnemies; i++)
         {
             _enemySpawner.SpawnEnemy().OnDeath += OnEnemyDeath;

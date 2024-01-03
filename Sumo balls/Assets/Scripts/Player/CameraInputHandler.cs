@@ -18,14 +18,17 @@ public class CameraInputHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(_isRotating) _camera.RotateKeyboard(_rotValue);
+        if (GlobalSettings.IsGamePaused) return;
+        if (_isRotating) _camera.RotateKeyboard(_rotValue);
     }
     void OnMouseDelta(InputValue value)
     {
+        if (GlobalSettings.IsGamePaused) return;
         _camera.RotateMouse(value.Get<Vector2>().x);
     }
     void OnRotateX(InputValue value)
     {
+        if (GlobalSettings.IsGamePaused) return;
         _rotValue = value.Get<float>();
         if (math.abs( _rotValue)>=1) _isRotating=true;
         else _isRotating=false;

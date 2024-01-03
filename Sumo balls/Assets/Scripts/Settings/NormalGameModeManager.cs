@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class NormalGameModeManager : MonoBehaviour
 {
-    [SerializeField] NormalModeSettings _normalModeSettings;
     [SerializeField] EnemySpawner _enemySpawner;
     [SerializeField] PowerUpSpawner _powerUpSpawner;
+    private NormalModeSettings _normalModeSettings;
     private float _currentTime;
     private int _powerUpSpawns = 1;
     private int _spawnedEnemies = 0;
     // Start is called before the first frame update
     void Start()
     {
+        _normalModeSettings = GlobalSettings.SelectedGameModeSettings as NormalModeSettings;
         for(int i=0;i<_normalModeSettings.SimultaneouslNumberOfEnemies;i++)
         {
             _spawnedEnemies++;
