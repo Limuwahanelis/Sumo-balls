@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class PlayerInputHandler : MonoBehaviour
 {
     [SerializeField] Player _player;
+    [SerializeField] PauseSetter _pauseSetter;
     bool _isPushing = false;
     float _pushdirection;
     // Start is called before the first frame update
@@ -33,6 +34,6 @@ public class PlayerInputHandler : MonoBehaviour
 
     void OnPause(InputValue val)
     {
-        GlobalSettings.SetPause(!GlobalSettings.IsGamePaused);
+        _pauseSetter.SetPause(!GlobalSettings.IsGamePaused);
     }
 }

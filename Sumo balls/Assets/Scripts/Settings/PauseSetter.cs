@@ -1,8 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PauseSetter : MonoBehaviour
 {
-    public void SetPause(bool value) => GlobalSettings.SetPause(value);
+    public UnityEvent OnPause;
+    public UnityEvent OnResume;
+    public void SetPause(bool value)
+    {
+        GlobalSettings.SetPause(value);
+        if (value) OnPause?.Invoke();
+        else OnResume?.Invoke();
+    }
 }
