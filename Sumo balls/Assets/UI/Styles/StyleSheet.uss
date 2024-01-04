@@ -1,0 +1,16 @@
+.button {
+    width: 219px;
+    height: 40px;
+    margin-left: 26px;
+    margin-right: 26px;
+    background-color: rgb(225, 112, 85);
+    font-size: 32px;
+    border-top-left-radius: 9px;
+    border-bottom-left-radius: 9px;
+    border-top-right-radius: 9px;
+    border-bottom-right-radius: 9px;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+}
