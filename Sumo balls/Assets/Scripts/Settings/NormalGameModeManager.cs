@@ -6,6 +6,8 @@ public class NormalGameModeManager : MonoBehaviour
 {
     [SerializeField] EnemySpawner _enemySpawner;
     [SerializeField] PowerUpSpawner _powerUpSpawner;
+    [SerializeField] PauseSetter _gameOverPause;
+    [SerializeField] PauseSetter _stageClearPause;
     private NormalModeSettings _normalModeSettings;
     private float _currentTime;
     private int _powerUpSpawns = 1;
@@ -41,6 +43,9 @@ public class NormalGameModeManager : MonoBehaviour
             _enemySpawner.SpawnEnemy().OnDeath += OnEnemyDeath;
             _spawnedEnemies++;
         }
-        else Debug.Log("Completed");
+        else
+        {
+            _stageClearPause.SetPause(true);
+        }
     }
 }

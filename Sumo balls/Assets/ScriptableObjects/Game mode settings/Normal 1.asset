@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c4ac576ba30f374fb8a19573b813b66, type: 3}
-  m_Name: New Normal Mode Settings
+  m_Name: Normal 1
   m_EditorClassIdentifier: 
   _gameMode: 0
   _simultaneouslNumberOfEnemies: 1

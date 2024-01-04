@@ -8,12 +8,14 @@ public class PlayerInputHandler : MonoBehaviour
 {
     [SerializeField] Player _player;
     [SerializeField] PauseSetter _pauseSetter;
+    [SerializeField] InputActionAsset _inputActionAsset;
+    [SerializeField] string _playerActions;
     bool _isPushing = false;
     float _pushdirection;
     // Start is called before the first frame update
     void Start()
     {
-        
+        _inputActionAsset.FindActionMap(_playerActions).Enable();
     }
 
     // Update is called once per frame
@@ -35,5 +37,9 @@ public class PlayerInputHandler : MonoBehaviour
     void OnPause(InputValue val)
     {
         _pauseSetter.SetPause(!GlobalSettings.IsGamePaused);
+    }
+    public void DisableAction(InputActionReference action)
+    {
+        action.action.Disable();
     }
 }

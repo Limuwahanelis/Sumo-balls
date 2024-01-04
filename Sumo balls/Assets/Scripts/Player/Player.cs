@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
+    public UnityEvent OnPlayerDeath;
     [SerializeField] Rigidbody _playerRB;
     [SerializeField] GameObject _pivot;
     [SerializeField] GameObject _powerUpIndicator;
@@ -22,6 +24,7 @@ public class Player : MonoBehaviour
     {
         if (GlobalSettings.IsGamePaused) return;
         if (_hasPowerUp) _powerUpIndicator.transform.position = _playerRB.position + new Vector3(0, -0.6f, 0);
+        if (_playerRB.transform.position.y < 0.5f) OnPlayerDeath?.Invoke();
     }
 
     public void PushBall(float direction)
