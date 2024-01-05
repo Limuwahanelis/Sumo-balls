@@ -13,9 +13,11 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] float _playerSafeSpace = 2f;
     [SerializeField] EnemyPool _enemyPool;
     [SerializeField] Transform _playerPos;
+    private List<Enemy> _allEnemies = new List<Enemy>();
     public Enemy SpawnEnemy()
     {
         Enemy enemy = _enemyPool.GetEnemy();
+        if(!_allEnemies.Contains(enemy)) _allEnemies.Add(enemy);
         enemy.transform.position = SelectSpawnPos();
         enemy.GetComponent<Rigidbody>().velocity = Vector3.zero;
         enemy.SetPlayer(_playerPos.gameObject);
@@ -40,7 +42,7 @@ public class EnemySpawner : MonoBehaviour
             if (leftXrange >= -_spawnRange && rightXrange <= _spawnRange) // inside spawn from both sides
             {
 
-                if (spawnZ >= downZrang && spawnZ <= upZrange) // z spawn is inside player so x must be outside
+                if (spawnZ >= downZrang && spawnZ <= upZrange) // z spawn is inside _player so x must be outside
                 {
                     int a = Random.Range(0, 2); // select which side
                     if (a == 1) //left
@@ -75,11 +77,25 @@ public class EnemySpawner : MonoBehaviour
         Vector3 randomPos = new Vector3(spawnX, _arenaYpos, spawnZ);
         return randomPos;
     }
-
+    public void ReturnAllEnemiesToPool()
+    {
+        foreach(Enemy enemy in _allEnemies)
+        {
+            _enemyPool.OnReturnEnemyToPool(enemy);
+        }
+        
+    }
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireCube(new Vector3(0, _arenaYpos, 0), new Vector3(2*_spawnRange, 2*_spawnRange, 2*_spawnRange));
         if(_playerPos != null) Gizmos.DrawWireCube(new Vector3(_playerPos.position.x, _playerPos.position.y, _playerPos.position.z), new Vector3(2 * _playerSafeSpace, 2 * _playerSafeSpace, 2 * _playerSafeSpace));
 
+    }
+    private void OnDestroy()
+    {
+        foreach(Enemy enemy in _allEnemies)
+        {
+            enemy.OnDeath.RemoveAllListeners();
+        }
     }
 }

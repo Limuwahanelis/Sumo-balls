@@ -1,13 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class NormalGameModeManager : MonoBehaviour
+public class NormalGameModeManager : GameModeManager
 {
-    [SerializeField] EnemySpawner _enemySpawner;
-    [SerializeField] PowerUpSpawner _powerUpSpawner;
-    [SerializeField] PauseSetter _gameOverPause;
-    [SerializeField] PauseSetter _stageClearPause;
+    
     private NormalModeSettings _normalModeSettings;
     private float _currentTime;
     private int _powerUpSpawns = 1;
@@ -15,12 +13,12 @@ public class NormalGameModeManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         _normalModeSettings = GlobalSettings.SelectedGameModeSettings as NormalModeSettings;
-        for(int i=0;i<_normalModeSettings.SimultaneouslNumberOfEnemies;i++)
-        {
-            _spawnedEnemies++;
-            _enemySpawner.SpawnEnemy().OnDeath += OnEnemyDeath;
-        }
+#if UNITY_EDITOR
+        if (_debug) _normalModeSettings = _debugSettings as NormalModeSettings;
+#endif
+        PrepareStage();
     }
 
     // Update is called once per frame
@@ -35,17 +33,34 @@ public class NormalGameModeManager : MonoBehaviour
         }
     }
 
+    private void PrepareStage()
+    {
+        for (int i = 0; i < _normalModeSettings.SimultaneouslNumberOfEnemies; i++)
+        {
+            _spawnedEnemies++;
+            _enemySpawner.SpawnEnemy().OnDeath.AddListener(OnEnemyDeath);
+        }
+    }
     private void OnEnemyDeath(Enemy enemy)
     {
-        enemy.OnDeath -= OnEnemyDeath;
+        enemy.OnDeath.RemoveListener(OnEnemyDeath);
         if (_spawnedEnemies < _normalModeSettings.NumberOfEnemiesToDefeat)
         {
-            _enemySpawner.SpawnEnemy().OnDeath += OnEnemyDeath;
+            _enemySpawner.SpawnEnemy().OnDeath.AddListener(OnEnemyDeath);
             _spawnedEnemies++;
         }
         else
         {
             _stageClearPause.SetPause(true);
         }
+    }
+
+    public override void RestartStage()
+    {
+        _currentTime = 0;
+        _powerUpSpawns = 1;
+        _spawnedEnemies = 0;
+        OnResetStage?.Invoke();
+        PrepareStage();
     }
 }

@@ -24,10 +24,13 @@ public class PlayerInputHandler : MonoBehaviour
         if (GlobalSettings.IsGamePaused) return;
         if (_isPushing) _player.PushBall(_pushdirection);
     }
-
+    public void ResetActionMap()
+    {
+        _inputActionAsset.FindActionMap(_playerActions).Disable();
+        //_inputActionAsset.FindActionMap(_playerActions).Enable();
+    }
     void OnPush(InputValue val)
     {
-        if (GlobalSettings.IsGamePaused) return;
         _pushdirection = val.Get<float>();
         if (math.abs(_pushdirection) >= 1f) _isPushing = true;
         else _isPushing = false;

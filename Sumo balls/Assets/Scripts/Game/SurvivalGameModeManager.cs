@@ -18,7 +18,7 @@ public class SurvivalGameModeManager : MonoBehaviour
         _survivalModeSettings = GlobalSettings.SelectedGameModeSettings as SurvivalModeSettings;
         for (int i = 0; i < _survivalModeSettings.StartingNumberOfEnemies; i++)
         {
-            _enemySpawner.SpawnEnemy().OnDeath += OnEnemyDeath;
+            _enemySpawner.SpawnEnemy().OnDeath.AddListener(OnEnemyDeath);
         }
     }
 
@@ -39,7 +39,7 @@ public class SurvivalGameModeManager : MonoBehaviour
             Debug.Log("spawn wave");
             for(int i=0;i<_survivalModeSettings.NumbeOfEnemiesToSpawn;i++)
             {
-                _enemySpawner.SpawnEnemy().OnDeath += OnEnemyDeath;
+                _enemySpawner.SpawnEnemy().OnDeath.AddListener(OnEnemyDeath);
             }
         }
         _currentTime += Time.deltaTime;
@@ -47,7 +47,7 @@ public class SurvivalGameModeManager : MonoBehaviour
 
     private void OnEnemyDeath(Enemy enemy)
     {
-        enemy.OnDeath -= OnEnemyDeath;
+        enemy.OnDeath.RemoveListener(OnEnemyDeath);
         Debug.Log("killed");
         _killedEnemies++;
     }

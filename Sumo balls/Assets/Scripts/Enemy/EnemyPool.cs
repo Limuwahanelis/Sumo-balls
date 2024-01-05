@@ -10,7 +10,7 @@ public class EnemyPool : MonoBehaviour
     private ObjectPool<Enemy> _enemyPool;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         _enemyPool = new ObjectPool<Enemy>(CreateEnemy,OnTakeEnemyFromPool,OnReturnEnemyToPool);
     }

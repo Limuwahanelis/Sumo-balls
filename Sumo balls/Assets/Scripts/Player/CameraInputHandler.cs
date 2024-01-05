@@ -28,7 +28,6 @@ public class CameraInputHandler : MonoBehaviour
     }
     void OnRotateX(InputValue value)
     {
-        if (GlobalSettings.IsGamePaused) return;
         _rotValue = value.Get<float>();
         if (math.abs( _rotValue)>=1) _isRotating=true;
         else _isRotating=false;

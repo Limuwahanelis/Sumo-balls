@@ -2,12 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Pool;
 
 public class Enemy : MonoBehaviour
 {
 
-    public Action<Enemy> OnDeath;
+    [HideInInspector]public UnityEvent<Enemy> OnDeath;
 
     [SerializeField] Rigidbody _rb;
     [SerializeField] float _force;
@@ -26,7 +27,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         if (GlobalSettings.IsGamePaused) return;
-        _rb.AddForce((_player.transform.position - transform.position).normalized * _force*Time.deltaTime);
+        _rb.AddForce((_player.transform.position - transform.position).normalized * _force * Time.deltaTime);
         if (_rb.position.y < -0.5f)
         {
             OnDeath?.Invoke(this);
