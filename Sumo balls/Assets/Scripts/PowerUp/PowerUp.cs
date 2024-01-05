@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class PowerUp : MonoBehaviour
 {
+    private IObjectPool<PowerUp> _pool;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,9 +17,11 @@ public class PowerUp : MonoBehaviour
     {
         
     }
-
+    public void SetPool(IObjectPool<PowerUp> pool) => _pool = pool;
     private void OnTriggerEnter(Collider other)
     {
-       Destroy(gameObject);
+        if(_pool!=null) _pool.Release(this);
+        else Destroy(gameObject);
+
     }
 }

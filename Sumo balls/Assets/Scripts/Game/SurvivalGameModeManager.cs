@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SurvivalGameModeManager : MonoBehaviour
+public class SurvivalGameModeManager : GameModeManager
 {
-    [SerializeField] EnemySpawner _enemySpawner;
-    [SerializeField] PowerUpSpawner _powerUpSpawner;
+
     private SurvivalModeSettings _survivalModeSettings;
     private float _currentTime;
     private int _powerUpSpawns = 1;
@@ -16,10 +15,11 @@ public class SurvivalGameModeManager : MonoBehaviour
     void Start()
     {
         _survivalModeSettings = GlobalSettings.SelectedGameModeSettings as SurvivalModeSettings;
-        for (int i = 0; i < _survivalModeSettings.StartingNumberOfEnemies; i++)
-        {
-            _enemySpawner.SpawnEnemy().OnDeath.AddListener(OnEnemyDeath);
-        }
+#if UNITY_EDITOR
+        if (_debug) _survivalModeSettings = _debugSettings as SurvivalModeSettings;
+#endif
+        PrepareStage();
+
     }
 
     // Update is called once per frame
@@ -33,14 +33,20 @@ public class SurvivalGameModeManager : MonoBehaviour
             Debug.Log($"killed {_killedEnemies}");
             return;
         }
-        if(_currentTime>=_survivalModeSettings.SecondsToSpawnEnemies*_spawnedWaves)
+        if (_currentTime >= _survivalModeSettings.SecondsToSpawnEnemies * _spawnedWaves)
         {
             _spawnedWaves++;
             Debug.Log("spawn wave");
-            for(int i=0;i<_survivalModeSettings.NumbeOfEnemiesToSpawn;i++)
+            for (int i = 0; i < _survivalModeSettings.NumbeOfEnemiesToSpawn; i++)
             {
                 _enemySpawner.SpawnEnemy().OnDeath.AddListener(OnEnemyDeath);
             }
+        }
+        if (_currentTime >= _survivalModeSettings.TimeToSpawnPowerUp * _powerUpSpawns)
+        {
+            _powerUpSpawns++;
+            Debug.Log("spawn power up");
+            _powerUpSpawner.SpawnPowerUp();
         }
         _currentTime += Time.deltaTime;
     }
@@ -50,5 +56,25 @@ public class SurvivalGameModeManager : MonoBehaviour
         enemy.OnDeath.RemoveListener(OnEnemyDeath);
         Debug.Log("killed");
         _killedEnemies++;
+    }
+
+    public override void RestartStage()
+    {
+        _currentTime = 0;
+        _powerUpSpawns = 1;
+        _spawnedWaves = 1;
+        _killedEnemies = 0;
+        _isCompleted = false;
+        OnResetStage?.Invoke();
+        PrepareStage();
+    }
+
+
+    public override void PrepareStage()
+    {
+        for (int i = 0; i < _survivalModeSettings.StartingNumberOfEnemies; i++)
+        {
+            _enemySpawner.SpawnEnemy().OnDeath.AddListener(OnEnemyDeath);
+        }
     }
 }

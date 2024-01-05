@@ -28,13 +28,18 @@ public class Enemy : MonoBehaviour
     {
         if (GlobalSettings.IsGamePaused) return;
         _rb.AddForce((_player.transform.position - transform.position).normalized * _force * Time.deltaTime);
-        if (_rb.position.y < -0.5f)
+        if (_rb.position.y < -0.5f || Vector3.Distance(transform.position,Vector3.zero)>11f)
         {
             OnDeath?.Invoke(this);
             _pool.Release(this);
         }
     }
     public void SetPlayer(GameObject player)=>_player = player;
-    public void Push(Vector3 force)=> _rb.AddForce(force, ForceMode.Impulse);
+    public void Push(Vector3 force)
+    {
+        _rb.velocity = Vector3.zero;
+        _rb.angularVelocity = Vector3.zero;
+        _rb.AddForce(force, ForceMode.Impulse);
+    }
     public void SetPool(IObjectPool<Enemy> pool) => _pool = pool;
 }

@@ -9,11 +9,13 @@ public class SurvivalModeSettings : GameModeSettings
     public float StartingNumberOfEnemies => _startingNumberOfEnemies;
     public float SecondsToSpawnEnemies => _secondsToSpawnEnemies;
     public float NumbeOfEnemiesToSpawn => _numberOfEnemiesToSpawn;
+    public float TimeToSpawnPowerUp => _timeToSpawnPowerUP;
 
     [SerializeField] float _timeToSurvive;
     [SerializeField] int _startingNumberOfEnemies;
     [SerializeField] float _secondsToSpawnEnemies;
     [SerializeField] float _numberOfEnemiesToSpawn;
+    [SerializeField] float _timeToSpawnPowerUP;
 
     private void Awake()
     {

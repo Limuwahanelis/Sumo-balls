@@ -9,6 +9,8 @@ public static class GlobalSettings
     public static GameModeSettings SelectedGameModeSettings => _selectedGameModeSettings;
     private static GameModeSettings _selectedGameModeSettings;
 
+    public static int StateIndex=>_stageIndex;
+    private static int _stageIndex;
     public static void SetPause(bool value)
     {
         _isGamePaused = value;
@@ -16,8 +18,9 @@ public static class GlobalSettings
         else Time.timeScale = 1;
     }
 
-    public static void SetGameMode(GameModeSettings gameModeSettings)
+    public static void SetStage(GameModeSettings gameModeSettings,int stageIndex)
     {
         _selectedGameModeSettings = gameModeSettings;
+        _stageIndex = stageIndex;
     }
 }
