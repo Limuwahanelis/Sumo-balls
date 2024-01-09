@@ -21,4 +21,14 @@ public class SurvivalModeSettings : GameModeSettings
     {
         _gameMode = Configs.Gamemode.SURVIVAL;
     }
+
+    public override string GetDetailedDescription()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override string GetDescription()
+    {
+        throw new System.NotImplementedException();
+    }
 }

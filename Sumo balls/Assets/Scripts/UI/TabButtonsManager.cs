@@ -72,4 +72,11 @@ public class TabButtonsManager : MonoBehaviour
     {
         SetActive(false);
     }
+    private void OnDestroy()
+    {
+        foreach (TabButtonUI button in _buttons)
+        {
+            button.OnButtonClicked.RemoveListener(OnButtonPressed);
+        }
+    }
 }

@@ -315,6 +315,15 @@ public partial class @w: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""SelectButtonInGrid"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""25e78ddb-aa3c-4815-b7c5-fc1819b4e66c"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -702,6 +711,270 @@ public partial class @w: IInputActionCollection2, IDisposable
                     ""action"": ""UpdateSliderHold"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Gamepad"",
+                    ""id"": ""7156a0a6-0479-4083-9e59-6df02c51ec7f"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectButtonInGrid"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""e6a81446-ee06-42d2-99c3-2a74198f1f82"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""SelectButtonInGrid"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""992ead8e-31db-4cc9-9574-064ee82d05c6"",
+                    ""path"": ""<Gamepad>/rightStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""SelectButtonInGrid"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""f1083135-c21f-4b7e-aa07-a8ebf163a239"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""SelectButtonInGrid"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""7fe8f683-3164-4448-b3c0-d91825467e25"",
+                    ""path"": ""<Gamepad>/rightStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""SelectButtonInGrid"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""1f1bf7fc-008e-4536-b75c-945cbbb184c1"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""SelectButtonInGrid"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""103a8277-477b-49ad-9d97-5515e23aad6f"",
+                    ""path"": ""<Gamepad>/rightStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""SelectButtonInGrid"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""4cb4170a-ad1f-4a3b-b74b-9ad4c9fa1834"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""SelectButtonInGrid"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""3a049866-9e18-42bd-9699-748f05ec8104"",
+                    ""path"": ""<Gamepad>/rightStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""SelectButtonInGrid"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e5ccf814-0c75-44da-acd9-f2d0c58b765c"",
+                    ""path"": ""<Gamepad>/dpad"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""SelectButtonInGrid"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Joystick"",
+                    ""id"": ""d7d8f65a-fcf6-44f6-95c8-ce5ea9532e49"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectButtonInGrid"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""b26dc457-7e29-446b-b56a-67db564cc492"",
+                    ""path"": ""<Joystick>/stick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectButtonInGrid"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""0f2a8017-764a-40ce-9fa9-998c1c06f94c"",
+                    ""path"": ""<Joystick>/stick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectButtonInGrid"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""499d1f4f-fb64-4be4-b888-f588c5e7fcd1"",
+                    ""path"": ""<Joystick>/stick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectButtonInGrid"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""f7bbdd3c-62d6-43ef-af90-117a34a940f3"",
+                    ""path"": ""<Joystick>/stick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectButtonInGrid"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Keyboard"",
+                    ""id"": ""d092f579-6804-4917-b04e-64566146df1e"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectButtonInGrid"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""8812dcc6-a518-4efe-b375-6b1468bee412"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectButtonInGrid"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""36aa9a1c-b795-402b-938e-a9c08f7eb22e"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectButtonInGrid"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""aabeb8f8-c363-4d87-8c10-0bd72fa881f2"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectButtonInGrid"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""b367721e-649e-4949-8d13-b7bce48d47a2"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectButtonInGrid"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""c09256b9-b3a7-4ff2-8df5-ed95ea627faf"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectButtonInGrid"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""989cbef5-8037-4279-895b-0d9b177fe6a0"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectButtonInGrid"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""d26c8f48-0872-42fd-9fa8-05c9098c104a"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectButtonInGrid"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""fad81326-6c9a-40bb-8038-5091427b3eb3"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectButtonInGrid"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -759,6 +1032,7 @@ public partial class @w: IInputActionCollection2, IDisposable
         m_UI_UpdateSliderHold = m_UI.FindAction("UpdateSliderHold", throwIfNotFound: true);
         m_UI_ChangeTab = m_UI.FindAction("ChangeTab", throwIfNotFound: true);
         m_UI_UpdateSliderPress = m_UI.FindAction("UpdateSliderPress", throwIfNotFound: true);
+        m_UI_SelectButtonInGrid = m_UI.FindAction("SelectButtonInGrid", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -901,6 +1175,7 @@ public partial class @w: IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_UpdateSliderHold;
     private readonly InputAction m_UI_ChangeTab;
     private readonly InputAction m_UI_UpdateSliderPress;
+    private readonly InputAction m_UI_SelectButtonInGrid;
     public struct UIActions
     {
         private @w m_Wrapper;
@@ -908,6 +1183,7 @@ public partial class @w: IInputActionCollection2, IDisposable
         public InputAction @UpdateSliderHold => m_Wrapper.m_UI_UpdateSliderHold;
         public InputAction @ChangeTab => m_Wrapper.m_UI_ChangeTab;
         public InputAction @UpdateSliderPress => m_Wrapper.m_UI_UpdateSliderPress;
+        public InputAction @SelectButtonInGrid => m_Wrapper.m_UI_SelectButtonInGrid;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -926,6 +1202,9 @@ public partial class @w: IInputActionCollection2, IDisposable
             @UpdateSliderPress.started += instance.OnUpdateSliderPress;
             @UpdateSliderPress.performed += instance.OnUpdateSliderPress;
             @UpdateSliderPress.canceled += instance.OnUpdateSliderPress;
+            @SelectButtonInGrid.started += instance.OnSelectButtonInGrid;
+            @SelectButtonInGrid.performed += instance.OnSelectButtonInGrid;
+            @SelectButtonInGrid.canceled += instance.OnSelectButtonInGrid;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -939,6 +1218,9 @@ public partial class @w: IInputActionCollection2, IDisposable
             @UpdateSliderPress.started -= instance.OnUpdateSliderPress;
             @UpdateSliderPress.performed -= instance.OnUpdateSliderPress;
             @UpdateSliderPress.canceled -= instance.OnUpdateSliderPress;
+            @SelectButtonInGrid.started -= instance.OnSelectButtonInGrid;
+            @SelectButtonInGrid.performed -= instance.OnSelectButtonInGrid;
+            @SelectButtonInGrid.canceled -= instance.OnSelectButtonInGrid;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -996,5 +1278,6 @@ public partial class @w: IInputActionCollection2, IDisposable
         void OnUpdateSliderHold(InputAction.CallbackContext context);
         void OnChangeTab(InputAction.CallbackContext context);
         void OnUpdateSliderPress(InputAction.CallbackContext context);
+        void OnSelectButtonInGrid(InputAction.CallbackContext context);
     }
 }

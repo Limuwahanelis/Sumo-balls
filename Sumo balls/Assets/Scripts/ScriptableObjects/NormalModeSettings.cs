@@ -17,5 +17,15 @@ public class NormalModeSettings : GameModeSettings
     {
         _gameMode = Configs.Gamemode.NORMAL;
     }
-
+    public override string GetDetailedDescription()
+    {
+        string s = $"Simultaneousl number of enemies: {SimultaneouslNumberOfEnemies}\n" +
+                   $"Spawn rate of power up: one per {PowerUpSpawnRateInSeconds}\n";
+        return s;
+    }
+    public override string GetDescription()
+    {
+        string s = $"Defeat {NumberOfEnemiesToDefeat} enemies";
+        return s;
+    }
 }
