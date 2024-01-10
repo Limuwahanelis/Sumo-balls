@@ -8,13 +8,13 @@ using static UnityEngine.Rendering.DebugUI.Table;
 
 public class GridButtonsManager : MonoBehaviour
 {
-    public Button Currentbutton => _currentlySelectedButton;
+    public TabButtonUI Currentbutton => _currentlySelectedButton;
     [SerializeField] GameObject _panelWithButtons;
     [SerializeField] InputActionReference _changeTabsAction;
     [SerializeField]GridLayoutGroup _grid;
-    private Button _currentlySelectedButton;
-    private List<Button> _allButtons;
-    private List<List<Button>> _buttonsInGrid;
+    private TabButtonUI _currentlySelectedButton;
+    private List<TabButtonUI> _allButtons;
+    private List<List<TabButtonUI>> _buttonsInGrid;
     Vector2 _buttonIndex;
     private int _tabIndex = 0;
     private int _columns;
@@ -24,19 +24,19 @@ public class GridButtonsManager : MonoBehaviour
         if (_grid.constraint != GridLayoutGroup.Constraint.FixedColumnCount) return;
         _columns = _grid.constraintCount;
         _rows = _grid.transform.childCount / _columns;
-        _allButtons = _panelWithButtons.GetComponentsInChildren<Button>(true).ToList();
-        foreach (Button button in _allButtons)
-        {
-            button.onClick.AddListener(OnButtonPressed);
-        }
+        _allButtons = _panelWithButtons.GetComponentsInChildren<TabButtonUI>(true).ToList();
+        //foreach (TabButtonUI button in _allButtons)
+        //{
+        //    button.OnButtonClicked.AddListener(OnButtonPressed);
+        //}
         _currentlySelectedButton = _allButtons[0];
         _currentlySelectedButton.Select();
         _buttonIndex = Vector2.zero;
-        _buttonsInGrid = new List<List<Button>>();
+        _buttonsInGrid = new List<List<TabButtonUI>>();
         int _index = 0;
         for (int i = 0; i < _rows; i++)
         {
-            _buttonsInGrid.Add(new List<Button>());
+            _buttonsInGrid.Add(new List<TabButtonUI>());
             for (int j = 0; j < _columns; j++)
             {
                 _buttonsInGrid[i].Add(_allButtons[_index]);

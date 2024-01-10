@@ -14,6 +14,10 @@ public class GridButtonsNaviagtion : MonoBehaviour
     private int _rows;
     private void Awake()
     {
+
+    }
+    public void SetUpNavigation()
+    {
         if (_grid.constraint != GridLayoutGroup.Constraint.FixedColumnCount) return;
         _columns = _grid.constraintCount;
         _rows = _grid.transform.childCount / _columns;
@@ -58,20 +62,20 @@ public class GridButtonsNaviagtion : MonoBehaviour
                 if (i == 0)
                 {
                     nav.selectOnUp = _buttonsInGrid[_rows - 1].ElementAt(j);
+                    nav.selectOnDown = _buttonsInGrid[i + 1].ElementAt(j);
                 }
                 else if (i > _rows - 1)
                 {
                     nav.selectOnUp = _buttonsInGrid[i - 1].ElementAt(j);
                     nav.selectOnDown = _buttonsInGrid[i + 1].ElementAt(j);
-
+                }
+                else if(i==_rows-1)
+                {
+                    nav.selectOnUp = _buttonsInGrid[i - 1].ElementAt(j);
                 }
 
                 _buttonsInGrid[i].ElementAt(j).navigation = nav;
             }
         }
-    }
-    public void SetUpNavigation()
-    {
-
     }
 }

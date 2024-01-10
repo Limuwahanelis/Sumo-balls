@@ -11,6 +11,7 @@ public class StageSelectorEditor : Editor
     StageList _stagelist;
     StageSelector _stageSelector;
     [SerializeField] private List<StageInGrid> _previousStagesInGrid=new List<StageInGrid>();
+    private List<StageInGrid> _currentStagesIngrid;
     void OnEnable()
     {
         _stageSelector = target as StageSelector;
@@ -34,6 +35,9 @@ public class StageSelectorEditor : Editor
             stageInGrid.SetStage(_stagelist.stages.ElementAt(i));
             stageInGrid.SetIndex(i);
             stageInGrid.SetStageIcon(_stagelist.stages.ElementAt(i).stageScreenshot);
+
+
+            //_previousStagesInGrid.Add(stageInGrid);
         }
         serializedObject.ApplyModifiedProperties();
     }
