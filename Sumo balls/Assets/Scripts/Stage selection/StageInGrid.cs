@@ -12,6 +12,7 @@ public class StageInGrid : MonoBehaviour
     [SerializeField] Stage _stage;
     [SerializeField] TMP_Text _indexTextField;
     [SerializeField] RawImage _stageScreen;
+    [SerializeField] Button _stageButton;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,10 @@ public class StageInGrid : MonoBehaviour
     void Update()
     {
         
+    }
+    private void OnEnable()
+    {
+        _stageButton.onClick.AddListener(FireSelectStage);
     }
     public void SelectGameModeSettings()
     {
@@ -39,5 +44,13 @@ public class StageInGrid : MonoBehaviour
     public void SetStageIcon(Texture textire)
     {
         _stageScreen.texture = textire;
+    }
+    private void FireSelectStage()
+    {
+        SelectGameModeSettings();
+    }
+    private void OnDisable()
+    {
+        _stageButton.onClick.RemoveListener(FireSelectStage);
     }
 }

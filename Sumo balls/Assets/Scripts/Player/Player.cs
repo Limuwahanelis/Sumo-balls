@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
         Enemy enemy = collision.gameObject.GetComponent<Enemy>();
         if (enemy && _hasPowerUp)
         {
-            Vector3 pushVector = (enemy.transform.position - transform.position).normalized * _powerUpStrength;
+            Vector3 pushVector = (enemy.transform.position - _playerRB.position).normalized * _powerUpStrength;
             enemy.Push(pushVector);
         }
     }

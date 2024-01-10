@@ -3,7 +3,9 @@ guid: 555985622cdc5454ea190e18a17d8b58
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _stageList: {fileID: 11400000, guid: c96c023c1c6242a40919296d29187161, type: 2}
+  - _sceneLoader: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

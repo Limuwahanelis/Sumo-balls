@@ -17,3 +17,4 @@ MonoBehaviour:
   _startingNumberOfEnemies: 1
   _secondsToSpawnEnemies: 5
   _numberOfEnemiesToSpawn: 1
+  _timeToSpawnPowerUP: 15

@@ -305,6 +305,7 @@ MonoBehaviour:
   _stage: {fileID: 0}
   _indexTextField: {fileID: 6457937494789673920}
   _stageScreen: {fileID: 5350785079760295840}
+  _stageButton: {fileID: 1853799904909096481}
 --- !u!114 &1853799904909096481
 MonoBehaviour:
   m_ObjectHideFlags: 0
