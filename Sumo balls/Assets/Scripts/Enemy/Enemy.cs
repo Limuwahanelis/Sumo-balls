@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Pool;
@@ -9,7 +6,6 @@ public class Enemy : MonoBehaviour
 {
 
     [HideInInspector]public UnityEvent<Enemy> OnDeath;
-
     [SerializeField] Rigidbody _rb;
     [SerializeField] float _force;
     private GameObject _player;
@@ -42,4 +38,13 @@ public class Enemy : MonoBehaviour
         _rb.AddForce(force, ForceMode.Impulse);
     }
     public void SetPool(IObjectPool<Enemy> pool) => _pool = pool;
+
+    public void RandomizeAngularDrag(float min,float max)
+    {
+        _rb.angularDrag = Random.Range(min,max);
+    }
+    public void RandomizePushForce(float min, float max)
+    {
+        _force = Random.Range(min,max);
+    }
 }

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Normal 2
   m_EditorClassIdentifier: 
   _gameMode: 0
+  _areEnemiesRandomized: 1
   _simultaneouslNumberOfEnemies: 2
   _numberOfEnemiesToDefeat: 2
   _powerUpSpawnrateInSeconds: 10

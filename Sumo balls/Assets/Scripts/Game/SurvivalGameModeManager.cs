@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class SurvivalGameModeManager : GameModeManager
@@ -26,38 +28,51 @@ public class SurvivalGameModeManager : GameModeManager
     void Update()
     {
         if (_isCompleted) return;
+        _taskDescription.SetValue(ConvertTime(_survivalModeSettings.TimeToSurvive - _currentTime));
         if (_currentTime >= _survivalModeSettings.TimeToSurvive)
         {
-            Debug.Log("Completed");
             _isCompleted = true;
-            Debug.Log($"killed {_killedEnemies}");
+            _taskDescription.SetValue(ConvertTime(0));
+            _stageClearPause.SetPause(true);
             return;
         }
         if (_currentTime >= _survivalModeSettings.SecondsToSpawnEnemies * _spawnedWaves)
         {
             _spawnedWaves++;
-            Debug.Log("spawn wave");
             for (int i = 0; i < _survivalModeSettings.NumbeOfEnemiesToSpawn; i++)
             {
-                _enemySpawner.SpawnEnemy().OnDeath.AddListener(OnEnemyDeath);
+                SpawnEnemy();
             }
         }
         if (_currentTime >= _survivalModeSettings.TimeToSpawnPowerUp * _powerUpSpawns)
         {
             _powerUpSpawns++;
-            Debug.Log("spawn power up");
             _powerUpSpawner.SpawnPowerUp();
         }
         _currentTime += Time.deltaTime;
     }
-
+    private string ConvertTime(float timeInSeconds)
+    {
+        int miliSeconds =(int) ((timeInSeconds - math.floor(timeInSeconds))*1000);
+        int seconds = (int)math.floor(timeInSeconds);
+        return string.Format("{0:00}:{1:000}", seconds, miliSeconds);
+    }
     private void OnEnemyDeath(Enemy enemy)
     {
         enemy.OnDeath.RemoveListener(OnEnemyDeath);
         Debug.Log("killed");
         _killedEnemies++;
     }
-
+    private void SpawnEnemy()
+    {
+        Enemy en = _enemySpawner.SpawnEnemy();
+        en.OnDeath.AddListener(OnEnemyDeath);
+        if (_survivalModeSettings.AreEnemiesRandomized)
+        {
+            en.RandomizeAngularDrag(0.5f, 3.5f);
+            en.RandomizePushForce(200, 600);
+        }
+    }
     public override void RestartStage()
     {
         _currentTime = 0;
@@ -74,7 +89,7 @@ public class SurvivalGameModeManager : GameModeManager
     {
         for (int i = 0; i < _survivalModeSettings.StartingNumberOfEnemies; i++)
         {
-            _enemySpawner.SpawnEnemy().OnDeath.AddListener(OnEnemyDeath);
+            SpawnEnemy();
         }
     }
 }

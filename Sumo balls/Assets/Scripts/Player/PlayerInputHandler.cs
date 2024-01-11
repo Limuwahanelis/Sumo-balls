@@ -26,8 +26,7 @@ public class PlayerInputHandler : MonoBehaviour
     }
     public void ResetActionMap()
     {
-        _inputActionAsset.FindActionMap(_playerActions).Disable();
-        //_inputActionAsset.FindActionMap(_playerActions).Enable();
+        _inputActionAsset.FindActionMap(_playerActions).Enable();
     }
     void OnPush(InputValue val)
     {

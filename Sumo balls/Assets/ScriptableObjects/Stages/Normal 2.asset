@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c8aafde2abb3c447a6d51322fbf0013, type: 3}
-  m_Name: Gamepad camera rotation speed
+  m_Script: {fileID: 11500000, guid: 9b6708b9e52b18f4a8a97837595602a6, type: 3}
+  m_Name: Normal 2
   m_EditorClassIdentifier: 
-  value: 0
+  _gameMode: {fileID: 11400000, guid: 788befd823bc58743a058c54b5fe1f33, type: 2}
+  _stageScreenshot: {fileID: 2800000, guid: b7b7bb5c0913f594f8d02d93269d34e4, type: 3}

@@ -10,14 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a76145b0c2b0a3544a3409d5e369ab2e, type: 3}
-  m_Name: New Stage List
+  m_Name: Stage list
   m_EditorClassIdentifier: 
   _stages:
   - {fileID: 11400000, guid: 005f424276f079c4e8830017835f93aa, type: 2}
   - {fileID: 11400000, guid: 6b503db1448b194489091be8a0f86a1a, type: 2}
   - {fileID: 11400000, guid: 915380832fafd0448808bda8b0e46496, type: 2}
-  - {fileID: 11400000, guid: 7ac454eb886bddc438a392ad2acbd4c1, type: 2}
-  - {fileID: 11400000, guid: 20ba5b1cdcf9aa843891b09d8dcc95ff, type: 2}
-  - {fileID: 11400000, guid: 46025b12c5b132a448fc1304a8229e54, type: 2}
-  - {fileID: 11400000, guid: 46025b12c5b132a448fc1304a8229e54, type: 2}
-  - {fileID: 11400000, guid: a9f91822a786cfc44ad067b63c7da58b, type: 2}
+  - {fileID: 11400000, guid: c147fafd571bc0a41b1a6240d0ace579, type: 2}

@@ -18,13 +18,13 @@ public class EnemySpawner : MonoBehaviour
     {
         Enemy enemy = _enemyPool.GetEnemy();
         if(!_allEnemies.Contains(enemy)) _allEnemies.Add(enemy);
-        enemy.transform.position = SelectSpawnPos();
+        enemy.transform.position = SelectSpawnPos(enemy.transform.localScale.y);
         enemy.GetComponent<Rigidbody>().velocity = Vector3.zero;
         enemy.SetPlayer(_playerPos.gameObject);
         enemy.gameObject.SetActive(true);
         return enemy;
     }
-    private Vector3 SelectSpawnPos()
+    private Vector3 SelectSpawnPos(float enemySacle)
     {
         float leftXrange = _playerPos.position.x - _playerSafeSpace;
         float upZrange = _playerPos.position.z + _playerSafeSpace;
@@ -74,7 +74,7 @@ public class EnemySpawner : MonoBehaviour
                 }
             }
         }
-        Vector3 randomPos = new Vector3(spawnX, _arenaYpos, spawnZ);
+        Vector3 randomPos = new Vector3(spawnX, _arenaYpos* enemySacle, spawnZ);
         return randomPos;
     }
     public void ReturnAllEnemiesToPool()

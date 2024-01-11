@@ -9,6 +9,7 @@ public abstract class GameModeManager : MonoBehaviour
     [SerializeField] protected bool _debug;
     [SerializeField] protected GameModeSettings _debugSettings;
 #endif
+    [SerializeField] protected InStageDescription _taskDescription;
     [SerializeField] protected PauseSetter _gameOverPause;
     [SerializeField] protected PauseSetter _stageClearPause;
     [SerializeField] protected EnemySpawner _enemySpawner;

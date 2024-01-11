@@ -7,7 +7,6 @@ public class GameEndScreen : MonoBehaviour
 {
     [SerializeField] GameObject _gameOverScreen;
     [SerializeField] GameObject _stageClearScreen;
-    [SerializeField] GameObject _canvas;
     public void ShowGameOverScreen()
     {
         gameObject.SetActive(true);
@@ -23,7 +22,6 @@ public class GameEndScreen : MonoBehaviour
     }
     public void Hide()
     {
-        _canvas.SetActive(false);
         gameObject.SetActive(false);
     }
 }

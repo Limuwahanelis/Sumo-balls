@@ -32,15 +32,17 @@ public class NormalGameModeManager : GameModeManager
         }
         if (_killedEnemies >= _normalModeSettings.NumberOfEnemiesToDefeat) return;
         _currentTime +=Time.deltaTime;
+        
 
     }
 
     public override void PrepareStage()
     {
+        _taskDescription.SetValue((_normalModeSettings.NumberOfEnemiesToDefeat).ToString());
         for (int i = 0; i < _normalModeSettings.SimultaneouslNumberOfEnemies; i++)
         {
             _spawnedEnemies++;
-            _enemySpawner.SpawnEnemy().OnDeath.AddListener(OnEnemyDeath);
+            SpawnEnemy();
         }
     }
     private void OnEnemyDeath(Enemy enemy)
@@ -49,13 +51,14 @@ public class NormalGameModeManager : GameModeManager
         _killedEnemies++;
         if (_spawnedEnemies < _normalModeSettings.NumberOfEnemiesToDefeat)
         {
-            _enemySpawner.SpawnEnemy().OnDeath.AddListener(OnEnemyDeath);
+            SpawnEnemy();
             _spawnedEnemies++;
         }
         else if(_killedEnemies== _normalModeSettings.NumberOfEnemiesToDefeat)
         {
             _stageClearPause.SetPause(true);
         }
+        _taskDescription.SetValue((_normalModeSettings.NumberOfEnemiesToDefeat - _killedEnemies).ToString());
     }
 
     public override void RestartStage()
@@ -66,5 +69,16 @@ public class NormalGameModeManager : GameModeManager
         _killedEnemies = 0;
         OnResetStage?.Invoke();
         PrepareStage();
+    }
+
+    private void SpawnEnemy()
+    {
+        Enemy en = _enemySpawner.SpawnEnemy();
+        en.OnDeath.AddListener(OnEnemyDeath);
+        if(_normalModeSettings.AreEnemiesRandomized)
+        {
+            en.RandomizeAngularDrag(0.5f, 3.5f);
+            en.RandomizePushForce(200, 600);
+        }
     }
 }

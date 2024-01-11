@@ -9,7 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c8aafde2abb3c447a6d51322fbf0013, type: 3}
-  m_Name: Keyboard camera rotation speed
+  m_Script: {fileID: 11500000, guid: df515506aa756c54b9ab206616cd347f, type: 3}
+  m_Name: Keyboard Camera rotation speed
   m_EditorClassIdentifier: 
-  value: 0
+  binding:
+    m_Name: Keyboard
+    m_Id: 
+    m_Path: 
+    m_Interactions: 
+    m_Processors: 
+    m_Groups: 
+    m_Action: 
+    m_Flags: 4
+  saveName: Keyboard rot sensitivity

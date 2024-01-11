@@ -20,6 +20,11 @@ public class ScreenSetUp : MonoBehaviour
             SaveScreenSettings.SaveScreenConfigs(new ScreenSettings.MyResolution(availableResolutions[availableResolutions.Count-1]), true);
             Screen.SetResolution(availableResolutions[availableResolutions.Count - 1].width, availableResolutions[availableResolutions.Count - 1].height, Screen.fullScreen);
         }
+        else
+        {
+            ScreenSettingsData configs = SaveScreenSettings.GetScreenSettings();
+            Screen.SetResolution(configs.resolution.width,configs.resolution.height,configs.fullScreen);
+        }
     }
     void GetAllResolutions()
     {

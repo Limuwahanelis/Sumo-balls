@@ -43,6 +43,8 @@ public class GridButtonsNaviagtion : MonoBehaviour
                 {
                     mode = Navigation.Mode.Explicit,
                 };
+
+
                 if (j == 0)
                 {
                     nav.selectOnLeft = _buttonsInGrid[i].ElementAt(_columns - 1);

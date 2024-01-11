@@ -33,7 +33,7 @@ public class StageSelectorEditor : Editor
             _stagesInGrid.GetArrayElementAtIndex(i).objectReferenceValue = stageInGrid;
             stageInGrid.transform.SetParent(_stageSelector.transform);
             stageInGrid.SetStage(_stagelist.stages.ElementAt(i));
-            stageInGrid.SetIndex(i);
+            stageInGrid.SetIndex(i+1);
             stageInGrid.SetStageIcon(_stagelist.stages.ElementAt(i).stageScreenshot);
 
 
