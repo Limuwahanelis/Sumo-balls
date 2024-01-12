@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameMode: 1
   _areEnemiesRandomized: 1
-  _timeToSurvive: 30
+  _timeToSurvive: 25
   _startingNumberOfEnemies: 2
-  _secondsToSpawnEnemies: 5
+  _secondsToSpawnEnemies: 7
   _numberOfEnemiesToSpawn: 2
   _timeToSpawnPowerUP: 6
