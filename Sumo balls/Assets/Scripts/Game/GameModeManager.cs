@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public abstract class GameModeManager : MonoBehaviour
 {
 #if UNITY_EDITOR
-    [SerializeField] protected bool _debug;
+    [SerializeField] public bool debug;
     [SerializeField] protected GameModeSettings _debugSettings;
 #endif
     [SerializeField] protected InStageDescription _taskDescription;

@@ -85,6 +85,13 @@ public class EnemySpawner : MonoBehaviour
         }
         
     }
+    public void SetAllEnemyScript(bool value)
+    {
+        foreach (Enemy enemy in _allEnemies)
+        {
+            enemy.enabled = value;
+        }
+    }
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireCube(new Vector3(0, _arenaYpos, 0), new Vector3(2*_spawnRange, 2*_spawnRange, 2*_spawnRange));

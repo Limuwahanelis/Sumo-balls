@@ -11,15 +11,12 @@ public class NormalGameModeManager : GameModeManager
     private int _powerUpSpawns = 1;
     private int _spawnedEnemies = 0;
     private int _killedEnemies = 0;
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-
         _normalModeSettings = GlobalSettings.SelectedGameModeSettings as NormalModeSettings;
 #if UNITY_EDITOR
-        if (_debug) _normalModeSettings = _debugSettings as NormalModeSettings;
+        if (debug) _normalModeSettings = _debugSettings as NormalModeSettings;
 #endif
-        PrepareStage();
     }
 
     // Update is called once per frame
@@ -68,7 +65,7 @@ public class NormalGameModeManager : GameModeManager
         _spawnedEnemies = 0;
         _killedEnemies = 0;
         OnResetStage?.Invoke();
-        PrepareStage();
+        //PrepareStage();
     }
 
     private void SpawnEnemy()

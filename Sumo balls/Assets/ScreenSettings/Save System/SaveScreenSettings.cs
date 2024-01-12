@@ -7,8 +7,8 @@ namespace SaveSystem
 {
     public static class SaveScreenSettings
     {
-        public static string screenConfigsFolderPath = Application.dataPath + @"\configs";
-        public static string screenConfigsFilePath = screenConfigsFolderPath + @"\configs.json";
+        public static string screenConfigsFolderPath = Application.dataPath + @"\screenConfigs";
+        public static string screenConfigsFilePath = screenConfigsFolderPath + @"\screenConfigs.json";
         public static void SaveScreenConfigs(ScreenSettings.MyResolution resolution, bool fullScreen)
         {
             Debug.Log($"Save configs full: {fullScreen}");

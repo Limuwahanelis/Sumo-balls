@@ -9,16 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df515506aa756c54b9ab206616cd347f, type: 3}
-  m_Name: Gamepad Camera rotation Speed 1
+  m_Script: {fileID: 11500000, guid: 82750c3bda4e1e54e8d818d122810121, type: 3}
+  m_Name: is stage fast load
   m_EditorClassIdentifier: 
-  binding:
-    m_Name: Gamepad
-    m_Id: 
-    m_Path: 
-    m_Interactions: 
-    m_Processors: 
-    m_Groups: 
-    m_Action: 
-    m_Flags: 4
-  saveName: Gamepad sensitivity
+  value: 1

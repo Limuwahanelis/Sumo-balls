@@ -80,7 +80,7 @@ public class ScreenSettings : MonoBehaviour
         }
 
         resolutionDropdown.AddOptions(resolutionOptions);
-
+        fullScreenToggle.isOn = configs.fullScreen;
         _currentResIndex = availableResolutions.FindIndex(x => x.width == configs.resolution.width && x.height == configs.resolution.height);
         foreach (Resolution resolution in availableResolutions)
         {

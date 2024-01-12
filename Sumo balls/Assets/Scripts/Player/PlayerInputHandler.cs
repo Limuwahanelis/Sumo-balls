@@ -15,7 +15,7 @@ public class PlayerInputHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _inputActionAsset.FindActionMap(_playerActions).Enable();
+        //_inputActionAsset.FindActionMap(_playerActions).Enable();
     }
 
     // Update is called once per frame
@@ -27,6 +27,10 @@ public class PlayerInputHandler : MonoBehaviour
     public void ResetActionMap()
     {
         _inputActionAsset.FindActionMap(_playerActions).Enable();
+    }
+    public void DisableActionMap()
+    {
+        _inputActionAsset.FindActionMap(_playerActions).Disable();
     }
     void OnPush(InputValue val)
     {

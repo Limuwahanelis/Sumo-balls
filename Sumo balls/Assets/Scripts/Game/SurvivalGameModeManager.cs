@@ -13,25 +13,28 @@ public class SurvivalGameModeManager : GameModeManager
     private int _spawnedWaves = 1;
     private int _killedEnemies = 0;
     private bool _isCompleted = false;
-    // Start is called before the first frame update
-    void Start()
+    private bool _countTime = false;
+    private void Awake()
     {
         _survivalModeSettings = GlobalSettings.SelectedGameModeSettings as SurvivalModeSettings;
 #if UNITY_EDITOR
-        if (_debug) _survivalModeSettings = _debugSettings as SurvivalModeSettings;
+        if (debug) _survivalModeSettings = _debugSettings as SurvivalModeSettings;
 #endif
-        PrepareStage();
-
     }
 
     // Update is called once per frame
     void Update()
     {
         if (_isCompleted) return;
-        _taskDescription.SetValue(ConvertTime(_survivalModeSettings.TimeToSurvive - _currentTime));
+        if (_countTime)
+        {
+            _currentTime += Time.deltaTime;
+            _taskDescription.SetValue(ConvertTime(_survivalModeSettings.TimeToSurvive - _currentTime));
+        }
         if (_currentTime >= _survivalModeSettings.TimeToSurvive)
         {
             _isCompleted = true;
+            _countTime = false;
             _taskDescription.SetValue(ConvertTime(0));
             _stageClearPause.SetPause(true);
             return;
@@ -49,7 +52,7 @@ public class SurvivalGameModeManager : GameModeManager
             _powerUpSpawns++;
             _powerUpSpawner.SpawnPowerUp();
         }
-        _currentTime += Time.deltaTime;
+        
     }
     private string ConvertTime(float timeInSeconds)
     {
@@ -60,7 +63,6 @@ public class SurvivalGameModeManager : GameModeManager
     private void OnEnemyDeath(Enemy enemy)
     {
         enemy.OnDeath.RemoveListener(OnEnemyDeath);
-        Debug.Log("killed");
         _killedEnemies++;
     }
     private void SpawnEnemy()
@@ -81,15 +83,19 @@ public class SurvivalGameModeManager : GameModeManager
         _killedEnemies = 0;
         _isCompleted = false;
         OnResetStage?.Invoke();
-        PrepareStage();
     }
 
 
     public override void PrepareStage()
     {
+        _taskDescription.SetValue(ConvertTime(_survivalModeSettings.TimeToSurvive));
         for (int i = 0; i < _survivalModeSettings.StartingNumberOfEnemies; i++)
         {
             SpawnEnemy();
         }
+    }
+    public void SetCountTime(bool value)
+    {
+        _countTime = value;
     }
 }
