@@ -9,6 +9,7 @@ public abstract class GameModeManager : MonoBehaviour
     [SerializeField] public bool debug;
     [SerializeField] protected GameModeSettings _debugSettings;
 #endif
+    [SerializeField] protected StageCompleteScore _stageCompleteScore;
     [SerializeField] protected InStageDescription _taskDescription;
     [SerializeField] protected PauseSetter _gameOverPause;
     [SerializeField] protected PauseSetter _stageClearPause;

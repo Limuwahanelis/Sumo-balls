@@ -5,21 +5,27 @@ using UnityEngine.Events;
 
 public class NormalGameModeManager : GameModeManager
 {
-    
+    [SerializeField] WallsManager _wallsManager;
     private NormalModeSettings _normalModeSettings;
     private float _currentTime;
     private int _powerUpSpawns = 1;
     private int _spawnedEnemies = 0;
     private int _killedEnemies = 0;
+    private int _score = 2;
     private void Awake()
     {
         _normalModeSettings = GlobalSettings.SelectedGameModeSettings as NormalModeSettings;
 #if UNITY_EDITOR
         if (debug) _normalModeSettings = _debugSettings as NormalModeSettings;
 #endif
+        if (_normalModeSettings.IsInCage)
+        {
+            _wallsManager.SetUp(_normalModeSettings);
+            OnResetStage.AddListener(_wallsManager.RestoreWalls);
+        }
     }
 
-    // Update is called once per frame
+    // Update is called once per frame 
     void Update()
     {
         if (_currentTime >= _normalModeSettings.PowerUpSpawnRateInSeconds * _powerUpSpawns)
@@ -28,6 +34,12 @@ public class NormalGameModeManager : GameModeManager
             _powerUpSpawner.SpawnPowerUp();
         }
         if (_killedEnemies >= _normalModeSettings.NumberOfEnemiesToDefeat) return;
+        if(!_normalModeSettings.IsInCage && _score >= 0&& _currentTime >= _normalModeSettings.TimeRequiredForStar[_score] )
+        {
+            Debug.Log("reduc");
+            _score--;
+            _stageCompleteScore.ReduceScore();
+        }
         _currentTime +=Time.deltaTime;
         
 
@@ -35,6 +47,8 @@ public class NormalGameModeManager : GameModeManager
 
     public override void PrepareStage()
     {
+        _stageCompleteScore.SetScore(3);
+        _stageCompleteScore.SetDescription(_normalModeSettings.GetStarsDescription());
         _taskDescription.SetValue((_normalModeSettings.NumberOfEnemiesToDefeat).ToString());
         for (int i = 0; i < _normalModeSettings.SimultaneouslNumberOfEnemies; i++)
         {
@@ -64,8 +78,9 @@ public class NormalGameModeManager : GameModeManager
         _powerUpSpawns = 1;
         _spawnedEnemies = 0;
         _killedEnemies = 0;
+        _score = 2;
+        _stageCompleteScore.SetScore(3);
         OnResetStage?.Invoke();
-        //PrepareStage();
     }
 
     private void SpawnEnemy()
@@ -77,5 +92,9 @@ public class NormalGameModeManager : GameModeManager
             en.RandomizeAngularDrag(0.5f, 3.5f);
             en.RandomizePushForce(200, 600);
         }
+    }
+    private void OnDestroy()
+    {
+        OnResetStage.RemoveListener(_wallsManager.RestoreWalls);
     }
 }

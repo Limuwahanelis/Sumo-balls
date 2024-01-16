@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c4ac576ba30f374fb8a19573b813b66, type: 3}
-  m_Name: Normal 1
+  m_Name: Normal 2 Cage
   m_EditorClassIdentifier: 
   _gameMode: 0
-  _areEnemiesRandomized: 0
-  _isInCage: 0
-  _simultaneouslNumberOfEnemies: 1
-  _numberOfEnemiesToDefeat: 1
-  _powerUpSpawnrateInSeconds: 10
+  _areEnemiesRandomized: 1
+  _isInCage: 1
+  _simultaneouslNumberOfEnemies: 2
+  _numberOfEnemiesToDefeat: 5
+  _powerUpSpawnrateInSeconds: 6
   _timeRequiredForStar:
-  - 30
-  - 20
-  - 10
-  _wallsRequiredForStar: 030000000200000001000000
+  - 0
+  - 0
+  - 0
+  _wallsRequiredForStar: 040000000300000002000000

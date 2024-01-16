@@ -20,6 +20,8 @@ public class SurvivalGameModeManager : GameModeManager
 #if UNITY_EDITOR
         if (debug) _survivalModeSettings = _debugSettings as SurvivalModeSettings;
 #endif
+        _stageCompleteScore.SetScore(0);
+        _stageCompleteScore.SetDescription(_survivalModeSettings.GetStarsDescription());
     }
 
     // Update is called once per frame

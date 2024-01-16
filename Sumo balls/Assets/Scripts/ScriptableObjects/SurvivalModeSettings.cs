@@ -16,12 +16,11 @@ public class SurvivalModeSettings : GameModeSettings
     [SerializeField] float _secondsToSpawnEnemies;
     [SerializeField] float _numberOfEnemiesToSpawn;
     [SerializeField] float _timeToSpawnPowerUP;
-
+    [SerializeField] List<int> _enemiesToDefeatForStar= new List<int> { 0,0,0};
     private void Awake()
     {
         _gameMode = Configs.Gamemode.SURVIVAL;
     }
-
     public override string GetDetailedDescription()
     {
         throw new System.NotImplementedException();
@@ -30,5 +29,11 @@ public class SurvivalModeSettings : GameModeSettings
     public override string GetDescription()
     {
         throw new System.NotImplementedException();
+    }
+
+    public override List<string> GetStarsDescription()
+    {
+        List<string> toReturn = new List<string> { $"Defeat {_enemiesToDefeatForStar[0]} enemies", $"Defeat {_enemiesToDefeatForStar[1]} enemies", $"Defeat {_enemiesToDefeatForStar[2]} enemies" };
+        return toReturn;
     }
 }

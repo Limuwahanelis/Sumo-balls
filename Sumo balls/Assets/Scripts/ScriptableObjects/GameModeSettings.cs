@@ -11,4 +11,6 @@ public abstract class GameModeSettings:ScriptableObject
 
     public abstract string GetDetailedDescription();
     public abstract string GetDescription();
+
+    public abstract List<string> GetStarsDescription();
 }
