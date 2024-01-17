@@ -1,3 +1,4 @@
+using SaveSystem;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -7,6 +8,7 @@ using UnityEngine.UI;
 
 public class StageCompleteScore : MonoBehaviour
 {
+
     /// <summary>
     /// Current score in range from 0 to 3
     /// </summary>
@@ -74,5 +76,10 @@ public class StageCompleteScore : MonoBehaviour
         {
             _starsDescription[i].text = descriptions[i];
         }
+    }
+    public void SaveScore()
+    {
+        GlobalSettings.SelectedStage.SetScore(_score);
+        SaveGameData.UpdateGameData(GlobalSettings.StateIndex, GlobalSettings.SelectedStage);
     }
 }

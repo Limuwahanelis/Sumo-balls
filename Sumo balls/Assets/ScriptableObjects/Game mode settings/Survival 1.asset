@@ -19,4 +19,4 @@ MonoBehaviour:
   _secondsToSpawnEnemies: 5
   _numberOfEnemiesToSpawn: 1
   _timeToSpawnPowerUP: 6
-  _enemiesToDefeatForStar: 
+  _enemiesToDefeatForStar: 030000000200000001000000

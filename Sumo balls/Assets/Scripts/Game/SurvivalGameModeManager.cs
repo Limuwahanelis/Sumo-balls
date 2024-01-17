@@ -16,7 +16,7 @@ public class SurvivalGameModeManager : GameModeManager
     private bool _countTime = false;
     private void Awake()
     {
-        _survivalModeSettings = GlobalSettings.SelectedGameModeSettings as SurvivalModeSettings;
+        _survivalModeSettings = GlobalSettings.SelectedStage.GameModeSettings as SurvivalModeSettings;
 #if UNITY_EDITOR
         if (debug) _survivalModeSettings = _debugSettings as SurvivalModeSettings;
 #endif
@@ -38,7 +38,7 @@ public class SurvivalGameModeManager : GameModeManager
             _isCompleted = true;
             _countTime = false;
             _taskDescription.SetValue(ConvertTime(0));
-            _stageClearPause.SetPause(true);
+            OnStageCompleted?.Invoke();
             return;
         }
         if (_currentTime >= _survivalModeSettings.SecondsToSpawnEnemies * _spawnedWaves)

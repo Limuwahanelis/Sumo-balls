@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,8 +11,11 @@ public class StageInGrid : MonoBehaviour
 {
     public Action<Stage> OnSelectStage;
     [SerializeField] Stage _stage;
+    [SerializeField] Color _gainedStarColor;
+    [SerializeField] Color _notGainedStarColor;
     [SerializeField] TMP_Text _indexTextField;
     [SerializeField] RawImage _stageScreen;
+    [SerializeField] List<Image> _scoreStars;
     [SerializeField] Button _stageButton;
     // Start is called before the first frame update
     void Start()
@@ -26,6 +30,10 @@ public class StageInGrid : MonoBehaviour
     }
     private void OnEnable()
     {
+        for (int i = 0; i < _stage.Score; i++)
+        {
+            _scoreStars[i].color = _gainedStarColor;
+        }
         _stageButton.onClick.AddListener(FireSelectStage);
     }
     public void SelectGameModeSettings()
@@ -35,6 +43,7 @@ public class StageInGrid : MonoBehaviour
     public void SetStage(Stage stage)
     {
         _stage = stage;
+
     }
     public void SetIndex(int index)
     {

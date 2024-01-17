@@ -14,7 +14,7 @@ public class NormalGameModeManager : GameModeManager
     private int _score = 2;
     private void Awake()
     {
-        _normalModeSettings = GlobalSettings.SelectedGameModeSettings as NormalModeSettings;
+        _normalModeSettings = GlobalSettings.SelectedStage.GameModeSettings as NormalModeSettings;
 #if UNITY_EDITOR
         if (debug) _normalModeSettings = _debugSettings as NormalModeSettings;
 #endif
@@ -67,7 +67,7 @@ public class NormalGameModeManager : GameModeManager
         }
         else if(_killedEnemies== _normalModeSettings.NumberOfEnemiesToDefeat)
         {
-            _stageClearPause.SetPause(true);
+            OnStageCompleted?.Invoke();
         }
         _taskDescription.SetValue((_normalModeSettings.NumberOfEnemiesToDefeat - _killedEnemies).ToString());
     }

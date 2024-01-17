@@ -309,9 +309,9 @@ RectTransform:
   m_Father: {fileID: 697111472}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 349.52927, y: -12.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 120.56, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &35924629
@@ -16305,7 +16305,6 @@ MonoBehaviour:
   _stageCompleteScore: {fileID: 1745690528}
   _taskDescription: {fileID: 1647761051}
   _gameOverPause: {fileID: 1250121784}
-  _stageClearPause: {fileID: 1931220079}
   _enemySpawner: {fileID: 996891606}
   _powerUpSpawner: {fileID: 2097864724}
   OnResetStage:
@@ -16362,6 +16361,33 @@ MonoBehaviour:
       - m_Target: {fileID: 997498127}
         m_TargetAssemblyTypeName: Countdown, Assembly-CSharp
         m_MethodName: Setup
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnStageCompleted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1931220079}
+        m_TargetAssemblyTypeName: PauseSetter, Assembly-CSharp
+        m_MethodName: SetPause
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1745690528}
+        m_TargetAssemblyTypeName: StageCompleteScore, Assembly-CSharp
+        m_MethodName: SaveScore
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

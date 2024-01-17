@@ -11,8 +11,8 @@ public class LoadNextStage : MonoBehaviour
     [SceneName, SerializeField] private string _normalScene;
     public void PlayNextStage()
     {
-        GlobalSettings.SetStage(_stageList.stages[GlobalSettings.StateIndex + 1].GameModeSettings, GlobalSettings.StateIndex + 1);
-        switch (GlobalSettings.SelectedGameModeSettings.GameMode)
+        GlobalSettings.SetStage(_stageList.stages[GlobalSettings.StateIndex + 1], GlobalSettings.StateIndex + 1);
+        switch (GlobalSettings.SelectedStage.GameModeSettings.GameMode)
         {
             case Configs.Gamemode.NORMAL: _sceneLoader.Load(_normalScene); break;
             case Configs.Gamemode.SURVIVAL: _sceneLoader.Load(_survivalScene); break;

@@ -14,6 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameMode: 0
   _areEnemiesRandomized: 1
+  _isInCage: 0
   _simultaneouslNumberOfEnemies: 2
   _numberOfEnemiesToDefeat: 2
   _powerUpSpawnrateInSeconds: 10
+  _timeRequiredForStar:
+  - 35
+  - 25
+  - 15
+  _wallsRequiredForStar: 000000000000000000000000

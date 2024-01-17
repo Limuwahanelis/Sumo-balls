@@ -12,10 +12,10 @@ public abstract class GameModeManager : MonoBehaviour
     [SerializeField] protected StageCompleteScore _stageCompleteScore;
     [SerializeField] protected InStageDescription _taskDescription;
     [SerializeField] protected PauseSetter _gameOverPause;
-    [SerializeField] protected PauseSetter _stageClearPause;
     [SerializeField] protected EnemySpawner _enemySpawner;
     [SerializeField] protected PowerUpSpawner _powerUpSpawner;
     public UnityEvent OnResetStage;
+    public UnityEvent OnStageCompleted;
     public abstract void RestartStage();
     public abstract void PrepareStage();
 }

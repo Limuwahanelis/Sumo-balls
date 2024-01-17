@@ -35,8 +35,8 @@ public class StageSelector : MonoBehaviour
     private void SetStage(Stage stage)
     {
         //GlobalSettings.SetStage(stage.GameModeSettings);
-        GlobalSettings.SetStage(stage.GameModeSettings, _stageList.stages.IndexOf(stage));
-        switch (GlobalSettings.SelectedGameModeSettings.GameMode)
+        GlobalSettings.SetStage(stage, _stageList.stages.IndexOf(stage));
+        switch (GlobalSettings.SelectedStage.GameModeSettings.GameMode)
         {
             case Configs.Gamemode.NORMAL: _sceneLoader.Load(_normalScene);break;
             case Configs.Gamemode.SURVIVAL: _sceneLoader.Load(_survivalScene);break;

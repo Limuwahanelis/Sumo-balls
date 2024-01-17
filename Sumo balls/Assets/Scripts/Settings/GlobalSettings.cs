@@ -6,8 +6,11 @@ public static class GlobalSettings
 {
     public static bool IsGamePaused=>_isGamePaused;
     private static bool _isGamePaused;
-    public static GameModeSettings SelectedGameModeSettings => _selectedGameModeSettings;
-    private static GameModeSettings _selectedGameModeSettings;
+
+    //public static GameModeSettings SelectedGameModeSettings => _selectedGameModeSettings;
+    //private static GameModeSettings _selectedGameModeSettings;
+    private static Stage _selectedStage;
+    public static Stage SelectedStage => _selectedStage;
 
     public static int StateIndex=>_stageIndex;
     private static int _stageIndex;
@@ -18,9 +21,9 @@ public static class GlobalSettings
         else Time.timeScale = 1;
     }
 
-    public static void SetStage(GameModeSettings gameModeSettings,int stageIndex)
+    public static void SetStage(Stage stage,int stageIndex)
     {
-        _selectedGameModeSettings = gameModeSettings;
+        _selectedStage = stage;
         _stageIndex = stageIndex;
     }
 }
