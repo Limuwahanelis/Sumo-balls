@@ -13,10 +13,10 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] float _playerSafeSpace = 2f;
     [SerializeField] EnemyPool _enemyPool;
     [SerializeField] Transform _playerPos;
-    private List<Enemy> _allEnemies = new List<Enemy>();
-    public Enemy SpawnEnemy()
+    private List<NormalEnemy> _allEnemies = new List<NormalEnemy>();
+    public NormalEnemy SpawnEnemy()
     {
-        Enemy enemy = _enemyPool.GetEnemy();
+        NormalEnemy enemy = _enemyPool.GetEnemy();
         if(!_allEnemies.Contains(enemy)) _allEnemies.Add(enemy);
         enemy.transform.position = SelectSpawnPos(enemy.transform.localScale.y);
         enemy.GetComponent<Rigidbody>().velocity = Vector3.zero;
@@ -79,15 +79,19 @@ public class EnemySpawner : MonoBehaviour
     }
     public void ReturnAllEnemiesToPool()
     {
-        foreach(Enemy enemy in _allEnemies)
+        foreach(NormalEnemy enemy in _allEnemies)
         {
             _enemyPool.OnReturnEnemyToPool(enemy);
         }
         
     }
+    public void ReturnEnemyToPool(NormalEnemy enemy)
+    {
+        _enemyPool.OnReturnEnemyToPool(enemy);
+    }
     public void SetAllEnemyScript(bool value)
     {
-        foreach (Enemy enemy in _allEnemies)
+        foreach (NormalEnemy enemy in _allEnemies)
         {
             enemy.enabled = value;
         }
@@ -100,7 +104,7 @@ public class EnemySpawner : MonoBehaviour
     }
     private void OnDestroy()
     {
-        foreach(Enemy enemy in _allEnemies)
+        foreach(NormalEnemy enemy in _allEnemies)
         {
             enemy.OnDeath.RemoveAllListeners();
         }

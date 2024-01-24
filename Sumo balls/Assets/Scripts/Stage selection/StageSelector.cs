@@ -40,6 +40,8 @@ public class StageSelector : MonoBehaviour
         {
             case Configs.Gamemode.NORMAL: _sceneLoader.Load(_normalScene);break;
             case Configs.Gamemode.SURVIVAL: _sceneLoader.Load(_survivalScene);break;
+            case Configs.Gamemode.SPECIAL:_sceneLoader.Load((GlobalSettings.SelectedStage.GameModeSettings as SpecialGameModeSettings).StageScene);break;
+
         }
     }
     private void OnDestroy()

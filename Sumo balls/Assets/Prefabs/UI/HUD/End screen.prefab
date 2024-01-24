@@ -283,7 +283,7 @@ GameObject:
   - component: {fileID: 4666824619084718274}
   - component: {fileID: 6365308874041168087}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Retry button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -405,7 +405,7 @@ GameObject:
   - component: {fileID: 7208778295826262911}
   - component: {fileID: 7728250437845200027}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Exit button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -903,7 +903,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameOverScreen: {fileID: 4332299237142106766}
   _stageClearScreen: {fileID: 6649249088946369116}
-  _canvas: {fileID: 0}
 --- !u!114 &9159324113026404343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -952,7 +951,7 @@ GameObject:
   - component: {fileID: 7690370520243320875}
   - component: {fileID: 1717287517248225207}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Exit button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1673,7 +1672,7 @@ GameObject:
   - component: {fileID: 9219218359960579329}
   - component: {fileID: 8473843987058972083}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Retry button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1807,7 +1806,7 @@ GameObject:
   - component: {fileID: 4165057157506764307}
   - component: {fileID: 5343151018889603118}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Nect stage button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

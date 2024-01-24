@@ -274,7 +274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 832220170}
---- !u!1001 &131525598
+--- !u!1001 &41452995
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -472,11 +472,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6857f8fc97f91bd45bcb5e25d0153a33, type: 3}
---- !u!224 &131525599 stripped
+--- !u!224 &41452996 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2021523970722349720, guid: 6857f8fc97f91bd45bcb5e25d0153a33,
     type: 3}
-  m_PrefabInstance: {fileID: 131525598}
+  m_PrefabInstance: {fileID: 41452995}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &223275787
 GameObject:
@@ -2063,18 +2063,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 996891606}
-        m_TargetAssemblyTypeName: EnemySpawner, Assembly-CSharp
-        m_MethodName: SetAllEnemyScript
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
   OnBeforeCountdown:
     m_PersistentCalls:
       m_Calls:
@@ -2082,30 +2070,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
         m_MethodName: DisableActionMap
         m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1970191258}
-        m_TargetAssemblyTypeName: NormalGameModeManager, Assembly-CSharp
-        m_MethodName: PrepareStage
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 996891606}
-        m_TargetAssemblyTypeName: EnemySpawner, Assembly-CSharp
-        m_MethodName: SetAllEnemyScript
-        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2442,7 +2406,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 407.3585, y: 0}
   m_SizeDelta: {x: 120.56, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1159246888
@@ -2979,7 +2943,7 @@ RectTransform:
   m_Children:
   - {fileID: 1358065844}
   - {fileID: 805073526}
-  - {fileID: 131525599}
+  - {fileID: 41452996}
   m_Father: {fileID: 12209485}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15238,7 +15202,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1970191257}
-  - component: {fileID: 1970191258}
   - component: {fileID: 1970191260}
   - component: {fileID: 1970191259}
   m_Layer: 0
@@ -15263,89 +15226,6 @@ Transform:
   m_Father: {fileID: 1205182784}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1970191258
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1970191256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71cd1372fd0c5d44ea579774841deeb7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  debug: 1
-  _debugSettings: {fileID: 11400000, guid: 2157826fcc4b5de4eaf6b2dde38baa57, type: 2}
-  _stageCompleteScore: {fileID: 0}
-  _taskDescription: {fileID: 1343397134}
-  _gameOverPause: {fileID: 1250121784}
-  _stageClearPause: {fileID: 1931220079}
-  _enemySpawner: {fileID: 996891606}
-  _powerUpSpawner: {fileID: 2097864724}
-  OnResetStage:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1974324481}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: ResetPlayer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 996891606}
-        m_TargetAssemblyTypeName: EnemySpawner, Assembly-CSharp
-        m_MethodName: ReturnAllEnemiesToPool
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2097864724}
-        m_TargetAssemblyTypeName: PowerUpSpawner, Assembly-CSharp
-        m_MethodName: ReturnAllPowerUpsToPool
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1974324485}
-        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
-        m_MethodName: ResetActionMap
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 805073527}
-        m_TargetAssemblyTypeName: Countdown, Assembly-CSharp
-        m_MethodName: Setup
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1970191259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15411,6 +15291,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93b2ab6f7490bb241bac2e4ddc3c3c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerRB: {fileID: 832220173}
+  _pivot: {fileID: 223275787}
+  _powerUpIndicator: {fileID: 31179556}
+  _force: 4
+  _powerUpStrength: 12
+  _powerUpDuration: 5
+  _hasPowerUp: 0
   OnPlayerDeath:
     m_PersistentCalls:
       m_Calls:
@@ -15426,13 +15313,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-  _playerRB: {fileID: 832220173}
-  _pivot: {fileID: 223275787}
-  _powerUpIndicator: {fileID: 31179556}
-  _force: 4
-  _powerUpStrength: 12
-  _powerUpDuration: 5
-  _hasPowerUp: 0
 --- !u!4 &1974324482
 Transform:
   m_ObjectHideFlags: 0
@@ -16089,7 +15969,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1970191258}
+      objectReference: {fileID: 0}
     - target: {fileID: 6365308874041168087, guid: 811f524683fda8f4bb063f798455da85,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -16209,7 +16089,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1970191258}
+      objectReference: {fileID: 0}
     - target: {fileID: 8473843987058972083, guid: 811f524683fda8f4bb063f798455da85,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target

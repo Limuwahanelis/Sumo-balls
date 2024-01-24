@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82750c3bda4e1e54e8d818d122810121, type: 3}
   m_Name: is stage fast load
   m_EditorClassIdentifier: 
-  value: 1
+  value: 0

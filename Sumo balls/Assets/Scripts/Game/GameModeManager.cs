@@ -16,6 +16,7 @@ public abstract class GameModeManager : MonoBehaviour
     [SerializeField] protected PowerUpSpawner _powerUpSpawner;
     public UnityEvent OnResetStage;
     public UnityEvent OnStageCompleted;
+    public UnityEvent OnStageFailed;
     public abstract void RestartStage();
     public abstract void PrepareStage();
 }

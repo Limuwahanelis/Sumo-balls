@@ -6,6 +6,6 @@ public class Configs
 {
     public enum Gamemode
     {
-        NORMAL,SURVIVAL
+        NORMAL,SURVIVAL,SPECIAL
     }
 }

@@ -6,31 +6,31 @@ using UnityEngine.Search;
 
 public class EnemyPool : MonoBehaviour
 {
-    [SerializeField, SearchContext("t:Enemy")] Enemy _enemyPrefab;
-    private ObjectPool<Enemy> _enemyPool;
+    [SerializeField, SearchContext("t:Enemy")] NormalEnemy _enemyPrefab;
+    private ObjectPool<NormalEnemy> _enemyPool;
 
     // Start is called before the first frame update
     void Awake()
     {
-        _enemyPool = new ObjectPool<Enemy>(CreateEnemy,OnTakeEnemyFromPool,OnReturnEnemyToPool);
+        _enemyPool = new ObjectPool<NormalEnemy>(CreateEnemy,OnTakeEnemyFromPool,OnReturnEnemyToPool);
     }
 
-    public Enemy GetEnemy()
+    public NormalEnemy GetEnemy()
     {
         return _enemyPool.Get();
     }
-    Enemy CreateEnemy()
+    NormalEnemy CreateEnemy()
     {
-        Enemy enemy = Instantiate(_enemyPrefab);
+        NormalEnemy enemy = Instantiate(_enemyPrefab);
         enemy.SetPool(_enemyPool);
         return enemy;
 
     }
-    public void OnTakeEnemyFromPool(Enemy enemy)
+    public void OnTakeEnemyFromPool(NormalEnemy enemy)
     {
         //enemy.gameObject.SetActive(true);
     }
-    public void OnReturnEnemyToPool(Enemy enemy)
+    public void OnReturnEnemyToPool(NormalEnemy enemy)
     {
         enemy.gameObject.SetActive(false);
         enemy.GetComponent<Rigidbody>().velocity = Vector3.zero;

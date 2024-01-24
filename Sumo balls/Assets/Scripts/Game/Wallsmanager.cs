@@ -8,7 +8,14 @@ public class WallsManager : MonoBehaviour
     [SerializeField] StageCompleteScore _stageCompleteScore;
     [SerializeField] GameObject _cage;
     private int _collapsedWalls;
-
+    public void SetUp()
+    {
+        _cage.SetActive(true);
+        foreach (Wall wall in _walls)
+        {
+            wall.SetUp();
+        }
+    }
     public void SetUp(NormalModeSettings normalModeSettings)
     {
         
@@ -28,13 +35,13 @@ public class WallsManager : MonoBehaviour
             });
         }
     }
-    private void Start()
-    {
-        foreach (Wall wall in _walls)
-        {
-            wall.Restore();
-        }
-    }
+    //private void Start()
+    //{
+    //    foreach (Wall wall in _walls)
+    //    {
+    //        wall.Restore();
+    //    }
+    //}
 
     public void RestoreWalls()
     {

@@ -16,10 +16,14 @@ public class SurvivalGameModeManager : GameModeManager
     private bool _countTime = false;
     private void Awake()
     {
-        _survivalModeSettings = GlobalSettings.SelectedStage.GameModeSettings as SurvivalModeSettings;
 #if UNITY_EDITOR
         if (debug) _survivalModeSettings = _debugSettings as SurvivalModeSettings;
+        else _survivalModeSettings = GlobalSettings.SelectedStage.GameModeSettings as SurvivalModeSettings;
+        _stageCompleteScore.SetScore(0);
+        _stageCompleteScore.SetDescription(_survivalModeSettings.GetStarsDescription());
+        return;
 #endif
+        _survivalModeSettings = GlobalSettings.SelectedStage.GameModeSettings as SurvivalModeSettings;
         _stageCompleteScore.SetScore(0);
         _stageCompleteScore.SetDescription(_survivalModeSettings.GetStarsDescription());
     }
@@ -69,7 +73,7 @@ public class SurvivalGameModeManager : GameModeManager
     }
     private void SpawnEnemy()
     {
-        Enemy en = _enemySpawner.SpawnEnemy();
+        NormalEnemy en = _enemySpawner.SpawnEnemy();
         en.OnDeath.AddListener(OnEnemyDeath);
         if (_survivalModeSettings.AreEnemiesRandomized)
         {

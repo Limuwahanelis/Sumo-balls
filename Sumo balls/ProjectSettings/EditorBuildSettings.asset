@@ -15,8 +15,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Stages/Normal mode.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/Survival mode.unity
-    guid: 2ac7fb9be09d007488087927bf7eab86
+    path: Assets/Scenes/Stages/Boss 1.unity
+    guid: cb524e7d1e6244342929f6e7127f3918
+  - enabled: 1
+    path: Assets/Scenes/Stages/Survival mode.unity
+    guid: 44a36bfb5310a894380406505982dc2d
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 706c327265f0de3438b0cb9c93f7b023,
       type: 2}

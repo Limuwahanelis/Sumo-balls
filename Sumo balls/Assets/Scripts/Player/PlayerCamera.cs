@@ -41,7 +41,11 @@ public class PlayerCamera : MonoBehaviour
         yaw += mouseRotationSpeed * value;
         Rotate();
     }
-
+    public void ResetPivot()
+    {
+        focalPoint.transform.rotation = Quaternion.identity;
+        yaw = 0;
+    }
     private void Rotate()
     {
         Quaternion rot = Quaternion.Euler(0, yaw, 0);

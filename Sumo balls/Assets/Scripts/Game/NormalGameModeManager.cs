@@ -14,10 +14,18 @@ public class NormalGameModeManager : GameModeManager
     private int _score = 2;
     private void Awake()
     {
-        _normalModeSettings = GlobalSettings.SelectedStage.GameModeSettings as NormalModeSettings;
+        
 #if UNITY_EDITOR
         if (debug) _normalModeSettings = _debugSettings as NormalModeSettings;
+        else _normalModeSettings = GlobalSettings.SelectedStage.GameModeSettings as NormalModeSettings;
+        if (_normalModeSettings.IsInCage)
+        {
+            _wallsManager.SetUp(_normalModeSettings);
+            OnResetStage.AddListener(_wallsManager.RestoreWalls);
+        }
+        return;
 #endif
+        _normalModeSettings = GlobalSettings.SelectedStage.GameModeSettings as NormalModeSettings;
         if (_normalModeSettings.IsInCage)
         {
             _wallsManager.SetUp(_normalModeSettings);
@@ -70,6 +78,7 @@ public class NormalGameModeManager : GameModeManager
             OnStageCompleted?.Invoke();
         }
         _taskDescription.SetValue((_normalModeSettings.NumberOfEnemiesToDefeat - _killedEnemies).ToString());
+        _enemySpawner.ReturnEnemyToPool(enemy as NormalEnemy);
     }
 
     public override void RestartStage()
@@ -85,7 +94,7 @@ public class NormalGameModeManager : GameModeManager
 
     private void SpawnEnemy()
     {
-        Enemy en = _enemySpawner.SpawnEnemy();
+        NormalEnemy en = _enemySpawner.SpawnEnemy();
         en.OnDeath.AddListener(OnEnemyDeath);
         if(_normalModeSettings.AreEnemiesRandomized)
         {
