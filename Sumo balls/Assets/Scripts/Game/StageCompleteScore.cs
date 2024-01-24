@@ -29,6 +29,7 @@ public class StageCompleteScore : MonoBehaviour
     {
         get
         {
+            if (_score >= 3) return 2;
             return 2 - _score;
         }
     }
@@ -49,7 +50,7 @@ public class StageCompleteScore : MonoBehaviour
         _stars[_score].color = _completedColor;
         _starsDescription[_score].color = _completedColor;
         _score++;
-        if (_score > 2) _score = 2;
+        //if (_score > 2) _score = 2;
     }
 
     public void SetScore(int value)
@@ -79,7 +80,10 @@ public class StageCompleteScore : MonoBehaviour
     }
     public void SaveScore()
     {
+        if (_score < GlobalSettings.SelectedStage.Score) return;
+
         GlobalSettings.SelectedStage.SetScore(_score);
         SaveGameData.UpdateGameData(GlobalSettings.StateIndex, GlobalSettings.SelectedStage);
+
     }
 }

@@ -9,6 +9,7 @@ public class FirstBoss : Enemy
     [SerializeField] LayerMask _wallLayer;
     [SerializeField] GameObject _stunStars;
     [SerializeField] float _stunTime;
+    [SerializeField] GameObject _playerBody;
     private bool _isStunned;
     private Material _material;
     public UnityEvent OnStunned;
@@ -19,6 +20,7 @@ public class FirstBoss : Enemy
 #if UNITY_EDITOR
         if (_player == null) _player = GameObject.Find("Player body");
 #endif
+        _player = _playerBody;
     }
     // Start is called before the first frame update
     void Start()
@@ -108,6 +110,7 @@ public class FirstBoss : Enemy
     IEnumerator StunCor()
     {
         OnStunned?.Invoke();
+        _material.DisableKeyword("_EMISSION");
         Stop();
         _stunStars.SetActive(true);
         _isStunned = true;

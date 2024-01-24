@@ -15164,7 +15164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 1
-  _debugSettings: {fileID: 11400000, guid: a94b8374146f64e4fad7c21012f73fe4, type: 2}
+  _debugSettings: {fileID: 11400000, guid: e2e6d9b67fdc9ea4781fd1fc131996bd, type: 2}
   _stageCompleteScore: {fileID: 1745690528}
   _taskDescription: {fileID: 1647761051}
   _gameOverPause: {fileID: 1250121784}
