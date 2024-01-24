@@ -70,6 +70,10 @@ public class SurvivalGameModeManager : GameModeManager
     {
         enemy.OnDeath.RemoveListener(OnEnemyDeath);
         _killedEnemies++;
+        if(_killedEnemies==_survivalModeSettings.EnemiesToDefeatForStar[_stageCompleteScore.ScoreAsReversedIndex])
+        {
+            _stageCompleteScore.IncreaseScore();
+        }
     }
     private void SpawnEnemy()
     {
@@ -88,6 +92,7 @@ public class SurvivalGameModeManager : GameModeManager
         _spawnedWaves = 1;
         _killedEnemies = 0;
         _isCompleted = false;
+        _stageCompleteScore.SetScore(0);
         OnResetStage?.Invoke();
     }
 

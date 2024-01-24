@@ -19,7 +19,7 @@ MonoBehaviour:
   _numberOfEnemiesToDefeat: 6
   _powerUpSpawnrateInSeconds: 10
   _timeRequiredForStar:
-  - 35
+  - 50
+  - 40
   - 25
-  - 15
   _wallsRequiredForStar: 000000000000000000000000

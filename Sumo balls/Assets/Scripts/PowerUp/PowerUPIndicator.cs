@@ -14,6 +14,6 @@ public class PowerUPIndicator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.localPosition = new Vector3(_player.localPosition.x, 0, _player.localPosition.z);
+        transform.localPosition = new Vector3(_player.localPosition.x, _player.localPosition.y - 0.487f, _player.localPosition.z);
     }
 }

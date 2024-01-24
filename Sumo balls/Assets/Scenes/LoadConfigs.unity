@@ -272,7 +272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stageList: {fileID: 11400000, guid: c96c023c1c6242a40919296d29187161, type: 2}
-  _overrideSave: 1
+  _overrideSave: 0
 --- !u!1 &1630316689
 GameObject:
   m_ObjectHideFlags: 0

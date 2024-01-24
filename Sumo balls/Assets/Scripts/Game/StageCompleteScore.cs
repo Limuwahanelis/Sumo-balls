@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class StageCompleteScore : MonoBehaviour
 {
-
+    [SerializeField] bool _invertDescriptions;
     /// <summary>
     /// Current score in range from 0 to 3
     /// </summary>
@@ -23,14 +23,13 @@ public class StageCompleteScore : MonoBehaviour
         }
     }
     /// <summary>
-    /// Score as index where score = 0 or 1 means 2 index 
+    /// Score as index where score = 0 means 2 index 
     /// </summary>
     public int ScoreAsReversedIndex
     {
         get
         {
-            if (_score == 0) return 2;
-            return 3-_score;
+            return 2 - _score;
         }
     }
     [SerializeField] Color _completedColor;
@@ -47,9 +46,10 @@ public class StageCompleteScore : MonoBehaviour
     }
     public void IncreaseScore()
     {
-        _score++;
         _stars[_score].color = _completedColor;
         _starsDescription[_score].color = _completedColor;
+        _score++;
+        if (_score > 2) _score = 2;
     }
 
     public void SetScore(int value)
@@ -74,7 +74,7 @@ public class StageCompleteScore : MonoBehaviour
     {
         for(int i=0;i<3;i++)
         {
-            _starsDescription[i].text = descriptions[i];
+            _starsDescription[i].text = descriptions[_invertDescriptions? 2 - i :i];
         }
     }
     public void SaveScore()

@@ -11,6 +11,8 @@ public class SurvivalModeSettings : GameModeSettings
     public float NumbeOfEnemiesToSpawn => _numberOfEnemiesToSpawn;
     public float TimeToSpawnPowerUp => _timeToSpawnPowerUP;
 
+    public List<int> EnemiesToDefeatForStar=>_enemiesToDefeatForStar;
+
     [SerializeField] float _timeToSurvive;
     [SerializeField] int _startingNumberOfEnemies;
     [SerializeField] float _secondsToSpawnEnemies;
