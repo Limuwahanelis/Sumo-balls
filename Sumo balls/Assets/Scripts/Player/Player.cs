@@ -54,6 +54,7 @@ public class Player : MonoBehaviour
         _hasBroadcastedDeath = false;
         _playerRB.transform.localScale = _startingScale;
         _playerRB.GetComponent<Collider>().enabled = true;
+        sq = false;
     }
     public void ResetRigidbody()
     {
