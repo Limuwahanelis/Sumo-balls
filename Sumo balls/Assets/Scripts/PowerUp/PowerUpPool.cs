@@ -28,7 +28,7 @@ public class PowerUpPool : MonoBehaviour
     }
     public void OnTakePowerUpFromPool(PowerUp powerUp)
     {
-        //powerUp.gameObject.SetActive(true);
+        powerUp.gameObject.SetActive(true);
     }
     public void OnReturnPowerUpToPool(PowerUp powerUp)
     {

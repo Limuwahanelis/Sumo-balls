@@ -44,6 +44,7 @@ public class FirstBossModeManager : GameModeManager
             _timer.SetValue(ConvertTime(_time));
             _time += Time.deltaTime;
         }
+        if (_timeLimitIndex >= 3) return;
         if (_time> _timeLimits[_timeLimitIndex])
         {
             _stageCompleteScore.ReduceScore();

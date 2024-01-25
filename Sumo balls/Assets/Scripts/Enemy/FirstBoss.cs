@@ -50,11 +50,6 @@ public class FirstBoss : Enemy
             _push = false;
         }
         if (transform.position.y < -0.5f) OnKilled?.Invoke();
-        Player player = _player.GetComponentInParent<Player>();
-        if (player != null)
-        {
-            Vector3 _playerDirection = (_player.transform.position - transform.position).normalized;
-        }
     }
     public void SetPlayer(GameObject player) => _player = player;
     public void Push(Vector3 force)
@@ -72,7 +67,8 @@ public class FirstBoss : Enemy
             Debug.Log(_rb.velocity.magnitude);
             if (_push)
             {
-                collision.rigidbody.isKinematic = false;
+                _push = false;
+                collision.rigidbody.gameObject.GetComponent<Wall>().EnableGravity();
                 collision.rigidbody.AddForceAtPosition(collision.relativeVelocity * -6000f, collision.GetContact(0).point, ForceMode.Force);
                 StartCoroutine(StunCor());
             }
@@ -83,7 +79,6 @@ public class FirstBoss : Enemy
         {
             Vector3 _playerDirection = (_player.transform.position - transform.position).normalized;
             _playerDirection.y = 0;
-            // Debug.Log(Vector3.Dot(_rb.velocity, _playerDirection));
             if (Vector3.Dot(_rb.velocity,_playerDirection)>=0.5)
             {
                 player.Squish();
@@ -97,12 +92,16 @@ public class FirstBoss : Enemy
         {
             Vector3 _playerDirection = (_player.transform.position - transform.position).normalized;
             _playerDirection.y = 0;
-            // Debug.Log(Vector3.Dot(_rb.velocity, _playerDirection));
             if (Vector3.Dot(_rb.velocity, _playerDirection) >= 0.5)
             {
                 player.Squish();
             }
         }
+    }
+    public void ResetBoss()
+    {
+        Stop();
+        _material.DisableKeyword("_EMISSION");
     }
     public void Stop()
     {

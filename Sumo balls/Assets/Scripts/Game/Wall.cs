@@ -11,6 +11,17 @@ public class Wall : MonoBehaviour
     private Vector3 _originalPos;
     private Quaternion _originalRot;
     private bool _isCollapsed = false;
+    private RigidbodySettings _rbOriginalSettings;
+   struct RigidbodySettings
+    {
+        public bool useGravity;
+        public bool isKinematic;
+        public void Apply(Rigidbody rb)
+        {
+            rb.useGravity = useGravity;
+            rb.isKinematic = isKinematic;
+        }
+    }
     public void SetUp()
     {
         _originalPos = transform.position;
@@ -20,6 +31,11 @@ public class Wall : MonoBehaviour
     private void Awake()
     {
         if(_rb==null)_rb = GetComponent<Rigidbody>();
+        _rbOriginalSettings = new RigidbodySettings()
+        {
+            useGravity = _rb.useGravity,
+            isKinematic = _rb.isKinematic
+        };
     }
 
     // Update is called once per frame
@@ -44,6 +60,8 @@ public class Wall : MonoBehaviour
 
     public void Restore()
     {
+        _rb.isKinematic = _rbOriginalSettings.isKinematic;
+        _rb.useGravity = _rbOriginalSettings.useGravity;
         _rb.velocity = Vector3.zero;
         _rb.angularVelocity = Vector3.zero;
         _isCollapsed = false;
@@ -52,4 +70,9 @@ public class Wall : MonoBehaviour
         gameObject.SetActive(true);
     }
 
+    public void EnableGravity()
+    {
+        _rb.isKinematic = false;
+        _rb.useGravity = true;
+    }
 }
