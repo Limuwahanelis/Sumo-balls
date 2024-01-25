@@ -82,8 +82,9 @@ public class FirstBoss : Enemy
         if (player!=null)
         {
             Vector3 _playerDirection = (_player.transform.position - transform.position).normalized;
-           // Debug.Log(Vector3.Dot(_rb.velocity, _playerDirection));
-            if(Vector3.Dot(_rb.velocity,_playerDirection)>=0.5)
+            _playerDirection.y = 0;
+            // Debug.Log(Vector3.Dot(_rb.velocity, _playerDirection));
+            if (Vector3.Dot(_rb.velocity,_playerDirection)>=0.5)
             {
                 player.Squish();
             }
@@ -95,6 +96,7 @@ public class FirstBoss : Enemy
         if (player != null)
         {
             Vector3 _playerDirection = (_player.transform.position - transform.position).normalized;
+            _playerDirection.y = 0;
             // Debug.Log(Vector3.Dot(_rb.velocity, _playerDirection));
             if (Vector3.Dot(_rb.velocity, _playerDirection) >= 0.5)
             {
