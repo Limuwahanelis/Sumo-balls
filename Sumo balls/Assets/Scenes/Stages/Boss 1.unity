@@ -4270,7 +4270,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 9148408738542525719}
         m_TargetAssemblyTypeName: FirstBoss, Assembly-CSharp
-        m_MethodName: Stop
+        m_MethodName: ResetBoss
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
