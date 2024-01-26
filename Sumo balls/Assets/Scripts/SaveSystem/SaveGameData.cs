@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 namespace SaveSystem
 {
@@ -10,6 +11,11 @@ namespace SaveSystem
         public static string gameSaveFilePath = gameSaveFolderPath + @"\data.json";
         public static GameData GameData=>_gameData;
         private static GameData _gameData;
+        public static void UpdateTutorial(bool value)
+        {
+            GameData.isTutorialCompleted = value;
+            Save();
+        }
         public static void UpdateGameData(int stageIndex, Stage stage)
         {
             GameData.stagesData[stageIndex].completed = stage.IsCompleted;

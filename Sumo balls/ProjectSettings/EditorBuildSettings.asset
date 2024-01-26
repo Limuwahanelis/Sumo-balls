@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Stages/Survival mode.unity
     guid: 44a36bfb5310a894380406505982dc2d
+  - enabled: 1
+    path: Assets/Scenes/Stages/Tutorial.unity
+    guid: 5f46cfd25f61abd4680b4ced4ba2440f
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 706c327265f0de3438b0cb9c93f7b023,
       type: 2}

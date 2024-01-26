@@ -37,8 +37,8 @@ public class Player : MonoBehaviour
         if (_hasPowerUp) _powerUpIndicator.transform.position = _playerRB.position + new Vector3(0, -0.6f, 0);
         if (_playerRB.transform.localPosition.y < -0.5f && !_hasBroadcastedDeath)
         {
-            OnPlayerDeath?.Invoke();
             _hasBroadcastedDeath = true;
+            OnPlayerDeath?.Invoke();
         }
     }
     public void ResetPlayer()
@@ -58,8 +58,7 @@ public class Player : MonoBehaviour
     }
     public void ResetRigidbody()
     {
-        _playerRB.velocity = Vector3.zero;
-        _playerRB.angularVelocity = Vector3.zero;
+        StopPlayer();
         _playerRB.transform.localPosition = Vector3.zero;
         _playerRB.useGravity = true;
         _playerRB.isKinematic = false;
@@ -67,6 +66,11 @@ public class Player : MonoBehaviour
     public void PushBall(float direction)
     {
         _playerRB.AddForce(_pivot.transform.forward*_force*direction);
+    }
+    public void StopPlayer()
+    {
+        _playerRB.velocity = Vector3.zero;
+        _playerRB.angularVelocity = Vector3.zero;
     }
     public void Collision(Collision collision)
     {
@@ -124,8 +128,7 @@ public class Player : MonoBehaviour
         _playerRB.useGravity = false;
         _playerRB.isKinematic = true;
         _playerRB.GetComponent<Collider>().enabled = false;
-        _playerRB.velocity = Vector3.zero;
-        _playerRB.angularVelocity = Vector3.zero;
+        StopPlayer();
         _playerRB.transform.rotation = Quaternion.identity;
         for(float time=0;time<0.40f;time+=Time.deltaTime)
         {

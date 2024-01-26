@@ -103,6 +103,7 @@ public class SliderActionModifyEvent : Slider
     }
     private void ModifySingle(InputAction.CallbackContext callback)
     {
+        if(_isModifyingValue) return;
         switch (GetUpdateDirection(callback.ReadValue<Vector2>()))
         {
             case MoveDirection.Left:

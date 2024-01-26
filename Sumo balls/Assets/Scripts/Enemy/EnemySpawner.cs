@@ -42,7 +42,7 @@ public class EnemySpawner : MonoBehaviour
             if (leftXrange >= -_spawnRange && rightXrange <= _spawnRange) // inside spawn from both sides
             {
 
-                if (spawnZ >= downZrang && spawnZ <= upZrange) // z spawn is inside _player so x must be outside
+                if (spawnZ >= downZrang && spawnZ <= upZrange) // z spawn is inside _playerBody so x must be outside
                 {
                     int a = Random.Range(0, 2); // select which side
                     if (a == 1) //left

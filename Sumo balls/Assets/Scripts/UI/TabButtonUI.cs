@@ -33,7 +33,7 @@ public class TabButtonUI : Selectable//,ISubmitHandler
         DoStateTransition(SelectionState.Highlighted, false);
         _isPointerInside = true;
     }
-
+   
     public override void OnPointerExit(PointerEventData eventData)
     {
         if (_isSelected) return;
