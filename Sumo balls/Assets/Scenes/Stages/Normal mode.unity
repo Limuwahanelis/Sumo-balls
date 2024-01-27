@@ -1122,7 +1122,7 @@ GameObject:
   - component: {fileID: 785768900}
   - component: {fileID: 785768899}
   - component: {fileID: 785768898}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Arena
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15299,7 +15299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71cd1372fd0c5d44ea579774841deeb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 1
+  debug: 0
   _debugSettings: {fileID: 11400000, guid: cf7e826eae061724d8e14580458b1e92, type: 2}
   _stageCompleteScore: {fileID: 41452997}
   _taskDescription: {fileID: 1343397134}

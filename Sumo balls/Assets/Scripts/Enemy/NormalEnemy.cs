@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Pool;
@@ -5,13 +6,22 @@ using UnityEngine.Pool;
 public class NormalEnemy : Enemy
 {
 
-
+    [SerializeField] ColorList _colors;
+    [SerializeField] LayerMask _arenaLayer;
     private IObjectPool<NormalEnemy> _pool;
+    private Renderer _renderer;
+    private MaterialPropertyBlock _materialPropertyBlock;
+    int _hits = 0;
+    private void Awake()
+    {
+        if (_renderer == null) _renderer = GetComponent<MeshRenderer>();
+    }
     // Start is called before the first frame update
     void Start()
     {
+        _materialPropertyBlock=new MaterialPropertyBlock();
 #if UNITY_EDITOR
-        if(_player==null) _player = GameObject.Find("Player body");
+        if (_player==null) _player = GameObject.Find("Player body");
 
 #endif
     }
@@ -26,6 +36,12 @@ public class NormalEnemy : Enemy
             OnDeath?.Invoke(this);
             _pool.Release(this);
         }
+    }
+    public void ResetEnemy()
+    {
+        _hits = 0;
+        _materialPropertyBlock.SetColor("_BaseColor", _colors.colorList[_hits]);
+        _renderer.SetPropertyBlock(_materialPropertyBlock);
     }
     public void SetPlayer(GameObject player)=>_player = player;
     public void Push(Vector3 force)
@@ -43,5 +59,27 @@ public class NormalEnemy : Enemy
     public void RandomizePushForce(float min, float max)
     {
         _force = Random.Range(min,max);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+
+        if (!(_arenaLayer == (_arenaLayer | (1 << collision.collider.gameObject.layer))))
+        {
+            Vector3 _direction = (collision.gameObject.transform.position - transform.position).normalized;
+            _rb.AddForce( _hits * 0.2f * (Vector3.Dot(_direction, collision.impulse.normalized)>0?-collision.impulse:collision.impulse), ForceMode.Impulse);
+        }
+        if (collision.gameObject.GetComponentInParent<Player>()) 
+        {
+            _hits++;
+            if (_hits > 3) _hits = 3;
+            
+            _materialPropertyBlock.SetColor("_BaseColor", _colors.colorList[_hits]);
+            _renderer.SetPropertyBlock(_materialPropertyBlock);
+        } 
+    }
+    private void OnValidate()
+    {
+        if (_renderer == null) _renderer = GetComponent<MeshRenderer>();
     }
 }

@@ -151,3 +151,7 @@ MonoBehaviour:
       m_Calls: []
   _rb: {fileID: 15174940197635950}
   _force: 400
+  _colors: {fileID: 11400000, guid: 8f9aa6cb9920a144ca37f853706a7a88, type: 2}
+  _arenaLayer:
+    serializedVersion: 2
+    m_Bits: 8192

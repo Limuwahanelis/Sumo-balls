@@ -44,7 +44,6 @@ public class NormalGameModeManager : GameModeManager
         if (_killedEnemies >= _normalModeSettings.NumberOfEnemiesToDefeat) return;
         if(!_normalModeSettings.IsInCage && _score >= 0&& _currentTime >= _normalModeSettings.TimeRequiredForStar[_score] )
         {
-            Debug.Log("reduc");
             _score--;
             _stageCompleteScore.ReduceScore();
         }

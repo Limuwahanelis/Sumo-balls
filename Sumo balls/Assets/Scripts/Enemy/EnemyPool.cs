@@ -35,5 +35,6 @@ public class EnemyPool : MonoBehaviour
         enemy.gameObject.SetActive(false);
         enemy.GetComponent<Rigidbody>().velocity = Vector3.zero;
         enemy.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+        enemy.ResetEnemy();
     }
 }
