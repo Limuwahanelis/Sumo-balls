@@ -49,7 +49,11 @@ public class FirstBoss : Enemy
             _material.DisableKeyword("_EMISSION");
             _push = false;
         }
-        if (transform.position.y < -0.5f) OnKilled?.Invoke();
+        if (transform.position.y < -0.5f)
+        {
+            OnKilled?.Invoke();
+            enabled = false;
+        }
     }
     public void SetPlayer(GameObject player) => _player = player;
     public void Push(Vector3 force)
@@ -101,6 +105,7 @@ public class FirstBoss : Enemy
     public void ResetBoss()
     {
         Stop();
+        enabled = true;
         _material.DisableKeyword("_EMISSION");
     }
     public void Stop()

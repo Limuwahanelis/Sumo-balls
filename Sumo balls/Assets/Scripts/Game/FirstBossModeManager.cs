@@ -90,6 +90,7 @@ public class FirstBossModeManager : GameModeManager
     }
     public void FailStage()
     {
+        Debug.Log("FAILED");
         OnStageFailed?.Invoke();
     }
 }
