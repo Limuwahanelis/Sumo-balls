@@ -11,12 +11,14 @@ public class SetUpGameSettings : MonoBehaviour
     {
         if (SaveGameSettings.GetGameSettings() == null)
         {
+            Debug.Log("game configs not found");
             GameSettingsData newData = new GameSettingsData();
             SaveGameSettings.SaveSettings(newData);
             _fastLoad.value = newData.fastLoad;
         }
         else
         {
+            Debug.Log("got confs");
             GameSettingsData configs = SaveGameSettings.GetGameSettings();
             _fastLoad.value = configs.fastLoad;
         }

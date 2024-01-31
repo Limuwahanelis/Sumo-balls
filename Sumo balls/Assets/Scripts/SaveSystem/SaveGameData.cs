@@ -9,7 +9,9 @@ namespace SaveSystem
     {
         public static string gameSaveFolderPath = Application.dataPath + @"\save";
         public static string gameSaveFilePath = gameSaveFolderPath + @"\data.json";
-        public static GameData GameData=>_gameData;
+
+
+        public static GameData GameData =>_gameData;
         private static GameData _gameData;
         public static void UpdateTutorial(bool value)
         {
@@ -22,6 +24,17 @@ namespace SaveSystem
             GameData.stagesData[stageIndex].score = stage.Score;
             Save();
         }
+        public static void UpdateCustomizationData(string itemId,bool isUnlocked)
+        {
+            UnlockableItemData itemData = _gameData.customizationData.unlockableItemsData.Find(x => x.itemId == itemId);
+            if (itemData == null)
+            {
+                Debug.LogError($"No item with id{itemId}");
+                return;
+            }
+
+            itemData.isUnlocked = isUnlocked;
+        }
         public static void Save()
         {
             string json = JsonUtility.ToJson(_gameData);
@@ -32,14 +45,14 @@ namespace SaveSystem
             }
             File.WriteAllText(gameSaveFilePath, json);
         }
-        public static void CreateGameData(List<Stage> stages)
+        public static void CreateGameData(List<Stage> stages,List<UnlockableItem> unlockableColors)
         {
             List<StageData> stagesData = new List<StageData>();
             foreach(Stage stage in stages)
             {
                 stagesData.Add(new StageData(stage.IsCompleted, stage.Score));
             }
-            GameData saveData = new GameData(stagesData);
+            GameData saveData = new GameData(stagesData, unlockableColors);
             string json = JsonUtility.ToJson(saveData);
 
             if (!Directory.Exists(gameSaveFolderPath))

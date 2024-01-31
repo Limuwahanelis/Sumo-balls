@@ -273,3 +273,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stageList: {fileID: 11400000, guid: c96c023c1c6242a40919296d29187161, type: 2}
   _overrideSave: 0
+  _points:
+    useConstant: 0
+    constantValue: 0
+    variable: {fileID: 11400000, guid: aab551a5842d20d4fb7d3657c0a21f06, type: 2}
+  _playerMat: {fileID: 2100000, guid: ab095eff36aa84d40adc50dc69b775d7, type: 2}
+  _unlockableColors:
+  - {fileID: 11400000, guid: 246cd05c7f5af8f44b6211dc162cbb62, type: 2}
+  - {fileID: 11400000, guid: c3871bc9992949044851e49b6c484a7a, type: 2}
+  - {fileID: 11400000, guid: 74ae34f126c63b241a6c5937ebcd5e28, type: 2}
+  - {fileID: 11400000, guid: fbdead1c19b9d2d4f9a40ef491ad351f, type: 2}
+  - {fileID: 11400000, guid: 9b57d010ca9fef145a7d3ae801d66fc7, type: 2}
+  - {fileID: 11400000, guid: 33190f9611f8f9e498df5d9dbcfb5a1a, type: 2}
+  - {fileID: 11400000, guid: dd40512a29bfcec47ba30e64746f8535, type: 2}
+  - {fileID: 11400000, guid: 1aede49f7f789b044a1e88a4f4c03a98, type: 2}
+  - {fileID: 11400000, guid: 8e76ce29fda255b4294d251d2b50848a, type: 2}

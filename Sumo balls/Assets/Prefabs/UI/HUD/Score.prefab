@@ -119,6 +119,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 466255108ada43f439d94d2e133642fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _points:
+    useConstant: 0
+    constantValue: 0
+    variable: {fileID: 11400000, guid: aab551a5842d20d4fb7d3657c0a21f06, type: 2}
+  _invertDescriptions: 0
   _completedColor: {r: 1, g: 1, b: 1, a: 1}
   _failedColor: {r: 0.7169812, g: 0.7169812, b: 0.7169812, a: 1}
   _stars:

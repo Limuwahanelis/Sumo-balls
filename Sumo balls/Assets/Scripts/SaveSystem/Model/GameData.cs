@@ -8,9 +8,11 @@ namespace SaveSystem
     {
         public List<StageData> stagesData;
         public bool isTutorialCompleted;
-        public GameData(List<StageData> stagesData)
+        public CustomizationData customizationData;
+        public GameData(List<StageData> stagesData,List<UnlockableItem> unlockableColors)
         {
             this.stagesData = stagesData;
+            customizationData = new CustomizationData(unlockableColors);
         }
     }
 }
