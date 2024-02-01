@@ -8,6 +8,8 @@ public class NormalEnemy : Enemy
 
     [SerializeField] ColorList _colors;
     [SerializeField] LayerMask _arenaLayer;
+    [SerializeField] AudioPool _audioPool;
+    [SerializeField] SingleClipAudioEvent _clashAudioEvent;
     private IObjectPool<NormalEnemy> _pool;
     private Renderer _renderer;
     private MaterialPropertyBlock _materialPropertyBlock;
@@ -50,6 +52,7 @@ public class NormalEnemy : Enemy
         _rb.angularVelocity = Vector3.zero;
         _rb.AddForce(force, ForceMode.Impulse);
     }
+    public void SetAudioPool(AudioPool pool) => _audioPool = pool;
     public void SetPool(IObjectPool<NormalEnemy> pool) => _pool = pool;
 
     public void RandomizeAngularDrag(float min,float max)
@@ -71,6 +74,10 @@ public class NormalEnemy : Enemy
         }
         if (collision.gameObject.GetComponentInParent<Player>()) 
         {
+            AudioSourceObject audioObject= _audioPool.GetAudioSourceObject();
+            audioObject.AudioSource.pitch= Random.Range(0.85f, 1.1f);
+            _clashAudioEvent.Play(audioObject.AudioSource);
+            audioObject.ReturnToPool(0.5f);
             _hits++;
             if (_hits > 3) _hits = 3;
             

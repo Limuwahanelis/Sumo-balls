@@ -155,3 +155,5 @@ MonoBehaviour:
   _arenaLayer:
     serializedVersion: 2
     m_Bits: 8192
+  _audioPool: {fileID: 0}
+  _clashAudioEvent: {fileID: 11400000, guid: f0ddcc3f80317994da97acd4db9845f1, type: 2}

@@ -7,7 +7,7 @@ namespace SaveSystem
 {
     public static class SaveScreenSettings
     {
-        public static string screenConfigsFolderPath = Application.dataPath + @"\screenConfigs";
+        public static string screenConfigsFolderPath = SaveGameSettings.gameConfigsFolderPath;
         public static string screenConfigsFilePath = screenConfigsFolderPath + @"\screenConfigs.json";
         public static void SaveScreenConfigs(ScreenSettings.MyResolution resolution, bool fullScreen)
         {

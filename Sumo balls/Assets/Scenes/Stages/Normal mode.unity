@@ -921,6 +921,52 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!1 &524327485
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 524327486}
+  - component: {fileID: 524327487}
+  m_Layer: 0
+  m_Name: Audio pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &524327486
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524327485}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1181739654}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &524327487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524327485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9966aa857f156794386e0e13c1947df8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioSourceGameobjectPrefab: {fileID: 6975856378088486134, guid: ff0c26ca573de73479b7354d01beb772,
+    type: 3}
 --- !u!1 &593811752
 GameObject:
   m_ObjectHideFlags: 0
@@ -2396,6 +2442,7 @@ MonoBehaviour:
   _arenaYpos: 0.59
   _playerSafeSpace: 2
   _enemyPool: {fileID: 1224980799}
+  _audioPool: {fileID: 524327487}
   _playerPos: {fileID: 832220170}
 --- !u!4 &996891607
 Transform:
@@ -2775,6 +2822,7 @@ Transform:
   m_Children:
   - {fileID: 1224980800}
   - {fileID: 634527633}
+  - {fileID: 524327486}
   m_Father: {fileID: 1205182784}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15299,8 +15347,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71cd1372fd0c5d44ea579774841deeb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 0
-  _debugSettings: {fileID: 11400000, guid: cf7e826eae061724d8e14580458b1e92, type: 2}
+  debug: 1
+  _debugSettings: {fileID: 11400000, guid: 2157826fcc4b5de4eaf6b2dde38baa57, type: 2}
   _stageCompleteScore: {fileID: 41452997}
   _taskDescription: {fileID: 1343397134}
   _gameOverPause: {fileID: 1250121784}

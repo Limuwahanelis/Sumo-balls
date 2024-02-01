@@ -12,6 +12,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] float _arenaYpos;
     [SerializeField] float _playerSafeSpace = 2f;
     [SerializeField] EnemyPool _enemyPool;
+    [SerializeField] AudioPool _audioPool;
     [SerializeField] Transform _playerPos;
     private List<NormalEnemy> _allEnemies = new List<NormalEnemy>();
     public NormalEnemy SpawnEnemy()
@@ -21,6 +22,7 @@ public class EnemySpawner : MonoBehaviour
         enemy.transform.position = SelectSpawnPos(enemy.transform.localScale.y);
         enemy.GetComponent<Rigidbody>().velocity = Vector3.zero;
         enemy.SetPlayer(_playerPos.gameObject);
+        enemy.SetAudioPool(_audioPool);
         enemy.gameObject.SetActive(true);
         return enemy;
     }
