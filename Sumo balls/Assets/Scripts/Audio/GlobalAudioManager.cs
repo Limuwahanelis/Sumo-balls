@@ -9,9 +9,13 @@ public class GlobalAudioManager : MonoBehaviour
 {
     public static readonly string MIXER_MASTER = "Master volume";
     public static readonly string MIXER_SFX = "Sfx volume";
-
     public float MasterVolume => _masterVolumeSlider.value;
     public float SfxVolume => _sfxVolumeSlider.value;
+
+    public enum MusicChannel
+    {
+        SFX
+    }
 
     [SerializeField] AudioMixer _mixer;
     [SerializeField] Slider _masterVolumeSlider;
@@ -38,6 +42,7 @@ public class GlobalAudioManager : MonoBehaviour
     {
         float remappedValue= math.remap(0, 100, 0.01f, 100, value);
         _mixer.SetFloat(MIXER_MASTER, Mathf.Log10(remappedValue / 100) * 20);
+        
     }
 
 

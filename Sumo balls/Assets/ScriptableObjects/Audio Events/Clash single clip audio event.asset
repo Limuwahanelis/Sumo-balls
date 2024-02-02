@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 944e13fc490b4e34ca5dbbd9f1b812ab, type: 3}
+  m_Name: Clash single clip audio event
+  m_EditorClassIdentifier: 
+  volume: 1
+  pitch: 1.045
+  audioClip: {fileID: 8300000, guid: cd8b71b891a92ea4e9d69263d9296e99, type: 3}
+  _musicMasterChannel:
+    useConstant: 0
+    constantValue: 
+    variable: {fileID: 11400000, guid: 6345283ff4f1d574e802959110c1a9e8, type: 2}
+  _musicChannel:
+    useConstant: 0
+    constantValue: 
+    variable: {fileID: 11400000, guid: a3cfa76e01f48014ebc845ba6e9141fc, type: 2}
+  _audioMixer: {fileID: 24100000, guid: 9a9d40a8e6b056e489d5e4244585d064, type: 2}

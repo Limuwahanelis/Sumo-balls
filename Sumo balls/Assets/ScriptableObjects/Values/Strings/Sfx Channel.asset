@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 944e13fc490b4e34ca5dbbd9f1b812ab, type: 3}
-  m_Name: New Single Clip Audio Event
+  m_Script: {fileID: 11500000, guid: 3c49c96ee28ea2d49926e9bc7cfc5ce2, type: 3}
+  m_Name: Sfx Channel
   m_EditorClassIdentifier: 
-  volume: 1
-  pitch: 1.045
-  audioClip: {fileID: 8300000, guid: cd8b71b891a92ea4e9d69263d9296e99, type: 3}
+  value: Sfx volume
