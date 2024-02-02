@@ -11,7 +11,7 @@ public class ColorSelection : MonoBehaviour
     private ColorSelectionButton _currentlySelectedColorButton;
     private void OnEnable()
     {
-        _currentlySelectedColorButton = _colorButtons.Find(x => x.GetComponent<Unlockable>().UnlockableItem.Id == SaveGameData.GameData.customizationData.usedColorUnlockId);
+        _currentlySelectedColorButton = _colorButtons.Find(x => x.GetComponent<Unlockable>().UnlockableItem.Id == GameDataManager.GameData.customizationData.usedColorUnlockId);
         _currentlySelectedColorButton.SetSelectionTick(true);
         for (int i = 0; i < _colorButtons.Count; i++)
         {
@@ -38,9 +38,9 @@ public class ColorSelection : MonoBehaviour
         _currentlySelectedColorButton.SetSelectionTick(false);
         _playerMat.color = color;
         _currentlySelectedColorButton = _colorButtons.Find(x => (x as IColorPickable) == caller);
-        SaveGameData.GameData.customizationData.usedColorUnlockId = _currentlySelectedColorButton.GetComponent<Unlockable>().UnlockableItem.Id;
-        SaveGameData.GameData.customizationData.playerColor = color;
-        SaveGameData.Save();
+        GameDataManager.GameData.customizationData.usedColorUnlockId = _currentlySelectedColorButton.GetComponent<Unlockable>().UnlockableItem.Id;
+        GameDataManager.GameData.customizationData.playerColor = color;
+        GameDataManager.Save();
         _colorButtons.Find(x => (x as IColorPickable) == caller).SetSelectionTick(true);
 
     }

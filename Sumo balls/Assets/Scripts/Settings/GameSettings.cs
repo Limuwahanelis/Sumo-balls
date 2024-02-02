@@ -9,7 +9,7 @@ public class GameSettings : MonoBehaviour
     [SerializeField] Toggle _fastLoadToggle;
     private void OnEnable()
     {
-        GameSettingsData configs = SaveGameSettings.GetGameSettings();
+        GameSettingsData configs = GameSettingsSaver.Load();
         _fastLoadToggle.isOn = configs.fastLoad;
     }
 }

@@ -63,7 +63,7 @@ public class ScreenSettings : MonoBehaviour
     }
     void OnEnable()
     {
-        ScreenSettingsData configs = SaveScreenSettings.GetScreenSettings();
+        ScreenSettingsData configs = ScreenSettingsSaver.LoadScreenSettings();
         _currentResIndex = 0;
         allResolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();

@@ -9,17 +9,17 @@ public class SetUpGameSettings : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        if (SaveGameSettings.GetGameSettings() == null)
+        if (GameSettingsSaver.Load()== null)
         {
             Debug.Log("game configs not found");
             GameSettingsData newData = new GameSettingsData();
-            SaveGameSettings.SaveSettings(newData);
+            GameSettingsSaver.Save(newData);
             _fastLoad.value = newData.fastLoad;
         }
         else
         {
             Debug.Log("got confs");
-            GameSettingsData configs = SaveGameSettings.GetGameSettings();
+            GameSettingsData configs = GameSettingsSaver.Load();
             _fastLoad.value = configs.fastLoad;
         }
     }

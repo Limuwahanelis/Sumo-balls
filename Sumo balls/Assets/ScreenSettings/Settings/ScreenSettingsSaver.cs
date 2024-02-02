@@ -1,13 +1,25 @@
+using SaveSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ScreenSettingsSaver : MonoBehaviour
 {
+    public static readonly string screenSettingsFileName = "screenConfigs";
     [SerializeField] ScreenSettings _screenSettings;
 
     public void SaveScreenSettings()
     {
-        SaveSystem.SaveScreenSettings.SaveScreenConfigs(_screenSettings.selectedResolution, _screenSettings.fullScreen);
+        ScreenSettingsData screenData = new ScreenSettingsData(_screenSettings.selectedResolution, _screenSettings.fullScreen);
+        JsonSave.SaveToFile(screenData, screenSettingsFileName);
+        //SaveSystem.SaveScreenSettings.SaveScreenConfigs(_screenSettings.selectedResolution, _screenSettings.fullScreen);
+    }
+    public static ScreenSettingsData LoadScreenSettings()
+    {
+        return JsonSave.GetDataFromJson<ScreenSettingsData>(screenSettingsFileName);
+    }
+    public static void SaveScreenSettings(ScreenSettingsData screenData)
+    {
+        JsonSave.SaveToFile(screenData, screenSettingsFileName);
     }
 }

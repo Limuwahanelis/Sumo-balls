@@ -5,7 +5,7 @@ using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 namespace SaveSystem
 {
-    public static class SaveGameData 
+    public static class GameDataManager 
     {
         public static string gameSaveFolderPath = Application.dataPath + @"\save";
         public static string gameSaveFilePath = gameSaveFolderPath + @"\data.json";

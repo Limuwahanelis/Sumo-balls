@@ -85,7 +85,7 @@ public class StageCompleteScore : MonoBehaviour
 
         _points.value += _score;
         GlobalSettings.SelectedStage.SetScore(_score);
-        SaveGameData.UpdateGameData(GlobalSettings.StateIndex, GlobalSettings.SelectedStage);
+        GameDataManager.UpdateGameData(GlobalSettings.StateIndex, GlobalSettings.SelectedStage);
 
     }
 }

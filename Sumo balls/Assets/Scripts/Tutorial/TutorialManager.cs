@@ -61,6 +61,6 @@ public class TutorialManager : MonoBehaviour
     }
     public void CompleteTutorial()
     {
-        SaveGameData.UpdateTutorial(true);
+        GameDataManager.UpdateTutorial(true);
     }
 }

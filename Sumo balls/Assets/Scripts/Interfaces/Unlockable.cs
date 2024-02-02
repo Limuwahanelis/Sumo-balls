@@ -26,7 +26,7 @@ public class Unlockable:MonoBehaviour
         {
             _points.value -= _unlock.Cost;
             _unlock.Unlock();
-            SaveGameData.UpdateCustomizationData(_unlock.Id, true);
+            GameDataManager.UpdateCustomizationData(_unlock.Id, true);
             OnUnlockedEvent?.Invoke();
             return true;
         }

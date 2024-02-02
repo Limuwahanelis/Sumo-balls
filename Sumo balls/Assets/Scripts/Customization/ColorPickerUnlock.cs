@@ -32,8 +32,8 @@ public class ColorPickerUnlock : MonoBehaviour
                 item.OnUnlockedEvent.AddListener(CheckIfAllColorsAreUnlocked);
             }
         }
-        ColorPicker.Create(SaveGameData.GameData.customizationData.colorPickerColor, "",SetColorImage,null,false);
-        SetColorImage(SaveGameData.GameData.customizationData.colorPickerColor);
+        ColorPicker.Create(GameDataManager.GameData.customizationData.colorPickerColor, "",SetColorImage,null,false);
+        SetColorImage(GameDataManager.GameData.customizationData.colorPickerColor);
     }
     private void CheckIfAllColorsAreUnlocked()
     {
@@ -51,8 +51,8 @@ public class ColorPickerUnlock : MonoBehaviour
     }
     private void SetColorImage(Color color)
     {
-        SaveGameData.GameData.customizationData.colorPickerColor=color;
-        SaveGameData.Save();
+        GameDataManager.GameData.customizationData.colorPickerColor=color;
+        GameDataManager.Save();
         _image.color = color;
         _pickerButton.CheckItem(false);
     }

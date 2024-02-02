@@ -23,7 +23,7 @@ public class TutorialSelection : MonoBehaviour
 
     public void PlayTutorial()
     {
-        if(SaveGameData.GameData.isTutorialCompleted)
+        if(GameDataManager.GameData.isTutorialCompleted)
         {
             _showHidePanel.ShowPanel(gameObject);
         }

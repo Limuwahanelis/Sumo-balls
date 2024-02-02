@@ -5,8 +5,21 @@ using UnityEngine;
 
 public class GameSettingsSaver : MonoBehaviour
 {
+    public static readonly string fileName = "configs";
     public void Save(bool value)
     {
-        SaveGameSettings.SaveSettings(value);
+        //SaveGameSettings.SaveSettings(value);
+        GameSettingsData gameSettingsData = new GameSettingsData(value);
+        JsonSave.SaveToFile(gameSettingsData, fileName);
+    }
+
+    public static void Save(GameSettingsData gameSettingsData)
+    {
+        JsonSave.SaveToFile(gameSettingsData, fileName);
+    }
+
+    public static GameSettingsData Load()
+    {
+        return JsonSave.GetDataFromJson<GameSettingsData>(fileName);
     }
 }
