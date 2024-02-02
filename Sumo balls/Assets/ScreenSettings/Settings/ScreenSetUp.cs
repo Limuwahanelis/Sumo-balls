@@ -15,12 +15,9 @@ public class ScreenSetUp : MonoBehaviour
         if (ScreenSettingsSaver.LoadScreenSettings()==null)
         {
             GetAllResolutions();
-            //Screen.SetResolution(allResolutions[0].width, availableResolutions[0].height, true);
             Debug.Log("org res: " + availableResolutions[availableResolutions.Count - 1]);
             ScreenSettingsData screenData = new ScreenSettingsData(new ScreenSettings.MyResolution(availableResolutions[availableResolutions.Count - 1]), true);
             ScreenSettingsSaver.SaveScreenSettings(screenData);
-            //JsonSave.SaveToFile<ScreenSettingsData>(, true),)
-            //SaveScreenSettings.SaveScreenConfigs(new ScreenSettings.MyResolution(availableResolutions[availableResolutions.Count-1]), true);
             Screen.SetResolution(availableResolutions[availableResolutions.Count - 1].width, availableResolutions[availableResolutions.Count - 1].height, true);
         }
         else

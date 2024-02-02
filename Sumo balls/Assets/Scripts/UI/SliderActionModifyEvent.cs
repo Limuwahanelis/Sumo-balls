@@ -195,12 +195,14 @@ public class SliderActionModifyEvent : Slider
         SerializedProperty _speed;
         SerializedProperty _ModifyValueOnceAction;
         SerializedProperty _ModifyValueAction;
+        SerializedProperty _singleValueUpdate;
         protected override void OnEnable()
         {
             base.OnEnable();
             _speed = serializedObject.FindProperty("_speed");
             _ModifyValueOnceAction = serializedObject.FindProperty("_modifySliderValueOnceAction");
             _ModifyValueAction = serializedObject.FindProperty("_modifySliderValueAction");
+            _singleValueUpdate = serializedObject.FindProperty("_singleValueUpdate");
 
         }
         public override void OnInspectorGUI()
@@ -209,6 +211,7 @@ public class SliderActionModifyEvent : Slider
             EditorGUILayout.PropertyField(_ModifyValueAction);
             EditorGUILayout.PropertyField(_ModifyValueOnceAction);
             EditorGUILayout.PropertyField(_speed);
+            EditorGUILayout.PropertyField(_singleValueUpdate);
             serializedObject.ApplyModifiedProperties();
             base.OnInspectorGUI();
         }

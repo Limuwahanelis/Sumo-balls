@@ -14,4 +14,10 @@ public class AudioSettingsData
         this.masterVolume = masterVolume;
         this.sfxVolume = sfxVolume;
     }
+
+    public AudioSettingsData()
+    {
+        masterVolume = 50;
+        sfxVolume = 50;
+    }
 }

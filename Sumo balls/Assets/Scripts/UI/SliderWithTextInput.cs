@@ -15,6 +15,7 @@ public class SliderWithTextInput : MonoBehaviour
     [SerializeField] Slider _slider;
     [SerializeField] float _minValue;
     [SerializeField] float _maxValue;
+    [SerializeField] bool _defaultDecimal;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +30,10 @@ public class SliderWithTextInput : MonoBehaviour
     }
     public void UpdateText(float value)
     {
-        _inputTextField.text = value.ToString("0.00");
+        float numberToShow = value;
+        if(_defaultDecimal) _inputTextField.SetTextWithoutNotify(numberToShow.ToString());
+        else _inputTextField.text = numberToShow.ToString("0.00");
+
     }
 
     public void CheckText(string text)
@@ -58,6 +62,24 @@ public class SliderWithTextInput : MonoBehaviour
             value = Mathf.Clamp(value, _minValue, _maxValue) * 1.0f;
             _inputTextField.text = toOutput;
             _slider.SetValueWithoutNotify(value);
+        }
+
+
+    }
+    public void CheckTextInt(string text)
+    {
+
+        int value;
+        string toOutput;
+        if (string.IsNullOrEmpty(text)) return;
+        else
+        {
+            value = int.Parse(text);
+            value = math.clamp(value, ((int)_minValue), ((int)_maxValue));
+            toOutput = value.ToString();
+            _inputTextField.text = toOutput;
+            _slider.value = value;
+            //_slider.SetValueWithoutNotify(value);
         }
 
 
