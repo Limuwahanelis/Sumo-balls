@@ -7,23 +7,13 @@ using UnityEngine.Audio;
 public class SingleClipAudioEvent : AudioEvent
 {
     public AudioClip audioClip;
-    [SerializeField] StringReference _musicMasterChannel;
-    [SerializeField] StringReference _musicChannel;
+    [SerializeField] IntReference _musicMasterChannelVolume;
+    [SerializeField] IntReference _musicChannelVolume;
     [SerializeField] AudioMixer _audioMixer;
     public override void Play(AudioSource audioSource)
     {
-        float mixerValue;
-        _audioMixer.GetFloat(_musicMasterChannel.value, out mixerValue);
-        if (mixerValue <= -80) audioSource.mute = true; // mute of master is 0
-        else
-        {
-            _audioMixer.GetFloat(_musicChannel.value, out mixerValue);
-            if (mixerValue <= -80) audioSource.mute = true; // mute if selected music channel is set to 0
-            audioSource.mute = false;
-        }
-        
         audioSource.clip = audioClip;
-        audioSource.volume = volume;
+        audioSource.volume = volume*(_musicChannelVolume.value/100.0f)*(_musicMasterChannelVolume.value/100.0f);
         audioSource.pitch = pitch;
         if (audioSource.isPlaying) return;
         audioSource.Play();
@@ -31,7 +21,7 @@ public class SingleClipAudioEvent : AudioEvent
     public override void Play(AudioSource audioSource, bool overPlay = false)
     {
         audioSource.clip = audioClip;
-        audioSource.volume = volume;
+        audioSource.volume = volume * _musicChannelVolume.value * _musicMasterChannelVolume.value; ;
         audioSource.pitch = pitch;
         if (!overPlay) return;
         audioSource.Play();

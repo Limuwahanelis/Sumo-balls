@@ -7,7 +7,8 @@ using UnityEngine.Audio;
 public class AudioSetup : MonoBehaviour
 {
     [SerializeField] AudioMixer _mixer;
-
+    [SerializeField] IntReference _masterVolume;
+    [SerializeField] IntReference _sfxVolume;
     public void LoadAudioSettings()
     {
         AudioSettingsData configs;
@@ -23,9 +24,7 @@ public class AudioSetup : MonoBehaviour
             configs = AudioSettingsSaver.LoadAudioSettings();
 
         }
-        float remappedValueMaster = math.remap(0,100,0.01f,100, configs.masterVolume);
-        float remappedValueSfx = math.remap(0, 100, 0.01f, 100, configs.sfxVolume);
-        _mixer.SetFloat(GlobalAudioManager.MIXER_MASTER, Mathf.Log10(remappedValueMaster / 100) * 20f);
-        _mixer.SetFloat(GlobalAudioManager.MIXER_SFX, Mathf.Log10(remappedValueSfx / 100) * 20f);
+        _masterVolume.value = configs.masterVolume;
+        _sfxVolume.value = configs.sfxVolume;
     }
 }

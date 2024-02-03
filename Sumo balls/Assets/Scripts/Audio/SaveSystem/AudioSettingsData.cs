@@ -6,10 +6,10 @@ using UnityEngine;
 [Serializable]
 public class AudioSettingsData 
 {
-    public float masterVolume;
-    public float sfxVolume;
+    public int masterVolume;
+    public int sfxVolume;
 
-    public AudioSettingsData(float masterVolume, float sfxVolume)
+    public AudioSettingsData(int masterVolume, int sfxVolume)
     {
         this.masterVolume = masterVolume;
         this.sfxVolume = sfxVolume;

@@ -314,3 +314,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mixer: {fileID: 24100000, guid: 9a9d40a8e6b056e489d5e4244585d064, type: 2}
+  _masterVolume:
+    useConstant: 0
+    constantValue: 0
+    variable: {fileID: 11400000, guid: 5e3a535dde0153848838e57c574c2a11, type: 2}
+  _sfxVolume:
+    useConstant: 0
+    constantValue: 0
+    variable: {fileID: 11400000, guid: eb6295e9c5e46c14abe9303ee237aaeb, type: 2}
