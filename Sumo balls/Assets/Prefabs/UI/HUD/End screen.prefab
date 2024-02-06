@@ -1592,6 +1592,7 @@ GameObject:
   - component: {fileID: 6949554713738414268}
   - component: {fileID: 8843391529650477307}
   - component: {fileID: 1279109961818915967}
+  - component: {fileID: 2975960424107649415}
   m_Layer: 5
   m_Name: Stage clear
   m_TagString: Untagged
@@ -1659,6 +1660,37 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2975960424107649415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6649249088946369116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7125ead6a5dd85c41bb687f9ce2d7a25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stageList: {fileID: 11400000, guid: c96c023c1c6242a40919296d29187161, type: 2}
+  OnStageExists:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStageNotExists:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7769187476985191461}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7548201736165055451
 GameObject:
   m_ObjectHideFlags: 0

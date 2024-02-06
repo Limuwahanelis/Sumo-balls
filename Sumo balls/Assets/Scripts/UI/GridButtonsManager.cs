@@ -15,8 +15,6 @@ public class GridButtonsManager : MonoBehaviour
     private TabButtonUI _currentlySelectedButton;
     private List<TabButtonUI> _allButtons;
     private List<List<TabButtonUI>> _buttonsInGrid;
-    Vector2 _buttonIndex;
-    private int _tabIndex = 0;
     private int _columns;
     private int _rows;
     private void Awake()
@@ -25,13 +23,8 @@ public class GridButtonsManager : MonoBehaviour
         _columns = _grid.constraintCount;
         _rows = _grid.transform.childCount / _columns;
         _allButtons = _panelWithButtons.GetComponentsInChildren<TabButtonUI>(true).ToList();
-        //foreach (TabButtonUI button in _allButtons)
-        //{
-        //    button.OnButtonClicked.AddListener(OnButtonPressed);
-        //}
         _currentlySelectedButton = _allButtons[0];
         _currentlySelectedButton.Select();
-        _buttonIndex = Vector2.zero;
         _buttonsInGrid = new List<List<TabButtonUI>>();
         int _index = 0;
         for (int i = 0; i < _rows; i++)
@@ -89,12 +82,6 @@ public class GridButtonsManager : MonoBehaviour
         
 
     }
-    //private void OnEnable()
-    //{
-    //    SetActive(true);
-
-    //}
-    // Update is called once per frame
     void Update()
     {
 
@@ -141,66 +128,4 @@ public class GridButtonsManager : MonoBehaviour
             }
         }
     }
-    //public void SetActive(bool value)
-    //{
-    //    if (value)
-    //    {
-    //        _buttonIndex = Vector2.zero;
-    //        _changeTabsAction.action.performed += ChangeButton;
-    //        _changeTabsAction.action.Enable();
-    //        _currentlySelectedButton.Deselect();
-    //        _currentlySelectedButton = _allButtons[0];
-    //        _currentlySelectedButton.Select();
-    //    }
-    //    else
-    //    {
-    //        _changeTabsAction.action.performed -= ChangeButton;
-    //        _changeTabsAction.action.Disable();
-    //    }
-    //}
-    //private void ChangeButton(InputAction.CallbackContext context)
-    //{
-    //    Vector2 buttonChange = context.ReadValue<Vector2>();
-    //    _buttonIndex += buttonChange;
-    //    _currentlySelectedButton.Deselect();
-    //    if (_buttonIndex.x >= _columns) _buttonIndex.x = 0;
-    //    else if(_buttonIndex.x < 0) _buttonIndex.x = _columns-1;
-
-    //    if (_buttonIndex.y >= _rows) _buttonIndex.y = 0;
-    //    else if (_buttonIndex.y < 0) _buttonIndex.y = _rows - 1;
-
-    //    _currentlySelectedButton = _buttonsInGrid[(int)_buttonIndex.y][(int)_buttonIndex.x];
-    //    _currentlySelectedButton.Select();
-    //}
-    //private void OnButtonPressed(TabButtonUI button)
-    //{
-    //    if (button == _currentlySelectedButton) return;
-    //    _currentlySelectedButton.Deselect();
-    //    _currentlySelectedButton = button;
-
-    //    for(int i=0;i<_rows;i++)
-    //    {
-    //        for(int j=0;j<_columns;j++)
-    //        {
-    //            if (_buttonsInGrid[i][j]==button)
-    //            {
-    //                _buttonIndex=new Vector2(_buttonIndex.x, _buttonIndex.y);
-    //                return;
-    //            }
-    //        }
-    //    }
-    //    Debug.LogError("Button not found in grid");
-    //}
-
-    //private void OnDisable()
-    //{
-    //    SetActive(false);
-    //}
-    //private void OnDestroy()
-    //{
-    //    foreach (TabButtonUI button in _allButtons)
-    //    {
-    //        button.OnButtonClicked.RemoveListener(OnButtonPressed);
-    //    }
-    //}
 }

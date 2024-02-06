@@ -10,6 +10,9 @@ public class FirstBoss : Enemy
     [SerializeField] GameObject _stunStars;
     [SerializeField] float _stunTime;
     [SerializeField] GameObject _playerBody;
+    [SerializeField] AudioPool _audioPool;
+    [SerializeField] SingleClipAudioEvent _wallClash;
+    [SerializeField] SingleClipAudioEvent _ballClash;
     private bool _isStunned;
     private Material _material;
     public UnityEvent OnStunned;
@@ -21,11 +24,12 @@ public class FirstBoss : Enemy
         if (_player == null) _player = GameObject.Find("Player body");
 #endif
         _player = _playerBody;
+        _material = GetComponent<MeshRenderer>().material;
     }
     // Start is called before the first frame update
     void Start()
     {
-        _material = GetComponent<MeshRenderer>().material;
+        
 
     }
 
@@ -61,6 +65,7 @@ public class FirstBoss : Enemy
         _rb.velocity = Vector3.zero;
         _rb.angularVelocity = Vector3.zero;
         _rb.AddForce(force, ForceMode.Impulse);
+        _ballClash.Play(_audioPool.GetAudioSourceObject().AudioSource);
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -72,6 +77,7 @@ public class FirstBoss : Enemy
             if (_push)
             {
                 _push = false;
+                _wallClash.Play(_audioPool.GetAudioSourceObject().AudioSource);
                 collision.rigidbody.gameObject.GetComponent<Wall>().EnableGravity();
                 collision.rigidbody.AddForceAtPosition(collision.relativeVelocity * -6000f, collision.GetContact(0).point, ForceMode.Force);
                 StartCoroutine(StunCor());
@@ -83,10 +89,11 @@ public class FirstBoss : Enemy
         {
             Vector3 _playerDirection = (_player.transform.position - transform.position).normalized;
             _playerDirection.y = 0;
-            if (Vector3.Dot(_rb.velocity,_playerDirection)>=0.5)
+            if (Vector3.Dot(_rb.velocity, _playerDirection) >= 0.5)
             {
                 player.Squish();
             }
+            //else _ballClash.Play(_audioPool.GetAudioSourceObject().AudioSource);
         }
     }
     private void OnCollisionStay(Collision collision)

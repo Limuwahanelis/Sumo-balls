@@ -16,18 +16,24 @@ public class SurvivalGameModeManager : GameModeManager
     private bool _countTime = false;
     private void Awake()
     {
+
+        if(GlobalSettings.SelectedStage==null)
+        {
 #if UNITY_EDITOR
-        if (debug) _survivalModeSettings = _debugSettings as SurvivalModeSettings;
+            if (debug) _survivalModeSettings = _debugSettings as SurvivalModeSettings;
+#else
+            Debug.LogError("Stage was not set in Global settings but was loaded");
+#endif
+        }
         else _survivalModeSettings = GlobalSettings.SelectedStage.GameModeSettings as SurvivalModeSettings;
         _stageCompleteScore.SetScore(0);
         _stageCompleteScore.SetDescription(_survivalModeSettings.GetStarsDescription());
-        return;
-#endif
-        _survivalModeSettings = GlobalSettings.SelectedStage.GameModeSettings as SurvivalModeSettings;
-        _stageCompleteScore.SetScore(0);
-        _stageCompleteScore.SetDescription(_survivalModeSettings.GetStarsDescription());
+        
     }
-
+    private void Start()
+    {
+        RestartStage();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -93,6 +99,9 @@ public class SurvivalGameModeManager : GameModeManager
         _killedEnemies = 0;
         _isCompleted = false;
         _stageCompleteScore.SetScore(0);
+        _enemySpawner.ReturnAllEnemiesToPool();
+        _powerUpSpawner.ReturnAllPowerUpsToPool();
+        PrepareStage();
         OnResetStage?.Invoke();
     }
 
@@ -104,9 +113,23 @@ public class SurvivalGameModeManager : GameModeManager
         {
             SpawnEnemy();
         }
+        _enemySpawner.SetAllEnemyScript(false);
+        SetCountTime(false);
     }
     public void SetCountTime(bool value)
     {
         _countTime = value;
+    }
+
+    public override void StartStage()
+    {
+        SetCountTime(true);
+        _enemySpawner.SetAllEnemyScript(true);
+        OnStageStarted?.Invoke();
+    }
+
+    public override void FailStage()
+    {
+        OnStageFailed?.Invoke();
     }
 }

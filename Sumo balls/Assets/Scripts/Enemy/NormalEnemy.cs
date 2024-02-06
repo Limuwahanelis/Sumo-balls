@@ -10,6 +10,7 @@ public class NormalEnemy : Enemy
     [SerializeField] LayerMask _arenaLayer;
     [SerializeField] AudioPool _audioPool;
     [SerializeField] SingleClipAudioEvent _clashAudioEvent;
+    [SerializeField] SingleClipAudioEvent _wallClashAudioEvent;
     private IObjectPool<NormalEnemy> _pool;
     private Renderer _renderer;
     private MaterialPropertyBlock _materialPropertyBlock;
@@ -54,7 +55,6 @@ public class NormalEnemy : Enemy
     }
     public void SetAudioPool(AudioPool pool) => _audioPool = pool;
     public void SetPool(IObjectPool<NormalEnemy> pool) => _pool = pool;
-
     public void RandomizeAngularDrag(float min,float max)
     {
         _rb.angularDrag = Random.Range(min,max);
@@ -63,7 +63,14 @@ public class NormalEnemy : Enemy
     {
         _force = Random.Range(min,max);
     }
-
+    private void PlayClashSound()
+    {
+        AudioSourceObject audioObject = _audioPool.GetAudioSourceObject();
+        audioObject.AudioSource.pitch = Random.Range(0.85f, 1.1f);
+        _clashAudioEvent.Play(audioObject.AudioSource);
+        audioObject.ReturnToPool(0.5f);
+    }
+    public void ReturnToPool() =>_pool.Release(this);
     private void OnCollisionEnter(Collision collision)
     {
 
@@ -71,19 +78,27 @@ public class NormalEnemy : Enemy
         {
             Vector3 _direction = (collision.gameObject.transform.position - transform.position).normalized;
             _rb.AddForce( _hits * 0.2f * (Vector3.Dot(_direction, collision.impulse.normalized)>0?-collision.impulse:collision.impulse), ForceMode.Impulse);
+
+        }
+        else
+        {
+            AudioSourceObject audioObject = _audioPool.GetAudioSourceObject();
+            _wallClashAudioEvent.Play(audioObject.AudioSource);
+            audioObject.ReturnToPool(0.5f);
         }
         if (collision.gameObject.GetComponentInParent<Player>()) 
         {
-            AudioSourceObject audioObject= _audioPool.GetAudioSourceObject();
-            audioObject.AudioSource.pitch= Random.Range(0.85f, 1.1f);
-            _clashAudioEvent.Play(audioObject.AudioSource);
-            audioObject.ReturnToPool(0.5f);
+            PlayClashSound();
             _hits++;
             if (_hits > 3) _hits = 3;
             
             _materialPropertyBlock.SetColor("_BaseColor", _colors.colorList[_hits]);
             _renderer.SetPropertyBlock(_materialPropertyBlock);
         } 
+        if(collision.gameObject.GetComponent<NormalEnemy>())
+        {
+            PlayClashSound();
+        }
     }
     private void OnValidate()
     {

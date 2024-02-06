@@ -81,15 +81,14 @@ public class EnemySpawner : MonoBehaviour
     }
     public void ReturnAllEnemiesToPool()
     {
+        Debug.Log("ret all"+_allEnemies.Count);
         foreach(NormalEnemy enemy in _allEnemies)
         {
-            _enemyPool.OnReturnEnemyToPool(enemy);
+            enemy.OnDeath.RemoveAllListeners();
+            if(enemy.gameObject.activeSelf) enemy.ReturnToPool();
+
         }
         
-    }
-    public void ReturnEnemyToPool(NormalEnemy enemy)
-    {
-        _enemyPool.OnReturnEnemyToPool(enemy);
     }
     public void SetAllEnemyScript(bool value)
     {

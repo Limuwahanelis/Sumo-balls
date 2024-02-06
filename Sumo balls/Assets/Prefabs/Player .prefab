@@ -11769,6 +11769,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93b2ab6f7490bb241bac2e4ddc3c3c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerRB: {fileID: 9046996876996723414}
+  _pivot: {fileID: 0}
+  _powerUpIndicator: {fileID: 504604568433380361}
+  _audioPool: {fileID: 0}
+  _force: 4
+  _powerUpStrength: 12
+  _powerUpDuration: 5
+  _hasPowerUp: 0
+  _arenaLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  _wallClashAudioEvent: {fileID: 11400000, guid: 6ff49938a0398904e89be2857caba2fd,
+    type: 2}
   OnPlayerDeath:
     m_PersistentCalls:
       m_Calls:
@@ -11784,13 +11797,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-  _playerRB: {fileID: 9046996876996723414}
-  _pivot: {fileID: 0}
-  _powerUpIndicator: {fileID: 504604568433380361}
-  _force: 4
-  _powerUpStrength: 12
-  _powerUpDuration: 5
-  _hasPowerUp: 0
 --- !u!114 &6852706013482790359
 MonoBehaviour:
   m_ObjectHideFlags: 0

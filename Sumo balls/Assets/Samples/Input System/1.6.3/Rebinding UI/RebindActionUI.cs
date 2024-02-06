@@ -332,13 +332,14 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
                     inputAction.action.Enable();
                 }
             }
-
+            action.Disable();
             // Configure the rebind.
             m_RebindOperation = action.PerformInteractiveRebinding(bindingIndex)
                 .WithCancelingThrough("<Keyboard>/escape")
                 .OnCancel(
                     operation =>
                     {
+                        action.Enable();
                         m_RebindStopEvent?.Invoke(this, operation);
                         m_RebindOverlay?.SetActive(false);
                         UpdateBindingDisplay();
@@ -347,6 +348,7 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
                 .OnComplete(
                     operation =>
                     {
+                        action.Enable();
                         m_RebindOverlay?.SetActive(false);
                         m_RebindStopEvent?.Invoke(this, operation);
                         int duplicateBindingIndex;
@@ -459,6 +461,7 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
         }
         protected void OnEnable()
         {
+            UpdateBindingDisplay();
             if (s_RebindActionUIs == null)
                 s_RebindActionUIs = new List<RebindActionUI>();
             s_RebindActionUIs.Add(this);

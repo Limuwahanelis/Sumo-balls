@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 272d16bd83a404942b5079d65dbbffc1, type: 3}
   m_Name: Sfx volume
   m_EditorClassIdentifier: 
-  value: 0
+  value: 100

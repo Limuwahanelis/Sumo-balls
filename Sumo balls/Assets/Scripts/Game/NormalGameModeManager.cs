@@ -14,23 +14,28 @@ public class NormalGameModeManager : GameModeManager
     private int _score = 2;
     private void Awake()
     {
-        
+
+        if (GlobalSettings.SelectedStage == null)
+        {
 #if UNITY_EDITOR
-        if (debug) _normalModeSettings = _debugSettings as NormalModeSettings;
+            if (debug) _normalModeSettings = _debugSettings as NormalModeSettings;
+#else
+            Debug.LogError("Stage was not set in Global settings but was loaded");
+#endif
+        }
         else _normalModeSettings = GlobalSettings.SelectedStage.GameModeSettings as NormalModeSettings;
         if (_normalModeSettings.IsInCage)
         {
             _wallsManager.SetUp(_normalModeSettings);
             OnResetStage.AddListener(_wallsManager.RestoreWalls);
         }
-        return;
-#endif
-        _normalModeSettings = GlobalSettings.SelectedStage.GameModeSettings as NormalModeSettings;
-        if (_normalModeSettings.IsInCage)
-        {
-            _wallsManager.SetUp(_normalModeSettings);
-            OnResetStage.AddListener(_wallsManager.RestoreWalls);
-        }
+        _stageCompleteScore.SetDescription(_normalModeSettings.GetStarsDescription());
+        
+
+    }
+    private void Start()
+    {
+        RestartStage();
     }
 
     // Update is called once per frame 
@@ -55,13 +60,14 @@ public class NormalGameModeManager : GameModeManager
     public override void PrepareStage()
     {
         _stageCompleteScore.SetScore(3);
-        _stageCompleteScore.SetDescription(_normalModeSettings.GetStarsDescription());
+        
         _taskDescription.SetValue((_normalModeSettings.NumberOfEnemiesToDefeat).ToString());
         for (int i = 0; i < _normalModeSettings.SimultaneouslNumberOfEnemies; i++)
         {
             _spawnedEnemies++;
             SpawnEnemy();
         }
+        _enemySpawner.SetAllEnemyScript(false);
     }
     private void OnEnemyDeath(Enemy enemy)
     {
@@ -77,7 +83,6 @@ public class NormalGameModeManager : GameModeManager
             OnStageCompleted?.Invoke();
         }
         _taskDescription.SetValue((_normalModeSettings.NumberOfEnemiesToDefeat - _killedEnemies).ToString());
-        _enemySpawner.ReturnEnemyToPool(enemy as NormalEnemy);
     }
 
     public override void RestartStage()
@@ -88,6 +93,9 @@ public class NormalGameModeManager : GameModeManager
         _killedEnemies = 0;
         _score = 2;
         _stageCompleteScore.SetScore(3);
+        _enemySpawner.ReturnAllEnemiesToPool();
+        _powerUpSpawner.ReturnAllPowerUpsToPool();
+        PrepareStage();
         OnResetStage?.Invoke();
     }
 
@@ -104,5 +112,17 @@ public class NormalGameModeManager : GameModeManager
     private void OnDestroy()
     {
         OnResetStage.RemoveListener(_wallsManager.RestoreWalls);
+    }
+
+    public override void StartStage()
+    {
+
+        _enemySpawner.SetAllEnemyScript(true);
+        OnStageStarted?.Invoke();
+    }
+
+    public override void FailStage()
+    {
+        OnStageFailed?.Invoke();
     }
 }

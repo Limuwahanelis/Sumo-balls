@@ -17,6 +17,10 @@ public abstract class GameModeManager : MonoBehaviour
     public UnityEvent OnResetStage;
     public UnityEvent OnStageCompleted;
     public UnityEvent OnStageFailed;
+    public UnityEvent OnStageStarted;
     public abstract void RestartStage();
     public abstract void PrepareStage();
+    public abstract void StartStage();
+
+    public abstract void FailStage();
 }

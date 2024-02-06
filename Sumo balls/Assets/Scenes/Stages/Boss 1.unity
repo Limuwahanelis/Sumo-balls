@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1196,6 +1196,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 593811752}
   m_CullTransparentMesh: 1
+--- !u!1 &623828727
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 623828728}
+  - component: {fileID: 623828729}
+  m_Layer: 0
+  m_Name: Audio pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &623828728
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 623828727}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1181739654}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &623828729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 623828727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9966aa857f156794386e0e13c1947df8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioSourceGameobjectPrefab: {fileID: 6975856378088486134, guid: ff0c26ca573de73479b7354d01beb772,
+    type: 3}
 --- !u!1 &634527632
 GameObject:
   m_ObjectHideFlags: 0
@@ -2318,9 +2364,9 @@ MonoBehaviour:
   OnCountdownEnd:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1974324485}
-        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
-        m_MethodName: ResetActionMap
+      - m_Target: {fileID: 1970191261}
+        m_TargetAssemblyTypeName: FirstBossModeManager, Assembly-CSharp
+        m_MethodName: StartStage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2329,70 +2375,10 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 996891606}
-        m_TargetAssemblyTypeName: EnemySpawner, Assembly-CSharp
-        m_MethodName: SetAllEnemyScript
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 9148408738542525719}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1970191261}
-        m_TargetAssemblyTypeName: FirstBossModeManager, Assembly-CSharp
-        m_MethodName: SetCountTime
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
         m_CallState: 2
   OnBeforeCountdown:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1974324485}
-        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
-        m_MethodName: DisableActionMap
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 330585548}
-        m_TargetAssemblyTypeName: PlayerCamera, Assembly-CSharp
-        m_MethodName: ResetPivot
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!4 &832220170 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 245993350567226188, guid: 5cf124da2d265484180f0d1c0c5ff464,
@@ -2487,6 +2473,7 @@ MonoBehaviour:
   _arenaYpos: 0.59
   _playerSafeSpace: 2
   _enemyPool: {fileID: 1224980799}
+  _audioPool: {fileID: 0}
   _playerPos: {fileID: 832220170}
 --- !u!4 &996891607
 Transform:
@@ -3088,6 +3075,7 @@ Transform:
   m_Children:
   - {fileID: 1224980800}
   - {fileID: 634527633}
+  - {fileID: 623828728}
   m_Father: {fileID: 1205182784}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3496,20 +3484,6 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: -3202249217418099058, guid: 108bb979191d4a548af7f7a2a04fc63d,
             type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1974324485}
-        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
-        m_MethodName: DisableAction
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: -3202249217418099058, guid: 108bb979191d4a548af7f7a2a04fc63d,
-            type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.InputSystem.InputActionReference,
-            Unity.InputSystem
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4264,22 +4238,10 @@ MonoBehaviour:
   _taskDescription: {fileID: 1358065847}
   _gameOverPause: {fileID: 1250121784}
   _enemySpawner: {fileID: 0}
-  _powerUpSpawner: {fileID: 0}
+  _powerUpSpawner: {fileID: 2097864724}
   OnResetStage:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 9148408738542525719}
-        m_TargetAssemblyTypeName: FirstBoss, Assembly-CSharp
-        m_MethodName: ResetBoss
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1152962020}
         m_TargetAssemblyTypeName: WallsManager, Assembly-CSharp
         m_MethodName: RestoreWalls
@@ -4304,9 +4266,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 805073527}
-        m_TargetAssemblyTypeName: Countdown, Assembly-CSharp
-        m_MethodName: Setup
+      - m_Target: {fileID: 330585548}
+        m_TargetAssemblyTypeName: PlayerCamera, Assembly-CSharp
+        m_MethodName: ResetPivot
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4316,9 +4278,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2097864724}
-        m_TargetAssemblyTypeName: PowerUpSpawner, Assembly-CSharp
-        m_MethodName: ReturnAllPowerUpsToPool
+      - m_Target: {fileID: 1974324485}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: DisableActionMap
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 805073527}
+        m_TargetAssemblyTypeName: Countdown, Assembly-CSharp
+        m_MethodName: Setup
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4355,6 +4329,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1974324485}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: DisableAction
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: -3202249217418099058, guid: 108bb979191d4a548af7f7a2a04fc63d,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.InputSystem.InputActionReference,
+            Unity.InputSystem
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   OnStageFailed:
     m_PersistentCalls:
       m_Calls:
@@ -4369,6 +4357,35 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1974324485}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: DisableAction
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: -3202249217418099058, guid: 108bb979191d4a548af7f7a2a04fc63d,
+            type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.InputSystem.InputActionReference,
+            Unity.InputSystem
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  OnStageStarted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1974324485}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: ResetActionMap
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
   _timer: {fileID: 2092255608}
   _BossSpawnTran: {fileID: 676672457}
@@ -6627,6 +6644,28 @@ PrefabInstance:
       objectReference: {fileID: 223275787}
     - target: {fileID: 1761369987521674883, guid: 5cf124da2d265484180f0d1c0c5ff464,
         type: 3}
+      propertyPath: _audioPool
+      value: 
+      objectReference: {fileID: 623828729}
+    - target: {fileID: 1761369987521674883, guid: 5cf124da2d265484180f0d1c0c5ff464,
+        type: 3}
+      propertyPath: _arenaLayer.m_Bits
+      value: 4096
+      objectReference: {fileID: 0}
+    - target: {fileID: 1761369987521674883, guid: 5cf124da2d265484180f0d1c0c5ff464,
+        type: 3}
+      propertyPath: _wallClashAudioEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 6ff49938a0398904e89be2857caba2fd,
+        type: 2}
+    - target: {fileID: 1761369987521674883, guid: 5cf124da2d265484180f0d1c0c5ff464,
+        type: 3}
+      propertyPath: _bassSquishAudioEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: c78074f6d2b6e6443b7932cb23183183,
+        type: 2}
+    - target: {fileID: 1761369987521674883, guid: 5cf124da2d265484180f0d1c0c5ff464,
+        type: 3}
       propertyPath: OnPlayerDeath.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -7133,6 +7172,9 @@ MonoBehaviour:
   _stunStars: {fileID: 1095722533}
   _stunTime: 5
   _playerBody: {fileID: 1796226340}
+  _audioPool: {fileID: 623828729}
+  _wallClash: {fileID: 11400000, guid: 9d820b30c4d25fd47915fc3f08782a54, type: 2}
+  _ballClash: {fileID: 11400000, guid: 6fc30f61074615c4a8758c110b778674, type: 2}
   OnStunned:
     m_PersistentCalls:
       m_Calls:

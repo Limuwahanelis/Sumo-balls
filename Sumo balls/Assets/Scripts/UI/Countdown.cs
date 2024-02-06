@@ -23,7 +23,7 @@ public class Countdown : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Setup();
+        //Setup();
     }
     public void Setup()
     {

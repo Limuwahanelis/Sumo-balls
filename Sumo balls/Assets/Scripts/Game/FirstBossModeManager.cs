@@ -19,20 +19,22 @@ public class FirstBossModeManager : GameModeManager
     private void Awake()
     {
         _wallsManager.SetUp();
+        if (GlobalSettings.SelectedStage == null)
+        {
 #if UNITY_EDITOR
-        if (debug) _settings = _debugSettings as SpecialGameModeSettings;
-        else _settings = GlobalSettings.SelectedStage.GameModeSettings as SpecialGameModeSettings;
-        PrepareStage();
-        return;
+            if (debug) _settings = _debugSettings as SpecialGameModeSettings;
+#else
+            Debug.LogError("Stage was not set in Global settings but was loaded");
 #endif
-        _settings = GlobalSettings.SelectedStage.GameModeSettings as SpecialGameModeSettings;
-        PrepareStage();
+        }
+        else _settings = GlobalSettings.SelectedStage.GameModeSettings as SpecialGameModeSettings;
+        
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        RestartStage();
     }
 
     // Update is called once per frame
@@ -68,13 +70,16 @@ public class FirstBossModeManager : GameModeManager
 
     public override void RestartStage()
     {
-        OnResetStage?.Invoke();
+        _boss.ResetBoss();
+        _powerUpSpawner.ReturnAllPowerUpsToPool();
         PrepareStage();
+        OnResetStage?.Invoke();
         
     }
     public void CompleteStage()
     {
         _isCompleted = true;
+        _taskDescription.SetValue("0");
         OnStageCompleted?.Invoke();
 
     }
@@ -88,7 +93,14 @@ public class FirstBossModeManager : GameModeManager
     {
         _countTime = value;
     }
-    public void FailStage()
+    public override void StartStage()
+    {
+        _boss.enabled = true;
+        SetCountTime(true);
+        OnStageStarted?.Invoke();
+    }
+
+    public override void FailStage()
     {
         Debug.Log("FAILED");
         OnStageFailed?.Invoke();

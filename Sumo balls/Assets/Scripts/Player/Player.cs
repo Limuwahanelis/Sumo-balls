@@ -10,10 +10,14 @@ public class Player : MonoBehaviour
     [SerializeField] Rigidbody _playerRB;
     [SerializeField] GameObject _pivot;
     [SerializeField] GameObject _powerUpIndicator;
+    [SerializeField] AudioPool _audioPool;
     [SerializeField] float _force;
     [SerializeField] float _powerUpStrength = 15f;
     [SerializeField] float _powerUpDuration;
     [SerializeField] private bool _hasPowerUp;
+    [SerializeField] LayerMask _arenaLayer;
+    [SerializeField] SingleClipAudioEvent _wallClashAudioEvent;
+    [SerializeField] SingleClipAudioEvent _bassSquishAudioEvent;
     private bool _hasBroadcastedDeath = false;
     private Coroutine _powerUpCor;
     private Vector3 _startingScale;
@@ -75,15 +79,19 @@ public class Player : MonoBehaviour
     public void Collision(Collision collision)
     {
         NormalEnemy enemy = collision.gameObject.GetComponent<NormalEnemy>();
-        FirstBoss boss= collision.gameObject.GetComponent<FirstBoss>();
+        FirstBoss boss = collision.gameObject.GetComponent<FirstBoss>();
+        if (_arenaLayer == (_arenaLayer | (1 << collision.collider.gameObject.layer)))
+        {
+            _wallClashAudioEvent.Play(_audioPool.GetAudioSourceObject().AudioSource);
+        }
         if (enemy && _hasPowerUp)
         {
             Vector3 pushVector = (enemy.transform.position - _playerRB.position).normalized * _powerUpStrength;
             enemy.Push(pushVector);
         }
-        else if(boss && _hasPowerUp)
+        else if (boss && _hasPowerUp)
         {
-            Vector3 pushVector = (boss.transform.position - _playerRB.position).normalized * _powerUpStrength*50;
+            Vector3 pushVector = (boss.transform.position - _playerRB.position).normalized * _powerUpStrength * 50;
             pushVector.y = 0;
             boss.Push(pushVector);
         }
@@ -115,11 +123,13 @@ public class Player : MonoBehaviour
     public void Squish()
     {
         if (_hasPowerUp) return;
+        
         StartCoroutine(SquishCor());
     }
     IEnumerator SquishCor()
     {
         if (sq) yield break;
+        _bassSquishAudioEvent.Play(_audioPool.GetAudioSourceObject().AudioSource);
         sq = true;
         float squishEndYPos = -0.495f;
         Vector3 squishPos = _playerRB.transform.localPosition;
