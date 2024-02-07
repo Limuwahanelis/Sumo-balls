@@ -15,6 +15,7 @@ public class FirstBoss : Enemy
     [SerializeField] SingleClipAudioEvent _ballClash;
     private bool _isStunned;
     private Material _material;
+    private Coroutine _stunCor;
     public UnityEvent OnStunned;
     public UnityEvent OnKilled;
     bool _push;
@@ -80,7 +81,7 @@ public class FirstBoss : Enemy
                 _wallClash.Play(_audioPool.GetAudioSourceObject().AudioSource);
                 collision.rigidbody.gameObject.GetComponent<Wall>().EnableGravity();
                 collision.rigidbody.AddForceAtPosition(collision.relativeVelocity * -6000f, collision.GetContact(0).point, ForceMode.Force);
-                StartCoroutine(StunCor());
+                _stunCor=StartCoroutine(StunCor());
             }
         }
         
@@ -112,6 +113,13 @@ public class FirstBoss : Enemy
     public void ResetBoss()
     {
         Stop();
+        if(_stunCor!=null)
+        {
+            _isStunned = false;
+            _stunStars.SetActive(false);
+            StopCoroutine(_stunCor);
+            _stunCor = null;
+        }
         enabled = true;
         _material.DisableKeyword("_EMISSION");
     }
