@@ -46,7 +46,7 @@ public class SliderActionModifyEvent : Slider
         }
         if(_selTimer<0.2f)
         {
-            _selTimer += Time.deltaTime;
+            _selTimer += Time.unscaledDeltaTime;
             if(_selTimer>0.2f)
             {
                 _canSelect = true;

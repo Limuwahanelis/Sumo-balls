@@ -9,6 +9,7 @@ public class AudioSetup : MonoBehaviour
     [SerializeField] AudioMixer _mixer;
     [SerializeField] IntReference _masterVolume;
     [SerializeField] IntReference _sfxVolume;
+    [SerializeField] IntReference _musicVolume;
     public void LoadAudioSettings()
     {
         AudioSettingsData configs;
@@ -26,5 +27,6 @@ public class AudioSetup : MonoBehaviour
         }
         _masterVolume.value = configs.masterVolume;
         _sfxVolume.value = configs.sfxVolume;
+        _musicVolume.value = configs.musicVolume;
     }
 }

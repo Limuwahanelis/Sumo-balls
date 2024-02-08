@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class AudioSettingsSaver : MonoBehaviour
 {
-    [SerializeField] GlobalAudioManager _audioManager;
     [SerializeField] IntReference _masterVolume;
     [SerializeField] IntReference _sfxVolume;
+    [SerializeField] IntReference _musicVolume;
     public static readonly string audioSettingsFileName = "audioConfigs";
 
     public void SaveAudioSettings()
     {
-        AudioSettingsData data = new AudioSettingsData(_masterVolume.value, _sfxVolume.value);
+        AudioSettingsData data = new AudioSettingsData(_masterVolume.value, _sfxVolume.value, _musicVolume.value);
         JsonSave.SaveToFile(data, audioSettingsFileName);
     }
     public static AudioSettingsData LoadAudioSettings()
