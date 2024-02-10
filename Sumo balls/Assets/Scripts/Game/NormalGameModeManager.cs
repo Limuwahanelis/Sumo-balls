@@ -95,8 +95,8 @@ public class NormalGameModeManager : GameModeManager
         _stageCompleteScore.SetScore(3);
         _enemySpawner.ReturnAllEnemiesToPool();
         _powerUpSpawner.ReturnAllPowerUpsToPool();
-        PrepareStage();
         OnResetStage?.Invoke();
+        PrepareStage();
     }
 
     private void SpawnEnemy()
