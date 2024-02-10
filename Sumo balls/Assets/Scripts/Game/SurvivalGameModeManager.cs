@@ -101,8 +101,8 @@ public class SurvivalGameModeManager : GameModeManager
         _stageCompleteScore.SetScore(0);
         _enemySpawner.ReturnAllEnemiesToPool();
         _powerUpSpawner.ReturnAllPowerUpsToPool();
-        PrepareStage();
         OnResetStage?.Invoke();
+        PrepareStage();
     }
 
 

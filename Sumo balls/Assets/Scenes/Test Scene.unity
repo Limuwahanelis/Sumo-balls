@@ -457,6 +457,9 @@ MonoBehaviour:
   _stunStars: {fileID: 0}
   _stunTime: 5
   _playerBody: {fileID: 0}
+  _audioPool: {fileID: 0}
+  _wallClash: {fileID: 0}
+  _ballClash: {fileID: 0}
   OnStunned:
     m_PersistentCalls:
       m_Calls:
@@ -2211,7 +2214,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 832220166}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.591, z: -4.14}
+  m_LocalPosition: {x: -0.5, y: 0.591, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2535,6 +2538,7 @@ MonoBehaviour:
   _arenaYpos: 0.59
   _playerSafeSpace: 2
   _enemyPool: {fileID: 1224980799}
+  _audioPool: {fileID: 0}
   _playerPos: {fileID: 832220170}
 --- !u!4 &996891607
 Transform:
@@ -2605,7 +2609,7 @@ PrefabInstance:
     - target: {fileID: 3870549884042007270, guid: 72b5f8dc01169bb4f80f2d1a9d7724b9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3870549884042007270, guid: 72b5f8dc01169bb4f80f2d1a9d7724b9,
         type: 3}
@@ -2615,7 +2619,7 @@ PrefabInstance:
     - target: {fileID: 3870549884042007270, guid: 72b5f8dc01169bb4f80f2d1a9d7724b9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.95
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3870549884042007270, guid: 72b5f8dc01169bb4f80f2d1a9d7724b9,
         type: 3}
@@ -15198,6 +15202,9 @@ MonoBehaviour:
   OnStageFailed:
     m_PersistentCalls:
       m_Calls: []
+  OnStageStarted:
+    m_PersistentCalls:
+      m_Calls: []
   _wallsManager: {fileID: 0}
 --- !u!114 &1931220079
 MonoBehaviour:
@@ -15312,10 +15319,16 @@ MonoBehaviour:
   _playerRB: {fileID: 832220173}
   _pivot: {fileID: 223275787}
   _powerUpIndicator: {fileID: 31179556}
+  _audioPool: {fileID: 0}
   _force: 4
   _powerUpStrength: 12
   _powerUpDuration: 5
   _hasPowerUp: 0
+  _arenaLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  _wallClashAudioEvent: {fileID: 0}
+  _bassSquishAudioEvent: {fileID: 0}
   OnPlayerDeath:
     m_PersistentCalls:
       m_Calls: []
