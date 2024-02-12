@@ -6,6 +6,8 @@ using UnityEngine.Events;
 public class NormalGameModeManager : GameModeManager
 {
     [SerializeField] WallsManager _wallsManager;
+    [SerializeField] TimeCounter _timeCounter;
+    [SerializeField] InStageDescription _timeDisplay;
     private NormalModeSettings _normalModeSettings;
     private float _currentTime;
     private int _powerUpSpawns = 1;
@@ -41,26 +43,27 @@ public class NormalGameModeManager : GameModeManager
     // Update is called once per frame 
     void Update()
     {
-        if (_currentTime >= _normalModeSettings.PowerUpSpawnRateInSeconds * _powerUpSpawns)
+        if (_timeCounter.CurrentTime >= _normalModeSettings.PowerUpSpawnRateInSeconds * _powerUpSpawns)
         {
             _powerUpSpawns++;
             _powerUpSpawner.SpawnPowerUp();
         }
         if (_killedEnemies >= _normalModeSettings.NumberOfEnemiesToDefeat) return;
-        if(!_normalModeSettings.IsInCage && _score >= 0&& _currentTime >= _normalModeSettings.TimeRequiredForStar[_score] )
+        if(!_normalModeSettings.IsInCage && _score >= 0&& _timeCounter.CurrentTime >= _normalModeSettings.TimeRequiredForStar[_score] )
         {
             _score--;
             _stageCompleteScore.ReduceScore();
         }
-        _currentTime +=Time.deltaTime;
+        _timeDisplay.SetValue(_timeCounter.FormattedTime);
         
 
     }
 
     public override void PrepareStage()
     {
+        _timeCounter.SetCountTime(false);
         _stageCompleteScore.SetScore(3);
-        
+        _timeDisplay.SetValue("0");
         _taskDescription.SetValue((_normalModeSettings.NumberOfEnemiesToDefeat).ToString());
         for (int i = 0; i < _normalModeSettings.SimultaneouslNumberOfEnemies; i++)
         {
@@ -91,6 +94,7 @@ public class NormalGameModeManager : GameModeManager
         _powerUpSpawns = 1;
         _spawnedEnemies = 0;
         _killedEnemies = 0;
+        _timeCounter.ResetTimer();
         _score = 2;
         _stageCompleteScore.SetScore(3);
         _enemySpawner.ReturnAllEnemiesToPool();
@@ -118,11 +122,13 @@ public class NormalGameModeManager : GameModeManager
     {
 
         _enemySpawner.SetAllEnemyScript(true);
+        _timeCounter.SetCountTime(true);
         OnStageStarted?.Invoke();
     }
 
     public override void FailStage()
     {
+        _timeCounter.SetCountTime(false);
         OnStageFailed?.Invoke();
     }
 }
