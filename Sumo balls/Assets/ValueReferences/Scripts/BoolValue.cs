@@ -6,4 +6,9 @@ using UnityEngine;
 public class BoolValue : ScriptableObject
 {
     public bool value;
+
+    public void SetValue(bool value)
+    {
+        this.value = value;
+    }
 }

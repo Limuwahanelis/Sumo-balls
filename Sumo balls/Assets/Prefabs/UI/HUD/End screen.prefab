@@ -538,6 +538,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: aa305e1c1bcde724a9c44107464d2a21, type: 2}
+        m_TargetAssemblyTypeName: BoolValue, Assembly-CSharp
+        m_MethodName: SetValue
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1705412040348500828
 GameObject:
   m_ObjectHideFlags: 0
@@ -1076,6 +1088,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: LoadScene, Assembly-CSharp
         m_MethodName: Load
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: aa305e1c1bcde724a9c44107464d2a21, type: 2}
+        m_TargetAssemblyTypeName: BoolValue, Assembly-CSharp
+        m_MethodName: SetValue
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1838,7 +1862,7 @@ GameObject:
   - component: {fileID: 4165057157506764307}
   - component: {fileID: 5343151018889603118}
   m_Layer: 5
-  m_Name: Nect stage button
+  m_Name: Next stage button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1946,7 +1970,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4165057157506764307}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: aa305e1c1bcde724a9c44107464d2a21, type: 2}
+        m_TargetAssemblyTypeName: BoolValue, Assembly-CSharp
+        m_MethodName: SetValue
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &7816424752623232581
 GameObject:
   m_ObjectHideFlags: 0
