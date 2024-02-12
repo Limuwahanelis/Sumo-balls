@@ -101,23 +101,23 @@ public class ColorPicker : MonoBehaviour
             modifiedColor = modifiedHsv.ToColor();
         }
         rComponent.value = modifiedColor.r;
-        rComponent.transform.GetChild(3).GetComponent<InputField>().text = modifiedColor.r.ToString();
+        rComponent.transform.GetChild(4).GetComponent<InputField>().text = modifiedColor.r.ToString();
         gComponent.value = modifiedColor.g;
-        gComponent.transform.GetChild(3).GetComponent<InputField>().text = modifiedColor.g.ToString();
+        gComponent.transform.GetChild(4).GetComponent<InputField>().text = modifiedColor.g.ToString();
         bComponent.value = modifiedColor.b;
-        bComponent.transform.GetChild(3).GetComponent<InputField>().text = modifiedColor.b.ToString();
+        bComponent.transform.GetChild(4).GetComponent<InputField>().text = modifiedColor.b.ToString();
         if (useA)
         {
             aComponent.value = modifiedColor.a;
             aComponent.transform.GetChild(3).GetComponent<InputField>().text = modifiedColor.a.ToString();
         }
         mainComponent.value = (float)modifiedHsv.H;
-        rComponent.transform.GetChild(0).GetComponent<RawImage>().color = new Color32(255, modifiedColor.g, modifiedColor.b, 255);
-        rComponent.transform.GetChild(0).GetChild(0).GetComponent<RawImage>().color = new Color32(0, modifiedColor.g, modifiedColor.b, 255);
-        gComponent.transform.GetChild(0).GetComponent<RawImage>().color = new Color32(modifiedColor.r, 255, modifiedColor.b, 255);
-        gComponent.transform.GetChild(0).GetChild(0).GetComponent<RawImage>().color = new Color32(modifiedColor.r, 0, modifiedColor.b, 255);
-        bComponent.transform.GetChild(0).GetComponent<RawImage>().color = new Color32(modifiedColor.r, modifiedColor.g, 255, 255);
-        bComponent.transform.GetChild(0).GetChild(0).GetComponent<RawImage>().color = new Color32(modifiedColor.r, modifiedColor.g, 0, 255);
+        rComponent.transform.GetChild(1).GetComponent<RawImage>().color = new Color32(255, modifiedColor.g, modifiedColor.b, 255);
+        rComponent.transform.GetChild(1).GetChild(0).GetComponent<RawImage>().color = new Color32(0, modifiedColor.g, modifiedColor.b, 255);
+        gComponent.transform.GetChild(1).GetComponent<RawImage>().color = new Color32(modifiedColor.r, 255, modifiedColor.b, 255);
+        gComponent.transform.GetChild(1).GetChild(0).GetComponent<RawImage>().color = new Color32(modifiedColor.r, 0, modifiedColor.b, 255);
+        bComponent.transform.GetChild(1).GetComponent<RawImage>().color = new Color32(modifiedColor.r, modifiedColor.g, 255, 255);
+        bComponent.transform.GetChild(1).GetChild(0).GetComponent<RawImage>().color = new Color32(modifiedColor.r, modifiedColor.g, 0, 255);
         if (useA) aComponent.transform.GetChild(0).GetChild(0).GetComponent<RawImage>().color = new Color32(modifiedColor.r, modifiedColor.g, modifiedColor.b, 255);
         positionIndicator.parent.GetChild(0).GetComponent<RawImage>().color = new HSV(modifiedHsv.H, 1d, 1d).ToColor();
         //positionIndicator.anchorMin = new Vector2((float)modifiedHsv.S, (float)modifiedHsv.V);
@@ -343,5 +343,17 @@ public class ColorPicker : MonoBehaviour
                     return new Color32();
             }
         }
+    }
+
+    public static void SetInteractable(bool value)
+    {
+        instance.mainComponent.interactable = value;
+        instance.hexaComponent.interactable = value;
+        instance.rComponent.interactable = value;
+        instance.rComponent.GetComponentInChildren<InputField>().interactable = value;
+        instance.gComponent.interactable = value;
+        instance.gComponent.GetComponentInChildren<InputField>().interactable = value;
+        instance.bComponent.interactable = value;
+        instance.bComponent.GetComponentInChildren<InputField>().interactable = value;
     }
 }

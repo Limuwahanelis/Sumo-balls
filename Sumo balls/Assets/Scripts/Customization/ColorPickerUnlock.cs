@@ -23,16 +23,21 @@ public class ColorPickerUnlock : MonoBehaviour
     }
     private void OnEnable()
     {
-        if (_pickerItem.IsUnlocked) _pickerButton.CheckItem(true);
+        ColorPicker.Create(GameDataManager.GameData.customizationData.colorPickerColor, "", SetColorImage, null, false);
+        if (_pickerItem.IsUnlocked) 
+        {
+            ColorPicker.SetInteractable(true);
+            _pickerButton.CheckItem(true);
+        }
         else
         {
-
+            ColorPicker.SetInteractable(false);
             foreach (Unlockable item in _colorItems)
             {
                 item.OnUnlockedEvent.AddListener(CheckIfAllColorsAreUnlocked);
             }
         }
-        ColorPicker.Create(GameDataManager.GameData.customizationData.colorPickerColor, "",SetColorImage,null,false);
+        
         SetColorImage(GameDataManager.GameData.customizationData.colorPickerColor);
     }
     private void CheckIfAllColorsAreUnlocked()
