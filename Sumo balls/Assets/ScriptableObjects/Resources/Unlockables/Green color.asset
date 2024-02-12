@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Green color
   m_EditorClassIdentifier: 
   _id: bab23c8576b7a35499f4ca4f3995070f
-  _isUnlocked: 0
+  _startUnlocked: 0
+  _isUnlocked: 1
   _cost: 2
   _isInitalised: 1

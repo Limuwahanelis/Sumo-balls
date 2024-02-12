@@ -285,7 +285,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stageList: {fileID: 11400000, guid: c96c023c1c6242a40919296d29187161, type: 2}
-  _overrideSave: 0
+  _overrideSave: 1
   _points:
     useConstant: 0
     constantValue: 0

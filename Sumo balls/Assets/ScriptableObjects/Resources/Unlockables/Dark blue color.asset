@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Dark blue color
   m_EditorClassIdentifier: 
   _id: 346c5ca3e0b8ced44ba343fdb082b0bd
-  _isUnlocked: 0
+  _startUnlocked: 0
+  _isUnlocked: 1
   _cost: 2
   _isInitalised: 1

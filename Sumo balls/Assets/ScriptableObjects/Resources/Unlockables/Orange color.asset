@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Orange color
   m_EditorClassIdentifier: 
   _id: 9ad7890953f335a4983277c15e865447
-  _isUnlocked: 0
+  _startUnlocked: 0
+  _isUnlocked: 1
   _cost: 2
   _isInitalised: 1

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Yellow color
   m_EditorClassIdentifier: 
   _id: 78fecca5ee8b0f544a22dd4fddd62836
-  _isUnlocked: 0
+  _startUnlocked: 0
+  _isUnlocked: 1
   _cost: 2
   _isInitalised: 1

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Red color
   m_EditorClassIdentifier: 
   _id: e1ad4647779be0b41979ea5fab186618
-  _isUnlocked: 0
+  _startUnlocked: 0
+  _isUnlocked: 1
   _cost: 2
   _isInitalised: 1
