@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 2f4c837bcb5540c4489812d2c90683a3
   _startUnlocked: 0
-  _isUnlocked: 1
+  _isUnlocked: 0
   _cost: 2
   _isInitalised: 1

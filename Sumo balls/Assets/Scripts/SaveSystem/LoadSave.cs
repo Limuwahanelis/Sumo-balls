@@ -40,6 +40,8 @@ public class LoadSave : MonoBehaviour
     {
         if (GameDataManager.LoadGameData() == false || _overrideSave)
         {
+            Debug.Log("Creating new save");
+            Debug.Log(_unlockableColors[3].IsUnlocked);
             GameDataManager.CreateGameData(_stageList.stages, _unlockableColors);
             int i = 0;
             foreach (StageData data in GameDataManager.GameData.stagesData)
