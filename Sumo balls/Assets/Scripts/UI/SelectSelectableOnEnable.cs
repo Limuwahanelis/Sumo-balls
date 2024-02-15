@@ -22,4 +22,8 @@ public class SelectSelectableOnEnable : MonoBehaviour
     {
         EventSystem.current.SetSelectedGameObject(_firstSelect.gameObject);
     }
+    public void SelectSelectable()
+    {
+        EventSystem.current.SetSelectedGameObject(_firstSelect.gameObject);
+    }
 }

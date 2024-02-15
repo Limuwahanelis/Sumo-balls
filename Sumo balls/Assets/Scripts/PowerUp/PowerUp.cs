@@ -5,7 +5,7 @@ using UnityEngine.Pool;
 
 public class PowerUp : MonoBehaviour
 {
-    private IObjectPool<PowerUp> _pool;
+    protected IObjectPool<PowerUp> _pool;
     // Start is called before the first frame update
     void Start()
     {

@@ -37,7 +37,8 @@ public class NormalEnemy : Enemy
         if (_rb.position.y < -0.5f || Vector3.Distance(transform.position,Vector3.zero)>11f)
         {
             OnDeath?.Invoke(this);
-            _pool.Release(this);
+            if (_pool != null) _pool.Release(this);
+            else Destroy(gameObject);
         }
     }
     public void ResetEnemy()

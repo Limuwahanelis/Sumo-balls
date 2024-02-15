@@ -8,5 +8,5 @@ public abstract class Enemy : MonoBehaviour
     [HideInInspector] public UnityEvent<Enemy> OnDeath;
     [SerializeField] protected Rigidbody _rb;
     [SerializeField] protected float _force;
-    protected GameObject _player;
+    [SerializeField] protected GameObject _player;
 }

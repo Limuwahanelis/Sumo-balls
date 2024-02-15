@@ -13,9 +13,14 @@ namespace SaveSystem
 
         public static GameData GameData =>_gameData;
         private static GameData _gameData;
-        public static void UpdateTutorial(bool value)
+        public static void UpdateControlsTutorial(bool value)
         {
-            GameData.isTutorialCompleted = value;
+            GameData.isControlsTutorialCompleted = value;
+            Save();
+        }
+        public static void UpdateCombatTutorial(bool value)
+        {
+            GameData.isCombatTutorialCompleted = value;
             Save();
         }
         public static void UpdateGameData(int stageIndex, Stage stage)
