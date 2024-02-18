@@ -9,6 +9,7 @@ public class PlayerInputHandler : MonoBehaviour
     [SerializeField] Player _player;
     [SerializeField] PauseSetter _pauseSetter;
     [SerializeField] InputActionAsset _inputActionAsset;
+    [SerializeField] InputActionReference _pauseInputAction;
     [SerializeField] string _playerActions;
     bool _isPushing = false;
     float _pushdirection;
@@ -31,6 +32,11 @@ public class PlayerInputHandler : MonoBehaviour
     public void DisableActionMap()
     {
         _inputActionAsset.FindActionMap(_playerActions).Disable();
+    }
+    public void DisablePlayerNonPauseActions()
+    {
+        _inputActionAsset.Disable();
+        _pauseInputAction.action.Enable();
     }
     void OnPush(InputValue val)
     {
