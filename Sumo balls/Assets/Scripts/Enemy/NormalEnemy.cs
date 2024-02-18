@@ -34,7 +34,7 @@ public class NormalEnemy : Enemy
     {
         if (GlobalSettings.IsGamePaused) return;
         _rb.AddForce((_player.transform.position - transform.position).normalized * _force * Time.deltaTime);
-        if (_rb.position.y < -0.5f || Vector3.Distance(transform.position,Vector3.zero)>11f)
+        if (_rb.position.y < 0.3f || Vector3.Distance(transform.position,Vector3.zero)>9.5f)
         {
             OnDeath?.Invoke(this);
             if (_pool != null) _pool.Release(this);
