@@ -7,15 +7,15 @@ using UnityEngine.Events;
 
 public class Countdown : MonoBehaviour
 {
-//#if UNITY_EDITOR
-//    public bool skipCountdown;
-//#endif
+    public float CountTime=> _totalTime;
+    public float StartingTime=>_startingNumber;
     [SerializeField] BoolReference _isStageFastLoad;
     [SerializeField] TMP_Text _countdownText;
     [SerializeField] float _timeForNumberToDisappear=1f;
     [SerializeField] int _startingNumber = 3;
     private float _startingFontSize;
     private float _time;
+    private float _totalTime = 0;
     private int _currentNumber;
 
     public UnityEvent OnCountdownEnd;
@@ -38,6 +38,7 @@ public class Countdown : MonoBehaviour
             OnBeforeCountdown?.Invoke();
             gameObject.SetActive(true);
             _countdownText.gameObject.SetActive(true);
+            _totalTime = 0;
             _currentNumber = _startingNumber;
             _countdownText.text = _startingNumber.ToString();
             _startingFontSize = _countdownText.fontSize;
@@ -53,6 +54,7 @@ public class Countdown : MonoBehaviour
             while(pct<1)
             {
                 _time += Time.deltaTime;
+                _totalTime += Time.deltaTime;
                 pct = math.remap(0, _timeForNumberToDisappear, 0, 1, _time);
                 pct = math.clamp(pct,0, 1);
                 _countdownText.fontSize = math.lerp(_startingFontSize, 0, pct);
