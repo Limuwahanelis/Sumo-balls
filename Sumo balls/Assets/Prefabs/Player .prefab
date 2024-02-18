@@ -11782,6 +11782,7 @@ MonoBehaviour:
     m_Bits: 512
   _wallClashAudioEvent: {fileID: 11400000, guid: 6ff49938a0398904e89be2857caba2fd,
     type: 2}
+  _bassSquishAudioEvent: {fileID: 0}
   OnPlayerDeath:
     m_PersistentCalls:
       m_Calls:
@@ -11812,6 +11813,8 @@ MonoBehaviour:
   _player: {fileID: 1761369987521674883}
   _pauseSetter: {fileID: 0}
   _inputActionAsset: {fileID: -944628639613478452, guid: 108bb979191d4a548af7f7a2a04fc63d,
+    type: 3}
+  _pauseInputAction: {fileID: -3202249217418099058, guid: 108bb979191d4a548af7f7a2a04fc63d,
     type: 3}
   _playerActions: Player
 --- !u!114 &7155332372089040261

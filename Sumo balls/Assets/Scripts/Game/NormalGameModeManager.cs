@@ -8,8 +8,8 @@ public class NormalGameModeManager : GameModeManager
     [SerializeField] WallsManager _wallsManager;
     [SerializeField] TimeCounter _timeCounter;
     [SerializeField] InStageDescription _timeDisplay;
+    [SerializeField] Player _player;
     private NormalModeSettings _normalModeSettings;
-    private float _currentTime;
     private int _powerUpSpawns = 1;
     private int _spawnedEnemies = 0;
     private int _killedEnemies = 0;
@@ -58,19 +58,44 @@ public class NormalGameModeManager : GameModeManager
         
 
     }
-
+    public override void RestartStage()
+    {
+        PrepareStage();
+        OnResetStage?.Invoke();
+    }
     public override void PrepareStage()
     {
         _timeCounter.SetCountTime(false);
-        _stageCompleteScore.SetScore(3);
         _timeDisplay.SetValue("0");
         _taskDescription.SetValue((_normalModeSettings.NumberOfEnemiesToDefeat).ToString());
+        _powerUpSpawns = 1;
+        _spawnedEnemies = 0;
+        _killedEnemies = 0;
+        _timeCounter.ResetTimer();
+        _score = 2;
+        _stageCompleteScore.SetScore(3);
+        _enemySpawner.ReturnAllEnemiesToPool();
+        _powerUpSpawner.ReturnAllPowerUpsToPool();
+        _player.ResetPlayer();
         for (int i = 0; i < _normalModeSettings.SimultaneouslNumberOfEnemies; i++)
         {
             _spawnedEnemies++;
             SpawnEnemy();
         }
         _enemySpawner.SetAllEnemyScript(false);
+    }
+
+    public override void StartStage()
+    {
+
+        _enemySpawner.SetAllEnemyScript(true);
+        _timeCounter.SetCountTime(true);
+        OnStageStarted?.Invoke();
+    }
+    public override void FailStage()
+    {
+        _timeCounter.SetCountTime(false);
+        OnStageFailed?.Invoke();
     }
     private void OnEnemyDeath(Enemy enemy)
     {
@@ -88,20 +113,7 @@ public class NormalGameModeManager : GameModeManager
         _taskDescription.SetValue((_normalModeSettings.NumberOfEnemiesToDefeat - _killedEnemies).ToString());
     }
 
-    public override void RestartStage()
-    {
-        _currentTime = 0;
-        _powerUpSpawns = 1;
-        _spawnedEnemies = 0;
-        _killedEnemies = 0;
-        _timeCounter.ResetTimer();
-        _score = 2;
-        _stageCompleteScore.SetScore(3);
-        _enemySpawner.ReturnAllEnemiesToPool();
-        _powerUpSpawner.ReturnAllPowerUpsToPool();
-        OnResetStage?.Invoke();
-        PrepareStage();
-    }
+
 
     private void SpawnEnemy()
     {
@@ -118,17 +130,5 @@ public class NormalGameModeManager : GameModeManager
         OnResetStage.RemoveListener(_wallsManager.RestoreWalls);
     }
 
-    public override void StartStage()
-    {
 
-        _enemySpawner.SetAllEnemyScript(true);
-        _timeCounter.SetCountTime(true);
-        OnStageStarted?.Invoke();
-    }
-
-    public override void FailStage()
-    {
-        _timeCounter.SetCountTime(false);
-        OnStageFailed?.Invoke();
-    }
 }

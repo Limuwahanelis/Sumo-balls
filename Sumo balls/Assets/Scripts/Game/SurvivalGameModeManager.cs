@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class SurvivalGameModeManager : GameModeManager
 {
 
+    [SerializeField] Player _player;
     private SurvivalModeSettings _survivalModeSettings;
     private float _currentTime;
     private int _powerUpSpawns = 1;
@@ -66,9 +68,54 @@ public class SurvivalGameModeManager : GameModeManager
         }
         
     }
+
+    public override void RestartStage()
+    {
+
+        PrepareStage();
+        OnResetStage?.Invoke();
+    }
+
+
+    public override void PrepareStage()
+    {
+        _player.ResetPlayer();
+        _currentTime = 0;
+        _powerUpSpawns = 1;
+        _spawnedWaves = 1;
+        _killedEnemies = 0;
+        _isCompleted = false;
+        _stageCompleteScore.SetScore(0);
+        _enemySpawner.ReturnAllEnemiesToPool();
+        _powerUpSpawner.ReturnAllPowerUpsToPool();
+        SetCountTime(false);
+        _taskDescription.SetValue(ConvertTime(_survivalModeSettings.TimeToSurvive));
+        for (int i = 0; i < _survivalModeSettings.StartingNumberOfEnemies; i++)
+        {
+            SpawnEnemy();
+        }
+        _enemySpawner.SetAllEnemyScript(false);
+        
+    }
+    public override void StartStage()
+    {
+        SetCountTime(true);
+        _enemySpawner.SetAllEnemyScript(true);
+        OnStageStarted?.Invoke();
+    }
+
+    public override void FailStage()
+    {
+        OnStageFailed?.Invoke();
+    }
+    public void SetCountTime(bool value)
+    {
+        _countTime = value;
+    }
+
     private string ConvertTime(float timeInSeconds)
     {
-        int miliSeconds =(int) ((timeInSeconds - math.floor(timeInSeconds))*1000);
+        int miliSeconds = (int)((timeInSeconds - math.floor(timeInSeconds)) * 1000);
         int seconds = (int)math.floor(timeInSeconds);
         return string.Format("{0:00}:{1:000}", seconds, miliSeconds);
     }
@@ -76,7 +123,7 @@ public class SurvivalGameModeManager : GameModeManager
     {
         enemy.OnDeath.RemoveListener(OnEnemyDeath);
         _killedEnemies++;
-        if(_killedEnemies==_survivalModeSettings.EnemiesToDefeatForStar[_stageCompleteScore.ScoreAsReversedIndex])
+        if (_killedEnemies == _survivalModeSettings.EnemiesToDefeatForStar[_stageCompleteScore.ScoreAsReversedIndex])
         {
             _stageCompleteScore.IncreaseScore();
         }
@@ -90,46 +137,5 @@ public class SurvivalGameModeManager : GameModeManager
             en.RandomizeAngularDrag(0.5f, 3.5f);
             en.RandomizePushForce(200, 600);
         }
-    }
-    public override void RestartStage()
-    {
-        _currentTime = 0;
-        _powerUpSpawns = 1;
-        _spawnedWaves = 1;
-        _killedEnemies = 0;
-        _isCompleted = false;
-        _stageCompleteScore.SetScore(0);
-        _enemySpawner.ReturnAllEnemiesToPool();
-        _powerUpSpawner.ReturnAllPowerUpsToPool();
-        OnResetStage?.Invoke();
-        PrepareStage();
-    }
-
-
-    public override void PrepareStage()
-    {
-        _taskDescription.SetValue(ConvertTime(_survivalModeSettings.TimeToSurvive));
-        for (int i = 0; i < _survivalModeSettings.StartingNumberOfEnemies; i++)
-        {
-            SpawnEnemy();
-        }
-        _enemySpawner.SetAllEnemyScript(false);
-        SetCountTime(false);
-    }
-    public void SetCountTime(bool value)
-    {
-        _countTime = value;
-    }
-
-    public override void StartStage()
-    {
-        SetCountTime(true);
-        _enemySpawner.SetAllEnemyScript(true);
-        OnStageStarted?.Invoke();
-    }
-
-    public override void FailStage()
-    {
-        OnStageFailed?.Invoke();
     }
 }
