@@ -33,4 +33,8 @@ public class CameraInputHandler : MonoBehaviour
         else _isRotating=false;
         
     }
+    private void OnValidate()
+    {
+        if (_camera == null) _camera = FindObjectOfType<PlayerCamera>();
+    }
 }

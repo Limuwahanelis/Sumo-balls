@@ -9,6 +9,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] InputActionReference _ballPushAction;
     [SerializeField] InputActionReference _cameraMouseRotationAction;
     [SerializeField] InputActionReference _cameraDeviceRotationAction;
+    [SerializeField] SpeedBar _speedBar;
     [SerializeField] BoolReference _skipTutorial;
     [SerializeField] TutorialCameraInputHandler _cameraInputHandler;
     [SerializeField] PushBallTask _ballPushTask;
@@ -39,6 +40,7 @@ public class TutorialManager : MonoBehaviour
     {
         if (value)
         {
+            _speedBar.SetSpeedBar(true);
             _cameraMouseRotationAction.action.Enable();
             _cameraDeviceRotationAction.action.Enable();
         }
@@ -51,7 +53,7 @@ public class TutorialManager : MonoBehaviour
     }
     public void SetBallPush(bool value)
     {
-        if(value) _ballPushAction.action.Enable();
+        if (value)_ballPushAction.action.Enable();
         else _ballPushAction.action.Disable();
     }
 

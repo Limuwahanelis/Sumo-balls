@@ -44,7 +44,7 @@ public class SpeedBar : MonoBehaviour
             }
         }
     }
-    private void SetSpeedBar(bool value)
+    public void SetSpeedBar(bool value)
     {
         _slider.GetComponentInParent<Canvas>(true).gameObject.SetActive(value);
     }

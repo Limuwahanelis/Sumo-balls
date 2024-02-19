@@ -39,7 +39,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(_playerRB.velocity.magnitude);
         if (GlobalSettings.IsGamePaused) return;
         if (_hasPowerUp) _powerUpIndicator.transform.position = _playerRB.position + new Vector3(0, -0.6f, 0);
         if (_playerRB.transform.localPosition.y < -0.5f && !_hasBroadcastedDeath)
@@ -153,5 +152,14 @@ public class Player : MonoBehaviour
             yield return null;
         }
         OnPlayerDeath?.Invoke();
+    }
+
+    private void OnValidate()
+    {
+        if (_pivot == null)
+        {
+            PlayerCamera cam = FindObjectOfType<PlayerCamera>();
+            if (cam)_pivot= cam.transform.parent.gameObject;
+        }
     }
 }
