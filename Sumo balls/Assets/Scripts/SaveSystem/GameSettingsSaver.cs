@@ -6,10 +6,12 @@ using UnityEngine;
 public class GameSettingsSaver : MonoBehaviour
 {
     public static readonly string fileName = "configs";
-    public void Save(bool value)
+    [SerializeField] BoolValue _isLevelFastLoad;
+    [SerializeField] BoolValue _isSpeedBarDisplayed;
+    public void Save()
     {
         //SaveGameSettings.SaveSettings(value);
-        GameSettingsData gameSettingsData = new GameSettingsData(value);
+        GameSettingsData gameSettingsData = new GameSettingsData(_isLevelFastLoad.value,_isSpeedBarDisplayed.value);
         JsonSave.SaveToFile(gameSettingsData, fileName);
     }
 

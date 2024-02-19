@@ -7,14 +7,16 @@ using UnityEngine;
 public class GameSettingsData
 {
     public bool fastLoad;
-
-    public GameSettingsData(bool fastLoad)
+    public bool speedBar;
+    public GameSettingsData(bool fastLoad,bool speedBar)
     {
         this.fastLoad = fastLoad;
+        this.speedBar = speedBar;
     }
 
     public GameSettingsData()
     {
         fastLoad = false;
+        speedBar = true;
     }
 }

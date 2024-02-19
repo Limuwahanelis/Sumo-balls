@@ -272,6 +272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fastLoad: {fileID: 11400000, guid: b43ae710540978241a44415ef7284751, type: 2}
+  _showSpeedBar: {fileID: 11400000, guid: baa72e5a8d29d084a8dfe100cf301cbb, type: 2}
 --- !u!114 &1592543769
 MonoBehaviour:
   m_ObjectHideFlags: 0

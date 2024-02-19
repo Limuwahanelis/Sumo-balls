@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
@@ -18,6 +19,7 @@ public class Player : MonoBehaviour
     [SerializeField] LayerMask _arenaLayer;
     [SerializeField] SingleClipAudioEvent _wallClashAudioEvent;
     [SerializeField] SingleClipAudioEvent _bassSquishAudioEvent;
+    [SerializeField] SpeedBar _speedBar;
     private bool _hasBroadcastedDeath = false;
     private Coroutine _powerUpCor;
     private Vector3 _startingScale;
@@ -37,6 +39,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(_playerRB.velocity.magnitude);
         if (GlobalSettings.IsGamePaused) return;
         if (_hasPowerUp) _powerUpIndicator.transform.position = _playerRB.position + new Vector3(0, -0.6f, 0);
         if (_playerRB.transform.localPosition.y < -0.5f && !_hasBroadcastedDeath)
@@ -44,6 +47,7 @@ public class Player : MonoBehaviour
             _hasBroadcastedDeath = true;
             OnPlayerDeath?.Invoke();
         }
+        _speedBar.SetSpeed(_playerRB.velocity.magnitude);
     }
     public void ResetPlayer()
     {
