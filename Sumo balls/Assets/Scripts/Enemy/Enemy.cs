@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public abstract class Enemy : MonoBehaviour
 {
-    [HideInInspector] public UnityEvent<Enemy> OnDeath;
+    public UnityEvent<Enemy> OnDeath;
     [SerializeField] protected Rigidbody _rb;
     [SerializeField] protected float _force;
     [SerializeField] protected GameObject _player;

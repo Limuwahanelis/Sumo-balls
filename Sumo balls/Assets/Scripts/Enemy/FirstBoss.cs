@@ -17,7 +17,6 @@ public class FirstBoss : Enemy
     private Material _material;
     private Coroutine _stunCor;
     public UnityEvent OnStunned;
-    public UnityEvent OnKilled;
     bool _push;
     private void Awake()
     {
@@ -37,13 +36,14 @@ public class FirstBoss : Enemy
     // Update is called once per frame
     void Update()
     {
+        if (_rb.position.y < 1.5f || Vector3.Distance(transform.position, Vector3.zero) > 10f)
+        {
+            OnDeath?.Invoke(this);
+            enabled = false;
+        }
         if (_isStunned) return;
         if (GlobalSettings.IsGamePaused) return;
         _rb.AddForce((_player.transform.position - transform.position).normalized * _force * Time.deltaTime);
-        if (_rb.position.y < -0.5f || Vector3.Distance(transform.position, Vector3.zero) > 11f)
-        {
-            OnDeath?.Invoke(this);
-        }
         if (_rb.velocity.magnitude > 2.4)
         {
             _push = true;
@@ -53,11 +53,6 @@ public class FirstBoss : Enemy
         {
             _material.DisableKeyword("_EMISSION");
             _push = false;
-        }
-        if (transform.position.y < -0.5f)
-        {
-            OnKilled?.Invoke();
-            enabled = false;
         }
     }
     public void SetPlayer(GameObject player) => _player = player;

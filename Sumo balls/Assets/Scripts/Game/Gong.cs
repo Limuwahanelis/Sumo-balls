@@ -9,6 +9,7 @@ public class Gong : MonoBehaviour
     [SerializeField] Animator _animator;
     [SerializeField] Countdown _countdown;
     [SerializeField] BoolReference _fastLoad;
+    [SerializeField] List<TransparentOverTime> _transparentsOverTime;
     private bool _fired;
     private void Awake()
     {
@@ -25,10 +26,29 @@ public class Gong : MonoBehaviour
         _audioEvent.Play(_audioSource,true);
         enabled = false;
     }
+    public void MakeGongDisappear()
+    {
+        foreach (TransparentOverTime transparentObj in _transparentsOverTime)
+        {
+            transparentObj.StartFadeOutCor();
+        }
+    }
+    private void ResetTransparency()
+    {
+        foreach (TransparentOverTime transparentObj in _transparentsOverTime)
+        {
+            transparentObj.ResetTransparency();
+        }
+    }
     public void ResetGong()
     {
-        if (_fastLoad.value) gameObject.SetActive(false);
+        if (_fastLoad.value)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
         else gameObject.SetActive(true);
+        ResetTransparency();
         enabled = true;
         _fired = false;
         _animator.SetBool("Play",false);

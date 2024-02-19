@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5551491027036562709}
   - component: {fileID: 766006242222686181}
   - component: {fileID: 4602459173348918511}
-  - component: {fileID: 899587551318546631}
+  - component: {fileID: 6283396007810329769}
   m_Layer: 0
   m_Name: Gong hitter
   m_TagString: Untagged
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0e16ef6037f8c3549be438bbd1a44728, type: 2}
+  - {fileID: 2100000, guid: 82571d31e60f7b74998ef379aee3b5b1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,27 +85,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &899587551318546631
-SphereCollider:
+--- !u!114 &6283396007810329769
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 539657191566398592}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e0de0cdca5a494e87af6875352589c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _originalColor: {r: 0.1137255, g: 0.1137255, b: 0.23529413, a: 1}
+  _fadeOutTime: 2
 --- !u!1 &654334608856658162
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,7 +123,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 654334608856658162}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.036, z: 0}
+  m_LocalPosition: {x: 0, y: 1.217, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -172,7 +165,7 @@ Transform:
   - {fileID: 6798393837561454908}
   - {fileID: 5551491027036562709}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2273745015930925259
 Animator:
@@ -215,6 +208,11 @@ MonoBehaviour:
     useConstant: 0
     constantValue: 0
     variable: {fileID: 11400000, guid: b43ae710540978241a44415ef7284751, type: 2}
+  _transparentsOverTime:
+  - {fileID: 1713017052355074921}
+  - {fileID: 6283396007810329769}
+  - {fileID: 1524804664737742298}
+  - {fileID: 8586757390699962355}
 --- !u!82 &2290426371011770834
 AudioSource:
   m_ObjectHideFlags: 0
@@ -323,7 +321,7 @@ GameObject:
   - component: {fileID: 7003653052206300418}
   - component: {fileID: 8184856080481146779}
   - component: {fileID: 838150995200321125}
-  - component: {fileID: 189865812512326724}
+  - component: {fileID: 1524804664737742298}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -375,7 +373,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0a1f588068f6f1c42b615e0d884abe0d, type: 2}
+  - {fileID: 2100000, guid: 82571d31e60f7b74998ef379aee3b5b1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -397,27 +395,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &189865812512326724
-BoxCollider:
+--- !u!114 &1524804664737742298
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4246124631736825789}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e0de0cdca5a494e87af6875352589c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _originalColor: {r: 0.34117648, g: 0.16862746, b: 0, a: 1}
+  _fadeOutTime: 2
 --- !u!1 &4532493422144771223
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,7 +420,7 @@ GameObject:
   - component: {fileID: 7002349773164512195}
   - component: {fileID: 8370641906044080341}
   - component: {fileID: 7425993193323206356}
-  - component: {fileID: 4614703479929668407}
+  - component: {fileID: 8586757390699962355}
   m_Layer: 0
   m_Name: Sphere (2)
   m_TagString: Untagged
@@ -480,7 +471,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c44bc1601e809e0449d2e87db0485760, type: 2}
+  - {fileID: 2100000, guid: 82571d31e60f7b74998ef379aee3b5b1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -502,27 +493,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &4614703479929668407
-SphereCollider:
+--- !u!114 &8586757390699962355
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4532493422144771223}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e0de0cdca5a494e87af6875352589c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _originalColor: {r: 1, g: 1, b: 1, a: 1}
+  _fadeOutTime: 2
 --- !u!1 &5725904500291531234
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,6 +518,7 @@ GameObject:
   - component: {fileID: 1857150404882074189}
   - component: {fileID: 7184730619241169671}
   - component: {fileID: 4426342942079290160}
+  - component: {fileID: 1713017052355074921}
   m_Layer: 0
   m_Name: Gong Body
   m_TagString: Untagged
@@ -584,7 +569,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: dd79b05257084c441b129bb347bbacb4, type: 2}
+  - {fileID: 2100000, guid: 82571d31e60f7b74998ef379aee3b5b1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -606,6 +591,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1713017052355074921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5725904500291531234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e0de0cdca5a494e87af6875352589c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _originalColor: {r: 0.9529412, g: 0.73333335, b: 0.12156863, a: 1}
+  _fadeOutTime: 2
 --- !u!1 &6525143486525979862
 GameObject:
   m_ObjectHideFlags: 0
