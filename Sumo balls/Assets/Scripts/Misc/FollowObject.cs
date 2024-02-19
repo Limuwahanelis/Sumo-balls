@@ -20,9 +20,9 @@ public class FollowObject : MonoBehaviour
     void Update()
     {
         Vector3 target = _transformToFollow.position+_offset;
-        if (!_XAxis) target.x=_originalpos.x;
-        if (!_YAxis) target.y=_originalpos.y;
-        if (!_ZAxis) target.z=_originalpos.z;
+        if (!_XAxis) target.x=_originalpos.x+_offset.x;
+        if (!_YAxis) target.y=_originalpos.y +_offset.y;
+        if (!_ZAxis) target.z=_originalpos.z + _offset.z;
         transform.position = target;
     }
 }
