@@ -1194,6 +1194,7 @@ GameObject:
   - component: {fileID: 7280222927770517402}
   - component: {fileID: 6954796909628333964}
   - component: {fileID: 1944798352360554208}
+  - component: {fileID: 7502209534963903478}
   m_Layer: 5
   m_Name: Game Over
   m_TagString: Untagged
@@ -1261,6 +1262,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7502209534963903478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4332299237142106766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c876d94cc243be44bed7aecf394a9dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _firstSelect: {fileID: 7728250437845200027}
 --- !u!1 &4436233508819605134
 GameObject:
   m_ObjectHideFlags: 0
@@ -1617,6 +1631,7 @@ GameObject:
   - component: {fileID: 8843391529650477307}
   - component: {fileID: 1279109961818915967}
   - component: {fileID: 2975960424107649415}
+  - component: {fileID: 4785103810294703423}
   m_Layer: 5
   m_Name: Stage clear
   m_TagString: Untagged
@@ -1715,6 +1730,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4785103810294703423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6649249088946369116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c876d94cc243be44bed7aecf394a9dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _firstSelect: {fileID: 1717287517248225207}
 --- !u!1 &7548201736165055451
 GameObject:
   m_ObjectHideFlags: 0

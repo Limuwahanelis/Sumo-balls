@@ -2129,7 +2129,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 407.3585, y: 0}
   m_SizeDelta: {x: 120.56, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1159246888
@@ -2647,7 +2647,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 180.7182, y: 0}
   m_SizeDelta: {x: 161.4818, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1240709222
@@ -2888,7 +2888,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1352191254
 Transform:
   m_ObjectHideFlags: 0
@@ -4920,7 +4920,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -36.8}
+  m_AnchoredPosition: {x: 0, y: -37}
   m_SizeDelta: {x: 223.6039, y: 54.2806}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &2092255606
@@ -7135,18 +7135,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1761369987521674883, guid: 5cf124da2d265484180f0d1c0c5ff464,
         type: 3}
-      propertyPath: _wallClashAudioEvent
-      value: 
-      objectReference: {fileID: 11400000, guid: 6ff49938a0398904e89be2857caba2fd,
-        type: 2}
-    - target: {fileID: 1761369987521674883, guid: 5cf124da2d265484180f0d1c0c5ff464,
-        type: 3}
-      propertyPath: _bassSquishAudioEvent
-      value: 
-      objectReference: {fileID: 11400000, guid: c78074f6d2b6e6443b7932cb23183183,
-        type: 2}
-    - target: {fileID: 1761369987521674883, guid: 5cf124da2d265484180f0d1c0c5ff464,
-        type: 3}
       propertyPath: OnPlayerDeath.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -7285,13 +7273,18 @@ PrefabInstance:
       propertyPath: _camera
       value: 
       objectReference: {fileID: 330585548}
+    - target: {fileID: 7474396015131185871, guid: 5cf124da2d265484180f0d1c0c5ff464,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4989862776512259537, guid: 5cf124da2d265484180f0d1c0c5ff464,
         type: 3}
-      insertIndex: -1
+      insertIndex: 5
       addedObject: {fileID: 1974324486}
   m_SourcePrefab: {fileID: 100100000, guid: 5cf124da2d265484180f0d1c0c5ff464, type: 3}
 --- !u!4 &6087976185274313483
