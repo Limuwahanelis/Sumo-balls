@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 [CreateAssetMenu(menuName ="Unlockable item")]
+[Serializable]
 public class UnlockableItem : ScriptableObject
 {
 
