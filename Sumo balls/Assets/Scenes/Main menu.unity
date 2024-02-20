@@ -9498,6 +9498,21 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.88235295
       objectReference: {fileID: 0}
+    - target: {fileID: 2645092812384357783, guid: 8f33aa5f573e8b84c9d1cfc653ca2ac8,
+        type: 3}
+      propertyPath: imageList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645092812384357783, guid: 8f33aa5f573e8b84c9d1cfc653ca2ac8,
+        type: 3}
+      propertyPath: imageList.Array.data[0]
+      value: 
+      objectReference: {fileID: 2019624298}
+    - target: {fileID: 2645092812384357783, guid: 8f33aa5f573e8b84c9d1cfc653ca2ac8,
+        type: 3}
+      propertyPath: imageList.Array.data[1]
+      value: 
+      objectReference: {fileID: 1538565743}
     - target: {fileID: 2645092812384357786, guid: 8f33aa5f573e8b84c9d1cfc653ca2ac8,
         type: 3}
       propertyPath: m_Name
@@ -9628,6 +9643,21 @@ PrefabInstance:
       propertyPath: m_Interactable
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2645092812663001058, guid: 8f33aa5f573e8b84c9d1cfc653ca2ac8,
+        type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645092812663001058, guid: 8f33aa5f573e8b84c9d1cfc653ca2ac8,
+        type: 3}
+      propertyPath: m_Navigation.m_SelectOnLeft
+      value: 
+      objectReference: {fileID: 495039299}
+    - target: {fileID: 2645092812663001058, guid: 8f33aa5f573e8b84c9d1cfc653ca2ac8,
+        type: 3}
+      propertyPath: m_Navigation.m_SelectOnRight
+      value: 
+      objectReference: {fileID: 2019624300}
     - target: {fileID: 2645092812663001058, guid: 8f33aa5f573e8b84c9d1cfc653ca2ac8,
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -9810,6 +9840,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1538565743 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2645092813331655040, guid: 8f33aa5f573e8b84c9d1cfc653ca2ac8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1538565740}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1552170070
@@ -11432,6 +11474,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1790235491}
   m_CullTransparentMesh: 1
+--- !u!114 &1805233447 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2645092812663001058, guid: 8f33aa5f573e8b84c9d1cfc653ca2ac8,
+    type: 3}
+  m_PrefabInstance: {fileID: 1538565740}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1809267316
 GameObject:
   m_ObjectHideFlags: 0
@@ -13695,17 +13749,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2019624295}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: -1
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 1538565741}
     m_SelectOnDown: {fileID: 1944290622}
-    m_SelectOnLeft: {fileID: 943058400}
+    m_SelectOnLeft: {fileID: 1805233447}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
@@ -13727,7 +13781,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 2019624298}
   m_OnClick:
     m_PersistentCalls:
@@ -13774,8 +13828,20 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 2019624300}
-        m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
-        m_MethodName: set_interactable
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2019624304}
+        m_TargetAssemblyTypeName: ColorPicker, Assembly-CSharp
+        m_MethodName: SetInteractable
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

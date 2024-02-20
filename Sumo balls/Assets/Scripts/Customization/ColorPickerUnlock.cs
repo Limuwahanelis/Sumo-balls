@@ -10,6 +10,7 @@ public class ColorPickerUnlock : MonoBehaviour
     [SerializeField] List<Unlockable> _colorItems;
     [SerializeField] ColorSelectionButton _pickerButton;
     [SerializeField] UnlockableItem _pickerItem;
+    private bool _wasPickerCreated = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,11 +24,12 @@ public class ColorPickerUnlock : MonoBehaviour
     }
     private void OnEnable()
     {
+        _wasPickerCreated = false;
         ColorPicker.Create(GameDataManager.GameData.customizationData.colorPickerColor, "", SetColorImage, null, false);
         if (_pickerItem.IsUnlocked) 
         {
             ColorPicker.SetInteractable(true);
-            _pickerButton.CheckItem(true);
+            //_pickerButton.CheckItem(false);
         }
         else
         {
@@ -38,7 +40,7 @@ public class ColorPickerUnlock : MonoBehaviour
             }
         }
         
-        SetColorImage(GameDataManager.GameData.customizationData.colorPickerColor);
+        //SetColorImage(GameDataManager.GameData.customizationData.colorPickerColor);
     }
     private void CheckIfAllColorsAreUnlocked()
     {
@@ -56,6 +58,11 @@ public class ColorPickerUnlock : MonoBehaviour
     }
     private void SetColorImage(Color color)
     {
+        if (!_wasPickerCreated)
+        {
+            _wasPickerCreated = true;
+            return;
+        }
         GameDataManager.GameData.customizationData.colorPickerColor=color;
         GameDataManager.Save();
         _image.color = color;

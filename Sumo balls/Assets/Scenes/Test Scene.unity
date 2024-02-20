@@ -725,21 +725,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnKilled:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: FirstBossModeManager, Assembly-CSharp
-        m_MethodName: CompleteStage
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!54 &263124381
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1569,7 +1554,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 832220166}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 0.591, z: 0}
+  m_LocalPosition: {x: 0, y: 0.591, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1964,7 +1949,7 @@ PrefabInstance:
     - target: {fileID: 3870549884042007270, guid: 72b5f8dc01169bb4f80f2d1a9d7724b9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3870549884042007270, guid: 72b5f8dc01169bb4f80f2d1a9d7724b9,
         type: 3}
@@ -1974,7 +1959,7 @@ PrefabInstance:
     - target: {fileID: 3870549884042007270, guid: 72b5f8dc01169bb4f80f2d1a9d7724b9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3870549884042007270, guid: 72b5f8dc01169bb4f80f2d1a9d7724b9,
         type: 3}
@@ -15038,9 +15023,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   debug: 0
   _debugSettings: {fileID: 0}
+  _restartStage: {fileID: 0}
   _stageCompleteScore: {fileID: 0}
   _taskDescription: {fileID: 0}
-  _gameOverPause: {fileID: 0}
   _enemySpawner: {fileID: 996891606}
   _powerUpSpawner: {fileID: 2097864724}
   OnResetStage:
@@ -15071,6 +15056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da77c038f614a5e41bd4076dc4991af5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerPause: {fileID: 0}
   OnPause:
     m_PersistentCalls:
       m_Calls:
@@ -15182,6 +15168,7 @@ MonoBehaviour:
     m_Bits: 0
   _wallClashAudioEvent: {fileID: 0}
   _bassSquishAudioEvent: {fileID: 0}
+  _speedBar: {fileID: 0}
   OnPlayerDeath:
     m_PersistentCalls:
       m_Calls: []
@@ -15193,7 +15180,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1974324480}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -15261,6 +15248,7 @@ MonoBehaviour:
   _player: {fileID: 1974324481}
   _pauseSetter: {fileID: 1931220079}
   _inputActionAsset: {fileID: 0}
+  _pauseInputAction: {fileID: 0}
   _playerActions: 
 --- !u!1 &2097864723
 GameObject:

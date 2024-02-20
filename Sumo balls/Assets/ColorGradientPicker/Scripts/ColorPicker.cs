@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 public class ColorPicker : MonoBehaviour
@@ -40,6 +41,8 @@ public class ColorPicker : MonoBehaviour
     public Slider aComponent;
     public InputField hexaComponent;
     public RawImage colorComponent;
+
+    [SerializeField]List<Image> imageList=new List<Image>();
 
     private void Awake()
     {
@@ -120,8 +123,8 @@ public class ColorPicker : MonoBehaviour
         bComponent.transform.GetChild(1).GetChild(0).GetComponent<RawImage>().color = new Color32(modifiedColor.r, modifiedColor.g, 0, 255);
         if (useA) aComponent.transform.GetChild(0).GetChild(0).GetComponent<RawImage>().color = new Color32(modifiedColor.r, modifiedColor.g, modifiedColor.b, 255);
         positionIndicator.parent.GetChild(0).GetComponent<RawImage>().color = new HSV(modifiedHsv.H, 1d, 1d).ToColor();
-        //positionIndicator.anchorMin = new Vector2((float)modifiedHsv.S, (float)modifiedHsv.V);
-        //positionIndicator.anchorMax = positionIndicator.anchorMin;
+        positionIndicator.anchorMin = new Vector2((float)modifiedHsv.S, (float)modifiedHsv.V);
+        positionIndicator.anchorMax = positionIndicator.anchorMin;
         hexaComponent.text = useA ? ColorUtility.ToHtmlStringRGBA(modifiedColor) : ColorUtility.ToHtmlStringRGB(modifiedColor);
         colorComponent.color = modifiedColor;
         onCC?.Invoke(modifiedColor);
@@ -347,13 +350,17 @@ public class ColorPicker : MonoBehaviour
 
     public static void SetInteractable(bool value)
     {
-        instance.mainComponent.interactable = value;
-        instance.hexaComponent.interactable = value;
-        instance.rComponent.interactable = value;
-        instance.rComponent.GetComponentInChildren<InputField>().interactable = value;
-        instance.gComponent.interactable = value;
-        instance.gComponent.GetComponentInChildren<InputField>().interactable = value;
-        instance.bComponent.interactable = value;
-        instance.bComponent.GetComponentInChildren<InputField>().interactable = value;
+        instance.mainComponent.enabled = value;
+        instance.hexaComponent.enabled = value;
+        instance.rComponent.enabled = value;
+        instance.rComponent.GetComponentInChildren<InputField>().enabled = value;
+        instance.gComponent.enabled = value;
+        instance.gComponent.GetComponentInChildren<InputField>().enabled = value;
+        instance.bComponent.enabled = value;
+        instance.bComponent.GetComponentInChildren<InputField>().enabled = value;
+        //foreach(Image img in instance.imageList)
+        //{
+        //    img.raycastTarget = value;
+        //}
     }
 }
