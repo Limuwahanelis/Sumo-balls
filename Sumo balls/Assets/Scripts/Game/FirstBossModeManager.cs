@@ -18,6 +18,7 @@ public class FirstBossModeManager : GameModeManager
     private int _timeLimitIndex;
     private void Awake()
     {
+        _restartStage.OnTriggered.AddListener(RestartStage);
         _wallsManager.SetUp();
         if (GlobalSettings.SelectedStage == null)
         {
@@ -104,5 +105,9 @@ public class FirstBossModeManager : GameModeManager
     {
         Debug.Log("FAILED");
         OnStageFailed?.Invoke();
+    }
+    private void OnDestroy()
+    {
+        _restartStage.OnTriggered.RemoveListener(RestartStage);
     }
 }

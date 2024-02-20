@@ -38,8 +38,8 @@ public class FirstBoss : Enemy
     {
         if (_rb.position.y < 1.5f || Vector3.Distance(transform.position, Vector3.zero) > 10f)
         {
-            OnDeath?.Invoke(this);
             enabled = false;
+            OnDeath?.Invoke(this);
         }
         if (_isStunned) return;
         if (GlobalSettings.IsGamePaused) return;

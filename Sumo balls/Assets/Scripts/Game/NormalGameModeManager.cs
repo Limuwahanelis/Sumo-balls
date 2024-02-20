@@ -16,7 +16,7 @@ public class NormalGameModeManager : GameModeManager
     private int _score = 2;
     private void Awake()
     {
-
+        _restartStage.OnTriggered.AddListener(RestartStage);
         if (GlobalSettings.SelectedStage == null)
         {
 #if UNITY_EDITOR
@@ -95,6 +95,8 @@ public class NormalGameModeManager : GameModeManager
     public override void FailStage()
     {
         _timeCounter.SetCountTime(false);
+        GlobalSettings.SetPause(true);
+
         OnStageFailed?.Invoke();
     }
     private void OnEnemyDeath(Enemy enemy)
@@ -128,6 +130,7 @@ public class NormalGameModeManager : GameModeManager
     private void OnDestroy()
     {
         OnResetStage.RemoveListener(_wallsManager.RestoreWalls);
+        _restartStage.OnTriggered.RemoveListener(RestartStage);
     }
 
 

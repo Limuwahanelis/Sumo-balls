@@ -21,7 +21,6 @@ public static class GlobalSettings
         if (value) Time.timeScale = 0;
         else Time.timeScale = 1;
     }
-
     public static void SetStage(Stage stage,int stageIndex)
     {
         _selectedStage = stage;

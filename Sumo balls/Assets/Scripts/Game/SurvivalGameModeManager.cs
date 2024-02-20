@@ -17,8 +17,8 @@ public class SurvivalGameModeManager : GameModeManager
     private bool _countTime = false;
     private void Awake()
     {
-
-        if(GlobalSettings.SelectedStage==null)
+        _restartStage.OnTriggered.AddListener(RestartStage);
+        if (GlobalSettings.SelectedStage==null)
         {
 #if UNITY_EDITOR
             if (debug) _survivalModeSettings = _debugSettings as SurvivalModeSettings;
@@ -136,5 +136,9 @@ public class SurvivalGameModeManager : GameModeManager
             en.RandomizeAngularDrag(0.5f, 3.5f);
             en.RandomizePushForce(200, 600);
         }
+    }
+    private void OnDestroy()
+    {
+        _restartStage.OnTriggered.RemoveListener(RestartStage);
     }
 }

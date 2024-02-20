@@ -9,9 +9,9 @@ public abstract class GameModeManager : MonoBehaviour
     [SerializeField] public bool debug;
     [SerializeField] protected GameModeSettings _debugSettings;
 #endif
+    [SerializeField] protected SOTrigger _restartStage;
     [SerializeField] protected StageCompleteScore _stageCompleteScore;
     [SerializeField] protected InStageDescription _taskDescription;
-    [SerializeField] protected PauseSetter _gameOverPause;
     [SerializeField] protected EnemySpawner _enemySpawner;
     [SerializeField] protected PowerUpSpawner _powerUpSpawner;
     public UnityEvent OnResetStage;

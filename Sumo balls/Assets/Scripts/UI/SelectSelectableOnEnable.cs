@@ -38,6 +38,6 @@ public class SelectSelectableOnEnable : MonoBehaviour
     }
     private void OnDisable()
     {
-        ReturnToPrevious();
+        //ReturnToPrevious();
     }
 }
