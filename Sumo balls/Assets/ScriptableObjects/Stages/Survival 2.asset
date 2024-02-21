@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Survival 2
   m_EditorClassIdentifier: 
   _gameMode: {fileID: 11400000, guid: a94b8374146f64e4fad7c21012f73fe4, type: 2}
-  _stageScreenshot: {fileID: 2800000, guid: a06eae874964ee5499e96d37194d2735, type: 3}
+  _stageScreenshot: {fileID: 2800000, guid: 72735dac793c8034892b7516ec5809d7, type: 3}

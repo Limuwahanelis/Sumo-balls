@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Normal 1
   m_EditorClassIdentifier: 
   _gameMode: {fileID: 11400000, guid: 2157826fcc4b5de4eaf6b2dde38baa57, type: 2}
-  _stageScreenshot: {fileID: 2800000, guid: 5bc07a8c6c8600341b6dfc8c52e35953, type: 3}
+  _stageScreenshot: {fileID: 2800000, guid: 9be45dbcbb1903140aceaf8e5223828a, type: 3}
