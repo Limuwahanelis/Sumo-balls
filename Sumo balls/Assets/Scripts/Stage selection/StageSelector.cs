@@ -5,7 +5,6 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using SaveSystem;
-using UnityEditor.SceneManagement;
 
 public class StageSelector : MonoBehaviour
 {
