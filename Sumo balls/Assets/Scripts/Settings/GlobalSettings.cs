@@ -12,7 +12,7 @@ public static class GlobalSettings
     private static Stage _selectedStage;
     public static Stage SelectedStage => _selectedStage;
 
-    public static int StateIndex=>_stageIndex;
+    public static int StageIndex=>_stageIndex;
     private static int _stageIndex;
     public static void SetPause(bool value)
     {
