@@ -74,7 +74,6 @@ public class TabButtonUI : Selectable//,ISubmitHandler
         if (_isSelected) return;
         DoStateTransition(SelectionState.Selected, false);
         _isSelected = true;
-        //base.OnSelect(eventData);
         _stateToBeOnEnable = SelectionState.Selected;
         OnButtonClicked?.Invoke(this);
     }
@@ -89,7 +88,6 @@ public class TabButtonUI : Selectable//,ISubmitHandler
     {
         BaseEventData eventData = new BaseEventData(EventSystem.current);
         OnSelect(eventData);
-        //base.Select();
     }
     public void Deselect()
     {

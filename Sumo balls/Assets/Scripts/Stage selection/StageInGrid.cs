@@ -1,3 +1,4 @@
+using SaveSystem;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -29,11 +30,14 @@ public class StageInGrid : MonoBehaviour
     }
     private void OnEnable()
     {
-        for (int i = 0; i < _stage.Score; i++)
+        _stageButton.onClick.AddListener(FireSelectStage);
+    }
+    public void SetStars(int score)
+    {
+        for (int i = 0; i < score; i++)
         {
             _scoreStars[i].color = _gainedStarColor;
         }
-        _stageButton.onClick.AddListener(FireSelectStage);
     }
     public void SelectGameModeSettings()
     {

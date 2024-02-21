@@ -16,5 +16,10 @@ namespace SaveSystem
             this.completed = completed;
             this.score = score;
         }
+        public StageData()
+        {
+            completed = false;
+            score = 0;
+        }
     }
 }

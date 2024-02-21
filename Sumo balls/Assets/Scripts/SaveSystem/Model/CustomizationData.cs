@@ -13,18 +13,18 @@ public class CustomizationData
     { 
         foreach (UnlockableItem item in unlockableItems)
         {
-            unlockableItemsData.Add(new UnlockableItemData(item.Id, item.IsUnlocked));
+            unlockableItemsData.Add(new UnlockableItemData(item.Id, item.StartUnlocked));
         }
     }
-    public CustomizationData(string colorUnlockId,Color pickerColor, List<UnlockableItem> unlockableItems)
-    {
-        usedColorUnlockId = colorUnlockId;
-        colorPickerColor = pickerColor;
-        foreach (UnlockableItem item in unlockableItems)
-        {
-            unlockableItemsData.Add(new UnlockableItemData(item.Id, item.IsUnlocked));
-        }
-    }
+    //public CustomizationData(string colorUnlockId,Color pickerColor, List<UnlockableItem> unlockableItems)
+    //{
+    //    usedColorUnlockId = colorUnlockId;
+    //    colorPickerColor = pickerColor;
+    //    foreach (UnlockableItem item in unlockableItems)
+    //    {
+    //        unlockableItemsData.Add(new UnlockableItemData(item.Id, item.IsUnlocked));
+    //    }
+    //}
 
 
 }

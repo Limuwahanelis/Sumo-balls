@@ -96,7 +96,6 @@ public class NormalGameModeManager : GameModeManager
     {
         _timeCounter.SetCountTime(false);
         GlobalSettings.SetPause(true);
-
         OnStageFailed?.Invoke();
     }
     private void OnEnemyDeath(Enemy enemy)

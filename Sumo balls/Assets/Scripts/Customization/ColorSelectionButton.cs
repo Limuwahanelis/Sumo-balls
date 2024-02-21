@@ -1,3 +1,4 @@
+using SaveSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -42,7 +43,7 @@ public class ColorSelectionButton : MonoBehaviour,IColorPickable
     /// <param name="tryUnlock"></param>
     public void CheckItem(bool tryUnlock=true)
     {
-        if(_unlockable.UnlockableItem.IsUnlocked)
+        if(GameDataManager.IsItemUnlocked(_unlockable.UnlockableItem.Id))
         {
             OnColorPicked?.Invoke(_colorImage.color,this);
         }

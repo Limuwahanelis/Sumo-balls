@@ -1,3 +1,4 @@
+using SaveSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,7 @@ public class Shop : MonoBehaviour
     {
         foreach (Unlockable item in _unlockables)
         {
-            if(!item.UnlockableItem.IsUnlocked)
+            if(!GameDataManager.IsItemUnlocked(item.UnlockableItem.Id))
             {
                 item.OnUnlockedEvent.AddListener(() => BuyItem(item.UnlockableItem));
             }

@@ -10,8 +10,6 @@ public class StageSelectorEditor : Editor
     SerializedProperty _stageButtonPrefab;
     StageList _stagelist;
     StageSelector _stageSelector;
-    [SerializeField] private List<StageInGrid> _previousStagesInGrid=new List<StageInGrid>();
-    private List<StageInGrid> _currentStagesIngrid;
     void OnEnable()
     {
         _stageSelector = target as StageSelector;
@@ -28,16 +26,12 @@ public class StageSelectorEditor : Editor
         for (int i = 0; i < _stagelist.stages.Count; i++)
         {
             _stagesInGrid.InsertArrayElementAtIndex(i);
-            
             StageInGrid stageInGrid = PrefabUtility.InstantiatePrefab(_stageButtonPrefab.objectReferenceValue) as StageInGrid;
             _stagesInGrid.GetArrayElementAtIndex(i).objectReferenceValue = stageInGrid;
             stageInGrid.transform.SetParent(_stageSelector.transform);
             stageInGrid.SetStage(_stagelist.stages.ElementAt(i));
             stageInGrid.SetIndex(i+1);
             stageInGrid.SetStageIcon(_stagelist.stages.ElementAt(i).stageScreenshot);
-
-
-            //_previousStagesInGrid.Add(stageInGrid);
         }
         serializedObject.ApplyModifiedProperties();
     }

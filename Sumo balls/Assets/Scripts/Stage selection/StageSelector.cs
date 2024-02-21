@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using SaveSystem;
+using UnityEditor.SceneManagement;
 
 public class StageSelector : MonoBehaviour
 {
@@ -19,6 +21,13 @@ public class StageSelector : MonoBehaviour
         foreach(StageInGrid stage in _stagesInGrid)
         {
             stage.OnSelectStage += SetStage;
+        }
+    }
+    private void OnEnable()
+    {
+        for(int i=0;i<_stagesInGrid.Count;i++)
+        {
+            _stagesInGrid[i].SetStars(GameDataManager.GetStageScore(i)); // In can be done this way because stages in grid are created based on thier order in stage list.
         }
     }
     // Start is called before the first frame update

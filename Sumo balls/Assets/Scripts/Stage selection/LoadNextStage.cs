@@ -16,7 +16,7 @@ public class LoadNextStage : MonoBehaviour
     }
     public void PlayNextStage()
     {
-        GlobalSettings.SetStage(_stageList.stages[GlobalSettings.StateIndex + 1], GlobalSettings.StateIndex + 1);
+        GlobalSettings.SetStage(_stageList.stages[GlobalSettings.StageIndex + 1], GlobalSettings.StageIndex + 1);
         switch (GlobalSettings.SelectedStage.GameModeSettings.GameMode)
         {
             case Configs.Gamemode.NORMAL: _sceneLoader.Load(_normalScene); break;

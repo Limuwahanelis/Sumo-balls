@@ -13,7 +13,8 @@ public class Unlockable:MonoBehaviour
     public UnityEvent OnUnlockedEvent;
     private void OnEnable()
     {
-        if(_unlock.IsUnlocked)
+        //if(_unlock.IsUnlocked)
+        if(GameDataManager.IsItemUnlocked(_unlock.Id))
         {
             Debug.Log("unlock");
             OnUnlockedEvent?.Invoke();
@@ -25,7 +26,6 @@ public class Unlockable:MonoBehaviour
         if(_points.value>=_unlock.Cost)
         {
             _points.value -= _unlock.Cost;
-            _unlock.Unlock();
             GameDataManager.UpdateCustomizationData(_unlock.Id, true);
             OnUnlockedEvent?.Invoke();
             return true;

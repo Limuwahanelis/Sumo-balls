@@ -15,9 +15,6 @@ public class UnlockableItem : ScriptableObject
     public bool StartUnlocked => _startUnlocked;
     [SerializeField] bool _startUnlocked=false;
 
-    public bool IsUnlocked=>_isUnlocked;
-    [SerializeField] private bool _isUnlocked;
-
     public int Cost => _cost;
     [SerializeField] int _cost;
 
@@ -26,18 +23,6 @@ public class UnlockableItem : ScriptableObject
     private void Reset()
     {
         Init();
-    }
-    public void Unlock()
-    {
-        _isUnlocked = true;
-    }
-    public void Lock()
-    {
-        _isUnlocked = false;
-    }
-    private void OnValidate()
-    {
-        if (_startUnlocked) _isUnlocked = true;
     }
     private void Init()
     {

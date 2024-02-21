@@ -26,7 +26,8 @@ public class ColorPickerUnlock : MonoBehaviour
     {
         _wasPickerCreated = false;
         ColorPicker.Create(GameDataManager.GameData.customizationData.colorPickerColor, "", SetColorImage, null, false);
-        if (_pickerItem.IsUnlocked) 
+        //if (_pickerItem.//IsUnlocked) 
+        if(GameDataManager.IsItemUnlocked(_pickerItem.Id))
         {
             ColorPicker.SetInteractable(true);
             //_pickerButton.CheckItem(false);
@@ -47,7 +48,8 @@ public class ColorPickerUnlock : MonoBehaviour
         bool areAllUnlocked = true;
         foreach (Unlockable item in _colorItems)
         {
-            if (!item.UnlockableItem.IsUnlocked)
+            //if (!item.UnlockableItem.IsUnlocked)
+            if(!GameDataManager.IsItemUnlocked(item.UnlockableItem.Id))
             {
                 areAllUnlocked = false;
                 break;

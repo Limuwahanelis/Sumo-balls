@@ -23,11 +23,17 @@ namespace SaveSystem
             GameData.isCombatTutorialCompleted = value;
             Save();
         }
-        public static void UpdateGameData(int stageIndex, Stage stage)
+        public static void UpdateGameData(int stageIndex, int score)
         {
-            GameData.stagesData[stageIndex].completed = stage.IsCompleted;
-            GameData.stagesData[stageIndex].score = stage.Score;
+            //GameData.stagesData[stageIndex].completed = stage.IsCompleted;
+            //GameData.stagesData[stageIndex].score = stage.Score;
+            GameData.stagesData[stageIndex].completed = true;
+            GameData.stagesData[stageIndex].score = score;
             Save();
+        }
+        public static int GetStageScore(int stageIndex)
+        {
+            return GameData.stagesData[stageIndex].score;
         }
         public static void UpdateCustomizationData(string itemId,bool isUnlocked)
         {
@@ -39,6 +45,11 @@ namespace SaveSystem
             }
 
             itemData.isUnlocked = isUnlocked;
+            Save();
+        }
+        public static bool IsItemUnlocked(string itemId)
+        {
+            return _gameData.customizationData.unlockableItemsData.Find((x) => x.itemId == itemId).isUnlocked;
         }
         public static void Save()
         {
@@ -55,7 +66,7 @@ namespace SaveSystem
             List<StageData> stagesData = new List<StageData>();
             foreach(Stage stage in stages)
             {
-                stagesData.Add(new StageData(stage.IsCompleted, stage.Score));
+                stagesData.Add(new StageData());
             }
             GameData saveData = new GameData(stagesData, unlockableColors);
             string json = JsonUtility.ToJson(saveData);
