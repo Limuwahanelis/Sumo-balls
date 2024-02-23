@@ -1123,10 +1123,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1054063570}
-        m_TargetAssemblyTypeName: PauseSetter, Assembly-CSharp
-        m_MethodName: SetPause
-        m_Mode: 6
+      - m_Target: {fileID: 317866760}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: DisablePlayerNonPauseActions
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 317866759}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: StopPlayer
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1243,10 +1255,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1054063570}
-        m_TargetAssemblyTypeName: PauseSetter, Assembly-CSharp
-        m_MethodName: SetPause
-        m_Mode: 6
+      - m_Target: {fileID: 317866760}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: DisablePlayerNonPauseActions
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 317866759}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: StopPlayer
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1640,6 +1664,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93b2ab6f7490bb241bac2e4ddc3c3c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &317866760 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6852706013482790359, guid: 5cf124da2d265484180f0d1c0c5ff464,
+    type: 3}
+  m_PrefabInstance: {fileID: 317866758}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c94fbc19e825f1f47a7762ccaf9f06e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &327867022 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2054192762875985670, guid: a0e92868a8fb1a8418b0094b1083dc45,
@@ -1854,10 +1890,10 @@ MonoBehaviour:
   OnPopUpsEnded:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1054063570}
-        m_TargetAssemblyTypeName: PauseSetter, Assembly-CSharp
-        m_MethodName: SetPause
-        m_Mode: 6
+      - m_Target: {fileID: 317866760}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: ResetActionMap
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2333,10 +2369,22 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1054063570}
-        m_TargetAssemblyTypeName: PauseSetter, Assembly-CSharp
-        m_MethodName: SetPause
-        m_Mode: 6
+      - m_Target: {fileID: 317866760}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: DisablePlayerNonPauseActions
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 317866759}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: StopPlayer
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2445,10 +2493,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1054063570}
-        m_TargetAssemblyTypeName: PauseSetter, Assembly-CSharp
-        m_MethodName: SetPause
-        m_Mode: 6
+      - m_Target: {fileID: 317866760}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: ResetActionMap
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6470,7 +6518,7 @@ MonoBehaviour:
     constantValue: 0
     variable: {fileID: 11400000, guid: 9a03d9fcbab426141bc5a7afacc76f70, type: 2}
   _firstTutorialPopUp: {fileID: 1923539669}
-  _pauseSetter: {fileID: 1054063570}
+  _playerInputHandler: {fileID: 317866760}
   _powerUpSpawner: {fileID: 574815648}
   _timeCounter: {fileID: 1609514223}
   _powerUpSpawnTime: 5
@@ -6901,10 +6949,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1054063570}
-        m_TargetAssemblyTypeName: PauseSetter, Assembly-CSharp
-        m_MethodName: SetPause
-        m_Mode: 6
+      - m_Target: {fileID: 317866760}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: ResetActionMap
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -7270,10 +7318,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1054063570}
-        m_TargetAssemblyTypeName: PauseSetter, Assembly-CSharp
-        m_MethodName: SetPause
-        m_Mode: 6
+      - m_Target: {fileID: 317866760}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: ResetActionMap
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8107,6 +8155,86 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -475.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 5461447678390419725, guid: a0e92868a8fb1a8418b0094b1083dc45,
+        type: 3}
+      propertyPath: OnPause.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5461447678390419725, guid: a0e92868a8fb1a8418b0094b1083dc45,
+        type: 3}
+      propertyPath: OnResume.m_PersistentCalls.m_Calls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5461447678390419725, guid: a0e92868a8fb1a8418b0094b1083dc45,
+        type: 3}
+      propertyPath: OnPause.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5461447678390419725, guid: a0e92868a8fb1a8418b0094b1083dc45,
+        type: 3}
+      propertyPath: OnResume.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5461447678390419725, guid: a0e92868a8fb1a8418b0094b1083dc45,
+        type: 3}
+      propertyPath: OnPause.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 731063259}
+    - target: {fileID: 5461447678390419725, guid: a0e92868a8fb1a8418b0094b1083dc45,
+        type: 3}
+      propertyPath: OnResume.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 731063259}
+    - target: {fileID: 5461447678390419725, guid: a0e92868a8fb1a8418b0094b1083dc45,
+        type: 3}
+      propertyPath: OnPause.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5461447678390419725, guid: a0e92868a8fb1a8418b0094b1083dc45,
+        type: 3}
+      propertyPath: OnPause.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 5461447678390419725, guid: a0e92868a8fb1a8418b0094b1083dc45,
+        type: 3}
+      propertyPath: OnResume.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5461447678390419725, guid: a0e92868a8fb1a8418b0094b1083dc45,
+        type: 3}
+      propertyPath: OnResume.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 5461447678390419725, guid: a0e92868a8fb1a8418b0094b1083dc45,
+        type: 3}
+      propertyPath: OnPause.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5461447678390419725, guid: a0e92868a8fb1a8418b0094b1083dc45,
+        type: 3}
+      propertyPath: OnResume.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5461447678390419725, guid: a0e92868a8fb1a8418b0094b1083dc45,
+        type: 3}
+      propertyPath: OnPause.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5461447678390419725, guid: a0e92868a8fb1a8418b0094b1083dc45,
+        type: 3}
+      propertyPath: OnResume.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5461447678390419725, guid: a0e92868a8fb1a8418b0094b1083dc45,
+        type: 3}
+      propertyPath: OnPause.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5461447678390419725, guid: a0e92868a8fb1a8418b0094b1083dc45,
+        type: 3}
+      propertyPath: OnResume.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
