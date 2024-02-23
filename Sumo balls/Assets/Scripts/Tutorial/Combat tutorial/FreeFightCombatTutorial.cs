@@ -7,7 +7,7 @@ public class FreeFightCombatTutorial : MonoBehaviour
     [SerializeField] EnemySpawner _enemySpawner;
     [SerializeField] BoolReference _skipToFreeFight;
     [SerializeField] GameObject _firstTutorialPopUp;
-    [SerializeField] PauseSetter _pauseSetter;
+    [SerializeField] PlayerInputHandler _playerInputHandler;
     [SerializeField] CombatTutorialPowerUpSpawner _powerUpSpawner;
     [SerializeField] TimeCounter _timeCounter;
     [SerializeField] float _powerUpSpawnTime;
@@ -15,13 +15,13 @@ public class FreeFightCombatTutorial : MonoBehaviour
     {
         if (_skipToFreeFight.value)
         {
-            _pauseSetter.SetPause(false);
+            _playerInputHandler.ResetActionMap();
             _firstTutorialPopUp.SetActive(false);
             StartFreeFight();
         }
         else
         {
-            _pauseSetter.SetPause(true);
+            _playerInputHandler.DisablePlayerNonPauseActions();
         }
 
     }
