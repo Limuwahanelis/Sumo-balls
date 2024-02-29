@@ -9,4 +9,5 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] protected Rigidbody _rb;
     [SerializeField] protected float _force;
     [SerializeField] protected GameObject _player;
+    [SerializeField] protected GameObject _belt;
 }

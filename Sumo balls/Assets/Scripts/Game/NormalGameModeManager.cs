@@ -120,11 +120,35 @@ public class NormalGameModeManager : GameModeManager
     {
         NormalEnemy en = _enemySpawner.SpawnEnemy();
         en.OnDeath.AddListener(OnEnemyDeath);
-        if(_normalModeSettings.AreEnemiesRandomized)
+        EnemyBelts.Belt belt =(EnemyBelts.Belt)Random.Range((int)EnemyBelts.Belt.WHITE, (int)EnemyBelts.Belt.BLACK + 1) ;
+        switch (belt)
         {
-            en.RandomizeAngularDrag(0.5f, 3.5f);
-            en.RandomizePushForce(200, 600);
+            case EnemyBelts.Belt.WHITE:
+                {
+                    en.RandomizeAngularDrag(0.5f, 1.5f);
+                    en.RandomizePushForce(200, 600);
+                    break;
+                }
+            case EnemyBelts.Belt.YELLOW:
+                {
+                    en.RandomizeAngularDrag(1.5f, 2.5f);
+                    en.RandomizePushForce(300, 450);
+                    break;
+                }
+            case EnemyBelts.Belt.BLACK:
+                {
+                    en.RandomizeAngularDrag(2.5f, 3.5f);
+                    en.RandomizePushForce(450, 600);
+                    break;
+                }
+                
         }
+        en.SetBelt(belt);
+        //if (_normalModeSettings.AreEnemiesRandomized)
+        //{
+        //    en.RandomizeAngularDrag(0.5f, 3.5f);
+        //    en.RandomizePushForce(200, 600);
+        //}
     }
     private void OnDestroy()
     {

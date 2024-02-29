@@ -12022,7 +12022,7 @@ MonoBehaviour:
   _pivot: {fileID: 0}
   _powerUpIndicator: {fileID: 504604568433380361}
   _audioPool: {fileID: 0}
-  _force: 4
+  _force: 400
   _powerUpStrength: 12
   _powerUpDuration: 5
   _hasPowerUp: 0

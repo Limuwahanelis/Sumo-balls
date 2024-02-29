@@ -11,18 +11,27 @@ public class NormalEnemy : Enemy
     [SerializeField] AudioPool _audioPool;
     [SerializeField] SingleClipAudioEvent _clashAudioEvent;
     [SerializeField] SingleClipAudioEvent _wallClashAudioEvent;
+    [SerializeField] float _changeAngluarDragDistance;
+    [SerializeField] float _safetyAngularDrag = 6f;
+    private bool _hasChangedAngularDrag;
     private IObjectPool<NormalEnemy> _pool;
     private Renderer _renderer;
     private MaterialPropertyBlock _materialPropertyBlock;
+    private MaterialPropertyBlock _beltMaterialPropertyBlock;
+    private Renderer _beltRenderer;
+    private float _originalAngularDrag;
     int _hits = 0;
     private void Awake()
     {
         if (_renderer == null) _renderer = GetComponent<MeshRenderer>();
+        _beltRenderer = _belt.GetComponent<MeshRenderer>();
+        _beltMaterialPropertyBlock = new MaterialPropertyBlock();
     }
     // Start is called before the first frame update
     void Start()
     {
         _materialPropertyBlock=new MaterialPropertyBlock();
+        
 #if UNITY_EDITOR
         if (_player==null) _player = GameObject.Find("Player body");
 
@@ -40,6 +49,16 @@ public class NormalEnemy : Enemy
             if (_pool != null) _pool.Release(this);
             else Destroy(gameObject);
         }
+        if(!_hasChangedAngularDrag && Vector3.Distance(transform.position,Vector3.zero)>_changeAngluarDragDistance)
+        {
+            _hasChangedAngularDrag = true;
+            _rb.angularDrag = _safetyAngularDrag;
+        }
+        if(_hasChangedAngularDrag && Vector3.Distance(transform.position, Vector3.zero) < _changeAngluarDragDistance)
+        {
+            _hasChangedAngularDrag = false;
+            _rb.angularDrag = _originalAngularDrag;
+        }
     }
     public void ResetEnemy()
     {
@@ -56,9 +75,20 @@ public class NormalEnemy : Enemy
     }
     public void SetAudioPool(AudioPool pool) => _audioPool = pool;
     public void SetPool(IObjectPool<NormalEnemy> pool) => _pool = pool;
+    public void SetBelt(EnemyBelts.Belt belt)
+    {
+        switch (belt)
+        {
+            case EnemyBelts.Belt.WHITE:_beltMaterialPropertyBlock.SetColor("_BaseColor", Color.white); break;
+            case EnemyBelts.Belt.YELLOW: _beltMaterialPropertyBlock.SetColor("_BaseColor", Color.yellow); break;
+            case EnemyBelts.Belt.BLACK: _beltMaterialPropertyBlock.SetColor("_BaseColor", Color.black); break;
+        }
+        _beltRenderer.SetPropertyBlock(_beltMaterialPropertyBlock);
+    }
     public void RandomizeAngularDrag(float min,float max)
     {
         _rb.angularDrag = Random.Range(min,max);
+        _originalAngularDrag=_rb.angularDrag;
     }
     public void RandomizePushForce(float min, float max)
     {
