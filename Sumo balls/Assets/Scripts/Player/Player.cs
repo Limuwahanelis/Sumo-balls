@@ -72,7 +72,8 @@ public class Player : MonoBehaviour
     }
     public void PushBall(float direction)
     {
-        _playerRB.AddForce(_pivot.transform.forward*_force*direction);
+        //Debug.Log(_force * 100 * Time.deltaTime);
+        _playerRB.AddForce(_pivot.transform.forward*_force*direction*Time.deltaTime);
     }
     public void StopPlayer()
     {
