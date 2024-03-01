@@ -155,6 +155,7 @@ public class SurvivalGameModeManager : GameModeManager
                 }
 
         }
+        en.SetBelt(belt);
         //if (_survivalModeSettings.AreEnemiesRandomized)
         //{
         //    en.RandomizeAngularDrag(0.5f, 3.5f);

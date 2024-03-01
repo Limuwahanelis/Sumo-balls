@@ -7,6 +7,7 @@ public class SetUpGameSettings : MonoBehaviour
 {
     [SerializeField] BoolValue _fastLoad;
     [SerializeField] BoolValue _showSpeedBar;
+    [SerializeField] BoolValue _showEnemyBelts;
     // Start is called before the first frame update
     void Awake()
     {
@@ -17,6 +18,7 @@ public class SetUpGameSettings : MonoBehaviour
             GameSettingsSaver.Save(newData);
             _fastLoad.value = newData.fastLoad;
             _showSpeedBar.value = newData.speedBar;
+            _showEnemyBelts.value = newData.enemyBelts;
         }
         else
         {
@@ -24,6 +26,7 @@ public class SetUpGameSettings : MonoBehaviour
             GameSettingsData configs = GameSettingsSaver.Load();
             _fastLoad.value = configs.fastLoad;
             _showSpeedBar.value = configs.speedBar;
+            _showEnemyBelts.value=configs.enemyBelts;
         }
     }
 }

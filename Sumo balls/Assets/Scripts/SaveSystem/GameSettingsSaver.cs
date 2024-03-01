@@ -8,10 +8,11 @@ public class GameSettingsSaver : MonoBehaviour
     public static readonly string fileName = "configs";
     [SerializeField] BoolValue _isLevelFastLoad;
     [SerializeField] BoolValue _isSpeedBarDisplayed;
+    [SerializeField] BoolValue _isEnemyBeltsDisplayed;
     public void Save()
     {
         //SaveGameSettings.SaveSettings(value);
-        GameSettingsData gameSettingsData = new GameSettingsData(_isLevelFastLoad.value,_isSpeedBarDisplayed.value);
+        GameSettingsData gameSettingsData = new GameSettingsData(_isLevelFastLoad.value,_isSpeedBarDisplayed.value,_isEnemyBeltsDisplayed.value);
         JsonSave.SaveToFile(gameSettingsData, fileName);
     }
 

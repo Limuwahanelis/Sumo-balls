@@ -10,27 +10,16 @@ public class NormalGameModeManager : GameModeManager
     [SerializeField] InStageDescription _timeDisplay;
     [SerializeField] Player _player;
     private NormalModeSettings _normalModeSettings;
+    private List<EnemiesInStage> _enemiesInStageList;
     private int _powerUpSpawns = 1;
     private int _spawnedEnemies = 0;
     private int _killedEnemies = 0;
     private int _score = 2;
     private void Awake()
     {
+        SetUpGameMode();
+        
         _restartStage.OnTriggered.AddListener(RestartStage);
-        if (GlobalSettings.SelectedStage == null)
-        {
-#if UNITY_EDITOR
-            if (debug) _normalModeSettings = _debugSettings as NormalModeSettings;
-#else
-            Debug.LogError("Stage was not set in Global settings but was loaded");
-#endif
-        }
-        else _normalModeSettings = GlobalSettings.SelectedStage.GameModeSettings as NormalModeSettings;
-        if (_normalModeSettings.IsInCage)
-        {
-            _wallsManager.SetUp(_normalModeSettings);
-            OnResetStage.AddListener(_wallsManager.RestoreWalls);
-        }
         _stageCompleteScore.SetDescription(_normalModeSettings.GetStarsDescription());
         
 
@@ -65,6 +54,7 @@ public class NormalGameModeManager : GameModeManager
     }
     public override void PrepareStage()
     {
+        SetUpListOfEnemiesToSpawn();
         _timeCounter.SetCountTime(false);
         _timeDisplay.SetValue("0");
         _taskDescription.SetValue((_normalModeSettings.NumberOfEnemiesToDefeat).ToString());
@@ -113,14 +103,49 @@ public class NormalGameModeManager : GameModeManager
         }
         _taskDescription.SetValue((_normalModeSettings.NumberOfEnemiesToDefeat - _killedEnemies).ToString());
     }
-
-
-
+    #region SETUP
+    private void SetUpGameMode()
+    {
+        if (GlobalSettings.SelectedStage == null)
+        {
+#if UNITY_EDITOR
+            if (debug) _normalModeSettings = _debugSettings as NormalModeSettings;
+#else
+            Debug.LogError("Stage was not set in Global settings but was loaded");
+#endif
+        }
+        else _normalModeSettings = GlobalSettings.SelectedStage.GameModeSettings as NormalModeSettings;
+        if (_normalModeSettings.IsInCage)
+        {
+            _wallsManager.SetUp(_normalModeSettings);
+            OnResetStage.AddListener(_wallsManager.RestoreWalls);
+        }
+    }
+    private void SetUpListOfEnemiesToSpawn()
+    {
+        _enemiesInStageList = new List<EnemiesInStage>(_normalModeSettings.EnemiesInStageList);
+        for(int i=_enemiesInStageList.Count-1; i>=0; i--)
+        {
+            if (_enemiesInStageList[i].numberOfEnemies == 0) _enemiesInStageList.RemoveAt(i);
+        }
+    }
+    #endregion
     private void SpawnEnemy()
     {
         NormalEnemy en = _enemySpawner.SpawnEnemy();
         en.OnDeath.AddListener(OnEnemyDeath);
-        EnemyBelts.Belt belt =(EnemyBelts.Belt)Random.Range((int)EnemyBelts.Belt.WHITE, (int)EnemyBelts.Belt.BLACK + 1) ;
+        EnemyBelts.Belt belt;
+        int enemyIndex;
+        if (_enemiesInStageList.Count == 0) belt = (EnemyBelts.Belt)Random.Range((int)EnemyBelts.Belt.WHITE, (int)EnemyBelts.Belt.BLACK + 1);
+        else
+        {
+            enemyIndex = Random.Range(0, _enemiesInStageList.Count);
+            belt = _enemiesInStageList[enemyIndex].belt;
+            EnemiesInStage updatedEnemies = _enemiesInStageList[enemyIndex];
+            updatedEnemies.numberOfEnemies--;
+            if (updatedEnemies.numberOfEnemies == 0) _enemiesInStageList.RemoveAt(enemyIndex);
+            else _enemiesInStageList[enemyIndex] = updatedEnemies;
+        }
         switch (belt)
         {
             case EnemyBelts.Belt.WHITE:
@@ -143,12 +168,9 @@ public class NormalGameModeManager : GameModeManager
                 }
                 
         }
+
+
         en.SetBelt(belt);
-        //if (_normalModeSettings.AreEnemiesRandomized)
-        //{
-        //    en.RandomizeAngularDrag(0.5f, 3.5f);
-        //    en.RandomizePushForce(200, 600);
-        //}
     }
     private void OnDestroy()
     {
