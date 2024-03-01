@@ -52,12 +52,15 @@ public class NormalEnemy : Enemy
         if(!_hasChangedAngularDrag && Vector3.Distance(transform.position,Vector3.zero)>_changeAngluarDragDistance)
         {
             _hasChangedAngularDrag = true;
-            _rb.angularDrag = _safetyAngularDrag;
+            if (_rb.angularDrag < 2.5f) _rb.angularDrag = _safetyAngularDrag + 3f;
+            else _rb.angularDrag = _safetyAngularDrag;
+            _rb.drag = 2f;
         }
         if(_hasChangedAngularDrag && Vector3.Distance(transform.position, Vector3.zero) < _changeAngluarDragDistance)
         {
             _hasChangedAngularDrag = false;
             _rb.angularDrag = _originalAngularDrag;
+            _rb.drag = 0f;
         }
     }
     public void ResetEnemy()
@@ -122,7 +125,8 @@ public class NormalEnemy : Enemy
             PlayClashSound();
             _hits++;
             if (_hits > 3) _hits = 3;
-            
+            Vector3 _direction = (collision.gameObject.transform.position - transform.position).normalized;
+            _rb.AddForce(0.5f * (Vector3.Dot(_direction, collision.impulse.normalized) > 0 ? -collision.impulse : collision.impulse), ForceMode.Impulse);
             _materialPropertyBlock.SetColor("_BaseColor", _colors.colorList[_hits]);
             _renderer.SetPropertyBlock(_materialPropertyBlock);
         } 
