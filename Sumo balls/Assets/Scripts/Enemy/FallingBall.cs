@@ -74,10 +74,10 @@ public class FallingBall : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Player player = collision.gameObject.GetComponentInParent<Player>();
-        if(player)
-        {
-            player.Squish(true);
-        }
+        NormalEnemy enemy = collision.gameObject.GetComponentInParent<NormalEnemy>();
+        if (player) player.Squish(true);
+        else if (enemy) enemy.Squish();
+        
     }
     private void OnDestroy()
     {
