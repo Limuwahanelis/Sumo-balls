@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class NormalGameModeManager : GameModeManager
 {
+    [SerializeField] FallingBallsSpawner _fallingBallsSpawner;
     [SerializeField] WallsManager _wallsManager;
     [SerializeField] TimeCounter _timeCounter;
     [SerializeField] InStageDescription _timeDisplay;
@@ -119,6 +120,10 @@ public class NormalGameModeManager : GameModeManager
         {
             _wallsManager.SetUp(_normalModeSettings);
             OnResetStage.AddListener(_wallsManager.RestoreWalls);
+        }
+        if(_normalModeSettings.FallingBalls)
+        {
+            _fallingBallsSpawner.SetSpawnParameters(_normalModeSettings.FallingBallsSettings);
         }
     }
     private void SetUpListOfEnemiesToSpawn()
