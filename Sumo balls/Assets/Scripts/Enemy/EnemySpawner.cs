@@ -19,8 +19,8 @@ public class EnemySpawner : MonoBehaviour
     {
         NormalEnemy enemy = _enemyPool.GetEnemy();
         if(!_allEnemies.Contains(enemy)) _allEnemies.Add(enemy);
-        enemy.transform.position = SelectSpawnPos(enemy.transform.localScale.y);
-        enemy.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        enemy.SetRBPos(SelectSpawnPos(enemy.transform.localScale.y));
+        enemy.Rigidbody.velocity = Vector3.zero;
         enemy.SetPlayer(_playerPos.gameObject);
         enemy.SetAudioPool(_audioPool);
         enemy.gameObject.SetActive(true);
