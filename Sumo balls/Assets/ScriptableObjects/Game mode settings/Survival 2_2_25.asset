@@ -14,6 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameMode: 1
   _areEnemiesRandomized: 1
+  _fallingBalls: 1
+  _fallingBallsSettings: {fileID: 0}
+  _enemiesInStage:
+  - belt: 0
+    numberOfEnemies: 0
+  - belt: 1
+    numberOfEnemies: 0
+  - belt: 2
+    numberOfEnemies: 0
   _timeToSurvive: 25
   _startingNumberOfEnemies: 2
   _secondsToSpawnEnemies: 7

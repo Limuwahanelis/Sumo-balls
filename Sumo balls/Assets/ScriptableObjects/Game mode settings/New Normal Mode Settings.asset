@@ -15,7 +15,8 @@ MonoBehaviour:
   _gameMode: 0
   _areEnemiesRandomized: 0
   _fallingBalls: 1
-  _fallingBallsSettings: {fileID: 0}
+  _fallingBallsSettings: {fileID: 11400000, guid: 5ce2014bdf18f2a468ee88b9bd54640c,
+    type: 2}
   _enemiesInStage:
   - belt: 0
     numberOfEnemies: 0

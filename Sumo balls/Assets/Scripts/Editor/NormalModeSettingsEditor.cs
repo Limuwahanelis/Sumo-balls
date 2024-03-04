@@ -11,6 +11,8 @@ public class NormalModeSettingsEditor : Editor
     SerializedProperty _timeRequiredForStar;
     SerializedProperty _wallsRequiredForStar;
     SerializedProperty _enemiesInStage;
+    SerializedProperty _fallingBalls;
+    SerializedProperty _fallingBallsSettings;
     private void OnEnable()
     {
         exclude = new string[] { "_timeRequiredForStar", "_wallsRequiredForStar", "_enemiesInStage" };
@@ -18,12 +20,15 @@ public class NormalModeSettingsEditor : Editor
         _wallsRequiredForStar = serializedObject.FindProperty("_wallsRequiredForStar");
         _timeRequiredForStar = serializedObject.FindProperty("_timeRequiredForStar");
         _enemiesInStage = serializedObject.FindProperty("_enemiesInStage");
+        _fallingBalls = serializedObject.FindProperty("_fallingBalls");
+        _fallingBallsSettings = serializedObject.FindProperty("_fallingBallsSettings");
     }
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
 
         DrawPropertiesExcluding(serializedObject,exclude);
+        if (_fallingBalls.boolValue) EditorGUILayout.PropertyField(_fallingBallsSettings);
         if(_inCage.boolValue) EditorGUILayout.PropertyField(_wallsRequiredForStar);
         else EditorGUILayout.PropertyField(_timeRequiredForStar);
         EditorGUILayout.PropertyField(_enemiesInStage);
