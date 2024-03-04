@@ -126,16 +126,16 @@ public class Player : MonoBehaviour
         _powerUpCor = null;
     }
 
-    public void Squish()
+    public void Squish(bool isForced = false)
     {
-        if (_hasPowerUp) return;
+        if (!isForced &&_hasPowerUp) return;
         
         StartCoroutine(SquishCor());
     }
     IEnumerator SquishCor()
     {
         if (sq) yield break;
-        _bassSquishAudioEvent.Play(_audioPool.GetAudioSourceObject().AudioSource);
+        //_bassSquishAudioEvent.Play(_audioPool.GetAudioSourceObject().AudioSource);
         sq = true;
         float squishEndYPos = -0.495f;
         Vector3 squishPos = _mainBodyParent.transform.localPosition;
