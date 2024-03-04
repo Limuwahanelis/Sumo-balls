@@ -1,11 +1,18 @@
+using System.Collections;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Pool;
+using Random = UnityEngine.Random;
 
 public class NormalEnemy : Enemy
 {
+    public Rigidbody Rigidbody => _rb;
 
+    [SerializeField] MeshRenderer _meshRenderer;
+    [SerializeField] SingleClipAudioEvent _squishAudioEvent;
+    [SerializeField] Transform _rbParent;
     [SerializeField] ColorList _colors;
     [SerializeField] LayerMask _arenaLayer;
     [SerializeField] AudioPool _audioPool;
@@ -14,16 +21,17 @@ public class NormalEnemy : Enemy
     [SerializeField] float _changeAngluarDragDistance;
     [SerializeField] float _safetyAngularDrag = 6f;
     private bool _hasChangedAngularDrag;
+    private bool _isBeingSquished = false;
     private IObjectPool<NormalEnemy> _pool;
-    private Renderer _renderer;
     private MaterialPropertyBlock _materialPropertyBlock;
     private MaterialPropertyBlock _beltMaterialPropertyBlock;
     private Renderer _beltRenderer;
     private float _originalAngularDrag;
+    private Coroutine _squishCor; 
     int _hits = 0;
     private void Awake()
     {
-        if (_renderer == null) _renderer = GetComponent<MeshRenderer>();
+        if (_meshRenderer == null) _meshRenderer = GetComponent<MeshRenderer>();
         _beltRenderer = _belt.GetComponent<MeshRenderer>();
         _beltMaterialPropertyBlock = new MaterialPropertyBlock();
     }
@@ -42,21 +50,21 @@ public class NormalEnemy : Enemy
     void Update()
     {
         if (GlobalSettings.IsGamePaused) return;
-        _rb.AddForce((_player.transform.position - transform.position).normalized * _force * Time.deltaTime);
-        if (_rb.position.y < 0.3f || Vector3.Distance(transform.position,Vector3.zero)>9.5f)
+        _rb.AddForce((_player.transform.position - _rb.position).normalized * _force * Time.deltaTime);
+        if (_rb.position.y < 0.3f || Vector3.Distance(_rb.position,Vector3.zero)>9.5f)
         {
             OnDeath?.Invoke(this);
             if (_pool != null) _pool.Release(this);
             else Destroy(gameObject);
         }
-        if(!_hasChangedAngularDrag && Vector3.Distance(transform.position,Vector3.zero)>_changeAngluarDragDistance)
+        if(!_hasChangedAngularDrag && Vector3.Distance(_rb.position,Vector3.zero)>_changeAngluarDragDistance)
         {
             _hasChangedAngularDrag = true;
             if (_rb.angularDrag < 2.5f) _rb.angularDrag = _safetyAngularDrag + 3f;
             else _rb.angularDrag = _safetyAngularDrag;
             _rb.drag = 2f;
         }
-        if(_hasChangedAngularDrag && Vector3.Distance(transform.position, Vector3.zero) < _changeAngluarDragDistance)
+        if(_hasChangedAngularDrag && Vector3.Distance(_rb.position, Vector3.zero) < _changeAngluarDragDistance)
         {
             _hasChangedAngularDrag = false;
             _rb.angularDrag = _originalAngularDrag;
@@ -67,7 +75,21 @@ public class NormalEnemy : Enemy
     {
         _hits = 0;
         _materialPropertyBlock.SetColor("_BaseColor", _colors.colorList[_hits]);
-        _renderer.SetPropertyBlock(_materialPropertyBlock);
+        _meshRenderer.SetPropertyBlock(_materialPropertyBlock);
+        _rb.transform.localPosition = Vector3.zero;
+        _rbParent.localScale = Vector3.one;
+        _rbParent.localPosition = Vector3.zero;
+        _rb.isKinematic = false;
+        _rb.GetComponent<Collider>().enabled = true;
+        _rb.useGravity = true;
+        if (_squishCor != null)
+        {
+            StopCoroutine(_squishCor);
+            _squishCor = null;
+
+        }
+        _isBeingSquished = false;
+
     }
     public void SetPlayer(GameObject player)=>_player = player;
     public void Push(Vector3 force)
@@ -76,6 +98,7 @@ public class NormalEnemy : Enemy
         _rb.angularVelocity = Vector3.zero;
         _rb.AddForce(force, ForceMode.Impulse);
     }
+    public void SetRBPos(Vector3 pos)=>_rb.position = pos;
     public void SetAudioPool(AudioPool pool) => _audioPool = pool;
     public void SetPool(IObjectPool<NormalEnemy> pool) => _pool = pool;
     public void SetBelt(EnemyBelts.Belt belt)
@@ -105,12 +128,56 @@ public class NormalEnemy : Enemy
         audioObject.ReturnToPool(0.5f);
     }
     public void ReturnToPool() =>_pool.Release(this);
+
+    #region Squish
+    public void Squish()
+    {
+        _squishCor=StartCoroutine(SquishCor());
+
+    }
+    IEnumerator SquishCor()
+    {
+        if (_isBeingSquished) yield break;
+        _squishAudioEvent.Play(_audioPool.GetAudioSourceObject().AudioSource);
+        _isBeingSquished = true;
+        float squishEndYPos = -0.495f;
+        Vector3 squishPos = _rbParent.transform.localPosition;
+        Vector3 scale = new Vector3(1, 1, 1);
+        float yPos = squishPos.y;
+        _rb.useGravity = false;
+        _rb.isKinematic = true;
+        _rb.GetComponent<Collider>().enabled = false;
+        StopEnemy();
+        for (float time = 0; time < 0.40f; time += Time.deltaTime)
+        {
+            squishPos.y = math.lerp(yPos, squishEndYPos, time / 0.40f);
+            scale.y = math.lerp(1, 0, time / 0.40f);
+            _rbParent.localScale = scale;
+            _rbParent.transform.localPosition = squishPos;
+            yield return null;
+        }
+        _isBeingSquished = false;
+        OnDeath?.Invoke(this);
+        if (_pool != null) _pool.Release(this);
+        else Destroy(gameObject);
+    }
+    private void StopEnemy()
+    {
+        _rb.velocity = Vector3.zero;
+        _rb.angularVelocity = Vector3.zero;
+    }
+    #endregion
+    public void OnColEnter(Collision collision)
+    {
+        OnCollisionEnter(collision);
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
 
         if (!(_arenaLayer == (_arenaLayer | (1 << collision.collider.gameObject.layer))))
         {
-            Vector3 _direction = (collision.gameObject.transform.position - transform.position).normalized;
+            Vector3 _direction = (collision.gameObject.transform.position - _rb.position).normalized;
             _rb.AddForce( _hits * 0.2f * (Vector3.Dot(_direction, collision.impulse.normalized)>0?-collision.impulse:collision.impulse), ForceMode.Impulse);
 
         }
@@ -125,10 +192,10 @@ public class NormalEnemy : Enemy
             PlayClashSound();
             _hits++;
             if (_hits > 3) _hits = 3;
-            Vector3 _direction = (collision.gameObject.transform.position - transform.position).normalized;
+            Vector3 _direction = (collision.gameObject.transform.position - _rb.position).normalized;
             _rb.AddForce(0.4f * (Vector3.Dot(_direction, collision.impulse.normalized) > 0 ? -collision.impulse : collision.impulse), ForceMode.Impulse);
             _materialPropertyBlock.SetColor("_BaseColor", _colors.colorList[_hits]);
-            _renderer.SetPropertyBlock(_materialPropertyBlock);
+            _meshRenderer.SetPropertyBlock(_materialPropertyBlock);
         } 
         if(collision.gameObject.GetComponent<NormalEnemy>())
         {
@@ -137,6 +204,6 @@ public class NormalEnemy : Enemy
     }
     private void OnValidate()
     {
-        if (_renderer == null) _renderer = GetComponent<MeshRenderer>();
+        if (_meshRenderer == null) _meshRenderer = GetComponent<MeshRenderer>();
     }
 }
