@@ -84,7 +84,7 @@ public class Player : MonoBehaviour
     }
     public void Collision(Collision collision)
     {
-        NormalEnemy enemy = collision.gameObject.GetComponent<NormalEnemy>();
+        NormalEnemy enemy = collision.gameObject.GetComponentInParent<NormalEnemy>();
         FirstBoss boss = collision.gameObject.GetComponent<FirstBoss>();
         if (_arenaLayer == (_arenaLayer | (1 << collision.collider.gameObject.layer)))
         {
@@ -92,7 +92,7 @@ public class Player : MonoBehaviour
         }
         if (enemy && _hasPowerUp)
         {
-            Vector3 pushVector = (enemy.transform.position - _playerRB.position).normalized * _powerUpStrength;
+            Vector3 pushVector = (enemy.Rigidbody.position - _playerRB.position).normalized * _powerUpStrength;
             enemy.Push(pushVector);
         }
         else if (boss && _hasPowerUp)
