@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     [SerializeField] Rigidbody _playerRB;
     [SerializeField] GameObject _pivot;
     [SerializeField] GameObject _powerUpIndicator;
+    [SerializeField] Transform _mainBodyParent;
     [SerializeField] AudioPool _audioPool;
     [SerializeField] float _force;
     [SerializeField] float _powerUpStrength = 15f;
@@ -28,7 +29,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        _startingScale = _playerRB.transform.localScale;
+        _startingScale = _mainBodyParent.localScale;
     }
     // Start is called before the first frame update
     void Start()
@@ -59,7 +60,8 @@ public class Player : MonoBehaviour
         _powerUpIndicator.SetActive(false);
         _hasPowerUp = false;
         _hasBroadcastedDeath = false;
-        _playerRB.transform.localScale = _startingScale;
+        _mainBodyParent.localScale = _startingScale;
+        _mainBodyParent.localPosition= Vector3.zero;
         _playerRB.GetComponent<Collider>().enabled = true;
         sq = false;
     }
@@ -136,20 +138,20 @@ public class Player : MonoBehaviour
         _bassSquishAudioEvent.Play(_audioPool.GetAudioSourceObject().AudioSource);
         sq = true;
         float squishEndYPos = -0.495f;
-        Vector3 squishPos = _playerRB.transform.localPosition;
+        Vector3 squishPos = _mainBodyParent.transform.localPosition;
         Vector3 scale = new Vector3(1, 1, 1);
         float yPos = squishPos.y;
         _playerRB.useGravity = false;
         _playerRB.isKinematic = true;
         _playerRB.GetComponent<Collider>().enabled = false;
         StopPlayer();
-        _playerRB.transform.rotation = Quaternion.identity;
+        //_playerRB.transform.rotation = Quaternion.identity;
         for(float time=0;time<0.40f;time+=Time.deltaTime)
         {
             squishPos.y = math.lerp(yPos, squishEndYPos, time / 0.40f);
             scale.y = math.lerp(1, 0, time / 0.40f);
-            _playerRB.transform.localScale = scale;
-            _playerRB.transform.localPosition = squishPos;
+            _mainBodyParent.localScale = scale;
+            _mainBodyParent.transform.localPosition = squishPos;
             yield return null;
         }
         OnPlayerDeath?.Invoke();
