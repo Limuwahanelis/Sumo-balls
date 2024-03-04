@@ -126,7 +126,7 @@ public class NormalEnemy : Enemy
             _hits++;
             if (_hits > 3) _hits = 3;
             Vector3 _direction = (collision.gameObject.transform.position - transform.position).normalized;
-            _rb.AddForce(0.5f * (Vector3.Dot(_direction, collision.impulse.normalized) > 0 ? -collision.impulse : collision.impulse), ForceMode.Impulse);
+            _rb.AddForce(0.4f * (Vector3.Dot(_direction, collision.impulse.normalized) > 0 ? -collision.impulse : collision.impulse), ForceMode.Impulse);
             _materialPropertyBlock.SetColor("_BaseColor", _colors.colorList[_hits]);
             _renderer.SetPropertyBlock(_materialPropertyBlock);
         } 
