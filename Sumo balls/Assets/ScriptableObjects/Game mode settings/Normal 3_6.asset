@@ -14,6 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameMode: 0
   _areEnemiesRandomized: 1
+  _fallingBalls: 0
+  _fallingBallsSettings: {fileID: 11400000, guid: e3f2278edca95db488770e409eca6703,
+    type: 2}
+  _enemiesInStage:
+  - belt: 0
+    numberOfEnemies: 2
+  - belt: 1
+    numberOfEnemies: 2
+  - belt: 2
+    numberOfEnemies: 2
   _isInCage: 0
   _simultaneouslNumberOfEnemies: 3
   _numberOfEnemiesToDefeat: 6

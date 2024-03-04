@@ -10,23 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c4ac576ba30f374fb8a19573b813b66, type: 3}
-  m_Name: Normal 2_2
+  m_Name: New Normal Mode Settings
   m_EditorClassIdentifier: 
   _gameMode: 0
   _areEnemiesRandomized: 0
+  _fallingBalls: 1
+  _fallingBallsSettings: {fileID: 0}
   _enemiesInStage:
   - belt: 0
-    numberOfEnemies: 1
+    numberOfEnemies: 0
   - belt: 1
-    numberOfEnemies: 1
+    numberOfEnemies: -1
   - belt: 2
     numberOfEnemies: 0
   _isInCage: 0
   _simultaneouslNumberOfEnemies: 2
-  _numberOfEnemiesToDefeat: 2
+  _numberOfEnemiesToDefeat: 6
   _powerUpSpawnrateInSeconds: 10
   _timeRequiredForStar:
-  - 35
-  - 25
-  - 15
+  - 0
+  - 0
+  - 0
   _wallsRequiredForStar: 000000000000000000000000

@@ -14,6 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameMode: 0
   _areEnemiesRandomized: 1
+  _enemiesInStage:
+  - belt: 0
+    numberOfEnemies: 2
+  - belt: 1
+    numberOfEnemies: 3
+  - belt: 2
+    numberOfEnemies: 0
   _isInCage: 1
   _simultaneouslNumberOfEnemies: 2
   _numberOfEnemiesToDefeat: 5

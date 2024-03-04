@@ -1,9 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Game mode/Survival")]
-public class SurvivalModeSettings : GameModeSettings
+public class SurvivalModeSettings : StandardGameModeSettings
 {
     public float TimeToSurvive => _timeToSurvive;
     public float StartingNumberOfEnemies => _startingNumberOfEnemies;
@@ -38,4 +39,5 @@ public class SurvivalModeSettings : GameModeSettings
         List<string> toReturn = new List<string> { $"Defeat {_enemiesToDefeatForStar[0]} enemies", $"Defeat {_enemiesToDefeatForStar[1]} enemies", $"Defeat {_enemiesToDefeatForStar[2]} enemies" };
         return toReturn;
     }
+
 }

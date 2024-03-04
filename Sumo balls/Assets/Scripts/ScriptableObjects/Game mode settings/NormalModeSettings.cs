@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Game mode/Normal")]
-public class NormalModeSettings : GameModeSettings
+public class NormalModeSettings : StandardGameModeSettings
 {
     public float SimultaneouslNumberOfEnemies => _simultaneouslNumberOfEnemies;
     public float NumberOfEnemiesToDefeat => _numberOfEnemiesToDefeat;
@@ -41,28 +41,5 @@ public class NormalModeSettings : GameModeSettings
         if (_isInCage) toReturn = new List<string> { $"Destroy lass than {_wallsRequiredForStar[0]} walls", $"Destroy lass than {_wallsRequiredForStar[1]} walls", $"Destroy lass than {_wallsRequiredForStar[2]} walls" };
         else toReturn = new List<string> { $"Beat stage in {_timeRequiredForStar[0]} seconds", $"Beat stage in {_timeRequiredForStar[1]} seconds", $"Beat stage in {_timeRequiredForStar[2]} seconds" };
         return toReturn;
-    }
-    private void OnValidate()
-    {
-        int beltCount = Enum.GetNames(typeof(EnemyBelts.Belt)).Length;
-        if (_enemiesInStage.Count < beltCount)
-        {
-            for(int i=0;i< beltCount;i++)
-            {
-                if (i >= _enemiesInStage.Count) 
-                {
-                    EnemiesInStage en;
-                    en.belt = (EnemyBelts.Belt)i;
-                    en.numberOfEnemies = 0;
-                    _enemiesInStage.Add(en);
-                } 
-                else
-                {
-                    EnemiesInStage en = _enemiesInStage[i];
-                    en.belt = (EnemyBelts.Belt)i;
-                    _enemiesInStage[i] = en;
-                }
-            }
-        }
     }
 }
