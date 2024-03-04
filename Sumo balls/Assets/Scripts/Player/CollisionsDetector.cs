@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerCollisions : MonoBehaviour
+public class CollisionsDetector: MonoBehaviour
 {
     public UnityEvent<Collision> OnCollision;
     public UnityEvent<Collider> OnTrigger;
@@ -20,7 +20,7 @@ public class PlayerCollisions : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        OnCollision?.Invoke(collision); ;
+        OnCollision?.Invoke(collision);
     }
     private void OnTriggerEnter(Collider other)
     {
