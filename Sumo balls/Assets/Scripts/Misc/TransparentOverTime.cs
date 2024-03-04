@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TransparentOverTime : MonoBehaviour
 {
+    public UnityEvent OnFadeOutCorutineEnded;
     [SerializeField] Color _originalColor;
     [SerializeField] float _fadeOutTime;
+    [SerializeField] bool _fadeSmoothness;
     private Renderer _renderer;
     private Color _newColor;
     private MaterialPropertyBlock _block;
@@ -36,6 +39,7 @@ public class TransparentOverTime : MonoBehaviour
             StopCoroutine(_cor);
             _cor = null;
         }
+        if (_fadeSmoothness) _block.SetFloat("_Smoothness", 0.5f);
         _block.SetColor("_BaseColor", _originalColor);
         _renderer.SetPropertyBlock(_block);
     }
@@ -50,7 +54,12 @@ public class TransparentOverTime : MonoBehaviour
         _newColor = _originalColor;
         for (float i= _fadeOutTime; i>0;i-=Time.deltaTime)
         {
-            pct = math.remap(0, _fadeOutTime, 0, 1, i);
+            pct = math.remap(0, _fadeOutTime, 0, 1-(1-_originalColor.a), i);
+            if(_fadeSmoothness)
+            {
+                if (pct <= 0.5f) _block.SetFloat("_Smoothness", pct);
+
+            }
             _newColor.a = pct;
             _block.SetColor("_BaseColor", _newColor);
             _renderer.SetPropertyBlock(_block);
@@ -59,6 +68,7 @@ public class TransparentOverTime : MonoBehaviour
         _newColor.a = 0;
         _block.SetColor("_BaseColor", _newColor);
         _renderer.SetPropertyBlock(_block);
+        OnFadeOutCorutineEnded?.Invoke();
     }
     private void OnValidate()
     {
