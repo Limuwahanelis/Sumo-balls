@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 public class FallingBallsSpawner : MonoBehaviour
 {
     [SerializeField] FallingBallPool _pool;
+    [SerializeField] EnemySpawner _enemySpawner;
     [SerializeField] float _playerScale;
     [SerializeField] float _arenaHeight;
     [SerializeField] float _minHeight;
@@ -19,9 +20,6 @@ public class FallingBallsSpawner : MonoBehaviour
     [SerializeField] HexagonSpawn _hexagonSpawn;
     [SerializeField] TimeCounter _timeCounter;
 
-    [SerializeField] GameObject _debugSphere;
-    [SerializeField] GameObject _debugCube;
-
     private List<FallingBall> _allfallingBalls = new List<FallingBall>();
     private List<FallingBall> _fallingBalls = new List<FallingBall>();
     private List<Spawncandidate> _candidatesToSpawn=new List<Spawncandidate>();
@@ -29,7 +27,7 @@ public class FallingBallsSpawner : MonoBehaviour
     private bool _isSpawningBalls;
     private bool _isSetUp;
 
-    private struct Spawncandidate
+    public struct Spawncandidate
     {
         public Vector3 position;
         public List<float> distances;
@@ -47,7 +45,7 @@ public class FallingBallsSpawner : MonoBehaviour
         if (!_isSpawningBalls) return;
         if(_timeCounter.CurrentTime>=_timeToSpawnFallingBall)
         {
-            if (_fallingBalls.Count<=_numberOfContinousFallingBalls)
+            if (_fallingBalls.Count<_numberOfContinousFallingBalls)
             {
                 FallingBall ball= _pool.GetFallingBall();
                 
@@ -58,6 +56,7 @@ public class FallingBallsSpawner : MonoBehaviour
                 ball.gameObject.SetActive(true);
                 ball.OnHitFloorAndDisappeared.AddListener(OnBallDisappear);
                 _fallingBalls.Add(ball);
+                _enemySpawner.UpdateAvoidTransforms(ball.MainBody.transform, ballScale / 2, false);
                 if (!_allfallingBalls.Contains(ball)) _allfallingBalls.Add(ball);
                 _timeCounter.ResetTimer();
             }
@@ -140,14 +139,12 @@ public class FallingBallsSpawner : MonoBehaviour
             winner.distances.Sort();
             for (int i = 1; i < _candidatesToSpawn.Count; i++)
             {
-                //Instantiate(_debugCube, _candidatesToSpawn[i].position, _debugCube.transform.rotation);
                 _candidatesToSpawn[i].distances.Sort();
                 if (_candidatesToSpawn[i].distances[0] > winner.distances[0])
                 {
                     winner = _candidatesToSpawn[i];
                 }
             }
-            //Instantiate(_debugSphere, winner.position, _debugSphere.transform.rotation);
         }
         return winner.position;
     }
@@ -155,6 +152,7 @@ public class FallingBallsSpawner : MonoBehaviour
     {
         ball.OnHitFloorAndDisappeared.RemoveListener(OnBallDisappear);
         ball.ReturnToPool();
+        _enemySpawner.UpdateAvoidTransforms(ball.MainBody.transform, ball.MainBody.transform.localScale.x/2f, true);
         _fallingBalls.Remove(ball);
     }
 }
