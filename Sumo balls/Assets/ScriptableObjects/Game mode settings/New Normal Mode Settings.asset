@@ -26,7 +26,7 @@ MonoBehaviour:
     numberOfEnemies: 0
   _isInCage: 0
   _simultaneouslNumberOfEnemies: 2
-  _numberOfEnemiesToDefeat: 6
+  _numberOfEnemiesToDefeat: 20
   _powerUpSpawnrateInSeconds: 10
   _timeRequiredForStar:
   - 0

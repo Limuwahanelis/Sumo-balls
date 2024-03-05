@@ -10,23 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c4ac576ba30f374fb8a19573b813b66, type: 3}
-  m_Name: Normal 2_5 Cage
+  m_Name: Normal 2_5 fall
   m_EditorClassIdentifier: 
   _gameMode: 0
   _areEnemiesRandomized: 1
+  _fallingBalls: 1
+  _fallingBallsSettings: {fileID: 11400000, guid: 0fd8dc76ffb16db4b992dbabfdb00967,
+    type: 2}
   _enemiesInStage:
   - belt: 0
     numberOfEnemies: 2
   - belt: 1
-    numberOfEnemies: 3
+    numberOfEnemies: 2
   - belt: 2
-    numberOfEnemies: 0
-  _isInCage: 1
+    numberOfEnemies: 1
+  _isInCage: 0
   _simultaneouslNumberOfEnemies: 2
   _numberOfEnemiesToDefeat: 5
   _powerUpSpawnrateInSeconds: 12
   _timeRequiredForStar:
-  - 0
-  - 0
-  - 0
+  - 30
+  - 25
+  - 17
   _wallsRequiredForStar: 040000000300000002000000
