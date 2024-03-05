@@ -14,6 +14,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] TutorialCameraInputHandler _cameraInputHandler;
     [SerializeField] PushBallTask _ballPushTask;
     [SerializeField] GameObject _firstTutorial;
+    [SerializeField] CursorLockControl _cursorLockControl;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +26,10 @@ public class TutorialManager : MonoBehaviour
             _firstTutorial.SetActive(false);
             return;
         } 
+        else
+        {
+            _cursorLockControl.SetForcedCursorVisibilty(true);
+        }
         _ballPushAction.action.Disable();
         _cameraMouseRotationAction.action.Disable();
         _cameraDeviceRotationAction.action.Disable();

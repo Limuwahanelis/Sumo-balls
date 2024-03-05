@@ -11,6 +11,7 @@ public class FreeFightCombatTutorial : MonoBehaviour
     [SerializeField] CombatTutorialPowerUpSpawner _powerUpSpawner;
     [SerializeField] TimeCounter _timeCounter;
     [SerializeField] float _powerUpSpawnTime;
+    [SerializeField] CursorLockControl _lockControl;
     private void Start()
     {
         if (_skipToFreeFight.value)
@@ -21,6 +22,7 @@ public class FreeFightCombatTutorial : MonoBehaviour
         }
         else
         {
+            _lockControl.SetForcedCursorVisibilty(true);
             _playerInputHandler.DisablePlayerNonPauseActions();
         }
 
