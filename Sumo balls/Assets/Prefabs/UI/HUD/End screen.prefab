@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 2408224243527938116}
   - component: {fileID: 9159324113026404343}
   - component: {fileID: 4056859148301241638}
+  - component: {fileID: 4300716031644619142}
   m_Layer: 5
   m_Name: End screen
   m_TagString: Untagged
@@ -230,6 +231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameOverScreen: {fileID: 4332299237142106766}
   _stageClearScreen: {fileID: 6649249088946369116}
+  _lockControl: {fileID: 4300716031644619142}
 --- !u!114 &9159324113026404343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,6 +269,20 @@ MonoBehaviour:
   OnBeforeSceneLoad:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4300716031644619142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2381668087488856297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7847675dd6e9a3941a4892b49beb09ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _setCursorStateOnAwake: 0
+  _shouldLockToGameWindowOnAwake: 0
 --- !u!1 &3113797868623960112
 GameObject:
   m_ObjectHideFlags: 0
