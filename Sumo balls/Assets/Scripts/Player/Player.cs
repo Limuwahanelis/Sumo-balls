@@ -135,7 +135,7 @@ public class Player : MonoBehaviour
     IEnumerator SquishCor()
     {
         if (sq) yield break;
-        //_bassSquishAudioEvent.Play(_audioPool.GetAudioSourceObject().AudioSource);
+        _bassSquishAudioEvent.Play(_audioPool.GetAudioSourceObject().AudioSource);
         sq = true;
         float squishEndYPos = -0.495f;
         Vector3 squishPos = _mainBodyParent.transform.localPosition;
