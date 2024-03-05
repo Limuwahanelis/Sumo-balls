@@ -48,12 +48,12 @@ Material:
     - _DecalMeshDepthBias: 0
     - _DecalMeshViewBias: 0
     - _DrawOrder: 0
-    - _MaxRadius: 4.37
+    - _MaxRadius: 1.21
     - _MeteorRadius: 3.31
     - _PlayerRadius: 4.95
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Radius: 3.93
+    - _Radius: 0
     m_Colors:
     - Color_644e767c182848dfafb606f7b9d6df1e: {r: 0, g: 0, b: 0, a: 0.84313726}
     - _offset: {r: -49.5, g: -49.5, b: 0, a: 0}
