@@ -7,8 +7,8 @@ using Random = UnityEngine.Random;
 
 public class SurvivalGameModeManager : GameModeManager
 {
-
     [SerializeField] Player _player;
+    [SerializeField] FallingBallsSpawner _fallingBallsSpawner;
     private SurvivalModeSettings _survivalModeSettings;
     private float _currentTime;
     private int _powerUpSpawns = 1;
@@ -19,15 +19,8 @@ public class SurvivalGameModeManager : GameModeManager
     private void Awake()
     {
         _restartStage.OnTriggered.AddListener(RestartStage);
-        if (GlobalSettings.SelectedStage==null)
-        {
-#if UNITY_EDITOR
-            if (debug) _survivalModeSettings = _debugSettings as SurvivalModeSettings;
-#else
-            Debug.LogError("Stage was not set in Global settings but was loaded");
-#endif
-        }
-        else _survivalModeSettings = GlobalSettings.SelectedStage.GameModeSettings as SurvivalModeSettings;
+        SetupGameMode();
+
         _stageCompleteScore.SetScore(0);
         _stageCompleteScore.SetDescription(_survivalModeSettings.GetStarsDescription());
         
@@ -68,7 +61,24 @@ public class SurvivalGameModeManager : GameModeManager
         }
         
     }
-
+    #region SETUP
+    private void SetupGameMode()
+    {
+        if (GlobalSettings.SelectedStage == null)
+        {
+#if UNITY_EDITOR
+            if (debug) _survivalModeSettings = _debugSettings as SurvivalModeSettings;
+#else
+            Debug.LogError("Stage was not set in Global settings but was loaded");
+#endif
+        }
+        else _survivalModeSettings = GlobalSettings.SelectedStage.GameModeSettings as SurvivalModeSettings;
+        if (_survivalModeSettings.FallingBalls)
+        {
+            _fallingBallsSpawner.SetSpawnParameters(_survivalModeSettings.FallingBallsSettings);
+        }
+    }
+    #endregion
     public override void RestartStage()
     {
 
