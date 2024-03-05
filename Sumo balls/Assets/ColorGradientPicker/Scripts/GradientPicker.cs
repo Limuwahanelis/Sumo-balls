@@ -294,7 +294,7 @@ public class GradientPicker : MonoBehaviour
             alphaComponent.GetChild(4).GetComponent<InputField>().text = Mathf.RoundToInt(alphaKeys[selectedAlphaKey].alpha * 255f).ToString();
         }
     }
-    //accessed by position Slider
+    //accessed by transform Slider
     public void SetTime(float time)
     {
         if (interact)
@@ -315,7 +315,7 @@ public class GradientPicker : MonoBehaviour
             positionComponent.text = Mathf.RoundToInt(time * 100f).ToString();
         }
     }
-    //accessed by position InputField
+    //accessed by transform InputField
     public void SetTime(string time)
     {
         interact = false;
