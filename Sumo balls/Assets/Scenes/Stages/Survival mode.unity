@@ -265,7 +265,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 349.52927, y: 0}
   m_SizeDelta: {x: 120.56, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &35924629
@@ -1951,6 +1951,107 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &782191713
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 782191714}
+  - component: {fileID: 782191717}
+  - component: {fileID: 782191716}
+  - component: {fileID: 782191715}
+  m_Layer: 0
+  m_Name: Falling ball spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &782191714
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782191713}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1027120738}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &782191715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782191713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76d97337b7a3234418b2378cbe411e31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &782191716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782191713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4fd693a79cd8f64e9d56d446aa891cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parameters:
+  - a: -1.732
+    b: 16.671
+  - a: 0
+    b: 8.335495
+  - a: 1.732
+    b: 16.671
+  - a: -1.732
+    b: -16.671
+  - a: 0
+    b: -8.335495
+  - a: 1.732
+    b: -16.671
+  _minY: -8.335495
+  _maxY: 8.335495
+  _minX: -9.625
+  _maxX: 9.625
+--- !u!114 &782191717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782191713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 813b0c5558fba344fb95fdda87675836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pool: {fileID: 897144592}
+  _enemySpawner: {fileID: 996891606}
+  _playerScale: 0
+  _arenaHeight: 0
+  _minHeight: 0
+  _maxHeight: 0
+  _minSize: 0
+  _maxSize: 0
+  _minSpeed: 0
+  _maxSpeed: 0
+  _numberOfContinousFallingBalls: 0
+  _timeToSpawnFallingBall: 0
+  _hexagonSpawn: {fileID: 782191716}
+  _timeCounter: {fileID: 782191715}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1999,6 +2100,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &897144591
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 897144593}
+  - component: {fileID: 897144592}
+  m_Layer: 0
+  m_Name: Falling balls pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &897144592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897144591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24f9132e98d7f5c45a560a8973cf4fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fallingEnemyPrefab: {fileID: 8046187592474009126, guid: d8a37176ef01d8a42813454125a34fe7,
+    type: 3}
+--- !u!4 &897144593
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897144591}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1181739654}
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &931904474
 Mesh:
@@ -2212,7 +2359,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1205182784}
+  m_Father: {fileID: 1027120738}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &997498125
@@ -2302,6 +2449,40 @@ MonoBehaviour:
   OnBeforeCountdown:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1027120737
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1027120738}
+  m_Layer: 0
+  m_Name: Spawners
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1027120738
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027120737}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 996891607}
+  - {fileID: 2097864725}
+  - {fileID: 782191714}
+  m_Father: {fileID: 1205182784}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &1106764641
 Mesh:
   m_ObjectHideFlags: 0
@@ -2609,6 +2790,7 @@ Transform:
   - {fileID: 1224980800}
   - {fileID: 634527633}
   - {fileID: 276527267}
+  - {fileID: 897144593}
   m_Father: {fileID: 1205182784}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2653,8 +2835,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1970191257}
-  - {fileID: 996891607}
-  - {fileID: 2097864725}
+  - {fileID: 1027120738}
   - {fileID: 1181739654}
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -2714,6 +2895,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1225936597}
+  - component: {fileID: 1225936598}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -2737,6 +2919,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1225936598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225936596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7847675dd6e9a3941a4892b49beb09ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _setCursorStateOnAwake: 1
+  _shouldLockToGameWindowOnAwake: 1
 --- !u!43 &1226422945
 Mesh:
   m_ObjectHideFlags: 0
@@ -3105,6 +3301,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player  (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4989862776512259537, guid: 5cf124da2d265484180f0d1c0c5ff464,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5180581655969273196, guid: 5cf124da2d265484180f0d1c0c5ff464,
         type: 3}
       propertyPath: m_RootOrder
@@ -3436,7 +3637,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 1
-  _debugSettings: {fileID: 11400000, guid: a94b8374146f64e4fad7c21012f73fe4, type: 2}
+  _debugSettings: {fileID: 11400000, guid: ecb56a88659fc634282d2bed64208fec, type: 2}
   _restartStage: {fileID: 11400000, guid: f5a8c7dd0c94788498877461988810d7, type: 2}
   _stageCompleteScore: {fileID: 1745690528}
   _taskDescription: {fileID: 1647761051}
@@ -3485,6 +3686,30 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: Gong, Assembly-CSharp
         m_MethodName: ResetGong
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 782191717}
+        m_TargetAssemblyTypeName: FallingBallsSpawner, Assembly-CSharp
+        m_MethodName: ClearSpawn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 782191717}
+        m_TargetAssemblyTypeName: FallingBallsSpawner, Assembly-CSharp
+        m_MethodName: SetSpawning
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3586,7 +3811,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 782191717}
+        m_TargetAssemblyTypeName: FallingBallsSpawner, Assembly-CSharp
+        m_MethodName: SetSpawning
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   _player: {fileID: 1199339445}
+  _fallingBallsSpawner: {fileID: 782191717}
 --- !u!1 &2097864723
 GameObject:
   m_ObjectHideFlags: 0
@@ -3631,7 +3869,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1205182784}
+  m_Father: {fileID: 1027120738}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2138923248
