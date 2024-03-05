@@ -9,6 +9,7 @@ using UnityEngine.Pool;
 public class FallingBall : MonoBehaviour
 {
     public UnityEvent<FallingBall> OnHitFloorAndDisappeared;
+    public GameObject MainBody=>_mainBody;
     [SerializeField] GameObject _mainBody;
     [SerializeField] ShadowQuad _shadowQuad;
     [SerializeField] TransparentOverTime _transparent;
