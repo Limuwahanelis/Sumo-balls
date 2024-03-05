@@ -51,7 +51,7 @@ public class NormalEnemy : Enemy
     {
         if (GlobalSettings.IsGamePaused) return;
         _rb.AddForce((_player.transform.position - _rb.position).normalized * _force * Time.deltaTime);
-        if (_rb.position.y < 0.3f || Vector3.Distance(_rb.position,Vector3.zero)>9.5f)
+        if ((_rb.position.y < 0.3f || Vector3.Distance(_rb.position,Vector3.zero)>9.5f) && !_isBeingSquished)
         {
             OnDeath?.Invoke(this);
             if (_pool != null) _pool.Release(this);
@@ -76,7 +76,7 @@ public class NormalEnemy : Enemy
         _hits = 0;
         _materialPropertyBlock.SetColor("_BaseColor", _colors.colorList[_hits]);
         _meshRenderer.SetPropertyBlock(_materialPropertyBlock);
-        _rb.transform.localPosition = Vector3.zero;
+        //_rb.transform.localPosition = Vector3.zero;
         _rbParent.localScale = Vector3.one;
         _rbParent.localPosition = Vector3.zero;
         _rb.isKinematic = false;
@@ -98,7 +98,7 @@ public class NormalEnemy : Enemy
         _rb.angularVelocity = Vector3.zero;
         _rb.AddForce(force, ForceMode.Impulse);
     }
-    public void SetRBPos(Vector3 pos)=>_rb.position = pos;
+    public void SetRBPos(Vector3 pos)=>_rb.transform.position = pos;
     public void SetAudioPool(AudioPool pool) => _audioPool = pool;
     public void SetPool(IObjectPool<NormalEnemy> pool) => _pool = pool;
     public void SetBelt(EnemyBelts.Belt belt)
@@ -140,7 +140,8 @@ public class NormalEnemy : Enemy
         if (_isBeingSquished) yield break;
         _squishAudioEvent.Play(_audioPool.GetAudioSourceObject().AudioSource);
         _isBeingSquished = true;
-        float squishEndYPos = -0.495f;
+        float squishEndYPos = -0.48f;
+        float rigidbodyOffset = _rb.transform.localPosition.y;
         Vector3 squishPos = _rbParent.transform.localPosition;
         Vector3 scale = new Vector3(1, 1, 1);
         float yPos = squishPos.y;
@@ -150,7 +151,7 @@ public class NormalEnemy : Enemy
         StopEnemy();
         for (float time = 0; time < 0.40f; time += Time.deltaTime)
         {
-            squishPos.y = math.lerp(yPos, squishEndYPos, time / 0.40f);
+            squishPos.y = math.lerp(yPos, squishEndYPos+ rigidbodyOffset, time / 0.40f);
             scale.y = math.lerp(1, 0, time / 0.40f);
             _rbParent.localScale = scale;
             _rbParent.transform.localPosition = squishPos;
