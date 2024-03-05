@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b6708b9e52b18f4a8a97837595602a6, type: 3}
-  m_Name: Normal Cage 1
+  m_Name: Survival Fall 1
   m_EditorClassIdentifier: 
-  _gameMode: {fileID: 11400000, guid: cf7e826eae061724d8e14580458b1e92, type: 2}
-  _stageScreenshot: {fileID: 2800000, guid: 528e5fe224cc3714bacd7088951c5863, type: 3}
+  _gameMode: {fileID: 11400000, guid: ecb56a88659fc634282d2bed64208fec, type: 2}
+  _stageScreenshot: {fileID: 2800000, guid: 1823c065a5472ca4ebf57e95f938c45c, type: 3}
