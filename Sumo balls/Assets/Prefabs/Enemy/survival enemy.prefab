@@ -19,6 +19,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: survival enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 2307445227363103608, guid: 72b5f8dc01169bb4f80f2d1a9d7724b9,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bf8ff8cdb9da5974dbe913332255d3f9, type: 2}
     - target: {fileID: 3870549884042007270, guid: 72b5f8dc01169bb4f80f2d1a9d7724b9,
         type: 3}
       propertyPath: m_RootOrder
