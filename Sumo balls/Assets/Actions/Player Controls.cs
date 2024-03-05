@@ -102,7 +102,7 @@ public partial class @w: IInputActionCollection2, IDisposable
                     ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Mouse"",
+                    ""groups"": ""Mouse;Keyboard"",
                     ""action"": ""Push"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -113,7 +113,7 @@ public partial class @w: IInputActionCollection2, IDisposable
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Mouse"",
+                    ""groups"": ""Mouse;Keyboard"",
                     ""action"": ""Push"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -201,7 +201,7 @@ public partial class @w: IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard"",
+                    ""groups"": ""Keyboard;Mouse"",
                     ""action"": ""RotateX"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
