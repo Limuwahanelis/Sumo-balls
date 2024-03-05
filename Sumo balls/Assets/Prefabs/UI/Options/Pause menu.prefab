@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 435164903847346318}
   - component: {fileID: 5461447678390419725}
   - component: {fileID: 6953533255374102433}
+  - component: {fileID: 3808529228454281136}
   m_Layer: 5
   m_Name: Pause menu
   m_TagString: Untagged
@@ -219,6 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da77c038f614a5e41bd4076dc4991af5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerPause: {fileID: 0}
   OnPause:
     m_PersistentCalls:
       m_Calls:
@@ -233,6 +235,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 3808529228454281136}
+        m_TargetAssemblyTypeName: CursorLockControl, Assembly-CSharp
+        m_MethodName: SetLockToGameWindow
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 3781500326780312390}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
@@ -273,6 +287,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3808529228454281136}
+        m_TargetAssemblyTypeName: CursorLockControl, Assembly-CSharp
+        m_MethodName: SetLockToGameWindow
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 3781500326780312390}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -298,6 +324,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _firstSelect: {fileID: 2927726578815030351}
+--- !u!114 &3808529228454281136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3781500326780312390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7847675dd6e9a3941a4892b49beb09ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _setCursorStateOnAwake: 0
+  _shouldLockToGameWindowOnAwake: 0
 --- !u!1001 &1693141587626366506
 PrefabInstance:
   m_ObjectHideFlags: 0
