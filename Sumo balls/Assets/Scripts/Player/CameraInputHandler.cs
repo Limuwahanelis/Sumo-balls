@@ -29,9 +29,9 @@ public class CameraInputHandler : MonoBehaviour
     void OnRotateX(InputValue value)
     {
         _rotValue = value.Get<float>();
-        if (math.abs( _rotValue)>=1) _isRotating=true;
-        else _isRotating=false;
-        
+        if (math.abs(_rotValue) >= 1) _isRotating = true;
+        else _isRotating = false;
+
     }
     private void OnValidate()
     {
