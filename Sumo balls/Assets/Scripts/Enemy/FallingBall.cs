@@ -10,6 +10,10 @@ public class FallingBall : MonoBehaviour
 {
     public UnityEvent<FallingBall> OnHitFloorAndDisappeared;
     public GameObject MainBody=>_mainBody;
+#if UNITY_EDITOR
+    [SerializeField] bool _stayInPlace;
+    private Vector3 stpos;
+#endif
     [SerializeField] GameObject _mainBody;
     [SerializeField] ShadowQuad _shadowQuad;
     [SerializeField] TransparentOverTime _transparent;
@@ -21,14 +25,21 @@ public class FallingBall : MonoBehaviour
     private IObjectPool<FallingBall> _pool;
     private void Start()
     {
+#if UNITY_EDITOR
+        if (_stayInPlace)
+        {
+            stpos = _mainBody.transform.position;
+            SetUp(8f, 2f, stpos, 0.13f, 1f / 2);
+        }
+#endif
     }
-    public void SetUp(float fallSpeed,float scale,Vector3 position,float arenaHeight,float playerRadius)
+    public void SetUp(float fallSpeed,float scale,Vector3 startingPosition,float arenaHeight,float playerRadius)
     {
         hit = false;
         _arenaHeight=arenaHeight;
-        _mainBody.transform.position = position;
+        _mainBody.transform.position = startingPosition;
         _fallSpeed = fallSpeed;
-        _startingY = position.y;
+        _startingY = startingPosition.y;
         _mainBody.transform.localScale = new Vector3(scale,scale,scale);
         float b = scale / 2 - playerRadius;
         float c = scale / 2 + playerRadius;
@@ -36,7 +47,7 @@ public class FallingBall : MonoBehaviour
         _maxRadiusForKill = a;
         _shadowQuad.SetUp(_maxRadiusForKill*2, a);
         _transparent.ResetTransparency();
-        Vector3 shadowQuadPos = new Vector3(position.x, arenaHeight, position.z);
+        Vector3 shadowQuadPos = new Vector3(startingPosition.x, arenaHeight, startingPosition.z);
         _shadowQuad.SetPos(shadowQuadPos);
 
     }
@@ -49,15 +60,20 @@ public class FallingBall : MonoBehaviour
             hit = true;
             _transparent.StartFadeOutCor();
             _transparent.OnFadeOutCorutineEnded.AddListener(CallEvent);
+            
         }
         _mainBody.transform.position = new Vector3(_mainBody.transform.position.x, yPos, _mainBody.transform.position.z);
         float pct = math.unlerp(_arenaHeight, _startingY, _mainBody.transform.position.y-_mainBody.transform.localScale.y/2);
         _shadowQuad.SetRadius(pct);
+       
     }
     private void CallEvent()
     {
         OnHitFloorAndDisappeared?.Invoke(this);
         _transparent.OnFadeOutCorutineEnded.RemoveListener(CallEvent);
+#if UNITY_EDITOR
+        if(_stayInPlace) SetUp(8f, 2f, stpos, 0.13f, 1f / 2);
+#endif
     }
 
     public void ReturnToPool() => _pool.Release(this);
