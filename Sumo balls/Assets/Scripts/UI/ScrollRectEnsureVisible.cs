@@ -2,9 +2,12 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+
 [RequireComponent(typeof(ScrollRect))]
 public class ScrollRectEnsureVisible : MonoBehaviour
 {
+    [SerializeField] InputActionReference _navigation;
     RectTransform scrollRectTransform;
     RectTransform contentPanel;
     RectTransform selectedRectTransform;
@@ -14,9 +17,9 @@ public class ScrollRectEnsureVisible : MonoBehaviour
     {
         scrollRectTransform = GetComponent<RectTransform>();
     }
-
     void Update()
     {
+        if (_navigation.action.ReadValue<Vector2>() == Vector2.zero) return;
         //just incase content panel gets created in start.
         if (contentPanel == null) contentPanel = GetComponent<ScrollRect>().content;
 
@@ -36,7 +39,8 @@ public class ScrollRectEnsureVisible : MonoBehaviour
         }
 
         selectedRectTransform = selected.GetComponent<RectTransform>();
-        contentPanel.anchoredPosition = new Vector2(contentPanel.anchoredPosition.x, -(selectedRectTransform.localPosition.y) - (selectedRectTransform.rect.height / 2));
+
+        contentPanel.anchoredPosition = new Vector2(contentPanel.anchoredPosition.x, -(selectedRectTransform.localPosition.y)- (selectedRectTransform.rect.height / 2));
 
         lastSelected = selected;
     }
