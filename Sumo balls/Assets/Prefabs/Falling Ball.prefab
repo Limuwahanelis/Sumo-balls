@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 6187672371951116650}
   - component: {fileID: 6277447578806922555}
   - component: {fileID: 5195433014182809083}
-  - component: {fileID: 5591022178133539779}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -125,20 +124,6 @@ MonoBehaviour:
   _originalColor: {r: 0.8113208, g: 0.019134922, b: 0.019134922, a: 0.84313726}
   _fadeOutTime: 0.5
   _fadeSmoothness: 1
---- !u!114 &5591022178133539779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5863278503595240233}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f62937891be0eb64dad7c168ace36b8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _transparency: {fileID: 5195433014182809083}
-  _material: {fileID: 0}
 --- !u!1 &6757571724433269896
 GameObject:
   m_ObjectHideFlags: 0
