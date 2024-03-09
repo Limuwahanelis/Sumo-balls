@@ -3278,6 +3278,11 @@ PrefabInstance:
       objectReference: {fileID: 223275787}
     - target: {fileID: 1761369987521674883, guid: 5cf124da2d265484180f0d1c0c5ff464,
         type: 3}
+      propertyPath: _audioPool
+      value: 
+      objectReference: {fileID: 276527268}
+    - target: {fileID: 1761369987521674883, guid: 5cf124da2d265484180f0d1c0c5ff464,
+        type: 3}
       propertyPath: OnPlayerDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}

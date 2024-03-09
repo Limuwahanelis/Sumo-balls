@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        _playerRB.sleepThreshold = 0;
     }
 
     // Update is called once per frame
@@ -137,7 +137,8 @@ public class Player : MonoBehaviour
         if (sq) yield break;
         _bassSquishAudioEvent.Play(_audioPool.GetAudioSourceObject().AudioSource);
         sq = true;
-        float squishEndYPos = -0.495f;
+        float squishEndYPos = -0.49f;
+        //float rbOffset = _playerRB.transform.localPosition.y;
         Vector3 squishPos = _mainBodyParent.transform.localPosition;
         Vector3 scale = new Vector3(1, 1, 1);
         float yPos = squishPos.y;
@@ -155,6 +156,7 @@ public class Player : MonoBehaviour
             yield return null;
         }
         OnPlayerDeath?.Invoke();
+        //4.095078/2* 0.063052
     }
 
     private void OnValidate()
