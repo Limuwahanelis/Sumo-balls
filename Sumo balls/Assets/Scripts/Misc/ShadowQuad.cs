@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using static EnemyBelts;
 
 public class ShadowQuad : MonoBehaviour
 {
     [SerializeField] GameObject _shadowQuad;
+    [SerializeField] bool _changeColor;
+    [SerializeField] Color _color;
     private Renderer _renderer;
     private MaterialPropertyBlock _materialPropertyBlock;
     private float _radius;
@@ -13,7 +16,9 @@ public class ShadowQuad : MonoBehaviour
     private void Awake()
     {
         if (_renderer == null) _renderer = GetComponent<MeshRenderer>();
-        _materialPropertyBlock = new MaterialPropertyBlock();
+        if (_materialPropertyBlock == null) _materialPropertyBlock = new MaterialPropertyBlock();
+        if (_changeColor)
+            _materialPropertyBlock.SetColor("_MainColor", _color);
     }
     public void SetUp(float quadScale,float maxRadius)
     {
@@ -30,6 +35,13 @@ public class ShadowQuad : MonoBehaviour
     {
         _radius=_maxRadius*pct;
         _materialPropertyBlock.SetFloat("_Radius", _radius);
+        _renderer.SetPropertyBlock(_materialPropertyBlock);
+    }
+    private void OnValidate()
+    {
+        if (_renderer == null) _renderer = GetComponent<MeshRenderer>();
+        if (_materialPropertyBlock == null) _materialPropertyBlock = new MaterialPropertyBlock();
+        if(_changeColor)_materialPropertyBlock.SetColor("_MainColor", _color);
         _renderer.SetPropertyBlock(_materialPropertyBlock);
     }
     // Start is called before the first frame update

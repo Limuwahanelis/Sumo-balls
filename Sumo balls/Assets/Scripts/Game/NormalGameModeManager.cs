@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class NormalGameModeManager : GameModeManager
 {
     [SerializeField] FallingBallsSpawner _fallingBallsSpawner;
+    [SerializeField] HoleInArenaSpawner _holeInArenaSpawner;
     [SerializeField] WallsManager _wallsManager;
     [SerializeField] TimeCounter _timeCounter;
     [SerializeField] InStageDescription _timeDisplay;
@@ -33,6 +34,7 @@ public class NormalGameModeManager : GameModeManager
     // Update is called once per frame 
     void Update()
     {
+        return;
         if (_timeCounter.CurrentTime >= _normalModeSettings.PowerUpSpawnRateInSeconds * _powerUpSpawns)
         {
             _powerUpSpawns++;
@@ -55,6 +57,7 @@ public class NormalGameModeManager : GameModeManager
     }
     public override void PrepareStage()
     {
+        return;
         SetUpListOfEnemiesToSpawn();
         _timeCounter.SetCountTime(false);
         _timeDisplay.SetValue("0");
@@ -121,10 +124,8 @@ public class NormalGameModeManager : GameModeManager
             _wallsManager.SetUp(_normalModeSettings);
             OnResetStage.AddListener(_wallsManager.RestoreWalls);
         }
-        if(_normalModeSettings.FallingBalls)
-        {
-            _fallingBallsSpawner.SetSpawnParameters(_normalModeSettings.FallingBallsSettings);
-        }
+        if(_normalModeSettings.FallingBalls)_fallingBallsSpawner.SetSpawnParameters(_normalModeSettings.FallingBallsSettings);
+        if (_normalModeSettings.HolesInArena) _holeInArenaSpawner.SetSpawnParameters(_normalModeSettings.HolesInArenaSettings);
     }
     private void SetUpListOfEnemiesToSpawn()
     {

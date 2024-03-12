@@ -1,17 +1,36 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.Playables;
+using UnityEngine.Pool;
 
 public class HoleInArena : MonoBehaviour
 {
+    public UnityEvent<HoleInArena> OnHoleCycleCompleted;
+    public float MaxRadius => _context.holeMaxRadius;
+    [SerializeField] TimeCounter _timeCounter;
+    [SerializeField] ShadowQuad _shadow;
+    [SerializeField] Collider _trigger;
+    [SerializeField] Collider _wallCollider;
     [SerializeField,Layer] int _playerLayer;
     [SerializeField,Layer] int _enemyLayer;
     [SerializeField,Layer] int _playerIgnoreArenaMask;
     [SerializeField,Layer] int _enemyIgnoreArenaMask;
+    [SerializeField] float _pullForce;
     [SerializeField] float _holeRadius;
+    [SerializeField] float _timeToGetMaxSize;
+    [SerializeField] float _timeToStayAtMaxSize;
+    [SerializeField] float _timeToBeginGrow;
+    private HoleInArenaState _currentHoleState;
+    private Dictionary<Type, HoleInArenaState> _holeStates = new Dictionary<Type, HoleInArenaState>();
+    private HoleInArenaContext _context;
     List<BallData> _ballsAtTheHole=new List<BallData>();
     Vector3 _holePos;
+    private IObjectPool<HoleInArena> _pool;
     private struct BallData
     {
         public Collider col;
@@ -20,17 +39,78 @@ public class HoleInArena : MonoBehaviour
 
     }
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        _holePos = new Vector3(transform.position.x, 0, transform.position.z);
+        List<Type> states = AppDomain.CurrentDomain.GetAssemblies().SelectMany(domainAssembly => domainAssembly.GetTypes())
+    .Where(type => typeof(HoleInArenaState).IsAssignableFrom(type) && !type.IsAbstract).ToArray().ToList();
 
+        _context = new HoleInArenaContext()
+        {
+            timeCounter = _timeCounter,
+            ChangeHoleState = ChangeCurrentState,
+            GetStateType = GetStateFromDictionary,
+            SetColliders = SetColliders,
+            EndHoleCycle = EndHoleCycle,
+            holeMaxRadius = _holeRadius,
+            timeToGetMaxToSize = _timeToGetMaxSize,
+            timeToStayAtMaxSize = _timeToStayAtMaxSize,
+            timeToBeginGrow = _timeToBeginGrow,
+            SetHoleRadius=SetHoleRadius,
+        };
+        foreach (Type state in states)
+        {
+            _holeStates.Add(state, (HoleInArenaState)Activator.CreateInstance(state));
+        }
     }
-
+    public void SetUp(float maxHoleRadius, float timeToGetToMaxSize,float timeToStayAtMaxSize, float timeToBeginGrow)
+    {
+        _holeRadius = maxHoleRadius;
+        _timeToGetMaxSize = timeToGetToMaxSize;
+        _timeToStayAtMaxSize = timeToStayAtMaxSize;
+        _timeToBeginGrow = timeToBeginGrow;
+        _context.holeMaxRadius = _holeRadius;
+        _context.timeToGetMaxToSize = timeToGetToMaxSize;
+        _context.timeToStayAtMaxSize = timeToStayAtMaxSize;
+        _context.timeToBeginGrow = timeToBeginGrow;
+        _currentHoleState = GetStateFromDictionary(typeof(DormantHoleInArenaState));
+        _currentHoleState.SetUpState(_context);
+        _shadow.SetUp(maxHoleRadius, maxHoleRadius * 2);
+        _holePos = new Vector3(transform.position.x, 0, transform.position.z);
+        _ballsAtTheHole.Clear();
+        SetHoleRadius(0);
+    }
     // Update is called once per frame
     void Update()
     {
-        
+        _currentHoleState?.Update();
+        foreach (BallData ball in _ballsAtTheHole)
+        {
+            ball.col.attachedRigidbody.AddForce(Vector3.down * _pullForce * Time.deltaTime);
+        }
     }
+    private void SetColliders(bool value)
+    {
+        _trigger.enabled = value;
+        _wallCollider.enabled = value;
+    }
+    public HoleInArenaState GetStateFromDictionary(Type state)
+    {
+        return _holeStates[state];
+    }
+    private void ChangeCurrentState(HoleInArenaState newState)
+    {
+        _currentHoleState = newState;
+    }
+    private void SetHoleRadius(float newRadius)
+    {
+        Vector3 newScale = new Vector3(newRadius * 2, transform.localScale.y, newRadius * 2);
+        transform.localScale = newScale;
+    }
+    public void EndHoleCycle() => OnHoleCycleCompleted?.Invoke(this);
+    public void SetPool(IObjectPool<HoleInArena> pool) => _pool = pool;
+    public void ReturnToPool() => _pool.Release(this);
+
+
     private void OnTriggerEnter(Collider other)
     {
         if(!_ballsAtTheHole.Exists((x)=>x.col==other))
