@@ -12027,6 +12027,7 @@ MonoBehaviour:
   _powerUpStrength: 12
   _powerUpDuration: 5
   _hasPowerUp: 0
+  _playerLayer: 7
   _arenaLayer:
     serializedVersion: 2
     m_Bits: 512
