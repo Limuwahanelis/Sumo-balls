@@ -187,7 +187,7 @@ public class EnemySpawner : MonoBehaviour
             enemy.enabled = value;
         }
     }
-    public void UpdateAvoidTransforms(Transform trans,float distance,bool remove)
+    public void UpdateAvoidTransforms(Transform trans, float distance, bool remove, bool hasPriority = false)
     {
         if(remove)
         {
@@ -200,7 +200,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 transform = trans,
                 distance = distance,
-                hasPiority = false
+                hasPiority = hasPriority
             };
             _transformsToAvoidSpawn.Add(tr);
         }
