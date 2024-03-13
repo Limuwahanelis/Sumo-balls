@@ -8,6 +8,7 @@ public class StationaryHoleInArenaState : HoleInArenaState
     {
         base.SetUpState(context);
         _context.timeCounter.ResetTimer();
+        _context.SetShadow(false);
     }
     public override void Update()
     {

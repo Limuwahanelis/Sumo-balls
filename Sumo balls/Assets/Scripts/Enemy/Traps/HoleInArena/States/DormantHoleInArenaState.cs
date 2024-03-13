@@ -10,6 +10,7 @@ public class DormantHoleInArenaState : HoleInArenaState
         _context.timeCounter.ResetTimer();
         _context.timeCounter.SetCountTime(true);
         _context.SetColliders(false);
+        _context.SetShadow(true);
     }
     public override void Update()
     {

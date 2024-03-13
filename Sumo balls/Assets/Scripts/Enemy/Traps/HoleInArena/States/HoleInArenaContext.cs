@@ -12,6 +12,7 @@ public class HoleInArenaContext
     public Action<HoleInArenaState> ChangeHoleState;
     public Action<float> SetHoleRadius;
     public Action<bool> SetColliders;
+    public Action<bool> SetShadow;
     public Action EndHoleCycle;
     public GetState GetStateType;
     public float holeMaxRadius;

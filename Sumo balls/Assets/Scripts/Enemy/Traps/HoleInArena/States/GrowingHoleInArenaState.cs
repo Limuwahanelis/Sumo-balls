@@ -12,6 +12,7 @@ public class GrowingHoleInArenaState : HoleInArenaState
     {
         base.SetUpState(context);
         _context.timeCounter.ResetTimer();
+        _context.SetColliders(true);
     }
     public override void Update()
     {
