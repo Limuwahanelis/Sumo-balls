@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: New Hole In Arena Settings
   m_EditorClassIdentifier: 
   _arenaHeight: 0.13
+  _spawnDelay: 0.3
   _minHoleMaxRadius: 2
   _maxHoleMaxRadius: 3
   _timeToReachMaxRadius: 1
-  _timeToStayAtMaxRadius: 2
-  _timeToBeginGrowth: 0
+  _timeToStayAtMaxRadius: 4
+  _timeToBeginGrowth: 0.3
   _numberOfConcurrentHoles: 1

@@ -21,17 +21,17 @@ MonoBehaviour:
     type: 2}
   _enemiesInStage:
   - belt: 0
-    numberOfEnemies: 1
+    numberOfEnemies: 0
   - belt: 1
-    numberOfEnemies: 1
+    numberOfEnemies: 6
   - belt: 2
-    numberOfEnemies: 1
+    numberOfEnemies: 0
   _isInCage: 0
-  _simultaneouslNumberOfEnemies: 0
-  _numberOfEnemiesToDefeat: 0
-  _powerUpSpawnrateInSeconds: 0
+  _simultaneouslNumberOfEnemies: 1
+  _numberOfEnemiesToDefeat: 6
+  _powerUpSpawnrateInSeconds: 10
   _timeRequiredForStar:
-  - 0
-  - 4
-  - 3
+  - 10
+  - 20
+  - 40
   _wallsRequiredForStar: 000000000000000000000000
