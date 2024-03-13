@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
@@ -7,6 +8,8 @@ using UnityEngine.Events;
 public class TransparentOverTime : MonoBehaviour
 {
     public UnityEvent OnFadeOutCorutineEnded;
+    public float Currenttransparency => _currentTransparency;
+    private float _currentTransparency;
     [SerializeField] Color _originalColor;
     [SerializeField] float _fadeOutTime;
     [SerializeField] bool _fadeSmoothness;
@@ -19,6 +22,7 @@ public class TransparentOverTime : MonoBehaviour
         _renderer = GetComponent<Renderer>();
         if(_block == null) _block = new MaterialPropertyBlock();
         _block.SetColor("_BaseColor", _originalColor);
+        _currentTransparency = _originalColor.a;
         _renderer.SetPropertyBlock(_block);
     }
     // Start is called before the first frame update
@@ -61,11 +65,13 @@ public class TransparentOverTime : MonoBehaviour
 
             }
             _newColor.a = pct;
+            _currentTransparency=pct;
             _block.SetColor("_BaseColor", _newColor);
             _renderer.SetPropertyBlock(_block);
             yield return null;
         }
         _newColor.a = 0;
+        _currentTransparency = 0;
         _block.SetColor("_BaseColor", _newColor);
         _renderer.SetPropertyBlock(_block);
         OnFadeOutCorutineEnded?.Invoke();
