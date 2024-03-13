@@ -6,31 +6,32 @@ using UnityEngine.Search;
 
 public class HoleInArenaPool : MonoBehaviour
 {
-    [SerializeField, SearchContext("t:HoleInArena")] HoleInArena _holePrefab;
-    private ObjectPool<HoleInArena> _holePool;
+    [SerializeField, SearchContext("t:HoleInArenaManager")] HoleInArenaManager _holePrefab;
+    private ObjectPool<HoleInArenaManager> _holePool;
 
     // Start is called before the first frame update
     void Awake()
     {
-        _holePool = new ObjectPool<HoleInArena>(CreateHole, OnTakeHoleFromPool, OnReturnHoleToPool);
+        _holePool = new ObjectPool<HoleInArenaManager>(CreateHole, OnTakeHoleFromPool, OnReturnHoleToPool);
     }
 
-    public HoleInArena GetHole()
+    public HoleInArenaManager GetHole()
     {
         return _holePool.Get();
     }
-    HoleInArena CreateHole()
+    HoleInArenaManager CreateHole()
     {
-        HoleInArena hole = Instantiate(_holePrefab);
+        HoleInArenaManager hole = Instantiate(_holePrefab);
         hole.SetPool(_holePool);
         return hole;
 
     }
-    public void OnTakeHoleFromPool(HoleInArena enemy)
+    public void OnTakeHoleFromPool(HoleInArenaManager enemy)
     {
         //enemy.gameObject.SetActive(true);
     }
-    public void OnReturnHoleToPool(HoleInArena hole)
+    public void OnReturnHoleToPool(HoleInArenaManager hole)
     {
+        hole.gameObject.SetActive(false);
     }
 }
