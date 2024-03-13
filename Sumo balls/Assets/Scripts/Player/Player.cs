@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     [SerializeField] float _powerUpStrength = 15f;
     [SerializeField] float _powerUpDuration;
     [SerializeField] private bool _hasPowerUp;
+    [SerializeField, Layer] int _playerLayer;
     [SerializeField] LayerMask _arenaLayer;
     [SerializeField] SingleClipAudioEvent _wallClashAudioEvent;
     [SerializeField] SingleClipAudioEvent _bassSquishAudioEvent;
@@ -57,6 +58,7 @@ public class Player : MonoBehaviour
             StopCoroutine(_powerUpCor);
             _powerUpCor = null;
         }
+        _playerRB.gameObject.layer = _playerLayer;
         _powerUpIndicator.SetActive(false);
         _hasPowerUp = false;
         _hasBroadcastedDeath = false;
