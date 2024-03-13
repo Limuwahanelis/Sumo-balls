@@ -30,13 +30,11 @@ public class HoleInArena : MonoBehaviour
     private HoleInArenaContext _context;
     List<BallData> _ballsAtTheHole=new List<BallData>();
     Vector3 _holePos;
-    private IObjectPool<HoleInArena> _pool;
     private struct BallData
     {
         public Collider col;
         public float ballRadius;
         public bool isEnemy;
-
     }
     // Start is called before the first frame update
     void Awake()
@@ -51,6 +49,7 @@ public class HoleInArena : MonoBehaviour
             GetStateType = GetStateFromDictionary,
             SetColliders = SetColliders,
             EndHoleCycle = EndHoleCycle,
+            SetShadow= SetQuadVisibilty,
             holeMaxRadius = _holeRadius,
             timeToGetMaxToSize = _timeToGetMaxSize,
             timeToStayAtMaxSize = _timeToStayAtMaxSize,
@@ -74,7 +73,7 @@ public class HoleInArena : MonoBehaviour
         _context.timeToBeginGrow = timeToBeginGrow;
         _currentHoleState = GetStateFromDictionary(typeof(DormantHoleInArenaState));
         _currentHoleState.SetUpState(_context);
-        _shadow.SetUp(maxHoleRadius, maxHoleRadius * 2);
+        _shadow.SetUp(maxHoleRadius * 2, maxHoleRadius*2 );
         _holePos = new Vector3(transform.position.x, 0, transform.position.z);
         _ballsAtTheHole.Clear();
         SetHoleRadius(0);
@@ -83,8 +82,16 @@ public class HoleInArena : MonoBehaviour
     void Update()
     {
         _currentHoleState?.Update();
-        foreach (BallData ball in _ballsAtTheHole)
+        for(int i= _ballsAtTheHole.Count-1; i>=0;i--)
         {
+            BallData ball = _ballsAtTheHole[i];
+            if (!ball.col.gameObject.activeInHierarchy)
+            {
+                if (ball.isEnemy) ball.col.gameObject.layer = _enemyLayer;
+                else ball.col.gameObject.layer = _playerLayer;
+                _ballsAtTheHole.Remove(ball);
+                continue;
+            }
             ball.col.attachedRigidbody.AddForce(Vector3.down * _pullForce * Time.deltaTime);
         }
     }
@@ -105,11 +112,13 @@ public class HoleInArena : MonoBehaviour
     {
         Vector3 newScale = new Vector3(newRadius * 2, transform.localScale.y, newRadius * 2);
         transform.localScale = newScale;
+        _shadow.SetRadius(newRadius,true);
+    }
+    public void SetQuadVisibilty(bool value)
+    {
+        _shadow.gameObject.SetActive(value);
     }
     public void EndHoleCycle() => OnHoleCycleCompleted?.Invoke(this);
-    public void SetPool(IObjectPool<HoleInArena> pool) => _pool = pool;
-    public void ReturnToPool() => _pool.Release(this);
-
 
     private void OnTriggerEnter(Collider other)
     {
