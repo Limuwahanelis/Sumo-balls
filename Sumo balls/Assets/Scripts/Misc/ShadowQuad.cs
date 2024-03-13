@@ -26,14 +26,16 @@ public class ShadowQuad : MonoBehaviour
         _shadowQuad.transform.localScale = new Vector3(quadScale, quadScale, quadScale);
         _materialPropertyBlock.SetFloat("_MaxRadius", maxRadius);
         _materialPropertyBlock.SetFloat("_Radius", 0);
+        _renderer.SetPropertyBlock(_materialPropertyBlock);
     }
     public void SetPos(Vector3 position)
     {
         transform.position = position;
     }
-    public void SetRadius(float pct)
+    public void SetRadius(float pct,bool rawValue=false)
     {
-        _radius=_maxRadius*pct;
+        if(rawValue) _radius = pct;
+        else _radius =_maxRadius*pct;
         _materialPropertyBlock.SetFloat("_Radius", _radius);
         _renderer.SetPropertyBlock(_materialPropertyBlock);
     }

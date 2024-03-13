@@ -56,6 +56,7 @@ Material:
     - _Radius: 0
     m_Colors:
     - Color_644e767c182848dfafb606f7b9d6df1e: {r: 0, g: 0, b: 0, a: 0.84313726}
+    - _MainColor: {r: 0, g: 0, b: 0, a: 0.84313726}
     - _offset: {r: -49.5, g: -49.5, b: 0, a: 0}
     - _tiling: {r: 100, g: 100, b: 0, a: 0}
   m_BuildTextureStacks: []
