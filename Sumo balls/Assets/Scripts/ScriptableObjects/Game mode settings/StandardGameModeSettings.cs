@@ -7,9 +7,13 @@ public abstract class StandardGameModeSettings : GameModeSettings
 {
     public List<EnemiesInStage> EnemiesInStageList => _enemiesInStage;
     public bool FallingBalls => _fallingBalls;
-    public FallingBallsSettings FallingBallsSettings => _fallingBallsSettings;  
+    public bool HolesInArena=>_holesInArena;
+    public FallingBallsSettings FallingBallsSettings => _fallingBallsSettings;
+    public HoleInArenaSettings HolesInArenaSettings => _holesInArenaSettings;
     [SerializeField] protected bool _fallingBalls;
+    [SerializeField] protected bool _holesInArena;
     [SerializeField,HideInInspector] protected FallingBallsSettings _fallingBallsSettings;
+    [SerializeField, HideInInspector] protected HoleInArenaSettings _holesInArenaSettings;
     [SerializeField] protected List<EnemiesInStage> _enemiesInStage = new List<EnemiesInStage>();
     private void OnValidate()
     {
