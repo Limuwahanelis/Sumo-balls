@@ -34,7 +34,7 @@ public class NormalGameModeManager : GameModeManager
     // Update is called once per frame 
     void Update()
     {
-        return;
+
         if (_timeCounter.CurrentTime >= _normalModeSettings.PowerUpSpawnRateInSeconds * _powerUpSpawns)
         {
             _powerUpSpawns++;
@@ -57,7 +57,7 @@ public class NormalGameModeManager : GameModeManager
     }
     public override void PrepareStage()
     {
-        return;
+    
         SetUpListOfEnemiesToSpawn();
         _timeCounter.SetCountTime(false);
         _timeDisplay.SetValue("0");
