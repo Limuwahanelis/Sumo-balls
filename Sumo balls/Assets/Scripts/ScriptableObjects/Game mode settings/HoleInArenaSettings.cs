@@ -6,6 +6,7 @@ using UnityEngine;
 public class HoleInArenaSettings : ScriptableObject
 {
     public float ArenaHeight => _arenaHeight;
+    public float SpawnDelay => _spawnDelay;
     public float MinMaxHoleRadius => _minHoleMaxRadius;
     public float MaxHoleMaxRadius => _maxHoleMaxRadius;
     public float TimeToReachMaxRadius => _timeToReachMaxRadius;
@@ -14,6 +15,7 @@ public class HoleInArenaSettings : ScriptableObject
     public int NumberOfConcurrentHoles => _numberOfConcurrentHoles;
 
     [SerializeField] float _arenaHeight;
+    [SerializeField] float _spawnDelay;
     [SerializeField] float _minHoleMaxRadius;
     [SerializeField] float _maxHoleMaxRadius;
     [SerializeField] float _timeToReachMaxRadius;
