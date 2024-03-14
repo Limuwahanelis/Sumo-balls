@@ -14,6 +14,7 @@ public class NormalEnemy : Enemy
     [SerializeField] SingleClipAudioEvent _squishAudioEvent;
     [SerializeField] Transform _rbParent;
     [SerializeField] ColorList _colors;
+    [SerializeField,Layer] int _enemyLayer;
     [SerializeField] LayerMask _arenaLayer;
     [SerializeField] AudioPool _audioPool;
     [SerializeField] SingleClipAudioEvent _clashAudioEvent;
@@ -76,6 +77,7 @@ public class NormalEnemy : Enemy
         _hits = 0;
         _materialPropertyBlock.SetColor("_BaseColor", _colors.colorList[_hits]);
         _meshRenderer.SetPropertyBlock(_materialPropertyBlock);
+        _rb.gameObject.layer = _enemyLayer;
         _rb.transform.localPosition = Vector3.zero;
         _rbParent.localScale = Vector3.one;
         _rbParent.localPosition = Vector3.zero;
