@@ -19,4 +19,5 @@ public class HoleInArenaContext
     public float timeToGetMaxToSize;
     public float timeToStayAtMaxSize;
     public float timeToBeginGrow;
+    public bool hasEaten;
 }

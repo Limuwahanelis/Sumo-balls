@@ -16,7 +16,7 @@ public class GrowingHoleInArenaState : HoleInArenaState
     }
     public override void Update()
     {
-        float newHoleRadius = math.remap(0, _context.timeToGetMaxToSize, 0, _context.holeMaxRadius, _context.timeCounter.CurrentTime);
+        float newHoleRadius = math.remap(0, _context.timeToGetMaxToSize, 0.01f, _context.holeMaxRadius, _context.timeCounter.CurrentTime);
         _context.SetHoleRadius(newHoleRadius);
         if (_context.timeCounter.CurrentTime > _context.timeToGetMaxToSize) ChangeState(typeof(StationaryHoleInArenaState));
     }

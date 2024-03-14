@@ -12,6 +12,11 @@ public class StationaryHoleInArenaState : HoleInArenaState
     }
     public override void Update()
     {
+        if(_context.hasEaten)
+        {
+            ChangeState(typeof(ShrinkingHoleInArenaState));
+            return;
+        }
         if (_context.timeCounter.CurrentTime <= _context.timeToStayAtMaxSize) return;
         ChangeState(typeof(ShrinkingHoleInArenaState));
     }

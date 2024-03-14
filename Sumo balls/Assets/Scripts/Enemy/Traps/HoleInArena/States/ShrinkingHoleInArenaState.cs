@@ -14,7 +14,7 @@ public class ShrinkingHoleInArenaState : HoleInArenaState
     }
     public override void Update()
     {
-         newHoleRadius = _context.holeMaxRadius- math.remap(0, _context.timeToGetMaxToSize, 0, _context.holeMaxRadius, _context.timeCounter.CurrentTime);
+         newHoleRadius = _context.holeMaxRadius- math.remap(0, _context.timeToGetMaxToSize, 0, _context.holeMaxRadius+0.01f, _context.timeCounter.CurrentTime);
         _context.SetHoleRadius(newHoleRadius);
         if (_context.timeCounter.CurrentTime > _context.timeToGetMaxToSize)
         {

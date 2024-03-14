@@ -50,6 +50,7 @@ public class HoleInArena : MonoBehaviour
             SetColliders = SetColliders,
             EndHoleCycle = EndHoleCycle,
             SetShadow= SetQuadVisibilty,
+            hasEaten=false,
             holeMaxRadius = _holeRadius,
             timeToGetMaxToSize = _timeToGetMaxSize,
             timeToStayAtMaxSize = _timeToStayAtMaxSize,
@@ -71,12 +72,13 @@ public class HoleInArena : MonoBehaviour
         _context.timeToGetMaxToSize = timeToGetToMaxSize;
         _context.timeToStayAtMaxSize = timeToStayAtMaxSize;
         _context.timeToBeginGrow = timeToBeginGrow;
+        _context.hasEaten = false;
         _currentHoleState = GetStateFromDictionary(typeof(DormantHoleInArenaState));
         _currentHoleState.SetUpState(_context);
         _shadow.SetUp(maxHoleRadius * 2, maxHoleRadius*2 );
         _holePos = new Vector3(transform.position.x, 0, transform.position.z);
         _ballsAtTheHole.Clear();
-        SetHoleRadius(0);
+        SetHoleRadius(0.01f);
     }
     // Update is called once per frame
     void Update()
@@ -90,6 +92,7 @@ public class HoleInArena : MonoBehaviour
                 if (ball.isEnemy) ball.col.gameObject.layer = _enemyLayer;
                 else ball.col.gameObject.layer = _playerLayer;
                 _ballsAtTheHole.Remove(ball);
+                _context.hasEaten = true;
                 continue;
             }
             ball.col.attachedRigidbody.AddForce(Vector3.down * _pullForce * Time.deltaTime);
