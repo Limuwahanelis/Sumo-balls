@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Search;
 
@@ -8,18 +9,36 @@ using UnityEngine.Search;
 [Serializable]
 public class Stage : ScriptableObject
 {
+    public string Id { get { return _id; } private set { _id = value; } }
+    [SerializeField] private string _id;
+    public bool IsInitalised { get { return _isInitalised; } private set { _isInitalised = value; } }
+    [SerializeField] private bool _isInitalised;
+
     public GameModeSettings GameModeSettings => _gameMode;
     public Texture stageScreenshot => _stageScreenshot;
-    //public int Score => _score;
-    //public bool IsCompleted=>_isCompleted;
+
     [SerializeField] GameModeSettings _gameMode;
     [SerializeField, SearchContext("p: dir=\"StageScreens\"")] Texture _stageScreenshot;
-   // private int _score=0;
-    //private bool _isCompleted;
 
-    //public void SetScore(int score)
-    //{
-    //    _isCompleted = true;
-    //    _score = score;
-    //}
+    private void Reset()
+    {
+        Init();
+    }
+    private void Init()
+    {
+        Debug.Log("in");
+
+#if UNITY_EDITOR
+
+        if (!_isInitalised)
+        {
+            Id = GUID.Generate().ToString();
+            _isInitalised = true;
+        }
+#endif
+        if (!_isInitalised)
+        {
+            Debug.LogError("Item was not initialised !");
+        }
+    }
 }

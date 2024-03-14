@@ -26,7 +26,7 @@ public class StageSelector : MonoBehaviour
     {
         for(int i=0;i<_stagesInGrid.Count;i++)
         {
-            _stagesInGrid[i].SetStars(GameDataManager.GetStageScore(i)); // In can be done this way because stages in grid are created based on thier order in stage list.
+            _stagesInGrid[i].SetStars(GameDataManager.GetStageScore(_stageList.stages[i].Id)); // In can be done this way because stages in grid are created based on thier order in stage list.
         }
     }
     // Start is called before the first frame update
@@ -43,7 +43,7 @@ public class StageSelector : MonoBehaviour
     private void SetStage(Stage stage)
     {
         //GlobalSettings.SetStage(stage.GameModeSettings);
-        GlobalSettings.SetStage(stage, _stageList.stages.IndexOf(stage));
+        GlobalSettings.SetStage(stage, stage.Id, _stageList.stages.IndexOf(stage));
         switch (GlobalSettings.SelectedStage.GameModeSettings.GameMode)
         {
             case Configs.Gamemode.NORMAL: _sceneLoader.Load(_normalScene);break;

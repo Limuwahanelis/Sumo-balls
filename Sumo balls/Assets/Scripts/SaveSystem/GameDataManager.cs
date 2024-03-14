@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 namespace SaveSystem
 {
@@ -30,6 +29,10 @@ namespace SaveSystem
             GameData.stagesData[stageIndex].completed = true;
             GameData.stagesData[stageIndex].score = score;
             Save();
+        }
+        public static int GetStageScore(string stageID)
+        {
+            return GameData.stagesData.Find(x=>x.stageID==stageID).score;
         }
         public static int GetStageScore(int stageIndex)
         {
@@ -66,7 +69,7 @@ namespace SaveSystem
             List<StageData> stagesData = new List<StageData>();
             foreach(Stage stage in stages)
             {
-                stagesData.Add(new StageData());
+                stagesData.Add(new StageData(stage.Id));
             }
             GameData saveData = new GameData(stagesData, unlockableColors);
             string json = JsonUtility.ToJson(saveData);
@@ -90,6 +93,19 @@ namespace SaveSystem
             }
 
             return false;
+        }
+        public static void VerifyGameData(List<Stage> stageList, List<UnlockableItem> unlockables)
+        {
+            foreach (Stage stage in stageList)
+            {
+                if (_gameData.stagesData.Exists((x) => x.stageID == stage.Id)) continue;
+                _gameData.stagesData.Add(new StageData(stage.Id));
+            }
+            foreach (UnlockableItem unlockableItem in unlockables)
+            {
+                if (_gameData.customizationData.unlockableItemsData.Exists((x) => x.itemId == unlockableItem.Id)) continue;
+                _gameData.customizationData.unlockableItemsData.Add(new UnlockableItemData(unlockableItem.Id, false));
+            }
         }
     }
 }

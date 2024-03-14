@@ -10,16 +10,18 @@ namespace SaveSystem
     {
         public bool completed;
         public int score;
-
-        public StageData(bool completed, int score)
+        public string stageID;
+        public StageData(bool completed, int score, string stageID)
         {
             this.completed = completed;
             this.score = score;
+            this.stageID = stageID;
         }
-        public StageData()
+        public StageData(string stageID)
         {
             completed = false;
             score = 0;
+            this.stageID = stageID;
         }
     }
 }

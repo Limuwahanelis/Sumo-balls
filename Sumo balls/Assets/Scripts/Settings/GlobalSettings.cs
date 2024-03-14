@@ -13,6 +13,8 @@ public static class GlobalSettings
     public static Stage SelectedStage => _selectedStage;
 
     public static int StageIndex=>_stageIndex;
+    public static string StageID => _stageID;
+    private static string _stageID;
     private static int _stageIndex;
     public static void SetPause(bool value)
     {
@@ -21,9 +23,10 @@ public static class GlobalSettings
         if (value) Time.timeScale = 0;
         else Time.timeScale = 1;
     }
-    public static void SetStage(Stage stage,int stageIndex)
+    public static void SetStage(Stage stage,string stageID,int stageIndex)
     {
         _selectedStage = stage;
         _stageIndex = stageIndex;
+        _stageID = stageID;
     }
 }

@@ -37,7 +37,10 @@ public class LoadSave : MonoBehaviour
         {
             Debug.Log("Creating new save");
             GameDataManager.CreateGameData(_stageList.stages, _unlockableColors);
-            int i = 0;
+        }
+        else
+        {
+            GameDataManager.VerifyGameData(_stageList.stages, _unlockableColors);
         }
     }
     // Update is called once per frame
