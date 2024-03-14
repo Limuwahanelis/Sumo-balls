@@ -18,10 +18,15 @@ public class HexagonSpawn : MonoBehaviour
     [SerializeField] float _maxY;
     [SerializeField] float _minX;
     [SerializeField] float _maxX;
+    private List<LinearFunctionParameters> offsetParameters;
+    private void Awake()
+    {
+        offsetParameters = new List<LinearFunctionParameters>(parameters);
+    }
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
     private void Update()
     {
@@ -68,6 +73,62 @@ public class HexagonSpawn : MonoBehaviour
         avilableYConstrains.Sort();
         float pointY = Random.Range(avilableYConstrains[0], avilableYConstrains[1]);
         Vector3 pos = new Vector3(pointX, 0f, pointY);
+        return pos;
+    }
+    public Vector3 GetAvilablePositionForSphereInside(float radius)
+    {
+        if (radius > _maxY) Debug.LogError("Radius is too big ");
+        Debug.Log(radius);
+        if (offsetParameters == null|| offsetParameters.Count==0) offsetParameters= new List<LinearFunctionParameters>(parameters);
+        float offset = (radius * 2) / math.sqrt(3);
+        Debug.Log("off: "+offset);
+        for (int i=0;i<parameters.Count;i++)
+        {
+            LinearFunctionParameters newParam = new LinearFunctionParameters()
+            {
+                a = parameters[i].a,
+                b = parameters[i].b
+            };
+            if (i == 1) newParam.b = _maxY - radius;
+            else if(i==4) newParam.b = _minY + radius;
+            offsetParameters[i] = newParam;
+        }
+        float pointXOrg = Random.Range(_minX+offset, _maxX-offset);
+        float pointX = pointXOrg;
+        Debug.Log("x:" + pointXOrg);
+        float[] results = new float[offsetParameters.Count];
+        List<float> avilableYConstrains = new List<float>();
+        for (int i = 0; i < offsetParameters.Count; i++)
+        {
+            if (Math.Abs(parameters[i].a * _minX + parameters[i].b - 0) <= 0.001) pointX = pointXOrg - offset;
+            else if (Math.Abs(parameters[i].a * _maxX + parameters[i].b - 0) <= 0.001) pointX = pointXOrg + offset;
+            Debug.Log("calaculate for x: " + pointX);
+            results[i] = offsetParameters[i].a * pointX + offsetParameters[i].b;
+            Debug.Log(string.Format("i:{0} y:{1}",i,results[i]));
+        }
+        for (int i = 0; i < offsetParameters.Count; i++)
+        {
+            if (results[i] <= _minY + radius) continue;
+            if (results[i] >= _maxY - radius) continue;
+            avilableYConstrains.Add(results[i]);
+        }
+
+        if (avilableYConstrains.Count == 0)
+        {
+            avilableYConstrains.Add(_minY + radius);
+            avilableYConstrains.Add(_maxY - radius);
+        }
+        Debug.Log("constr: " + avilableYConstrains.Count);
+        avilableYConstrains.Sort();
+        // due to floatingp oint error somteimes max and min value are also added, but shouldn't. Here we remove them.
+        if (avilableYConstrains.Count > 2)
+        {
+            avilableYConstrains.RemoveAt(avilableYConstrains.Count - 1);
+            avilableYConstrains.RemoveAt(0);
+        }
+        float pointY = Random.Range(avilableYConstrains[0], avilableYConstrains[1]);
+        Debug.Log("y:" + pointY);
+        Vector3 pos = new Vector3(pointXOrg, 0f, pointY);
         return pos;
     }
     public Vector3 GetAvilablePosition()
