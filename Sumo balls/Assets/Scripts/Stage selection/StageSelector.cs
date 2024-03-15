@@ -13,7 +13,8 @@ public class StageSelector : MonoBehaviour
     [SceneName, SerializeField] private string _survivalScene;
     [SceneName, SerializeField] private string _normalScene;
     [SerializeField] StageList _stageList;
-    [SerializeField]private List<StageInGrid> _stagesInGrid = new List<StageInGrid>();
+    [SerializeField] List<StageInGrid> _stagesInGrid = new List<StageInGrid>();
+    [SerializeField] SelectSelectableOnEnable _selectSelectableOnEnable;
     private void Awake()
     {
         _stagesInGrid = GetComponentsInChildren<StageInGrid>().ToList();
