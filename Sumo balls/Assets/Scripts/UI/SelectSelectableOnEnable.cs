@@ -24,6 +24,10 @@ public class SelectSelectableOnEnable : MonoBehaviour
     {
         EventSystem.current.SetSelectedGameObject(_firstSelect.gameObject);
     }
+    public void SetSelectable(Selectable _selectable)
+    {
+        _firstSelect = _selectable;
+    }
     public void SelectSelectable()
     {
         EventSystem.current.SetSelectedGameObject(_firstSelect.gameObject);
@@ -35,9 +39,5 @@ public class SelectSelectableOnEnable : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(_previousSel.gameObject);
             _previousSel = null;
         }
-    }
-    private void OnDisable()
-    {
-        //ReturnToPrevious();
     }
 }
