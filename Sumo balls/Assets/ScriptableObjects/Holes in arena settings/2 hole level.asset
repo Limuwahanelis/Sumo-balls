@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86d405d8dfea18b4e8f60f9d40b0d8c2, type: 3}
-  m_Name: New Hole In Arena Settings
+  m_Name: 2 hole level
   m_EditorClassIdentifier: 
   _arenaHeight: 0.13
   _spawnDelay: 0.3
   _minHoleMaxRadius: 2
-  _maxHoleMaxRadius: 3
+  _maxHoleMaxRadius: 4
   _timeToReachMaxRadius: 1
-  _timeToStayAtMaxRadius: 4
-  _timeToBeginGrowth: 0.3
-  _numberOfConcurrentHoles: 1
+  _timeToStayAtMaxRadius: 5
+  _timeToBeginGrowth: 0.6
+  _numberOfConcurrentHoles: 2

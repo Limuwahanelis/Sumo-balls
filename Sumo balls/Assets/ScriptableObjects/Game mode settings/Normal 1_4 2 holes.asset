@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c4ac576ba30f374fb8a19573b813b66, type: 3}
+  m_Name: Normal 1_4 2 holes
+  m_EditorClassIdentifier: 
+  _gameMode: 0
+  _areEnemiesRandomized: 0
+  _fallingBalls: 0
+  _holesInArena: 1
+  _fallingBallsSettings: {fileID: 0}
+  _holesInArenaSettings: {fileID: 11400000, guid: f4507c1e295daeb44aaa2fc20496a8d2,
+    type: 2}
+  _enemiesInStage:
+  - belt: 0
+    numberOfEnemies: 0
+  - belt: 1
+    numberOfEnemies: 2
+  - belt: 2
+    numberOfEnemies: 2
+  _isInCage: 0
+  _simultaneouslNumberOfEnemies: 1
+  _numberOfEnemiesToDefeat: 4
+  _powerUpSpawnrateInSeconds: 10
+  _timeRequiredForStar:
+  - 50
+  - 25
+  - 15
+  _wallsRequiredForStar: 000000000000000000000000
