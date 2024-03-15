@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ColorPickerUnlock : MonoBehaviour
 {
-    [SerializeField] Image _image;
+    //[SerializeField] RawImage _image;
     [SerializeField] List<Unlockable> _colorItems;
     [SerializeField] ColorSelectionButton _pickerButton;
     [SerializeField] UnlockableItem _pickerItem;
@@ -67,7 +67,7 @@ public class ColorPickerUnlock : MonoBehaviour
         }
         GameDataManager.GameData.customizationData.colorPickerColor=color;
         GameDataManager.Save();
-        _image.color = color;
+        //_image.color = color;
         _pickerButton.CheckItem(false);
     }
 }

@@ -40,7 +40,7 @@ public class ColorPicker : MonoBehaviour
     public Slider bComponent;
     public Slider aComponent;
     public InputField hexaComponent;
-    public RawImage colorComponent;
+    public Image colorComponent;
 
     [SerializeField]List<Image> imageList=new List<Image>();
 
