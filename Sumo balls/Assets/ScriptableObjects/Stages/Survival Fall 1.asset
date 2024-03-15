@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6708b9e52b18f4a8a97837595602a6, type: 3}
   m_Name: Survival Fall 1
   m_EditorClassIdentifier: 
+  _id: c58e7e413c1d841408749f5beeae87a5
+  _isInitalised: 1
   _gameMode: {fileID: 11400000, guid: ecb56a88659fc634282d2bed64208fec, type: 2}
   _stageScreenshot: {fileID: 2800000, guid: 1823c065a5472ca4ebf57e95f938c45c, type: 3}

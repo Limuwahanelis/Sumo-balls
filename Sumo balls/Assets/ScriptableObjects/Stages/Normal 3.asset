@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b6708b9e52b18f4a8a97837595602a6, type: 3}
   m_Name: Normal 3
   m_EditorClassIdentifier: 
+  _id: 388b80d11bfd2bf4fa44761ddeb0e090
+  _isInitalised: 1
   _gameMode: {fileID: 11400000, guid: 04b0791df6ee62d4e9dacab2e527ccd3, type: 2}
   _stageScreenshot: {fileID: 2800000, guid: 528e5fe224cc3714bacd7088951c5863, type: 3}

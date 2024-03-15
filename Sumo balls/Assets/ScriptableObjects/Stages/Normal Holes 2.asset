@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b6708b9e52b18f4a8a97837595602a6, type: 3}
-  m_Name: Boss 1
+  m_Name: Normal Holes 2
   m_EditorClassIdentifier: 
-  _id: d132e2a99bda90243ab820bbbd7ce126
+  _id: b01dea6d41837f84c8621f59a477f9cd
   _isInitalised: 1
-  _gameMode: {fileID: 11400000, guid: 7fd830da407a76e4c896f988f3eb2349, type: 2}
-  _stageScreenshot: {fileID: 2800000, guid: d4f9cd109c7208a4d9617b1eb336afef, type: 3}
+  _gameMode: {fileID: 11400000, guid: a0f78529ab58ada459cc20a311afc913, type: 2}
+  _stageScreenshot: {fileID: 2800000, guid: 1f162ad253e7862409551b47eaaa53ad, type: 3}
