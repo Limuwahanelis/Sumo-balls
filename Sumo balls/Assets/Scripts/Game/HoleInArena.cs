@@ -73,7 +73,7 @@ public class HoleInArena : MonoBehaviour
         _context.timeToStayAtMaxSize = timeToStayAtMaxSize;
         _context.timeToBeginGrow = timeToBeginGrow;
         _context.hasEaten = false;
-        _currentHoleState = GetStateFromDictionary(typeof(DormantHoleInArenaState));
+        ChangeCurrentState( GetStateFromDictionary(typeof(DormantHoleInArenaState)));
         _currentHoleState.SetUpState(_context);
         _shadow.SetUp(maxHoleRadius * 2, maxHoleRadius*2 );
         _holePos = new Vector3(transform.position.x, 0, transform.position.z);
@@ -110,6 +110,7 @@ public class HoleInArena : MonoBehaviour
     private void ChangeCurrentState(HoleInArenaState newState)
     {
         _currentHoleState = newState;
+        Debug.Log(_currentHoleState);
     }
     private void SetHoleRadius(float newRadius)
     {

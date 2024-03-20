@@ -2128,9 +2128,9 @@ RectTransform:
   m_Father: {fileID: 1358065844}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 407.3585, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 407.3585, y: 6.9995995}
   m_SizeDelta: {x: 120.56, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1159246888
@@ -2623,8 +2623,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7847675dd6e9a3941a4892b49beb09ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _setCursorStateOnAwake: 0
-  _shouldLockToGameWindowOnAwake: 0
+  _setCursorStateOnAwake: 1
+  _shouldLockToGameWindowOnAwake: 1
 --- !u!1 &1240709220
 GameObject:
   m_ObjectHideFlags: 0
@@ -2659,9 +2659,9 @@ RectTransform:
   m_Father: {fileID: 2092255605}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 180.7182, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 180.7182, y: -2.1403008}
   m_SizeDelta: {x: 161.4818, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1240709222

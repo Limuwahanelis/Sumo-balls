@@ -56,7 +56,8 @@ public class NormalEnemy : Enemy
         {
             OnDeath?.Invoke(this);
             if (_pool != null) _pool.Release(this);
-            else Destroy(gameObject);
+            // else Destroy(gameObject);
+            else gameObject.SetActive(false);
         }
         if(!_hasChangedAngularDrag && Vector3.Distance(_rb.position,Vector3.zero)>_changeAngluarDragDistance)
         {
