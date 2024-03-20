@@ -18,7 +18,7 @@ public abstract class HoleInArenaState
     public void ChangeState(Type stateType)
     {
         HoleInArenaState state = _context.GetStateType(stateType);
-        state.SetUpState(_context);
         _context.ChangeHoleState(state);
+        state.SetUpState(_context);
     }
 }
