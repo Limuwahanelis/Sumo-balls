@@ -3,7 +3,10 @@ guid: fac45bd55db634d44bf400eeaa6ce5a9
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _panelWithButtons: {instanceID: 0}
+  - _changeTabsAction: {fileID: 1289698389817603740, guid: 108bb979191d4a548af7f7a2a04fc63d,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
