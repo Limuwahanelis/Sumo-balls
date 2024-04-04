@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04b0f318d18b0f64599f289db54f6f3c, type: 3}
+  m_Name: Fundoshi
+  m_EditorClassIdentifier: 
+  _id: 1b097e471614faf49a645ba6c6ed93db
+  _startUnlocked: 1
+  _cost: 0
+  _isInitalised: 1
+  _prefab: {fileID: 8414443626251496989, guid: 63ac6ae15a467d643aa4fbb0883e644c, type: 3}
+  _colors: []
