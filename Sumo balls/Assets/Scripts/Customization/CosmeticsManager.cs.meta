@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 73dee3fde869ea74ba2ebf0a604403b7
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _selectedCosmetics: {fileID: 11400000, guid: 00d53384a5d71f34a869da46a20c8faf,
+      type: 2}
+  - _playerBody: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
