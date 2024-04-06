@@ -9,9 +9,9 @@ public class CosmeticSelectionButton : ShopItemSelectionButton, ICosmeticPickabl
 
     public override void CheckItem(bool tryUnlock = true)
     {
-        if (true)//GameDataManager.IsItemUnlocked(_unlockable.UnlockableItem.Id))
+        if (GameDataManager.IsItemUnlocked(_unlockable.UnlockableItem.Id))
         {
-            OnCosmeticPicked?.Invoke(_unlockable.UnlockableItem as CosmeticSO);
+            OnCosmeticPicked?.Invoke(_unlockable.UnlockableItem as CosmeticSO,this);
         }
         else if (tryUnlock)
         {

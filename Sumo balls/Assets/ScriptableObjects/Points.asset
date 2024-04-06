@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 272d16bd83a404942b5079d65dbbffc1, type: 3}
   m_Name: Points
   m_EditorClassIdentifier: 
-  value: 1
+  value: 97
   OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

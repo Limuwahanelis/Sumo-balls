@@ -94,8 +94,11 @@ namespace SaveSystem
 
             return false;
         }
-        public static void VerifyGameData(List<Stage> stageList, List<UnlockableItem> unlockables)
+        public static void VerifyGameData(List<Stage> stageList, List<UnlockableItem> unlockables,CustomizationData customizationData)
         {
+            if(customizationData.topCosmeticId==null) customizationData.topCosmeticId= "e9076c53d7a4a9d489e3b10363614ddb";
+            if(customizationData.midddleCosmeticId==null ) customizationData.midddleCosmeticId = "f194953c1695ede4480f4f7ce0c8b0f9";
+            if(customizationData.bottomCosmeticId==null)customizationData.bottomCosmeticId = "ece10e96e1dc5bb4ba8f17b3216725ee";
             foreach (Stage stage in stageList)
             {
                 if (_gameData.stagesData.Exists((x) => x.stageID == stage.Id)) continue;

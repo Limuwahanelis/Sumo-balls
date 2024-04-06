@@ -16,7 +16,7 @@ MonoBehaviour:
   _startUnlocked: 1
   _cost: 0
   _isInitalised: 1
-  _prefab: {fileID: 0}
+  _prefab: {fileID: 2608438589896410374, guid: db56b192e4cbd8d49943bcdc599361a5, type: 3}
   _colors:
   - {r: 0, g: 0, b: 0, a: 1}
   - {r: 1, g: 1, b: 1, a: 1}

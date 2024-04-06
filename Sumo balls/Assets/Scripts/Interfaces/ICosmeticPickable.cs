@@ -6,5 +6,5 @@ public interface ICosmeticPickable
 {
     public event CosmeticPickedEventHandler OnCosmeticPicked;
 
-    public delegate void CosmeticPickedEventHandler(CosmeticSO cosmetic);
+    public delegate void CosmeticPickedEventHandler(CosmeticSO cosmetic,ICosmeticPickable caller);
 }

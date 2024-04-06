@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04b0f318d18b0f64599f289db54f6f3c, type: 3}
   m_Name: Viking helmet
   m_EditorClassIdentifier: 
-  _id: e9076c53d7a4a9d489e3b10363614ddb
+  _id: 6f2ae893eeeba554c99923d7282cd3ea
   _startUnlocked: 0
-  _cost: 0
+  _cost: 3
   _isInitalised: 1
-  _prefab: {fileID: 7475016069580172389, guid: 0c74c69afc1872840a63bca9f572f1ee, type: 3}
+  _prefab: {fileID: 403647092492610983, guid: 57192d5156b35a44eb40f1969bd0c29e, type: 3}
   _colors:
   - {r: 0, g: 0, b: 0, a: 1}
   - {r: 1, g: 1, b: 1, a: 1}
