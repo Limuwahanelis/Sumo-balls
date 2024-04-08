@@ -18,3 +18,4 @@ MonoBehaviour:
   _isInitalised: 1
   _prefab: {fileID: 5152086050343528651, guid: df9a6dac0c83ac544b8109f8fc1d0d0c, type: 3}
   _colors: []
+  _sprite: {fileID: 2800000, guid: d8c8ce500d9f47e409c0aa563861d546, type: 3}

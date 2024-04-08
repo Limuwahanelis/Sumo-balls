@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99cb0a6a265ba2c4298750183aa5bee0, type: 3}
+  m_Name: Middle clothes
+  m_EditorClassIdentifier: 
+  _cosmetics:
+  - {fileID: 11400000, guid: 0f58d12265cd8104aa677bbe48c5c9bb, type: 2}
+  - {fileID: 11400000, guid: c6ce54bc8fc09064b88c164900b84cc7, type: 2}

@@ -305,13 +305,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dd40512a29bfcec47ba30e64746f8535, type: 2}
   - {fileID: 11400000, guid: 1aede49f7f789b044a1e88a4f4c03a98, type: 2}
   - {fileID: 11400000, guid: 8e76ce29fda255b4294d251d2b50848a, type: 2}
-  _allCosmeticsSO:
-  - {fileID: 11400000, guid: 646bda33259fab64d82ec87331471054, type: 2}
-  - {fileID: 11400000, guid: f4d16f55b8f291440b0c0cc8ba160af6, type: 2}
-  - {fileID: 11400000, guid: 0f58d12265cd8104aa677bbe48c5c9bb, type: 2}
-  - {fileID: 11400000, guid: c5ee049bb88854646850c6df5ef39de6, type: 2}
-  - {fileID: 11400000, guid: 0c3bb53ca940fee468751600d00c7c19, type: 2}
-  - {fileID: 11400000, guid: c6ce54bc8fc09064b88c164900b84cc7, type: 2}
+  _allCosmeticsSOLists:
+  - {fileID: 11400000, guid: d1acc6f7cb0d6c146beb1088dabd5c9b, type: 2}
+  - {fileID: 11400000, guid: 90c48ad4e91d2c84495aca6dd3c1ca34, type: 2}
+  - {fileID: 11400000, guid: a0d1000ab8e30f344a530c673f3391ec, type: 2}
   _setMoney: 1
   _pointsToSet: 777
   _cosmeticSettings: {fileID: 1592543771}

@@ -10,6 +10,10 @@ public class CosmeticsShop : MonoBehaviour
     [SerializeField] CosmeticSO _selectedMiddleCosmetic;
     [SerializeField] CosmeticSO _selectedBottomCosmetic;
     [SerializeField] Transform _playerShowcase;
+
+    [SerializeField] List<CosmeticShopCategory> _categories= new List<CosmeticShopCategory>();
+
+
     private List<CosmeticSO> _allTopComseticsSO= new List<CosmeticSO>();
     private List<CosmeticSO> _allMiddleComseticsSO = new List<CosmeticSO>();
     private List<CosmeticSO> _allBottomComseticsSO = new List<CosmeticSO>();

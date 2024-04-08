@@ -13,6 +13,8 @@ public class CosmeticShopCategory : MonoBehaviour
     }
     [SerializeField] CosmeticCategory category;
     [SerializeField] GameObject _gameObjectWithButtons;
+    [SerializeField] CosmeticSOList _listOfCosmeticsSOInCategory;
+    [SerializeField] GameObject _cosmeticButtonPrefab;
     [SerializeField] List<CosmeticSelectionButton> _cosmeticButtons = new List<CosmeticSelectionButton>();
     private CosmeticSelectionButton _currentlySelectedCosmeticButton;
     public UnityEvent<CosmeticSO, CosmeticCategory> OnItemSelected;
@@ -55,6 +57,19 @@ public class CosmeticShopCategory : MonoBehaviour
     {
 
     }
+    //public void ResetCategory()
+    //{
+    //    for(int i=_cosmeticButtons.Count-1;i>=0;i--)
+    //    {
+    //        CosmeticSelectionButton toDestroy = _cosmeticButtons[i];
+    //        DestroyImmediate(toDestroy.gameObject);
+    //        _cosmeticButtons.RemoveAt(i);
+    //    }
+    //    for(int i=0;i<_cosmeticButtons.Count;i++) 
+    //    {
+    //        CosmeticSelectionButton button = Instantiate
+    //    }
+    //}
     private void OnDisable()
     {
         foreach (CosmeticSelectionButton button in _cosmeticButtons)

@@ -20,7 +20,10 @@ public class Unlockable:MonoBehaviour
             OnUnlockedEvent?.Invoke();
         }
     }
-
+    public void SetUnlockable(UnlockableItem item)
+    {
+        _unlock = item;
+    }    
     public bool TryUnlock()
     {
         if(_points.value>=_unlock.Cost)

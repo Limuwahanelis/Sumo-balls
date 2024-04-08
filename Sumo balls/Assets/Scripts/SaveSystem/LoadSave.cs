@@ -11,18 +11,24 @@ public class LoadSave : MonoBehaviour
     [SerializeField] IntReference _points;
     [SerializeField] Material _playerMat;
     [SerializeField] List<UnlockableItem> _unlockableColors;
-    [SerializeField] List<CosmeticSO> _allCosmeticsSO;
+    [SerializeField] List<CosmeticSOList> _allCosmeticsSOLists;
     [SerializeField] bool _setMoney;
     [SerializeField] int _pointsToSet;
+    private List<CosmeticSO> _allCosmeticsSO=new List<CosmeticSO>();
     private List<UnlockableItem> _allCosmeticsAsUnlockableItems=new List<UnlockableItem>();
     private List<UnlockableItem> _allUnlockables;
     [SerializeField] CosmeticsSettings _cosmeticSettings;
     // Start is called before the first frame update
     void Start()
     {
-        foreach(var item in _allCosmeticsSO)
+        foreach(var item in _allCosmeticsSOLists)
         {
-            _allCosmeticsAsUnlockableItems.Add(item);
+            foreach (var cosmetic in item.Cosmetics)
+            {
+                _allCosmeticsAsUnlockableItems.Add(cosmetic);
+                _allCosmeticsSO.Add(cosmetic);
+            }
+            
         }
         _allUnlockables = new List<UnlockableItem>().Concat(_unlockableColors).Concat(_allCosmeticsAsUnlockableItems).ToList();
         LoadOrCreateNewSave();

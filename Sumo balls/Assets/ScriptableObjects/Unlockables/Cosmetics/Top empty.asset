@@ -20,3 +20,4 @@ MonoBehaviour:
   _colors:
   - {r: 0, g: 0, b: 0, a: 1}
   - {r: 1, g: 1, b: 1, a: 1}
+  _sprite: {fileID: 2800000, guid: 875b1723c6bf7164a97c535266445b01, type: 3}
