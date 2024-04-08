@@ -136,6 +136,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: viking helmet
       objectReference: {fileID: 0}
+    - target: {fileID: 403647092492610983, guid: 57192d5156b35a44eb40f1969bd0c29e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4066084683478905865, guid: 57192d5156b35a44eb40f1969bd0c29e,
         type: 3}
       propertyPath: m_RootOrder
@@ -459,6 +464,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fundoshi (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8414443626251496989, guid: 63ac6ae15a467d643aa4fbb0883e644c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1559,6 +1569,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fundoshi
       objectReference: {fileID: 0}
+    - target: {fileID: 5152086050343528651, guid: df9a6dac0c83ac544b8109f8fc1d0d0c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5777305485392160984, guid: df9a6dac0c83ac544b8109f8fc1d0d0c,
         type: 3}
       propertyPath: m_Mesh
@@ -1767,6 +1782,7 @@ Transform:
   - {fileID: 5454156699623995833}
   - {fileID: 31940072}
   - {fileID: 221316915}
+  - {fileID: 7865556526910206573}
   m_Father: {fileID: 5837141300815644978}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13394,6 +13410,85 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!1001 &7380256121557044599
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3236980926762296232}
+    m_Modifications:
+    - target: {fileID: 2886138033943920951, guid: 67bf16de7a5e3f94389f323e28fa90b3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2886138033943920951, guid: 67bf16de7a5e3f94389f323e28fa90b3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2886138033943920951, guid: 67bf16de7a5e3f94389f323e28fa90b3,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.046
+      objectReference: {fileID: 0}
+    - target: {fileID: 2886138033943920951, guid: 67bf16de7a5e3f94389f323e28fa90b3,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.4976
+      objectReference: {fileID: 0}
+    - target: {fileID: 2886138033943920951, guid: 67bf16de7a5e3f94389f323e28fa90b3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2886138033943920951, guid: 67bf16de7a5e3f94389f323e28fa90b3,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2886138033943920951, guid: 67bf16de7a5e3f94389f323e28fa90b3,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2886138033943920951, guid: 67bf16de7a5e3f94389f323e28fa90b3,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2886138033943920951, guid: 67bf16de7a5e3f94389f323e28fa90b3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2886138033943920951, guid: 67bf16de7a5e3f94389f323e28fa90b3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2886138033943920951, guid: 67bf16de7a5e3f94389f323e28fa90b3,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7139499198441041636, guid: 67bf16de7a5e3f94389f323e28fa90b3,
+        type: 3}
+      propertyPath: m_Name
+      value: bowtie 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 67bf16de7a5e3f94389f323e28fa90b3, type: 3}
+--- !u!4 &7865556526910206573 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2886138033943920951, guid: 67bf16de7a5e3f94389f323e28fa90b3,
+    type: 3}
+  m_PrefabInstance: {fileID: 7380256121557044599}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &8883527125876890402
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -311,6 +311,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0f58d12265cd8104aa677bbe48c5c9bb, type: 2}
   - {fileID: 11400000, guid: c5ee049bb88854646850c6df5ef39de6, type: 2}
   - {fileID: 11400000, guid: 0c3bb53ca940fee468751600d00c7c19, type: 2}
+  - {fileID: 11400000, guid: c6ce54bc8fc09064b88c164900b84cc7, type: 2}
   _setMoney: 1
   _pointsToSet: 777
   _cosmeticSettings: {fileID: 1592543771}

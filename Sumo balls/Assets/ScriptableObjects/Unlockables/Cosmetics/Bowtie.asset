@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04b0f318d18b0f64599f289db54f6f3c, type: 3}
+  m_Name: Bowtie
+  m_EditorClassIdentifier: 
+  _id: 968d7b87da78b9c41908303c9c28c894
+  _startUnlocked: 0
+  _cost: 4
+  _isInitalised: 1
+  _prefab: {fileID: 7139499198441041636, guid: 67bf16de7a5e3f94389f323e28fa90b3, type: 3}
+  _colors: []
