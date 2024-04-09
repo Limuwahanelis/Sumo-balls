@@ -7,7 +7,8 @@ public class PreviewCamera : MonoBehaviour
 {
     [SerializeField] float _rotationSpeed;
     [SerializeField] Transform _cameraPivot;
-
+    private float _pitch;
+    private float _yaw;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +25,13 @@ public class PreviewCamera : MonoBehaviour
     {
         PointerEventData pointerEventData = eventData as PointerEventData;
         float xRotation = pointerEventData.delta.x * _rotationSpeed;
-        _cameraPivot.transform.Rotate(Vector3.up, xRotation);
-
+        float yRotation = pointerEventData.delta.y * _rotationSpeed;
+        _yaw += xRotation;
+        _pitch += yRotation;
+        Debug.Log(_pitch);
+        if (_pitch < -20) _pitch = -20;
+        if (_pitch > 60) _pitch = 60;
+        _cameraPivot.transform.rotation = Quaternion.Euler(_pitch, _yaw, 0);
+        //_cameraPivot.transform.Rotate(Vector3.right, yRotation);
     }
 }
