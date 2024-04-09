@@ -5,13 +5,15 @@ using UnityEngine.InputSystem;
 
 public class ResetControlSchemeBindings : MonoBehaviour
 {
+    private enum ControlScheme
+    {
+        MOUSE_KEYBOARD,GAMEPAD
+    }
     [SerializeField] InputActionAsset _actionAsset;
-    [SerializeField] TabButtonsManager _tabManager;
-    [SerializeField] TabButtonUI _keyboardAndMousetab;
-    [SerializeField] TabButtonUI _gamepadTab;
     [SerializeField] string _keyboardScheme;
     [SerializeField] string _mouseScheme;
     [SerializeField] string _gamepadScheme;
+    private ControlScheme _selectedScheme;
     private List<string> _targetSchemes= new List<string>();
     // Start is called before the first frame update
     void Start()
@@ -24,11 +26,19 @@ public class ResetControlSchemeBindings : MonoBehaviour
     {
         
     }
-
+    public void ChangeSchemeToKeyboard()
+    {
+        _selectedScheme = ControlScheme.MOUSE_KEYBOARD;
+    }
+    public void ChangeSchemeToGamepad()
+    {
+        _selectedScheme = ControlScheme.GAMEPAD;
+    }
     public void ResetSelectedControlSchemeBindings()
     {
+        // TODO: Change how schemes to reset are selected
         _targetSchemes.Clear();
-        if (_tabManager.CurrentTab == _gamepadTab) _targetSchemes.Add(_gamepadScheme);
+        if (_selectedScheme==ControlScheme.GAMEPAD) _targetSchemes.Add(_gamepadScheme);
         else
         {
             _targetSchemes.Add(_keyboardScheme);

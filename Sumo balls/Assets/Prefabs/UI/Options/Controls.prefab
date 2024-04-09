@@ -121,9 +121,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actionAsset: {fileID: -944628639613478452, guid: 108bb979191d4a548af7f7a2a04fc63d,
     type: 3}
-  _tabManager: {fileID: 1553231191988714595}
-  _keyboardAndMousetab: {fileID: 4907749457627434022}
-  _gamepadTab: {fileID: 505941204416196894}
   _keyboardScheme: Keyboard
   _mouseScheme: Mouse
   _gamepadScheme: Gamepad
@@ -401,6 +398,7 @@ MonoBehaviour:
   _panelWithButtons: {fileID: 3248779127492604585}
   _changeTabsAction: {fileID: 1289698389817603740, guid: 108bb979191d4a548af7f7a2a04fc63d,
     type: 3}
+  _useAction: 1
 --- !u!1 &4020692447266172862
 GameObject:
   m_ObjectHideFlags: 0
@@ -1363,13 +1361,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 3581073505221688550}
-        m_TargetAssemblyTypeName: ShowHidePanel, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 1083485537601388630}
+        m_TargetAssemblyTypeName: ResetControlSchemeBindings, Assembly-CSharp
+        m_MethodName: ChangeSchemeToGamepad
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2260,7 +2258,7 @@ PrefabInstance:
     - target: {fileID: 3342156877893005134, guid: f25dcd618d3acd64795bf8bb32edb6c9,
         type: 3}
       propertyPath: m_text
-      value: Button South
+      value: A
       objectReference: {fileID: 0}
     - target: {fileID: 3342156877893005134, guid: f25dcd618d3acd64795bf8bb32edb6c9,
         type: 3}
@@ -2537,7 +2535,7 @@ PrefabInstance:
     - target: {fileID: 3342156877893005134, guid: f25dcd618d3acd64795bf8bb32edb6c9,
         type: 3}
       propertyPath: m_text
-      value: Left Stick/Left
+      value: Left Stick Left
       objectReference: {fileID: 0}
     - target: {fileID: 3342156877893005134, guid: f25dcd618d3acd64795bf8bb32edb6c9,
         type: 3}
@@ -3596,7 +3594,7 @@ PrefabInstance:
     - target: {fileID: 3342156877893005134, guid: f25dcd618d3acd64795bf8bb32edb6c9,
         type: 3}
       propertyPath: m_text
-      value: Left Stick/Right
+      value: Left Stick Right
       objectReference: {fileID: 0}
     - target: {fileID: 3342156877893005134, guid: f25dcd618d3acd64795bf8bb32edb6c9,
         type: 3}
@@ -4335,7 +4333,7 @@ PrefabInstance:
     - target: {fileID: 1720164247384251562, guid: 25fac8cef82f89042b89fe93088d170f,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1720164247384251562, guid: 25fac8cef82f89042b89fe93088d170f,
         type: 3}
@@ -4653,12 +4651,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25fac8cef82f89042b89fe93088d170f, type: 3}
---- !u!1 &3581073505221688550 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7398303785811915402, guid: 25fac8cef82f89042b89fe93088d170f,
-    type: 3}
-  m_PrefabInstance: {fileID: 6277606084810247788}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &4471530227543167636 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7570718604771187960, guid: 25fac8cef82f89042b89fe93088d170f,
@@ -4671,7 +4663,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 6277606084810247788}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3581073505221688550}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
@@ -4971,14 +4963,49 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1765401200445253658, guid: dfb3d6a6425e35849a4020a81f0e63b8,
         type: 3}
+      propertyPath: OnButtonClicked.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765401200445253658, guid: dfb3d6a6425e35849a4020a81f0e63b8,
+        type: 3}
+      propertyPath: OnButtonClicked.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765401200445253658, guid: dfb3d6a6425e35849a4020a81f0e63b8,
+        type: 3}
       propertyPath: OnButtonClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 5189356823954740428}
     - target: {fileID: 1765401200445253658, guid: dfb3d6a6425e35849a4020a81f0e63b8,
         type: 3}
+      propertyPath: OnButtonClicked.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1083485537601388630}
+    - target: {fileID: 1765401200445253658, guid: dfb3d6a6425e35849a4020a81f0e63b8,
+        type: 3}
+      propertyPath: OnButtonClicked.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765401200445253658, guid: dfb3d6a6425e35849a4020a81f0e63b8,
+        type: 3}
+      propertyPath: OnButtonClicked.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ChangeSchemeToKeyboard
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765401200445253658, guid: dfb3d6a6425e35849a4020a81f0e63b8,
+        type: 3}
+      propertyPath: OnButtonClicked.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: ResetControlSchemeBindings, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765401200445253658, guid: dfb3d6a6425e35849a4020a81f0e63b8,
+        type: 3}
       propertyPath: OnButtonClicked.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 5315584278744418502}
+    - target: {fileID: 1765401200445253658, guid: dfb3d6a6425e35849a4020a81f0e63b8,
+        type: 3}
+      propertyPath: OnButtonClicked.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2529207886886274891, guid: dfb3d6a6425e35849a4020a81f0e63b8,
         type: 3}
       propertyPath: m_Pivot.x
@@ -5104,18 +5131,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dfb3d6a6425e35849a4020a81f0e63b8, type: 3}
---- !u!114 &4907749457627434022 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1765401200445253658, guid: dfb3d6a6425e35849a4020a81f0e63b8,
-    type: 3}
-  m_PrefabInstance: {fileID: 6657484807404627004}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08115c3fae58cec43bb445efd4f2120e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &9186690151102849911 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2529207886886274891, guid: dfb3d6a6425e35849a4020a81f0e63b8,
