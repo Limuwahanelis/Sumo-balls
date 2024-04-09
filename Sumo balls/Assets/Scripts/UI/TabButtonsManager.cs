@@ -11,6 +11,7 @@ public class TabButtonsManager : MonoBehaviour
     public TabButtonUI CurrentTab => _currentlySelectedButton;
     [SerializeField] GameObject _panelWithButtons;
     [SerializeField] InputActionReference _changeTabsAction;
+    [SerializeField] bool _useAction;
     private TabButtonUI _currentlySelectedButton;
     private List<TabButtonUI> _buttons;
     private int _tabIndex = 0;
@@ -39,7 +40,7 @@ public class TabButtonsManager : MonoBehaviour
     {
         if(value)
         {
-            _changeTabsAction.action.performed += ChangeTab;
+            if(_useAction) _changeTabsAction.action.performed += ChangeTab;
             _changeTabsAction.action.Enable();
             _currentlySelectedButton.Deselect();
             _currentlySelectedButton = _buttons[0];
@@ -47,8 +48,11 @@ public class TabButtonsManager : MonoBehaviour
         }
         else
         {
-            _changeTabsAction.action.performed -= ChangeTab;
-            _changeTabsAction.action.Disable();
+            if (_useAction)
+            {
+                _changeTabsAction.action.performed -= ChangeTab;
+                _changeTabsAction.action.Disable();
+            }
         }
     }
     private void ChangeTab(InputAction.CallbackContext context)

@@ -28,10 +28,8 @@ public class PreviewCamera : MonoBehaviour
         float yRotation = pointerEventData.delta.y * _rotationSpeed;
         _yaw += xRotation;
         _pitch += yRotation;
-        Debug.Log(_pitch);
         if (_pitch < -20) _pitch = -20;
         if (_pitch > 60) _pitch = 60;
         _cameraPivot.transform.rotation = Quaternion.Euler(_pitch, _yaw, 0);
-        //_cameraPivot.transform.Rotate(Vector3.right, yRotation);
     }
 }
