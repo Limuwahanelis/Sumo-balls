@@ -12,7 +12,7 @@ public class TabToggleUI : Toggle
     {
         base.Awake();
         _startingtargetGraphic = targetGraphic;
-        
+        if (isOn) SwapTargetGraphic(isOn);
     }
     public void SwapTargetGraphic(bool isOn)
     {
