@@ -12,6 +12,7 @@ public class CosmeticsManager : MonoBehaviour
         {
             Cosmetic cos = Instantiate(cosmetic.Prefab,_playerBody.transform).GetComponent<Cosmetic>();
             cos.SpawnCosmeticLocally();
+            cos.SetColors(cosmetic.Colors);
         }
     }
 }
