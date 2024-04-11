@@ -16,6 +16,7 @@ public class CosmeticShopCategory : MonoBehaviour
     [SerializeField] CosmeticSOList _listOfCosmeticsSOInCategory;
     [SerializeField] GameObject _cosmeticButtonPrefab;
     [SerializeField] List<CosmeticSelectionButton> _cosmeticButtons = new List<CosmeticSelectionButton>();
+    [SerializeField] SelectSelectableOnEnable _selectSelectableOnEnable;
     private CosmeticSelectionButton _currentlySelectedCosmeticButton;
     public UnityEvent<CosmeticSO, CosmeticCategory> OnItemSelected;
     // Start is called before the first frame update

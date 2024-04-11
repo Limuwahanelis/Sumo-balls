@@ -25,7 +25,7 @@ public class PreviewCamera : MonoBehaviour
     {
         PointerEventData pointerEventData = eventData as PointerEventData;
         float xRotation = pointerEventData.delta.x * _rotationSpeed;
-        float yRotation = pointerEventData.delta.y * _rotationSpeed;
+        float yRotation = -pointerEventData.delta.y * _rotationSpeed;
         _yaw += xRotation;
         _pitch += yRotation;
         if (_pitch < -20) _pitch = -20;

@@ -102,9 +102,7 @@ public class HexagonSpawn : MonoBehaviour
         {
             if (Math.Abs(parameters[i].a * _minX + parameters[i].b - 0) <= 0.001) pointX = pointXOrg - offset;
             else if (Math.Abs(parameters[i].a * _maxX + parameters[i].b - 0) <= 0.001) pointX = pointXOrg + offset;
-            Debug.Log("calaculate for x: " + pointX);
             results[i] = offsetParameters[i].a * pointX + offsetParameters[i].b;
-            Debug.Log(string.Format("i:{0} y:{1}",i,results[i]));
         }
         for (int i = 0; i < offsetParameters.Count; i++)
         {
@@ -127,7 +125,6 @@ public class HexagonSpawn : MonoBehaviour
             avilableYConstrains.RemoveAt(0);
         }
         float pointY = Random.Range(avilableYConstrains[0], avilableYConstrains[1]);
-        Debug.Log("y:" + pointY);
         Vector3 pos = new Vector3(pointXOrg, 0f, pointY);
         return pos;
     }
