@@ -10,7 +10,7 @@ public abstract class ShopItemSelectionButton : MonoBehaviour
 
     private void Awake()
     {
-        
+        if (_unlockable == null) _unlockable = GetComponent<Unlockable>();
     }
     public void SetSelectionTick(bool value)
     {
