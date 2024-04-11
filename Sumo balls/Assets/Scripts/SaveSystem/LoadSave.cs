@@ -8,12 +8,9 @@ public class LoadSave : MonoBehaviour
 {
     [SerializeField] StageList _stageList;
     [SerializeField] bool _overrideSave;
-    [SerializeField] IntReference _points;
     [SerializeField] Material _playerMat;
     [SerializeField] List<UnlockableItem> _unlockableColors;
     [SerializeField] List<CosmeticSOList> _allCosmeticsSOLists;
-    [SerializeField] bool _setMoney;
-    [SerializeField] int _pointsToSet;
     private List<CosmeticSO> _allCosmeticsSO=new List<CosmeticSO>();
     private List<UnlockableItem> _allCosmeticsAsUnlockableItems=new List<UnlockableItem>();
     private List<UnlockableItem> _allUnlockables;
@@ -31,11 +28,13 @@ public class LoadSave : MonoBehaviour
             
         }
         _allUnlockables = new List<UnlockableItem>().Concat(_unlockableColors).Concat(_allCosmeticsAsUnlockableItems).ToList();
+        foreach(UnlockableItem it in _allUnlockables)
+        {
+            Debug.Log(it.Id);
+        }
         LoadOrCreateNewSave();
         _playerMat.color = GameDataManager.GameData.customizationData.playerColor;
-        _cosmeticSettings.AddCosmeticToList(_allCosmeticsSO.Find(x => x.Id == GameDataManager.GameData.customizationData.topCosmeticId));
-        _cosmeticSettings.AddCosmeticToList(_allCosmeticsSO.Find(x => x.Id == GameDataManager.GameData.customizationData.midddleCosmeticId));
-        _cosmeticSettings.AddCosmeticToList(_allCosmeticsSO.Find(x => x.Id == GameDataManager.GameData.customizationData.bottomCosmeticId));
+        _cosmeticSettings.InitateList(_allCosmeticsSO.Find(x => x.Id == GameDataManager.GameData.customizationData.topCosmeticId), _allCosmeticsSO.Find(x => x.Id == GameDataManager.GameData.customizationData.midddleCosmeticId), _allCosmeticsSO.Find(x => x.Id == GameDataManager.GameData.customizationData.bottomCosmeticId));
         GetPoints();
     }
     private void GetPoints()
@@ -50,25 +49,18 @@ public class LoadSave : MonoBehaviour
             UnlockableItemData itemData = GameDataManager.GameData.customizationData.unlockableItemsData[i];
             if (_allUnlockables[i].Id == itemData.itemId && itemData.isUnlocked) points -= _allUnlockables[i].Cost;
         }
-        _points.value = points;
+        GameDataManager.IncreasePoints(points);
     }
     private void LoadOrCreateNewSave()
     {
         if (GameDataManager.LoadGameData() == false || _overrideSave)
         {
             Debug.Log("Creating new save");
-            GameDataManager.CreateGameData(_stageList.stages, _unlockableColors);
+            GameDataManager.CreateGameData(_stageList.stages, _allUnlockables);
         }
         else
         {
             GameDataManager.VerifyGameData(_stageList.stages, _allUnlockables, GameDataManager.GameData.customizationData);
         }
-        if(_setMoney) _points.value = _pointsToSet;
-
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

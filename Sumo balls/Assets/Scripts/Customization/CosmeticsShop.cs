@@ -46,9 +46,8 @@ public class CosmeticsShop : MonoBehaviour
         {
             case CosmeticCategory.TOP:
                 {
-                    _cosmeticsSettings.RemoveCosmeticFromList(_selectedTopCosmetic);
                     _selectedTopCosmetic = cosmetic;
-                    _cosmeticsSettings.AddCosmeticToList(_selectedTopCosmetic);
+                    _cosmeticsSettings.SwapCosmetic(_selectedTopCosmetic, category);
                     if (!_allTopComseticsSO.Contains(cosmetic))
                     {
                         _allTopComseticsSO.Add(cosmetic);
@@ -61,9 +60,8 @@ public class CosmeticsShop : MonoBehaviour
                 }
             case CosmeticCategory.MIDDLE:
                 {
-                    _cosmeticsSettings.RemoveCosmeticFromList(_selectedMiddleCosmetic);
                     _selectedMiddleCosmetic = cosmetic;
-                    _cosmeticsSettings.AddCosmeticToList(_selectedMiddleCosmetic);
+                    _cosmeticsSettings.SwapCosmetic(_selectedMiddleCosmetic, category);
                     if (!_allMiddleComseticsSO.Contains(cosmetic))
                     {
                         _allMiddleComseticsSO.Add(cosmetic);
@@ -76,9 +74,8 @@ public class CosmeticsShop : MonoBehaviour
                 }
             case CosmeticCategory.BOTTOM:
                 {
-                    _cosmeticsSettings.RemoveCosmeticFromList(_selectedBottomCosmetic);
                     _selectedBottomCosmetic = cosmetic;
-                    _cosmeticsSettings.AddCosmeticToList(_selectedBottomCosmetic);
+                    _cosmeticsSettings.SwapCosmetic(_selectedBottomCosmetic, category);
                     if (!_allBottomComseticsSO.Contains(cosmetic))
                     {
                         _allBottomComseticsSO.Add(cosmetic);

@@ -12,6 +12,13 @@ namespace SaveSystem
 
         public static GameData GameData =>_gameData;
         private static GameData _gameData;
+        public static int Points => _points;
+        private static int _points;
+        public static void IncreasePoints(int value)
+        {
+            _points += value;
+        }
+
         public static void UpdateControlsTutorial(bool value)
         {
             GameData.isControlsTutorialCompleted = value;
@@ -24,8 +31,6 @@ namespace SaveSystem
         }
         public static void UpdateGameData(int stageIndex, int score)
         {
-            //GameData.stagesData[stageIndex].completed = stage.IsCompleted;
-            //GameData.stagesData[stageIndex].score = stage.Score;
             GameData.stagesData[stageIndex].completed = true;
             GameData.stagesData[stageIndex].score = score;
             Save();

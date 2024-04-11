@@ -4,11 +4,21 @@ using UnityEngine;
 
 public class CosmeticsSettings : MonoBehaviour
 {
-    // at save load 1 item is top
-    // at save load 2 item is middle
-    // at save load 3 item is bottom
+    //  1 item is top
+    //  2 item is middle
+    //  3 item is bottom
     public static List<CosmeticSO> SelectedCosmetics => _selectedCosmetics;
     [SerializeField] static List<CosmeticSO> _selectedCosmetics= new List<CosmeticSO>();
+    public void SwapCosmetic(CosmeticSO newCosmetic, CosmeticShopCategory.CosmeticCategory cosmeticCategory)
+    {
+        _selectedCosmetics[((int)cosmeticCategory)] = newCosmetic;
+    }
+    public void InitateList(CosmeticSO upperCosmetic, CosmeticSO middleCosmetic, CosmeticSO bottomCosmetic)
+    {
+        _selectedCosmetics.Add(upperCosmetic);
+        _selectedCosmetics.Add(middleCosmetic);
+        _selectedCosmetics.Add(bottomCosmetic);
+    }
     public void AddCosmeticToList(CosmeticSO cosmetic)
     {
         if (_selectedCosmetics.Contains(cosmetic))

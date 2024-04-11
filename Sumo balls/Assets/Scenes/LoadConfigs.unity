@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -290,10 +290,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stageList: {fileID: 11400000, guid: c96c023c1c6242a40919296d29187161, type: 2}
   _overrideSave: 0
-  _points:
-    useConstant: 0
-    constantValue: 0
-    variable: {fileID: 11400000, guid: aab551a5842d20d4fb7d3657c0a21f06, type: 2}
   _playerMat: {fileID: 2100000, guid: ab095eff36aa84d40adc50dc69b775d7, type: 2}
   _unlockableColors:
   - {fileID: 11400000, guid: 246cd05c7f5af8f44b6211dc162cbb62, type: 2}
@@ -309,8 +305,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d1acc6f7cb0d6c146beb1088dabd5c9b, type: 2}
   - {fileID: 11400000, guid: 90c48ad4e91d2c84495aca6dd3c1ca34, type: 2}
   - {fileID: 11400000, guid: a0d1000ab8e30f344a530c673f3391ec, type: 2}
-  _setMoney: 1
-  _pointsToSet: 777
   _cosmeticSettings: {fileID: 1592543771}
 --- !u!114 &1592543770
 MonoBehaviour:

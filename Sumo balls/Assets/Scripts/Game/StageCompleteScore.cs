@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class StageCompleteScore : MonoBehaviour
 {
-    [SerializeField] IntReference _points;
+    //[SerializeField] IntReference _points;
     [SerializeField] bool _invertDescriptions;
     /// <summary>
     /// Current score in range from 0 to 3
@@ -83,7 +83,7 @@ public class StageCompleteScore : MonoBehaviour
     {
         if (_score <= GameDataManager.GetStageScore(GlobalSettings.StageIndex)) return;
 
-        _points.value += _score;
+        GameDataManager.IncreasePoints(_score);
         GameDataManager.UpdateGameData(GlobalSettings.StageIndex, _score);
     }
 }

@@ -9,7 +9,7 @@ public class Unlockable:MonoBehaviour
 
     public UnlockableItem UnlockableItem => _unlock;
     [SerializeField] UnlockableItem _unlock;
-    [SerializeField] IntValue _points;
+    //[SerializeField] IntValue _points;
     public UnityEvent OnUnlockedEvent;
     private void OnEnable()
     {
@@ -26,9 +26,9 @@ public class Unlockable:MonoBehaviour
     }    
     public bool TryUnlock()
     {
-        if(_points.value>=_unlock.Cost)
+        if(GameDataManager.Points>=_unlock.Cost)
         {
-            _points.value -= _unlock.Cost;
+            GameDataManager.IncreasePoints(-_unlock.Cost);
             GameDataManager.UpdateCustomizationData(_unlock.Id, true);
             OnUnlockedEvent?.Invoke();
             return true;
