@@ -2,26 +2,34 @@ using SaveSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class CosmeticSelectionButton : ShopItemSelectionButton, ICosmeticPickable
 {
     public event ICosmeticPickable.CosmeticPickedEventHandler OnCosmeticPicked;
+    public UnityEvent<CosmeticSO> OnEditColorPressed;
     [SerializeField] RawImage _comseticImage;
     [SerializeField] GameObject _coinPrefab;
     [SerializeField] GameObject _coinContainer;
+    [SerializeField] Button _editColorButton;
+    [SerializeField,HideInInspector] private bool _hasEditableColors;
     public override void CheckItem(bool tryUnlock = true)
     {
         if (GameDataManager.IsItemUnlocked(_unlockable.UnlockableItem.Id))
         {
             OnCosmeticPicked?.Invoke(_unlockable.UnlockableItem as CosmeticSO,this);
+            if(_hasEditableColors) _editColorButton.gameObject.SetActive(true);
         }
         else if (tryUnlock)
         {
             _unlockable.TryUnlock();
         }
     }
-
+    public void EditColorPressed()
+    {
+        OnEditColorPressed?.Invoke(_unlockable.UnlockableItem as CosmeticSO);
+    }
     public void SetUp(CosmeticSO cosmetic)
     {
         _comseticImage.texture = cosmetic.CosmeticIcon;
@@ -30,5 +38,6 @@ public class CosmeticSelectionButton : ShopItemSelectionButton, ICosmeticPickabl
             Instantiate(_coinPrefab, _coinContainer.transform);    
         }
         _unlockable.SetUnlockable(cosmetic);
+        if (cosmetic.PartsNames.Count!=0) _hasEditableColors = true;
     }
 }

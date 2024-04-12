@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine.UI;
 
 [CustomEditor(typeof(CosmeticShopCategory))]
+[CanEditMultipleObjects]
 public class CosmeticShopCategoryEditor: Editor
 {
     CosmeticSOList _cosmeticsList;

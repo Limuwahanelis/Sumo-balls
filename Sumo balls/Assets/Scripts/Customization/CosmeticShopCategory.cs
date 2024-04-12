@@ -11,12 +11,13 @@ public class CosmeticShopCategory : MonoBehaviour
     {
         TOP,MIDDLE,BOTTOM
     }
-    [SerializeField] CosmeticCategory category;
+    [SerializeField] CosmeticCategory _category;
     [SerializeField] GameObject _gameObjectWithButtons;
     [SerializeField] CosmeticSOList _listOfCosmeticsSOInCategory;
     [SerializeField] GameObject _cosmeticButtonPrefab;
     [SerializeField] List<CosmeticSelectionButton> _cosmeticButtons = new List<CosmeticSelectionButton>();
     [SerializeField] SelectSelectableOnEnable _selectSelectableOnEnable;
+    [SerializeField] CosmeticColorSelection _editColorWindow;
     private CosmeticSelectionButton _currentlySelectedCosmeticButton;
     public UnityEvent<CosmeticSO, CosmeticCategory> OnItemSelected;
     // Start is called before the first frame update
@@ -26,17 +27,18 @@ public class CosmeticShopCategory : MonoBehaviour
     }
     private void OnEnable()
     {
-        switch (category)
+        switch (_category)
         {
             case CosmeticCategory.TOP: _currentlySelectedCosmeticButton = _cosmeticButtons.Find(x => x.GetComponent<Unlockable>().UnlockableItem.Id == GameDataManager.GameData.customizationData.topCosmeticId);break; //SelectItem(_currentlySelectedCosmeticButton) break;
             case CosmeticCategory.MIDDLE: _currentlySelectedCosmeticButton = _cosmeticButtons.Find(x => x.GetComponent<Unlockable>().UnlockableItem.Id == GameDataManager.GameData.customizationData.midddleCosmeticId); break;
             case CosmeticCategory.BOTTOM: _currentlySelectedCosmeticButton = _cosmeticButtons.Find(x => x.GetComponent<Unlockable>().UnlockableItem.Id == GameDataManager.GameData.customizationData.bottomCosmeticId); break;
         }
+        _currentlySelectedCosmeticButton.CheckItem(false);
         _currentlySelectedCosmeticButton.SetSelectionTick(true);
-        
         foreach (CosmeticSelectionButton button in _cosmeticButtons)
         {
             button.OnCosmeticPicked += SelectItem;
+            button.OnEditColorPressed.AddListener(OpenColorEditWindow);
         }
     }
     private void SelectItem(CosmeticSO cosmetic, ICosmeticPickable caller)
@@ -44,7 +46,7 @@ public class CosmeticShopCategory : MonoBehaviour
         _currentlySelectedCosmeticButton.SetSelectionTick(false);
         _currentlySelectedCosmeticButton = _cosmeticButtons.Find(x => (x as ICosmeticPickable) == caller);
         _currentlySelectedCosmeticButton.SetSelectionTick(true);
-        switch (category)
+        switch (_category)
         {
             case CosmeticCategory.TOP: GameDataManager.GameData.customizationData.topCosmeticId = cosmetic.Id; break; //SelectItem(_currentlySelectedCosmeticButton) break;
             case CosmeticCategory.MIDDLE: GameDataManager.GameData.customizationData.midddleCosmeticId = cosmetic.Id; break;
@@ -52,30 +54,18 @@ public class CosmeticShopCategory : MonoBehaviour
         }
         GameDataManager.Save();
         // add set tick for selected item
-        OnItemSelected?.Invoke(cosmetic, category);
+        OnItemSelected?.Invoke(cosmetic, _category);
     }
-    private void SetCosmeticForPlayer(CosmeticSO cosmeticSO, CosmeticSelectionButton button)
+    public void OpenColorEditWindow(CosmeticSO cosmetic)
     {
-
+        _editColorWindow.OpenColorWindow(cosmetic, _category);
     }
-    //public void ResetCategory()
-    //{
-    //    for(int i=_cosmeticButtons.Count-1;i>=0;i--)
-    //    {
-    //        CosmeticSelectionButton toDestroy = _cosmeticButtons[i];
-    //        DestroyImmediate(toDestroy.gameObject);
-    //        _cosmeticButtons.RemoveAt(i);
-    //    }
-    //    for(int i=0;i<_cosmeticButtons.Count;i++) 
-    //    {
-    //        CosmeticSelectionButton button = Instantiate
-    //    }
-    //}
     private void OnDisable()
     {
         foreach (CosmeticSelectionButton button in _cosmeticButtons)
         {
             button.OnCosmeticPicked -= SelectItem;
+            button.OnEditColorPressed.RemoveListener(OpenColorEditWindow);
         }
     }
     private void OnDestroy()

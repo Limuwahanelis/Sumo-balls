@@ -19,7 +19,9 @@ public class Cosmetic : MonoBehaviour
     }
     public void SetColors(List<Color> colors)
     {
-        _materialPropertyBlock = new MaterialPropertyBlock();
+
+        if (_meshRenderers == null || _meshRenderers.Length == 0) return;
+        if (_materialPropertyBlock == null) _materialPropertyBlock = new MaterialPropertyBlock();
         int i = 0;
         foreach (var color in colors)
         {

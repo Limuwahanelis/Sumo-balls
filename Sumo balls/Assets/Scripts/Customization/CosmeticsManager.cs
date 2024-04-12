@@ -1,3 +1,4 @@
+using SaveSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,7 @@ public class CosmeticsManager : MonoBehaviour
         {
             Cosmetic cos = Instantiate(cosmetic.Prefab,_playerBody.transform).GetComponent<Cosmetic>();
             cos.SpawnCosmeticLocally();
-            cos.SetColors(cosmetic.Colors);
+            cos.SetColors(GameDataManager.GameData.customizationData.cosmeticsData.Find((x)=>x.cosmeticId==cosmetic.Id).colors);
         }
     }
 }

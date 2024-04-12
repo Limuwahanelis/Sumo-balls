@@ -1,3 +1,4 @@
+using SaveSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,9 +7,9 @@ using static CosmeticShopCategory;
 public class CosmeticsShop : MonoBehaviour
 {
     [SerializeField] CosmeticsSettings _cosmeticsSettings;
-    [SerializeField] CosmeticSO _selectedTopCosmetic;
-    [SerializeField] CosmeticSO _selectedMiddleCosmetic;
-    [SerializeField] CosmeticSO _selectedBottomCosmetic;
+    [SerializeField] CosmeticSO _selectedTopCosmeticSO;
+    [SerializeField] CosmeticSO _selectedMiddleCosmeticSO;
+    [SerializeField] CosmeticSO _selectedBottomCosmeticSO;
     [SerializeField] Transform _playerShowcase;
 
     [SerializeField] List<CosmeticShopCategory> _categories= new List<CosmeticShopCategory>();
@@ -36,7 +37,9 @@ public class CosmeticsShop : MonoBehaviour
         _currentTopCosmeticPrefabIndex=0;
         _currentMiddleCosmeticPrefabIndex = 0;
         _currentBottomCosmeticPrefabIndex = 0;
-
+        _allTopSpawnedComsetics[_currentTopCosmeticPrefabIndex].GetComponent<Cosmetic>().SetColors(GameDataManager.GameData.customizationData.cosmeticsData.Find((x) => x.cosmeticId == CosmeticsSettings.SelectedCosmetics[0].Id).colors);
+        _allMiddleSpawnedComsetics[_currentMiddleCosmeticPrefabIndex].GetComponent<Cosmetic>().SetColors(GameDataManager.GameData.customizationData.cosmeticsData.Find((x) => x.cosmeticId == CosmeticsSettings.SelectedCosmetics[1].Id).colors);
+        _allBottomSpawnedComsetics[_currentBottomCosmeticPrefabIndex].GetComponent<Cosmetic>().SetColors(GameDataManager.GameData.customizationData.cosmeticsData.Find((x) => x.cosmeticId == CosmeticsSettings.SelectedCosmetics[2].Id).colors);
     }
 
     // Used by UnityEvent in shop category script
@@ -46,8 +49,8 @@ public class CosmeticsShop : MonoBehaviour
         {
             case CosmeticCategory.TOP:
                 {
-                    _selectedTopCosmetic = cosmetic;
-                    _cosmeticsSettings.SwapCosmetic(_selectedTopCosmetic, category);
+                    _selectedTopCosmeticSO = cosmetic;
+                    _cosmeticsSettings.SwapCosmetic(_selectedTopCosmeticSO, category);
                     if (!_allTopComseticsSO.Contains(cosmetic))
                     {
                         _allTopComseticsSO.Add(cosmetic);
@@ -56,12 +59,13 @@ public class CosmeticsShop : MonoBehaviour
                     _allTopSpawnedComsetics[_currentTopCosmeticPrefabIndex].SetActive(false);
                     _currentTopCosmeticPrefabIndex = _allTopComseticsSO.IndexOf(cosmetic);
                     _allTopSpawnedComsetics[_currentTopCosmeticPrefabIndex].SetActive(true);
+                    _allTopSpawnedComsetics[_currentTopCosmeticPrefabIndex].GetComponent<Cosmetic>().SetColors(GameDataManager.GameData.customizationData.cosmeticsData.Find((x) => x.cosmeticId == cosmetic.Id).colors);
                     break;
                 }
             case CosmeticCategory.MIDDLE:
                 {
-                    _selectedMiddleCosmetic = cosmetic;
-                    _cosmeticsSettings.SwapCosmetic(_selectedMiddleCosmetic, category);
+                    _selectedMiddleCosmeticSO = cosmetic;
+                    _cosmeticsSettings.SwapCosmetic(_selectedMiddleCosmeticSO, category);
                     if (!_allMiddleComseticsSO.Contains(cosmetic))
                     {
                         _allMiddleComseticsSO.Add(cosmetic);
@@ -70,12 +74,13 @@ public class CosmeticsShop : MonoBehaviour
                     _allMiddleSpawnedComsetics[_currentMiddleCosmeticPrefabIndex].SetActive(false);
                     _currentMiddleCosmeticPrefabIndex = _allMiddleComseticsSO.IndexOf(cosmetic);
                     _allMiddleSpawnedComsetics[_currentMiddleCosmeticPrefabIndex].SetActive(true);
+                    _allMiddleSpawnedComsetics[_currentMiddleCosmeticPrefabIndex].GetComponent<Cosmetic>().SetColors(GameDataManager.GameData.customizationData.cosmeticsData.Find((x) => x.cosmeticId == cosmetic.Id).colors);
                     break;
                 }
             case CosmeticCategory.BOTTOM:
                 {
-                    _selectedBottomCosmetic = cosmetic;
-                    _cosmeticsSettings.SwapCosmetic(_selectedBottomCosmetic, category);
+                    _selectedBottomCosmeticSO = cosmetic;
+                    _cosmeticsSettings.SwapCosmetic(_selectedBottomCosmeticSO, category);
                     if (!_allBottomComseticsSO.Contains(cosmetic))
                     {
                         _allBottomComseticsSO.Add(cosmetic);
@@ -84,6 +89,29 @@ public class CosmeticsShop : MonoBehaviour
                     _allBottomSpawnedComsetics[_currentBottomCosmeticPrefabIndex].SetActive(false);
                     _currentBottomCosmeticPrefabIndex = _allBottomComseticsSO.IndexOf(cosmetic);
                     _allBottomSpawnedComsetics[_currentBottomCosmeticPrefabIndex].SetActive(true);
+                    _allBottomSpawnedComsetics[_currentBottomCosmeticPrefabIndex].GetComponent<Cosmetic>().SetColors(GameDataManager.GameData.customizationData.cosmeticsData.Find((x) => x.cosmeticId == cosmetic.Id).colors);
+                    break;
+                }
+        }
+    }
+
+    public void UpdateCosmeticColors(CosmeticSO cosmetic, CosmeticCategory category, List<Color> colors)
+    {
+        switch (category)
+        {
+            case CosmeticCategory.TOP:
+                {
+                    _allTopSpawnedComsetics[_currentTopCosmeticPrefabIndex].GetComponent<Cosmetic>().SetColors(colors);
+                    break;
+                }
+            case CosmeticCategory.MIDDLE:
+                {
+                    _allMiddleSpawnedComsetics[_currentMiddleCosmeticPrefabIndex].GetComponent<Cosmetic>().SetColors(colors);
+                    break;
+                }
+            case CosmeticCategory.BOTTOM:
+                {
+                    _allBottomSpawnedComsetics[_currentBottomCosmeticPrefabIndex].GetComponent<Cosmetic>().SetColors(colors);
                     break;
                 }
         }

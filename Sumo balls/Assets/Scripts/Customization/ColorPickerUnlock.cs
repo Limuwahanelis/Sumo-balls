@@ -10,6 +10,7 @@ public class ColorPickerUnlock : MonoBehaviour
     [SerializeField] List<Unlockable> _colorItems;
     [SerializeField] ColorSelectionButton _pickerButton;
     [SerializeField] UnlockableItem _pickerItem;
+    [SerializeField] GameObject _picker;
     private bool _wasPickerCreated = false;
     // Start is called before the first frame update
     void Start()
@@ -26,8 +27,10 @@ public class ColorPickerUnlock : MonoBehaviour
     {
         _wasPickerCreated = false;
         ColorPicker.Create(GameDataManager.GameData.customizationData.colorPickerColor, "", SetColorImage, null, false);
+        _picker.transform.SetParent(transform,false);
+        _picker.transform.localPosition = Vector3.zero;
         //if (_pickerItem.//IsUnlocked) 
-        if(GameDataManager.IsItemUnlocked(_pickerItem.Id))
+        if (GameDataManager.IsItemUnlocked(_pickerItem.Id))
         {
             ColorPicker.SetInteractable(true);
             //_pickerButton.CheckItem(false);
