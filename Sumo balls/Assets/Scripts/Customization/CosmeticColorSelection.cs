@@ -2,21 +2,32 @@ using SaveSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class CosmeticColorSelection : MonoBehaviour
 {
+    [SerializeField] GameObject _partColorTogglePrefab;
     [SerializeField] GameObject _colorWindow;
     [SerializeField] Transform _partsPanel;
+
     [SerializeField] GameObject _colorPicker;
     [SerializeField] Transform _colorPickerPos;
     [SerializeField] GameObject _colorPickerBlockScreen;
-    [SerializeField] GameObject _partColorTogglePrefab;
+
     [SerializeField] CosmeticsShop _cosmeticsShop;
     [SerializeField] ToggleGroup _toggleGroup;
+    [SerializeField] Selectable _closeButton;
+    [SerializeField] Slider _colorPickerUpperSlider;
+    [SerializeField] Slider _colorPickerMainSlider;
+
+    [SerializeField] TabToggleUI _cosmeticsTabToggle;
+    [SerializeField] TabToggleUI _ballColorsTabToggle;
+
     private CosmeticSO _cosmeticSO;
     private CosmeticShopCategory.CosmeticCategory _cosmeticCategory;
     private bool _wasPickerCreated = false;
+    private NavigationSetter _colorPickerMainSliderNavSetter;
     private int _selectedPartIndex = 0;
     CosmeticData _cosmeticData;
     List<CosmeticPartColorToggle> _partColorToggles=new List<CosmeticPartColorToggle>();
@@ -24,6 +35,7 @@ public class CosmeticColorSelection : MonoBehaviour
     {
         _cosmeticSO = cosmetic;
         _cosmeticCategory = cosmeticCategory;
+        _colorPickerMainSliderNavSetter=_colorPickerMainSlider.GetComponent<NavigationSetter>();
         _colorWindow.gameObject.SetActive(true);
         _colorPicker.transform.SetParent(_colorWindow.transform, false);
         _colorPicker.transform.position=_colorPickerPos.position;
@@ -38,7 +50,31 @@ public class CosmeticColorSelection : MonoBehaviour
             tag.OnPartSelected.AddListener(ChangeCosmeticPart);
             _partColorToggles.Add(tag);
         }
+        AssignNaviagation();
         _partColorToggles[0].GetComponent<Toggle>().isOn = true;
+    }
+    private void AssignNaviagation()
+    {
+        _cosmeticsTabToggle.SetSelectableOnDown(_colorPickerUpperSlider);
+        _ballColorsTabToggle.SetNavigationMode(true);
+        _ballColorsTabToggle.SetSelectableOnLeft(_cosmeticsTabToggle);
+        _ballColorsTabToggle.SetSelectableOnRight(_cosmeticsTabToggle);
+        _ballColorsTabToggle.SetSelectableOnDown(_partColorToggles[0].GetComponent<Selectable>());
+        _colorPickerMainSliderNavSetter.SetSelectableOnLeft(_partColorToggles[_partColorToggles.Count-1].GetComponent<Selectable>());
+        for (int i=0;i<_partColorToggles.Count;i++)
+        {
+            Navigation navigation = new Navigation()
+            {
+                mode = Navigation.Mode.Explicit,
+            };
+            if (i==0)navigation.selectOnUp =_ballColorsTabToggle;
+            else navigation.selectOnUp = _partColorToggles[i - 1].GetComponent<Toggle>();
+            if (i == _partColorToggles.Count - 1) navigation.selectOnDown = _closeButton;
+            else navigation.selectOnDown = _partColorToggles[i+1].GetComponent<Toggle>();
+            navigation.selectOnRight = _colorPickerMainSlider;
+            _partColorToggles[i].GetComponent<Toggle>().navigation = navigation;
+        }
+        EventSystem.current.SetSelectedGameObject(_partColorToggles[0].gameObject);
     }
     public void CloseColorWindw()
     {
@@ -72,6 +108,9 @@ public class CosmeticColorSelection : MonoBehaviour
             Destroy(_partColorToggles[i].gameObject);
             _partColorToggles.RemoveAt(i);
         }
+        _colorPickerMainSliderNavSetter.ResetNavigation();
+        _cosmeticsTabToggle.ResetNavigation();
+        _ballColorsTabToggle.ResetNavigation();
         ColorPicker.SetInteractable(false);
         _colorPickerBlockScreen.SetActive(true);
         ColorPicker.Done();

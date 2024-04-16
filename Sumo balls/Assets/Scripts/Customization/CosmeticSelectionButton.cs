@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class CosmeticSelectionButton : ShopItemSelectionButton, ICosmeticPickable
+public class CosmeticSelectionButton :MonoBehaviour, IShopItemSelectable, ICosmeticPickable
 {
     public event ICosmeticPickable.CosmeticPickedEventHandler OnCosmeticPicked;
     public UnityEvent<CosmeticSO> OnEditColorPressed;
@@ -14,7 +14,9 @@ public class CosmeticSelectionButton : ShopItemSelectionButton, ICosmeticPickabl
     [SerializeField] GameObject _coinContainer;
     [SerializeField] Button _editColorButton;
     [SerializeField,HideInInspector] private bool _hasEditableColors;
-    public override void CheckItem(bool tryUnlock = true)
+    [SerializeField] protected GameObject _selectedTick;
+    protected Unlockable _unlockable;
+    public void CheckItem(bool tryUnlock = true)
     {
         if (GameDataManager.IsItemUnlocked(_unlockable.UnlockableItem.Id))
         {
@@ -39,5 +41,15 @@ public class CosmeticSelectionButton : ShopItemSelectionButton, ICosmeticPickabl
         }
         _unlockable.SetUnlockable(cosmetic);
         if (cosmetic.PartsNames.Count!=0) _hasEditableColors = true;
+    }
+
+    public void SetSelectionTick(bool value)
+    {
+        _selectedTick.SetActive(value);
+    }
+
+    public void TryUnlock()
+    {
+        _unlockable.TryUnlock();
     }
 }

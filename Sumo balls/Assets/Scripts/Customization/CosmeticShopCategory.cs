@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class CosmeticShopCategory : MonoBehaviour
 {
@@ -18,6 +19,10 @@ public class CosmeticShopCategory : MonoBehaviour
     [SerializeField] List<CosmeticSelectionButton> _cosmeticButtons = new List<CosmeticSelectionButton>();
     [SerializeField] SelectSelectableOnEnable _selectSelectableOnEnable;
     [SerializeField] CosmeticColorSelection _editColorWindow;
+    [SerializeField] TabToggleUI _topClothesTab;
+    [SerializeField] TabToggleUI _middleClothesTab;
+    [SerializeField] TabToggleUI _bottomClothesTab;
+    [SerializeField] Selectable _returnToMainMenuButton;
     private CosmeticSelectionButton _currentlySelectedCosmeticButton;
     public UnityEvent<CosmeticSO, CosmeticCategory> OnItemSelected;
     // Start is called before the first frame update
@@ -35,6 +40,12 @@ public class CosmeticShopCategory : MonoBehaviour
         }
         _currentlySelectedCosmeticButton.CheckItem(false);
         _currentlySelectedCosmeticButton.SetSelectionTick(true);
+
+        GridLayoutGroupHelper.GetNumberOfItemsInRow(GetComponent<GridLayoutGroup>(), out int num, 1);
+        _topClothesTab.SetSelectableOnDown(_cosmeticButtons[0].GetComponent<Selectable>());
+        _middleClothesTab.SetSelectableOnDown(_cosmeticButtons[1].GetComponent<Selectable>());
+        _bottomClothesTab.SetSelectableOnDown(_cosmeticButtons[num-1].GetComponent<Selectable>());
+
         foreach (CosmeticSelectionButton button in _cosmeticButtons)
         {
             button.OnCosmeticPicked += SelectItem;
