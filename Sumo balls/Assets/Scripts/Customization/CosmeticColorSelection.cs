@@ -10,21 +10,26 @@ public class CosmeticColorSelection : MonoBehaviour
     [SerializeField] GameObject _partColorTogglePrefab;
     [SerializeField] GameObject _colorWindow;
     [SerializeField] Transform _partsPanel;
+    [SerializeField] CosmeticsShop _cosmeticsShop;
+    [SerializeField] ToggleGroup _toggleGroup;
+    
 
+    [Header("Color picker")]
     [SerializeField] GameObject _colorPicker;
     [SerializeField] Transform _colorPickerPos;
     [SerializeField] GameObject _colorPickerBlockScreen;
-
-    [SerializeField] CosmeticsShop _cosmeticsShop;
-    [SerializeField] ToggleGroup _toggleGroup;
-    [SerializeField] Selectable _closeButton;
     [SerializeField] Slider _colorPickerUpperSlider;
     [SerializeField] Slider _colorPickerMainSlider;
+    [SerializeField] Image _colorPickerTick;
 
+
+    [Header("Tabs")]
     [SerializeField] TabToggleUI _cosmeticsTabToggle;
     [SerializeField] TabToggleUI _ballColorsTabToggle;
 
-    [SerializeField] Image _colorPickerTick;
+    [Header("Buttons")]
+    [SerializeField] Selectable _closeButton;
+    [SerializeField] Selectable _resetColorButton;
 
     private CosmeticSO _cosmeticSO;
     private CosmeticShopCategory.CosmeticCategory _cosmeticCategory;
@@ -44,6 +49,7 @@ public class CosmeticColorSelection : MonoBehaviour
         _colorPicker.transform.SetParent(_colorWindow.transform, false);
         _colorPicker.transform.position=_colorPickerPos.position;
         _colorPickerTick.enabled = false;
+        _colorPicker.GetComponent<Button>().enabled = true;
         _cosmeticData = GameDataManager.GameData.customizationData.cosmeticsData.Find((x) => x.cosmeticId == cosmetic.Id);
         List<Color> colors = _cosmeticData.colors;
 
@@ -75,7 +81,7 @@ public class CosmeticColorSelection : MonoBehaviour
             };
             if (i==0)navigation.selectOnUp =_ballColorsTabToggle;
             else navigation.selectOnUp = _partColorToggles[i - 1].GetComponent<Toggle>();
-            if (i == _partColorToggles.Count - 1) navigation.selectOnDown = _closeButton;
+            if (i == _partColorToggles.Count - 1) navigation.selectOnDown = _resetColorButton;
             else navigation.selectOnDown = _partColorToggles[i+1].GetComponent<Toggle>();
             navigation.selectOnRight = _colorPickerMainSlider;
             _partColorToggles[i].GetComponent<Toggle>().navigation = navigation;
@@ -94,6 +100,13 @@ public class CosmeticColorSelection : MonoBehaviour
         ColorPicker.SetInteractable(true);
         _colorPickerBlockScreen.SetActive(false);
         _colorWindow.SetActive(true);
+    }
+    public void ResetPartColor()
+    {
+        _cosmeticData.colors[_selectedPartIndex] = _cosmeticSO.Colors[_selectedPartIndex];
+        ColorPicker.Done();
+        ColorPicker.Create(_cosmeticData.colors[_selectedPartIndex], "", ChangeColor, null, false);
+        GameDataManager.Save();
     }
     private void ChangeColor(Color color)
     {
@@ -119,6 +132,7 @@ public class CosmeticColorSelection : MonoBehaviour
         _ballColorsTabToggle.ResetNavigation();
         _colorPicker.GetComponent<NavigationSetter>().ResetNavigation();
         _colorPickerTick.enabled = true;
+        _colorPicker.GetComponent<Button>().enabled = false;
         EventSystem.current.SetSelectedGameObject(_caller.gameObject);
         ColorPicker.SetInteractable(false);
         _colorPickerBlockScreen.SetActive(true);
