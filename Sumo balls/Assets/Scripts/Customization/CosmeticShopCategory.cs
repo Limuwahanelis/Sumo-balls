@@ -41,15 +41,113 @@ public class CosmeticShopCategory : MonoBehaviour
         _currentlySelectedCosmeticButton.CheckItem(false);
         _currentlySelectedCosmeticButton.SetSelectionTick(true);
 
+        
+        StartCoroutine(WaitFrame());
+        foreach (CosmeticSelectionButton button in _cosmeticButtons)
+        {
+            button.CheckItem(false);
+            button.OnCosmeticPicked += SelectItem;
+            button.OnEditColorPressed.AddListener(OpenColorEditWindow);
+        }
+    }
+    IEnumerator WaitFrame()
+    {
+        yield return null;
         GridLayoutGroupHelper.GetNumberOfItemsInRow(GetComponent<GridLayoutGroup>(), out int num, 1);
         _topClothesTab.SetSelectableOnDown(_cosmeticButtons[0].GetComponent<Selectable>());
         _middleClothesTab.SetSelectableOnDown(_cosmeticButtons[1].GetComponent<Selectable>());
-        _bottomClothesTab.SetSelectableOnDown(_cosmeticButtons[num-1].GetComponent<Selectable>());
-
-        foreach (CosmeticSelectionButton button in _cosmeticButtons)
+        _bottomClothesTab.SetSelectableOnDown(_cosmeticButtons[num - 1].GetComponent<Selectable>());
+        SetNavigation();
+    }
+    private void SetNavigation()
+    {
+        int numberOfRowsInGrid;
+        int numberOfItemsInRow;
+        GridLayoutGroupHelper.GetColumnAndRow(GetComponent<GridLayoutGroup>(), out _, out numberOfRowsInGrid);
+        for (int i = 0; i < numberOfRowsInGrid; i++)
         {
-            button.OnCosmeticPicked += SelectItem;
-            button.OnEditColorPressed.AddListener(OpenColorEditWindow);
+            GridLayoutGroupHelper.GetNumberOfItemsInRow(GetComponent<GridLayoutGroup>(), out numberOfItemsInRow, i + 1);
+            for (int j = 0; j < numberOfItemsInRow; j++)
+            {
+                NavigationSetter navSet = _cosmeticButtons[i+j].GetComponent<NavigationSetter>();
+                NavigationSetter editButtonNavSet = navSet.transform.GetChild(4).GetComponent<NavigationSetter>();
+                navSet.SetNavigationMode(true);
+                editButtonNavSet.SetNavigationMode(true);
+                if (i == 0)
+                {
+                    if (j == 0)
+                    {
+                        //CosmeticSelectionButtonEditor.SetNavigation(topClothesTabToggle, (cosmeticSelectionButtonsList.GetArrayElementAtIndex(i * numberOfItemsInRow + j + 1).objectReferenceValue as CosmeticSelectionButton).GetComponent<Selectable>(), null, (cosmeticSelectionButtonsList.GetArrayElementAtIndex((i + 1) * numberOfItemsInRow - 1).objectReferenceValue as CosmeticSelectionButton).GetComponent<Selectable>(), serButton);
+
+                        navSet.SetSelectableOnTop(_topClothesTab);
+                        navSet.SetSelectableOnLeft(_cosmeticButtons[(i + 1) * numberOfItemsInRow - 1].GetComponent<Selectable>());
+                        navSet.SetSelectableOnRight(_cosmeticButtons[i * numberOfItemsInRow + j + 1].GetComponent<Selectable>());
+                        if (_cosmeticButtons.Count > (i + 1) * numberOfItemsInRow + j) _cosmeticButtons[i+j].SetEditButtonNavigation(_cosmeticButtons[(i + 1) * numberOfItemsInRow + j].GetComponent<Selectable>());
+                        else _cosmeticButtons[i + j].SetEditButtonNavigation(_returnToMainMenuButton);
+
+                        continue;
+                    }
+                    if (j <= numberOfItemsInRow - 2)
+                    {
+
+                        navSet.SetSelectableOnTop(_middleClothesTab);
+                        navSet.SetSelectableOnLeft(_cosmeticButtons[i * numberOfItemsInRow + j - 1].GetComponent<Selectable>());
+                        navSet.SetSelectableOnRight(_cosmeticButtons[i * numberOfItemsInRow + j + 1].GetComponent<Selectable>());
+                    }
+                    else
+                    {
+                        navSet.SetSelectableOnTop(_bottomClothesTab);
+                        navSet.SetSelectableOnLeft(_cosmeticButtons[i * numberOfItemsInRow + j - 1].GetComponent<Selectable>());
+                        navSet.SetSelectableOnRight(_cosmeticButtons[ i * numberOfItemsInRow].GetComponent<Selectable>());
+                    }
+                    if (_cosmeticButtons.Count > (i + 1) * numberOfItemsInRow + j) _cosmeticButtons[i + j].SetEditButtonNavigation(_cosmeticButtons[(i + 1) * numberOfItemsInRow + j].GetComponent<Selectable>());
+                    else _cosmeticButtons[i + j].SetEditButtonNavigation(_returnToMainMenuButton);
+                }
+                else
+                {
+                    if (i == numberOfRowsInGrid - 1)
+                    {
+                        _cosmeticButtons[i + j].SetEditButtonNavigation(_returnToMainMenuButton);
+                        navSet.SetSelectableOnTop(_cosmeticButtons[(i - 1) * numberOfItemsInRow + j].GetComponent<Selectable>());
+                        if (j == 0)
+                        {
+                            navSet.SetSelectableOnLeft(_cosmeticButtons[(i + 1) * numberOfItemsInRow - 1].GetComponent<Selectable>());
+                            navSet.SetSelectableOnRight(_cosmeticButtons[i * numberOfItemsInRow + j].GetComponent<Selectable>());
+                        }
+                        else if (j <= numberOfRowsInGrid - 2)
+                        {
+                            navSet.SetSelectableOnLeft(_cosmeticButtons[i * numberOfItemsInRow + j - 1].GetComponent<Selectable>());
+                            navSet.SetSelectableOnRight(_cosmeticButtons[i * numberOfItemsInRow + j + 1].GetComponent<Selectable>());
+                        }
+                        else if (j == numberOfRowsInGrid - 1)
+                        {
+                            navSet.SetSelectableOnLeft(_cosmeticButtons[i * numberOfItemsInRow + j - 1].GetComponent<Selectable>());
+                            navSet.SetSelectableOnRight(_cosmeticButtons[i * numberOfItemsInRow].GetComponent<Selectable>());
+                        }
+                    }
+                    else
+                    {
+                        navSet.SetSelectableOnTop(_cosmeticButtons[(i - 1) * numberOfItemsInRow + j].GetComponent<Selectable>());
+                        if (_cosmeticButtons.Count> (i + 1) * numberOfItemsInRow + j) _cosmeticButtons[i + j].SetEditButtonNavigation(_cosmeticButtons[(i + 1) * numberOfItemsInRow + j].GetComponent<Selectable>());
+                        else _cosmeticButtons[i + j].SetEditButtonNavigation(_returnToMainMenuButton);
+                        if (j == 0)
+                        {
+                            navSet.SetSelectableOnLeft(_cosmeticButtons[(i + 1) * numberOfItemsInRow - 1].GetComponent<Selectable>());
+                            navSet.SetSelectableOnRight(_cosmeticButtons[i * numberOfItemsInRow + j + 1].GetComponent<Selectable>());
+                        }
+                        else if (j <= numberOfRowsInGrid - 2)
+                        {
+                            navSet.SetSelectableOnLeft(     _cosmeticButtons[i * numberOfItemsInRow + j - 1].GetComponent<Selectable>());
+                            navSet.SetSelectableOnRight(_cosmeticButtons[i * numberOfItemsInRow + j + 1].GetComponent<Selectable>());
+                        }
+                        else if (j == numberOfRowsInGrid - 1)
+                        {
+                            navSet.SetSelectableOnLeft(_cosmeticButtons[i * numberOfItemsInRow + j - 1].GetComponent<Selectable>());
+                            navSet.SetSelectableOnRight(_cosmeticButtons[i * numberOfItemsInRow].GetComponent<Selectable>());
+                        }
+                    }
+                }
+            }
         }
     }
     private void SelectItem(CosmeticSO cosmetic, ICosmeticPickable caller)
@@ -67,9 +165,9 @@ public class CosmeticShopCategory : MonoBehaviour
         // add set tick for selected item
         OnItemSelected?.Invoke(cosmetic, _category);
     }
-    public void OpenColorEditWindow(CosmeticSO cosmetic)
+    public void OpenColorEditWindow(CosmeticSO cosmetic,Selectable caller)
     {
-        _editColorWindow.OpenColorWindow(cosmetic, _category);
+        _editColorWindow.OpenColorWindow(cosmetic, _category, caller);
     }
     private void OnDisable()
     {

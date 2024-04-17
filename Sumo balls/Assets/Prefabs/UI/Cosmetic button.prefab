@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5875026368709031954}
   - component: {fileID: 7391308463413012867}
-  - component: {fileID: 5360514656388482375}
+  - component: {fileID: 1867845214305834356}
   - component: {fileID: 151975858620204830}
   - component: {fileID: 6790961899519946447}
   - component: {fileID: 4954830361557466228}
@@ -54,7 +54,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 362013348156403735}
   m_CullTransparentMesh: 1
---- !u!114 &5360514656388482375
+--- !u!114 &1867845214305834356
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40a019c271d97cb49a31c0bb42feeaf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _selectedTick: {fileID: 2717298856745326962}
   OnEditColorPressed:
     m_PersistentCalls:
       m_Calls: []
@@ -131,7 +132,6 @@ MonoBehaviour:
   _coinContainer: {fileID: 4431282659137407732}
   _editColorButton: {fileID: 2065136628460772295}
   _hasEditableColors: 0
-  _selectedTick: {fileID: 2717298856745326962}
 --- !u!114 &6790961899519946447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -549,8 +549,13 @@ PrefabInstance:
     - target: {fileID: 1720164247384251562, guid: 25fac8cef82f89042b89fe93088d170f,
         type: 3}
       propertyPath: m_Navigation.m_Mode
-      value: -1
+      value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1720164247384251562, guid: 25fac8cef82f89042b89fe93088d170f,
+        type: 3}
+      propertyPath: m_Navigation.m_SelectOnUp
+      value: 
+      objectReference: {fileID: 1867845214305834356}
     - target: {fileID: 1720164247384251562, guid: 25fac8cef82f89042b89fe93088d170f,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size

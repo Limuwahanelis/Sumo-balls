@@ -5,18 +5,16 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class CosmeticSelectionButton :MonoBehaviour, IShopItemSelectable, ICosmeticPickable
+public class CosmeticSelectionButton: ShopItemSelectionButton, ICosmeticPickable
 {
     public event ICosmeticPickable.CosmeticPickedEventHandler OnCosmeticPicked;
-    public UnityEvent<CosmeticSO> OnEditColorPressed;
+    public UnityEvent<CosmeticSO,Selectable> OnEditColorPressed;
     [SerializeField] RawImage _comseticImage;
     [SerializeField] GameObject _coinPrefab;
     [SerializeField] GameObject _coinContainer;
     [SerializeField] Button _editColorButton;
     [SerializeField,HideInInspector] private bool _hasEditableColors;
-    [SerializeField] protected GameObject _selectedTick;
-    protected Unlockable _unlockable;
-    public void CheckItem(bool tryUnlock = true)
+    public override void CheckItem(bool tryUnlock = true)
     {
         if (GameDataManager.IsItemUnlocked(_unlockable.UnlockableItem.Id))
         {
@@ -28,9 +26,14 @@ public class CosmeticSelectionButton :MonoBehaviour, IShopItemSelectable, ICosme
             _unlockable.TryUnlock();
         }
     }
+    public void SetEditButtonNavigation(Selectable onDown)
+    {
+        if(_hasEditableColors) _editColorButton.GetComponent<NavigationSetter>().SetSelectableOnDown(onDown);
+        else GetComponent<NavigationSetter>().SetSelectableOnDown(onDown);
+    }
     public void EditColorPressed()
     {
-        OnEditColorPressed?.Invoke(_unlockable.UnlockableItem as CosmeticSO);
+        OnEditColorPressed?.Invoke(_unlockable.UnlockableItem as CosmeticSO,GetComponent<Selectable>());
     }
     public void SetUp(CosmeticSO cosmetic)
     {
@@ -41,15 +44,5 @@ public class CosmeticSelectionButton :MonoBehaviour, IShopItemSelectable, ICosme
         }
         _unlockable.SetUnlockable(cosmetic);
         if (cosmetic.PartsNames.Count!=0) _hasEditableColors = true;
-    }
-
-    public void SetSelectionTick(bool value)
-    {
-        _selectedTick.SetActive(value);
-    }
-
-    public void TryUnlock()
-    {
-        _unlockable.TryUnlock();
     }
 }

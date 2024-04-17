@@ -24,21 +24,26 @@ public class CosmeticColorSelection : MonoBehaviour
     [SerializeField] TabToggleUI _cosmeticsTabToggle;
     [SerializeField] TabToggleUI _ballColorsTabToggle;
 
+    [SerializeField] Image _colorPickerTick;
+
     private CosmeticSO _cosmeticSO;
     private CosmeticShopCategory.CosmeticCategory _cosmeticCategory;
     private bool _wasPickerCreated = false;
     private NavigationSetter _colorPickerMainSliderNavSetter;
     private int _selectedPartIndex = 0;
+    private Selectable _caller;
     CosmeticData _cosmeticData;
     List<CosmeticPartColorToggle> _partColorToggles=new List<CosmeticPartColorToggle>();
-    public void OpenColorWindow(CosmeticSO cosmetic,CosmeticShopCategory.CosmeticCategory cosmeticCategory)
+    public void OpenColorWindow(CosmeticSO cosmetic,CosmeticShopCategory.CosmeticCategory cosmeticCategory, Selectable caller)
     {
+        _caller= caller;
         _cosmeticSO = cosmetic;
         _cosmeticCategory = cosmeticCategory;
         _colorPickerMainSliderNavSetter=_colorPickerMainSlider.GetComponent<NavigationSetter>();
         _colorWindow.gameObject.SetActive(true);
         _colorPicker.transform.SetParent(_colorWindow.transform, false);
         _colorPicker.transform.position=_colorPickerPos.position;
+        _colorPickerTick.enabled = false;
         _cosmeticData = GameDataManager.GameData.customizationData.cosmeticsData.Find((x) => x.cosmeticId == cosmetic.Id);
         List<Color> colors = _cosmeticData.colors;
 
@@ -61,6 +66,7 @@ public class CosmeticColorSelection : MonoBehaviour
         _ballColorsTabToggle.SetSelectableOnRight(_cosmeticsTabToggle);
         _ballColorsTabToggle.SetSelectableOnDown(_partColorToggles[0].GetComponent<Selectable>());
         _colorPickerMainSliderNavSetter.SetSelectableOnLeft(_partColorToggles[_partColorToggles.Count-1].GetComponent<Selectable>());
+        _colorPicker.GetComponent<NavigationSetter>().SetSelectableOnDown(_closeButton);
         for (int i=0;i<_partColorToggles.Count;i++)
         {
             Navigation navigation = new Navigation()
@@ -111,6 +117,9 @@ public class CosmeticColorSelection : MonoBehaviour
         _colorPickerMainSliderNavSetter.ResetNavigation();
         _cosmeticsTabToggle.ResetNavigation();
         _ballColorsTabToggle.ResetNavigation();
+        _colorPicker.GetComponent<NavigationSetter>().ResetNavigation();
+        _colorPickerTick.enabled = true;
+        EventSystem.current.SetSelectedGameObject(_caller.gameObject);
         ColorPicker.SetInteractable(false);
         _colorPickerBlockScreen.SetActive(true);
         ColorPicker.Done();
