@@ -49,21 +49,33 @@ public class ScreenSettings : MonoBehaviour
 
     }
     int _currentResIndex;
-    public TMP_Dropdown resolutionDropdown;
-    public Toggle fullScreenToggle;
+    [SerializeField] TMP_Dropdown resolutionDropdown;
+    [SerializeField] TMP_Dropdown _framesLockDropdown;
+    [SerializeField] Toggle fullScreenToggle;
+    [SerializeField] Toggle _VSyncToggle;
+    [SerializeField] Slider _VSyncCountSlider;
     public MyResolution selectedResolution;
     public bool fullScreen;
     Resolution[] allResolutions;
     List<Resolution> availableResolutions = new List<Resolution>();
 
+    public int TargetFrameRate => _targetFrameRate;
+    public int TargetFrameRateIndex => _targetFrameRateIndex;
+    public int VSyncCountIndex => _VsyncCount;
+    public bool Vsync => _VSync;
+    [SerializeField] List<int> _framerates = new List<int>();
+    private bool _VSync = false;
+    private int _targetFrameRateIndex=0;
+    private int _targetFrameRate=-1;
+    private int _VsyncCount = 1;
     // Start is called before the first frame update
-
-    private void Awake()
-    {
-    }
     void OnEnable()
     {
         ScreenSettingsData configs = ScreenSettingsSaver.LoadScreenSettings();
+        _VSyncCountSlider.value = configs.VSyncCountIndex;
+        _VSyncToggle.isOn = configs.VSync;
+        _framesLockDropdown.value = configs.targetFrameRateIndex;
+
         _currentResIndex = 0;
         allResolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
@@ -120,5 +132,23 @@ public class ScreenSettings : MonoBehaviour
     public bool GetFullScreen()
     {
         return fullScreen;
+    }
+
+    public void SetFrameRate(int index)
+    {
+        _targetFrameRate = _framerates[index];
+        _targetFrameRateIndex = index;
+        Application.targetFrameRate = _framerates[index];
+    }
+    public void SetVsync(bool value)
+    {
+        _VSync = value;
+        QualitySettings.vSyncCount = value ? _VsyncCount : 0;
+    }
+    public void SetVsyncCount(float value)
+    {
+        int val = (int)value;
+        _VsyncCount = val;
+        QualitySettings.vSyncCount = _VsyncCount;
     }
 }

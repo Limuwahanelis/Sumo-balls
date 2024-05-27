@@ -16,7 +16,7 @@ public class ScreenSetUp : MonoBehaviour
         {
             GetAllResolutions();
             Debug.Log("org res: " + availableResolutions[availableResolutions.Count - 1]);
-            ScreenSettingsData screenData = new ScreenSettingsData(new ScreenSettings.MyResolution(availableResolutions[availableResolutions.Count - 1]), true);
+            ScreenSettingsData screenData = new ScreenSettingsData(new ScreenSettings.MyResolution(availableResolutions[availableResolutions.Count - 1]), true,1,0,false,-1);
             ScreenSettingsSaver.SaveScreenSettings(screenData);
             Screen.SetResolution(availableResolutions[availableResolutions.Count - 1].width, availableResolutions[availableResolutions.Count - 1].height, true);
         }
@@ -24,6 +24,9 @@ public class ScreenSetUp : MonoBehaviour
         {
             ScreenSettingsData configs = ScreenSettingsSaver.LoadScreenSettings();
             Screen.SetResolution(configs.resolution.width,configs.resolution.height,configs.fullScreen);
+            if (configs.VSync) QualitySettings.vSyncCount = configs.VSyncCountIndex;
+            else QualitySettings.vSyncCount = 0;
+            Application.targetFrameRate = configs.targetFrameRate;
         }
     }
     void GetAllResolutions()

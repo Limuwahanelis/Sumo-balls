@@ -10,7 +10,7 @@ public class ScreenSettingsSaver : MonoBehaviour
 
     public void SaveScreenSettings()
     {
-        ScreenSettingsData screenData = new ScreenSettingsData(_screenSettings.selectedResolution, _screenSettings.fullScreen);
+        ScreenSettingsData screenData = new ScreenSettingsData(_screenSettings.selectedResolution, _screenSettings.fullScreen,_screenSettings.VSyncCountIndex,_screenSettings.TargetFrameRateIndex,_screenSettings.Vsync,_screenSettings.TargetFrameRate);
         JsonSave.SaveToFile(screenData, screenSettingsFileName);
         //SaveSystem.SaveScreenSettings.SaveScreenConfigs(_screenSettings.selectedResolution, _screenSettings.fullScreen);
     }
