@@ -4,19 +4,15 @@ using UnityEngine;
 using UnityEditor;
 using Unity.VisualScripting;
 using UnityEngine.UI;
+using UnityEditor.VersionControl;
+using Unity.EditorCoroutines.Editor;
 
 [CustomEditor(typeof(CosmeticShopCategory))]
+[CanEditMultipleObjects]
 public class CosmeticShopCategoryEditor: Editor
 {
-    CosmeticSOList _cosmeticsList;
-    SerializedProperty _cosmeticSelectionButtonsList;
-    SerializedProperty _cosmeticButtonPrefab;
-    SerializedProperty _selectOnEnable;
     private void OnEnable()
     {
-        _cosmeticsList = serializedObject.FindProperty("_listOfCosmeticsSOInCategory").objectReferenceValue as CosmeticSOList;
-        _cosmeticButtonPrefab = serializedObject.FindProperty("_cosmeticButtonPrefab");
-        _cosmeticSelectionButtonsList = serializedObject.FindProperty("_cosmeticButtons");
 
     }
     public override void OnInspectorGUI()
@@ -35,6 +31,7 @@ public class CosmeticShopCategoryEditor: Editor
         SerializedProperty cosmeticButtonPrefab = serializedObject.FindProperty("_cosmeticButtonPrefab");
         SerializedProperty cosmeticSelectionButtonsList = serializedObject.FindProperty("_cosmeticButtons");
         SelectSelectableOnEnable selectOnEnable = serializedObject.FindProperty("_selectSelectableOnEnable").objectReferenceValue as SelectSelectableOnEnable;
+
         serializedObject.Update();
         for (int i = cosmeticSelectionButtonsList.arraySize - 1; i >= 0; i--)
         {
@@ -50,6 +47,7 @@ public class CosmeticShopCategoryEditor: Editor
             cosmeticButton.transform.SetParent(cosmeticShopCategory.transform);
             cosmeticButton.SetUp(cosmeticsList.Cosmetics[i]);
         }
+
         selectOnEnable.SetSelectable((cosmeticSelectionButtonsList.GetArrayElementAtIndex(0).objectReferenceValue as CosmeticSelectionButton).GetComponent<Button>());
         serializedObject.ApplyModifiedProperties();
     }

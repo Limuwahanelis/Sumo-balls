@@ -69,14 +69,14 @@ namespace SaveSystem
             }
             File.WriteAllText(gameSaveFilePath, json);
         }
-        public static void CreateGameData(List<Stage> stages,List<UnlockableItem> unlockableColors)
+        public static void CreateGameData(List<Stage> stages,List<UnlockableItem> unlockableColors, List<CosmeticSO> cosmeticSOs)
         {
             List<StageData> stagesData = new List<StageData>();
             foreach(Stage stage in stages)
             {
                 stagesData.Add(new StageData(stage.Id));
             }
-            GameData saveData = new GameData(stagesData, unlockableColors);
+            GameData saveData = new GameData(stagesData, unlockableColors, cosmeticSOs);
             string json = JsonUtility.ToJson(saveData);
 
             if (!Directory.Exists(gameSaveFolderPath))
@@ -99,11 +99,19 @@ namespace SaveSystem
 
             return false;
         }
-        public static void VerifyGameData(List<Stage> stageList, List<UnlockableItem> unlockables,CustomizationData customizationData)
+        public static void VerifyGameData(List<Stage> stageList, List<UnlockableItem> unlockables, List<CosmeticSO> cosmeticSOs, CustomizationData customizationData)
         {
-            if(customizationData.topCosmeticId==null) customizationData.topCosmeticId= "e9076c53d7a4a9d489e3b10363614ddb";
-            if(customizationData.midddleCosmeticId==null ) customizationData.midddleCosmeticId = "f194953c1695ede4480f4f7ce0c8b0f9";
-            if(customizationData.bottomCosmeticId==null)customizationData.bottomCosmeticId = "ece10e96e1dc5bb4ba8f17b3216725ee";
+            if (customizationData.topCosmeticId == null) customizationData.topCosmeticId = "e9076c53d7a4a9d489e3b10363614ddb";
+            if (customizationData.midddleCosmeticId == null) customizationData.midddleCosmeticId = "f194953c1695ede4480f4f7ce0c8b0f9";
+            if (customizationData.bottomCosmeticId == null) customizationData.bottomCosmeticId = "ece10e96e1dc5bb4ba8f17b3216725ee";
+            if (customizationData.cosmeticsData == null) customizationData.cosmeticsData = new List<CosmeticData>();
+            if (customizationData.cosmeticsData.Count == 0)
+            {
+                foreach (CosmeticSO cosmetic in cosmeticSOs)
+                {
+                    _gameData.customizationData.cosmeticsData.Add(new CosmeticData(cosmetic.Id, cosmetic.Colors));
+                }
+            }
             foreach (Stage stage in stageList)
             {
                 if (_gameData.stagesData.Exists((x) => x.stageID == stage.Id)) continue;
@@ -113,6 +121,11 @@ namespace SaveSystem
             {
                 if (_gameData.customizationData.unlockableItemsData.Exists((x) => x.itemId == unlockableItem.Id)) continue;
                 _gameData.customizationData.unlockableItemsData.Add(new UnlockableItemData(unlockableItem.Id, false));
+            }
+            foreach (CosmeticData cosmeticData in customizationData.cosmeticsData)
+            {
+                if (_gameData.customizationData.cosmeticsData.Exists((x) => x.cosmeticId == cosmeticData.cosmeticId)) continue;
+                _gameData.customizationData.cosmeticsData.Add(new CosmeticData(cosmeticData.cosmeticId, cosmeticData.colors));
             }
         }
     }

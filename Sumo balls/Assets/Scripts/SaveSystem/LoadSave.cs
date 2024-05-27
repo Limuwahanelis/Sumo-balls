@@ -56,11 +56,11 @@ public class LoadSave : MonoBehaviour
         if (GameDataManager.LoadGameData() == false || _overrideSave)
         {
             Debug.Log("Creating new save");
-            GameDataManager.CreateGameData(_stageList.stages, _allUnlockables);
+            GameDataManager.CreateGameData(_stageList.stages, _allUnlockables,_allCosmeticsSO);
         }
         else
         {
-            GameDataManager.VerifyGameData(_stageList.stages, _allUnlockables, GameDataManager.GameData.customizationData);
+            GameDataManager.VerifyGameData(_stageList.stages, _allUnlockables, _allCosmeticsSO,GameDataManager.GameData.customizationData);
         }
     }
 }
