@@ -5,27 +5,30 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LoadConfigs.unity
     guid: 6c1bd2ea3f944ea44aea126a2f8dc67c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main menu.unity
     guid: e8b75afe7618ebe448acdca6c194a943
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Stages/Normal mode.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Stages/Boss 1.unity
     guid: cb524e7d1e6244342929f6e7127f3918
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Stages/Survival mode.unity
     guid: 44a36bfb5310a894380406505982dc2d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Stages/Tutorial.unity
     guid: 5f46cfd25f61abd4680b4ced4ba2440f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Stages/Tutorial combat.unity
     guid: 293015eb64c719c449729bd907d2ba5d
+  - enabled: 1
+    path: Assets/Scenes/Test Scene.unity
+    guid: a96b8a5f876097344892d4bf7cc32af6
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 706c327265f0de3438b0cb9c93f7b023,
       type: 2}
