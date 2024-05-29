@@ -23,7 +23,10 @@ public class CosmeticSelectionButton: ShopItemSelectionButton, ICosmeticPickable
         }
         else if (tryUnlock)
         {
-            _unlockable.TryUnlock();
+            if(_unlockable.TryUnlock())
+            {
+                if (_hasEditableColors) _editColorButton.gameObject.SetActive(true);
+            }
         }
     }
     public void SetEditButtonNavigation(Selectable onDown)
