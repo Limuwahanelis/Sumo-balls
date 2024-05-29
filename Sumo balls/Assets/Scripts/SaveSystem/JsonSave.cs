@@ -20,7 +20,7 @@ public static class JsonSave
 
     public static T GetDataFromJson<T>(string filename)
     {
-        T data = default(T);
+        T data = default;
         string json;
         string path = $"{gameConfigsFolderPath}\\{filename}.json";
         if (File.Exists(path))
