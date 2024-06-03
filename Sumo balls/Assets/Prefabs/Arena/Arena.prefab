@@ -46,7 +46,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4865940956809780983}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Arena
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,12 +84,12 @@ GameObject:
   - component: {fileID: 4108425047660070122}
   - component: {fileID: 4698421760490902229}
   - component: {fileID: 3503041818306426818}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2312960585296941272
 Transform:
@@ -735,7 +735,7 @@ MeshCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 393216
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
