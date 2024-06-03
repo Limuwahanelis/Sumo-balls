@@ -139,9 +139,8 @@ public class HoleInArena : MonoBehaviour
     {
         BallData ballToCheck = _ballsAtTheHole.Find((x) => x.col == other);
         Vector3 posTocheck = new Vector3(other.transform.position.x, 0, other.transform.position.z);
-        Debug.Log(Vector3.Distance(_holePos, posTocheck));
 
-       Debug.Log(Vector3.Distance(_holePos, posTocheck));
+       //Debug.Log(Vector3.Distance(_holePos, posTocheck));
         if (Vector3.Distance(_holePos, posTocheck) < _holeRadius)
         {
             if(ballToCheck.isEnemy) other.attachedRigidbody.gameObject.layer = _enemyIgnoreArenaMask;

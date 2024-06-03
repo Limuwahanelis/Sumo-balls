@@ -12,7 +12,6 @@ public class GraphicSettingsSaver : MonoBehaviour
     {
         GraphicSettingsData graphicData = new GraphicSettingsData(_graphicSettings.SelectedQualitySetting);
         JsonSave.SaveToFile(graphicData, graphicSettingsFileName);
-        //SaveSystem.SaveScreenSettings.SaveScreenConfigs(_screenSettings.selectedResolution, _screenSettings.fullScreen);
     }
     public static GraphicSettingsData LoadGraphicSettings()
     {

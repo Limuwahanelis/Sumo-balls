@@ -79,7 +79,7 @@ public class ScreenSettings : MonoBehaviour
         _currentResIndex = 0;
         allResolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
-        availableResolutions = allResolutions.ToList().FindAll(x => x.refreshRate == Screen.currentResolution.refreshRate);
+        availableResolutions = allResolutions.ToList().FindAll(x => x.refreshRateRatio.numerator == Screen.currentResolution.refreshRateRatio.numerator);
         for (int i = 0; i < availableResolutions.Count; i++)
         {
             availableResolutions.Sort((r1, r2) => r1.height.CompareTo(r2.height));

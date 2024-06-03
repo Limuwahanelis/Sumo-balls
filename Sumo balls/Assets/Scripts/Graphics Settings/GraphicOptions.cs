@@ -13,8 +13,6 @@ public class GraphicOptions : MonoBehaviour
     public int SelectedQualitySetting => _selectedShqdowQualityIndex;
     private int _selectedShqdowQualityIndex;
     [SerializeField] TMP_Dropdown _shadowSettingsDropdown;
-    [SerializeField] UniversalRenderPipelineAsset mediumShadows;
-    [SerializeField] UniversalRenderPipelineAsset HighShadows;
     private void Start()
     {
         GraphicSettingsData config = GraphicSettingsSaver.LoadGraphicSettings();
