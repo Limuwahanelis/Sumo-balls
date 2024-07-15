@@ -16,7 +16,7 @@ public class GraphicOptions : MonoBehaviour
     private void Start()
     {
         GraphicSettingsData config = GraphicSettingsSaver.LoadGraphicSettings();
-        _shadowSettingsDropdown.SetValueWithoutNotify(config.qualitySettingsIndex);
+        _shadowSettingsDropdown.value = config.qualitySettingsIndex;
     }
     public void SetQuality(int index)
     {
