@@ -7,15 +7,11 @@ public class GraphicSetUp : MonoBehaviour
     private void Awake()
     {
         GraphicSettingsData data = GraphicSettingsSaver.LoadGraphicSettings();
-        if (data==null)
+        if (data == null)
         {
             data = new GraphicSettingsData(2);
             GraphicSettingsSaver.SaveGraphicSettings(data);
-            QualitySettings.SetQualityLevel(data.qualitySettingsIndex);
         }
-        else
-        {
-
-        }
+        QualitySettings.SetQualityLevel(data.qualitySettingsIndex);
     }
 }
