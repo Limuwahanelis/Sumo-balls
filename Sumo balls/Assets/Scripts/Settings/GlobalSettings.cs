@@ -18,7 +18,6 @@ public static class GlobalSettings
     private static int _stageIndex;
     public static void SetPause(bool value)
     {
-        Debug.Log($"Pause {value}");
         _isGamePaused = value;
         if (value) Time.timeScale = 0;
         else Time.timeScale = 1;
