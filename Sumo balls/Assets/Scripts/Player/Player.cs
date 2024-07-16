@@ -116,7 +116,6 @@ public class Player : MonoBehaviour
                 _powerUpCor = StartCoroutine(PowerUpCountdownCor());
             }
             else _powerUpCor=StartCoroutine(PowerUpCountdownCor());
-            Debug.Log("picked");
         }
     }
 

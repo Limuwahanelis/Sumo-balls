@@ -28,10 +28,10 @@ public class LoadSave : MonoBehaviour
             
         }
         _allUnlockables = new List<UnlockableItem>().Concat(_unlockableColors).Concat(_allCosmeticsAsUnlockableItems).ToList();
-        foreach(UnlockableItem it in _allUnlockables)
-        {
-            Debug.Log(it.Id);
-        }
+        //foreach(UnlockableItem it in _allUnlockables)
+        //{
+        //    Debug.Log(it.Id);
+        //}
         LoadOrCreateNewSave();
         _playerMat.color = GameDataManager.GameData.customizationData.playerColor;
         _cosmeticSettings.InitateList(_allCosmeticsSO.Find(x => x.Id == GameDataManager.GameData.customizationData.topCosmeticId), _allCosmeticsSO.Find(x => x.Id == GameDataManager.GameData.customizationData.midddleCosmeticId), _allCosmeticsSO.Find(x => x.Id == GameDataManager.GameData.customizationData.bottomCosmeticId));

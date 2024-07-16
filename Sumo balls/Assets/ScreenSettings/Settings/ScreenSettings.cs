@@ -96,10 +96,10 @@ public class ScreenSettings : MonoBehaviour
         _currentResIndex = availableResolutions.FindIndex(x => x.width == configs.resolution.width && x.height == configs.resolution.height);
         foreach (Resolution resolution in availableResolutions)
         {
-            Debug.Log(resolution.ToString());
+            //Debug.Log(resolution.ToString());
         }
         fullScreen = configs.fullScreen;
-        Debug.Log(_currentResIndex);
+        //Debug.Log(_currentResIndex);
         if (_currentResIndex != -1)
         {
             

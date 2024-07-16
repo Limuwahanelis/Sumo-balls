@@ -170,7 +170,6 @@ public class EnemySpawner : MonoBehaviour
     }
     public void ReturnAllEnemiesToPool()
     {
-        Debug.Log("ret all"+_allEnemies.Count);
         foreach(NormalEnemy enemy in _allEnemies)
         {
             enemy.OnDeath.RemoveAllListeners();
