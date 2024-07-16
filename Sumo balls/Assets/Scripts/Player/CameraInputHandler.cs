@@ -19,7 +19,10 @@ public class CameraInputHandler : MonoBehaviour
     void Update()
     {
         if (GlobalSettings.IsGamePaused) return;
-        if (_isRotating) _camera.RotateKeyboard(_rotValue);
+        if (_isRotating)
+        {
+            _camera.RotateKeyboard(_rotValue);
+        }
     }
     void OnMouseDelta(InputValue value)
     {
@@ -29,7 +32,8 @@ public class CameraInputHandler : MonoBehaviour
     void OnRotateX(InputValue value)
     {
         _rotValue = value.Get<float>();
-        if (math.abs(_rotValue) >= 1) _isRotating = true;
+        
+        if (math.abs(_rotValue) > 0) _isRotating = true;
         else _isRotating = false;
 
     }
