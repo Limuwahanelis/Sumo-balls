@@ -42,7 +42,8 @@ public class SliderActionModifyEvent : Slider
         base.Update();
         if (_isModifyingValue || _holdTime>= _holdTreshold)
         {
-            value += _direction * Time.deltaTime * _speed;
+            Set(value += _direction * Time.unscaledDeltaTime * _speed);
+            
         }
         if(_selTimer<0.2f)
         {
