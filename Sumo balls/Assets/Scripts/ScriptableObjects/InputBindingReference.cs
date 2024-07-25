@@ -8,4 +8,5 @@ public class InputBindingReference : ScriptableObject
 {
     public InputBinding binding;
     public string saveName;
+    public float defaultValue;
 }

@@ -22,3 +22,4 @@ MonoBehaviour:
     m_Action: MouseDelta
     m_Flags: 0
   saveName: Mouse sensitivity
+  defaultValue: 1
