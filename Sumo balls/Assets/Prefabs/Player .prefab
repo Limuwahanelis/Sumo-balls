@@ -12065,9 +12065,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 1761369987521674883}
   _pauseSetter: {fileID: 0}
-  _inputActionAsset: {fileID: -944628639613478452, guid: 108bb979191d4a548af7f7a2a04fc63d,
+  _inputActionAsset: {fileID: -944628639613478452, guid: 31fa002423bf4674c8d061ecf638e371,
     type: 3}
-  _pauseInputAction: {fileID: -3202249217418099058, guid: 108bb979191d4a548af7f7a2a04fc63d,
+  _pauseInputAction: {fileID: 7901148268099749396, guid: 31fa002423bf4674c8d061ecf638e371,
     type: 3}
   _playerActions: Player
 --- !u!114 &7155332372089040261
@@ -12095,7 +12095,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 108bb979191d4a548af7f7a2a04fc63d,
+  m_Actions: {fileID: -944628639613478452, guid: 31fa002423bf4674c8d061ecf638e371,
     type: 3}
   m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
