@@ -15,13 +15,12 @@ public class OverrideActionScaleProcessor : MonoBehaviour
     void Start()
     {
         _bindingMask=InputBindingLib.NullifyBindingFields(in _bindingReference.binding);
-        foreach (InputBinding bind in _actionReference.action.bindings)
-        {
-            Debug.Log(bind.name);
-            if (_bindingReference.binding.Matches(bind)) Debug.Log("machss");
-        }
+        //foreach (InputBinding bind in _actionReference.action.bindings)
+        //{
+        //    Debug.Log(bind.name);
+        //    if (_bindingReference.binding.Matches(bind)) Debug.Log("machss");
+        //}
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -29,7 +28,6 @@ public class OverrideActionScaleProcessor : MonoBehaviour
     public void ApplyOverride(float newValue)
     {
         _actionReference.action.ApplyParameterOverride((ScaleProcessor s) => s.factor, newValue, _bindingMask);
-        Debug.Log(_actionReference.action.GetParameterValue((ScaleProcessor s) => s.factor, _bindingMask));
     }
     public void Save()
     {

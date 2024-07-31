@@ -22,17 +22,18 @@ public class OverrideActionScaleVector2Processor : MonoBehaviour
     public void ApplyOverrideX(float newValue)
     {
         _actionReference.action.ApplyParameterOverride((ScaleVector2Processor v) => v.x, newValue, _bindingMask);
+        PlayerPrefs.SetFloat(xPart, _actionReference.action.GetParameterValue((ScaleVector2Processor v) => v.x, _bindingMask).Value);
     }
     public void ApplyOverrideY(float newValue)
     {
         _actionReference.action.ApplyParameterOverride((ScaleVector2Processor v) => v.y, newValue, _bindingMask);
+        PlayerPrefs.SetFloat(xPart, _actionReference.action.GetParameterValue((ScaleVector2Processor v) => v.x, _bindingMask).Value);
     }
     public void Save()
     {
         PlayerPrefs.SetFloat(xPart, _actionReference.action.GetParameterValue((ScaleVector2Processor v) => v.x, _bindingMask).Value);
         PlayerPrefs.SetFloat(yPart, _actionReference.action.GetParameterValue((ScaleVector2Processor v) => v.y, _bindingMask).Value);
     }
-
     public void Load()
     {
         float x = PlayerPrefs.GetFloat(xPart);
