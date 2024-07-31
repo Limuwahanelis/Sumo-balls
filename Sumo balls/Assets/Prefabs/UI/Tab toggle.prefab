@@ -297,6 +297,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8431386801909662647}
   - component: {fileID: 4180847675110121544}
+  - component: {fileID: 2118406864363061132}
   m_Layer: 5
   m_Name: Tab toggle
   m_TagString: Untagged
@@ -386,5 +387,35 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2118406864363061132}
+        m_TargetAssemblyTypeName: TabToggleUILogic, Assembly-CSharp
+        m_MethodName: TabStateChange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
   _startingtargetGraphic: {fileID: 4598664638679019105}
+--- !u!114 &2118406864363061132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4732135660511847794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34127c74196290d40a80eed374f49710, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnTabSelected:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTabDeSelected:
+    m_PersistentCalls:
+      m_Calls: []

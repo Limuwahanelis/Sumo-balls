@@ -165,7 +165,7 @@ public class Player : MonoBehaviour
         if (_pivot == null)
         {
             PlayerCamera cam = FindObjectOfType<PlayerCamera>();
-            if (cam)_pivot= cam.transform.parent.gameObject;
+            if (cam!=null)_pivot= cam.transform.parent.gameObject;
         }
     }
 }

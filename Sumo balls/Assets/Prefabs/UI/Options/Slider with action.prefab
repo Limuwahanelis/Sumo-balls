@@ -241,9 +241,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  _modifySliderValueAction: {fileID: 8593567646181423435, guid: 108bb979191d4a548af7f7a2a04fc63d,
+  _modifySliderValueAction: {fileID: -5393635173550800040, guid: 31fa002423bf4674c8d061ecf638e371,
     type: 3}
-  _modifySliderValueOnceAction: {fileID: -8835604433028054848, guid: 108bb979191d4a548af7f7a2a04fc63d,
+  _modifySliderValueOnceAction: {fileID: -3407237398264686040, guid: 31fa002423bf4674c8d061ecf638e371,
     type: 3}
   _speed: 8
   _singleValueUpdate: 1

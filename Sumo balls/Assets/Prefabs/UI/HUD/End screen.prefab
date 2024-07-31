@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da77c038f614a5e41bd4076dc4991af5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerPause: {fileID: -3202249217418099058, guid: 108bb979191d4a548af7f7a2a04fc63d,
+  _playerPause: {fileID: 7901148268099749396, guid: 31fa002423bf4674c8d061ecf638e371,
     type: 3}
   OnPause:
     m_PersistentCalls:

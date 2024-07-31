@@ -21,7 +21,6 @@ public class ApplyActionScaleVector2ProcessorToSlider : MonoBehaviour
         _scaleYValue = PlayerPrefs.GetFloat(_inputBindingReference.saveName + "Y");
         if (_scaleXValue == 0) _scaleXValue = _actionToreadProcessorFrom.action.GetParameterValue((ScaleVector2Processor v) => v.x, _bindingMask).Value;
         if (_scaleYValue == 0) _scaleYValue = _actionToreadProcessorFrom.action.GetParameterValue((ScaleVector2Processor v) => v.y, _bindingMask).Value;
-        Debug.Log(_scaleXValue);
         if(_useXValue)
         {
             _slider.UpdateSlider(_scaleXValue.ToString());

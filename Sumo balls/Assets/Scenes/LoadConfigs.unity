@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -141,6 +141,7 @@ GameObject:
   - component: {fileID: 1592543770}
   - component: {fileID: 1592543771}
   - component: {fileID: 1592543772}
+  - component: {fileID: 1592543773}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -228,7 +229,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53fd522d79f27a94bbe9dbd506496aa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerActions: {fileID: -944628639613478452, guid: 108bb979191d4a548af7f7a2a04fc63d,
+  _bindingReferences:
+  - {fileID: 11400000, guid: 67085e482e435e64e86c19b4ea5d8eff, type: 2}
+  - {fileID: 11400000, guid: c5a5bb0e6825159429373aa939e5c194, type: 2}
+  - {fileID: 11400000, guid: 2fb3c654ab2c4eb4ca5d9d168903741f, type: 2}
+  _inputActionreferences:
+  - {fileID: 6113129254619276892, guid: 108bb979191d4a548af7f7a2a04fc63d, type: 3}
+  - {fileID: 6113129254619276892, guid: 108bb979191d4a548af7f7a2a04fc63d, type: 3}
+  - {fileID: 6039955109564969872, guid: 108bb979191d4a548af7f7a2a04fc63d, type: 3}
+  _action: {fileID: 6113129254619276892, guid: 108bb979191d4a548af7f7a2a04fc63d, type: 3}
+  _playerActions: {fileID: -944628639613478452, guid: 31fa002423bf4674c8d061ecf638e371,
     type: 3}
   _loadOnAwake: 0
 --- !u!114 &1592543766
@@ -354,5 +364,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a75f79f7bbcdae489295e962db9101f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1592543773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1592543762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 550f58d0a0a81344385ac99bf82d8808, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

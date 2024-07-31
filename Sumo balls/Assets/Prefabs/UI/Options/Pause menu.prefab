@@ -220,7 +220,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da77c038f614a5e41bd4076dc4991af5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerPause: {fileID: 0}
+  _playerPause: {fileID: 7901148268099749396, guid: 31fa002423bf4674c8d061ecf638e371,
+    type: 3}
   OnPause:
     m_PersistentCalls:
       m_Calls:
@@ -864,7 +865,7 @@ PrefabInstance:
     - target: {fileID: 99472209064376928, guid: 6a02f7e65ce907c4e9f445cc04410dc2,
         type: 3}
       propertyPath: m_text
-      value: Button South
+      value: A
       objectReference: {fileID: 0}
     - target: {fileID: 142244402087995627, guid: 6a02f7e65ce907c4e9f445cc04410dc2,
         type: 3}
@@ -964,7 +965,7 @@ PrefabInstance:
     - target: {fileID: 2002108955881274475, guid: 6a02f7e65ce907c4e9f445cc04410dc2,
         type: 3}
       propertyPath: m_text
-      value: Left Stick/Left
+      value: Left Stick Left
       objectReference: {fileID: 0}
     - target: {fileID: 2041977580293191750, guid: 6a02f7e65ce907c4e9f445cc04410dc2,
         type: 3}
@@ -1439,7 +1440,7 @@ PrefabInstance:
     - target: {fileID: 7550171853945269731, guid: 6a02f7e65ce907c4e9f445cc04410dc2,
         type: 3}
       propertyPath: m_text
-      value: Left Stick/Right
+      value: Left Stick Right
       objectReference: {fileID: 0}
     - target: {fileID: 7968539696963826431, guid: 6a02f7e65ce907c4e9f445cc04410dc2,
         type: 3}

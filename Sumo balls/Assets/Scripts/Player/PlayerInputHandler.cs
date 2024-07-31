@@ -16,6 +16,8 @@ public class PlayerInputHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //_pauseInputAction.action.Enable();
+        _pauseInputAction.action.performed += Pause;
         //_inputActionAsset.FindActionMap(_playerActions).Enable();
     }
 
@@ -46,12 +48,16 @@ public class PlayerInputHandler : MonoBehaviour
 
     }
 
-    void OnPause(InputValue val)
+    void Pause(InputAction.CallbackContext context)
     {
         _pauseSetter.SetPause(!GlobalSettings.IsGamePaused);
     }
     public void DisableAction(InputActionReference action)
     {
         action.action.Disable();
+    }
+    private void OnDestroy()
+    {
+        _pauseInputAction.action.performed -= Pause;
     }
 }
